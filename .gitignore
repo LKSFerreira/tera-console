@@ -11,12 +11,10 @@ node_modules
 dist
 dist-ssr
 *.local
-.env
-.env.homologacao
 
 # Editor directories and files
 .vscode/*
-!.vscode/settings.json
+!.vscode/extensions.json
 .idea
 .DS_Store
 *.suo
@@ -24,8 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-produtos_brasil_v1.csv
-openfoodfacts-products.jsonl.gz
-codex_learning*
-aplicar_*
-test*.md
