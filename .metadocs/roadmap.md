@@ -29,12 +29,12 @@
 
 ### 🔲 Próximos Passos (Backlog)
 
-- [ ] Modularização do `App.tsx` em componentes separados (extração de dados, componentes de UI, tipos)
-- [ ] Adição de `package.json` e setup de build (Vite ou similar)
-- [ ] Tipagem TypeScript rigorosa (interfaces para dados de patch)
+- [x] Modularização do `App.tsx` em componentes separados (extração de dados, componentes de UI, tipos)
+- [x] Adição de `package.json` e setup de build (Vite ou similar)
+- [x] Tipagem TypeScript rigorosa (interfaces para dados de patch)
 - [ ] Responsividade mobile refinada
 - [ ] Sistema de busca/filtro dentro das patch notes
-- [ ] Deploy automatizado (Vercel/Netlify)
+- [x] Deploy automatizado preparatório (Vercel/Netlify)
 
 ---
 
@@ -44,11 +44,10 @@
 |------|---------|----------|
 | 2026-04-07 | Monólito em `App.tsx` | Fase inicial de prototipagem rápida |
 | 2026-04-07 | Tailwind CSS inline | Sem build system configurado ainda |
+| 2026-04-07 | Refatoração Vite + Tailwind v4 | Necessidade de infra sustentável e modularização para deploy via Vercel |
 
 ---
 
 ## 🐛 Problemas Conhecidos
 
-- Projeto não possui `package.json` — atualmente é um arquivo `.tsx` standalone
-- Sem testes automatizados
-- Sem linting/formatting configurado
+- Todos os scripts testados localmente. Cobertura de testes e lint explícito (eslint) pendentes de configuração refinada em escopos extras além do `TSC`.
