@@ -1,0 +1,23 @@
+# =============================================================================
+# Docker Compose - JavaScript/TypeScript com Vite (Otimizado com Multi-stage Cache)
+# =============================================================================
+
+services:
+  app_<nome-do-projeto>_:
+    build:
+      context: ../
+      dockerfile: .devcontainer/Dockerfile.node
+      target: dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - ../:/app
+      - /app/node_modules
+    working_dir: /app
+    stdin_open: true
+    tty: true
+    env_file:
+      - ../.env
+    environment:
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true
