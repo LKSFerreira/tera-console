@@ -18,5 +18,6 @@
   "python.analysis.diagnosticSeverityOverrides": {
     "reportMissingImports": "none",
     "reportMissingModuleSource": "none"
-  }
+  },
+  "css.lint.unknownAtRules": "ignore"
 }
