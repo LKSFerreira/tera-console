@@ -121,10 +121,10 @@ export default function App() {
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 py-8 flex flex-col lg:flex-row gap-8">
 
         {/* Left Sidebar (Desktop) / Horizontal Scroll (Mobile) - Patch History */}
-        <aside className="w-full lg:w-72 shrink-0 flex flex-col">
+        <aside className="w-full lg:w-max shrink-0 flex flex-col">
           <div className="sticky top-8">
             <h3 className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-4 px-2 flex items-center gap-2">
-              <History className="w-4 h-4" /> Histórico de Versões
+              <History className="w-4 h-4" /> Updates
             </h3>
 
             {/* Version List */}
@@ -135,7 +135,7 @@ export default function App() {
                   <button
                     key={patch.id}
                     onClick={() => setActivePatchId(patch.id)}
-                    className={`text-left px-4 py-4 rounded-xl border transition-all flex flex-col min-w-[240px] lg:min-w-0 snap-start
+                    className={`text-left px-4 py-4 rounded-xl border transition-all flex flex-col min-w-[240px] lg:min-w-0 snap-start whitespace-nowrap
                       ${isActive
                         ? 'bg-amber-500/10 border-amber-500/40 shadow-lg shadow-amber-500/5'
                         : 'bg-slate-900/40 border-slate-800/60 hover:bg-slate-800 hover:border-slate-700/80'}`}
@@ -163,7 +163,7 @@ export default function App() {
         <div className="flex-1 min-w-0 flex flex-col">
 
           {/* Inner Navigation Tabs (For the selected patch) */}
-          <div className="flex flex-wrap gap-2 mb-8 border-b border-slate-800/80 pb-4">
+          <div className="flex gap-2 mb-8 border-b border-slate-800/80 pb-4 overflow-x-auto scrollbar-none">
             {activePatch.tabs.map(tab => {
               const Icon = tab.icon;
               const isActive = activeTabId === tab.id;
@@ -171,7 +171,7 @@ export default function App() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTabId(tab.id)}
-                  className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap shrink-0
                     ${isActive
                       ? 'bg-sky-500/10 text-sky-400 border border-sky-500/30 shadow-md shadow-sky-500/5'
                       : 'bg-transparent text-slate-400 border border-transparent hover:bg-slate-800 hover:text-slate-200'
