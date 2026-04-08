@@ -1,5 +1,13 @@
 import { useState, useEffect } from 'react';
-import { BookOpen, History, RotateCcw, Award, Swords, Shield, CalendarDays, Hammer, Settings, AlertTriangle, UserCog } from 'lucide-react';
+import { BookOpen, History, RotateCcw, Award, Swords, Shield, CalendarDays, Hammer, Settings, AlertTriangle, UserCog, ExternalLink } from 'lucide-react';
+
+const GithubIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 5 3 6.2 6 6.5a4.8 4.8 0 0 0-1 3.2v4"></path></svg>
+);
+
+const LinkedinIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+);
 
 import {
   B131_BattlePassTab,
@@ -102,23 +110,73 @@ export default function App() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-amber-500/10 rounded-[100%] blur-[100px] pointer-events-none"></div>
         <div className="absolute top-0 left-1/4 w-[400px] h-[200px] bg-sky-500/10 rounded-[100%] blur-[80px] pointer-events-none"></div>
 
-        <div className="max-w-7xl mx-auto px-6 py-12 relative z-10 flex flex-col items-center text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs text-slate-400 mb-2 shadow-inner shadow-black/50">
-            <BookOpen className="w-4 h-4 text-sky-400" />
-            Portal de Notas de Atualização
+        <div className="max-w-7xl mx-auto px-6 pt-12 pb-6 relative z-10 flex flex-col lg:flex-row items-center lg:items-end justify-between gap-8">
+          
+          {/* Título & Info (Alinhado à Esquerda no Desktop) */}
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/50 text-sm text-slate-300 font-medium tracking-wide mb-1 shadow-inner shadow-black/50 backdrop-blur-sm">
+              <BookOpen className="w-4 h-4 text-sky-400" />
+              Portal de Notas de Atualização
+            </div>
+            <h1 className="text-5xl md:text-6xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200 drop-shadow-sm uppercase">
+              TERA Console
+            </h1>
+            <p className="text-2xl text-sky-200/80 font-light tracking-wide flex flex-wrap items-center justify-center lg:justify-start gap-3">
+              {activePatch.version} — {activePatch.name}
+              <span className="text-amber-500 text-base font-bold bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded ml-1 shadow-sm">
+                {activePatch.date}
+              </span>
+            </p>
           </div>
-          <h1 className="text-4xl md:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200 drop-shadow-sm uppercase">
-            TERA Console
-          </h1>
-          <p className="text-xl text-sky-200/80 font-light tracking-wide flex items-center gap-2 justify-center">
-            {activePatch.version} — {activePatch.name}
-            <span className="text-amber-500 text-sm font-bold bg-amber-500/10 px-2 py-0.5 rounded ml-2">{activePatch.date}</span>
-          </p>
+
+          {/* Dev Spotlight Section - Redesenhada como um Card Menor e Compacto (Widget) */}
+          <div className="flex items-center gap-6 bg-slate-900/60 rounded-xl backdrop-blur-md shadow-2xl p-5 pr-8 border border-slate-700/50 border-b-2 border-b-amber-500 hover:bg-slate-800/80 transition-all duration-300">
+            <div className="flex items-center gap-4">
+               <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-500 to-amber-200 p-[1px] shadow-md shadow-amber-500/20">
+                <div className="w-full h-full bg-[#090e17] rounded-full flex items-center justify-center">
+                  <UserCog className="w-6 h-6 text-amber-400" />
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] font-bold text-amber-500/90 uppercase tracking-[0.2em]">Mantido por</span>
+                <span className="text-xl md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-100 to-slate-400 leading-tight">
+                  Lucas Ferreira
+                </span>
+              </div>
+            </div>
+            
+            {/* Divisor Vertical */}
+            <div className="w-px h-10 bg-slate-700/60 hidden sm:block"></div>
+            
+            {/* Ícones Menores Interativos */}
+            <div className="flex items-center gap-3">
+              <a 
+                href="https://github.com/LKSFerreira" 
+                target="_blank" 
+                title="Acessar o GitHub"
+                rel="noopener noreferrer"
+                className="p-3 rounded-lg bg-[#090e17] border border-slate-700 hover:border-amber-500/50 hover:bg-amber-500/10 text-slate-400 hover:text-amber-400 transition-all duration-300 group"
+              >
+                <GithubIcon className="w-5 h-5" />
+              </a>
+
+              <a 
+                href="https://www.linkedin.com/in/lucas-ferreira-developer/" 
+                target="_blank" 
+                title="Acessar o LinkedIn"
+                rel="noopener noreferrer"
+                className="p-3 rounded-lg bg-[#090e17] border border-slate-700 hover:border-sky-500/50 hover:bg-sky-500/10 text-slate-400 hover:text-sky-400 transition-all duration-300 group"
+              >
+                <LinkedinIcon className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
 
       {/* Main Content Layout */}
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 py-8 flex flex-col lg:flex-row gap-8">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 pt-6 pb-8 flex flex-col lg:flex-row gap-8">
 
         {/* Left Sidebar (Desktop) / Horizontal Scroll (Mobile) - Patch History */}
         <aside className="w-full lg:w-max shrink-0 flex flex-col">
@@ -193,12 +251,30 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800/80 bg-slate-950 mt-12 shrink-0">
-        <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col items-center justify-center space-y-4">
-          <RotateCcw className="w-5 h-5 text-slate-600 mb-2" />
-          <p className="text-slate-500 text-xs uppercase tracking-widest font-semibold text-center">
-            Lucas Ferreira
-          </p>
+      <footer className="border-t border-slate-800/80 bg-slate-950 mt-auto shrink-0 relative overflow-hidden">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"></div>
+        
+        <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+          
+          {/* Logo / Brand Section */}
+          <div className="flex flex-col items-center md:items-start space-y-2">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-500">
+                <RotateCcw className="w-5 h-5" />
+              </div>
+              <span className="text-xl font-black italic tracking-tighter text-slate-200 uppercase">
+                TERA<span className="text-amber-500">Console</span>
+              </span>
+            </div>
+            <p className="text-slate-500 text-xs font-medium tracking-wide">
+              Documentação de Patch Notes Independente
+            </p>
+          </div>
+
+          {/* Copyright Section */}
+          <div className="text-slate-600 text-[10px] font-bold uppercase tracking-widest text-center md:text-right">
+            © {new Date().getFullYear()} TERA CONSOLE PORTAL
+          </div>
         </div>
       </footer>
     </div>
