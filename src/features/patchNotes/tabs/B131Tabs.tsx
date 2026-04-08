@@ -195,9 +195,18 @@ export const B131_GearTab = () => (
       <Card>
         <h3 className="text-lg font-semibold text-sky-400 mb-4">Season Gear</h3>
         <ul className="space-y-3 text-slate-300 text-sm">
-          <li className="flex gap-3"><span className="text-amber-500">•</span><strong>[Season 1]</strong> Equipamentos agora podem ser <em>dismantled</em> para obter várias recompensas. Seus base effects foram removidos e não podem mais receber <em>enhancement</em>.</li>
-          <li className="flex gap-3"><span className="text-amber-500">•</span><strong>[Season 2]</strong> Equipamentos adicionados para compra. O método de compra continua igual, e os itens serão entregues temporariamente em estado <em>indestructible</em>.</li>
-          <li className="flex gap-3"><span className="text-amber-500">•</span><strong>[Season 2]</strong> Consumo de Diamond levemente reduzido para o range +37 ao +40.</li>
+          <li className="flex items-start gap-3">
+            <span className="text-amber-500 shrink-0 mt-1">•</span>
+            <span><strong>[Season 1]</strong> Equipamentos agora podem ser <em>dismantled</em> para obter várias recompensas. Seus base effects foram removidos e não podem mais receber <em>enhancement</em>.</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="text-amber-500 shrink-0 mt-1">•</span>
+            <span><strong>[Season 2]</strong> Equipamentos adicionados para compra. O método de compra continua igual, e os itens serão entregues temporariamente em estado <em>indestructible</em>.</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="text-amber-500 shrink-0 mt-1">•</span>
+            <span><strong>[Season 2]</strong> Consumo de Diamond levemente reduzido para o range +37 ao +40.</span>
+          </li>
         </ul>
       </Card>
 
@@ -439,13 +448,13 @@ export const B131_EventsTab = () => (
             <Swords className="w-4 h-4" /> World Events
           </h4>
           <ul className="space-y-3 text-slate-300 text-sm">
-            <li className="flex gap-3">
-              <span className="text-slate-500">•</span>
-              O HP do boss em Velika Defense aumenta significativamente.
+            <li className="flex items-start gap-3">
+              <span className="text-slate-500 shrink-0 mt-1">•</span>
+              <span>O HP do boss em Velika Defense aumenta significativamente.</span>
             </li>
-            <li className="flex gap-3">
-              <span className="text-slate-500">•</span>
-              Os efeitos base de buff concedidos em Guardian Missions são significativamente aumentados.
+            <li className="flex items-start gap-3">
+              <span className="text-slate-500 shrink-0 mt-1">•</span>
+              <span>Os efeitos base de buff concedidos em Guardian Missions são significativamente aumentados.</span>
             </li>
           </ul>
         </div>
