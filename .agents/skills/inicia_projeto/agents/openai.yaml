@@ -1,0 +1,4 @@
+interface:
+  display_name: "Inicia Projeto"
+  short_description: "Bootstrap documental e padronizacao inicial"
+  default_prompt: "Use $inicia_projeto para identificar a stack e montar a base documental deste projeto."

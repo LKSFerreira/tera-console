@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ambiente Docker"
+  short_description: "Setup e manutencao de Docker Compose"
+  default_prompt: "Use $ambiente_docker para configurar ou manter o ambiente Docker Compose deste projeto."

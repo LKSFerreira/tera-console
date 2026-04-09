@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sincroniza Contexto"
+  short_description: "Auditoria inicial e sincronizacao de contexto"
+  default_prompt: "Use $sincroniza_contexto para auditar o projeto e resumir o estado atual antes de continuar."

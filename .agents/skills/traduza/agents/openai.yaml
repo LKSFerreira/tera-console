@@ -1,0 +1,4 @@
+interface:
+  display_name: "Traduza"
+  short_description: "Traducao contextual com preservacao estrutural"
+  default_prompt: "Use $traduza para traduzir este conteudo preservando estrutura, placeholders e termos consolidados."

@@ -1,39 +1,41 @@
 ---
 name: sincroniza_contexto
-description: Sincronização de Contexto, Auditoria e Escuta de Demandas. Use ao iniciar um novo chat ou quando precisar de um "check-up" do estado do projeto.
+description: Sincroniza contexto, audita o estado real do projeto e identifica a próxima frente de trabalho a partir de documentação, regras e código existente. Use ao iniciar um novo chat ou quando for necessário um check-up objetivo do estado atual do projeto.
 ---
 
-# 🎯 Propósito
+# Propósito
 
-Atue como um **Tech Lead**. Antes de qualquer ação profunda em um novo chat, realize uma auditoria completa do projeto para alinhar o conhecimento teórico (docs) com a realidade (código).
+Atue como tech lead. Antes de qualquer ação profunda em um novo chat, realize uma auditoria objetiva do projeto para alinhar documentação, regras e código real.
 
-# 🛠️ Instruções de Execução (Workflow)
+# Instruções de Execução
 
-## 1: Leitura de Contexto (Obrigatória)
+## 1. Leitura de Contexto
 
-Leia e processe os arquivos abaixo para entender as regras e o progresso:
+Ler e processar os arquivos abaixo para entender regras e progresso:
 
-1. **Regras Globais:** `AGENTS.md` (Verifique a linguagem em `> LINGUAGEM_PROJETO: <linguagem>`)
-2. **Fluxo de Trabalho:** `.agents/rules/workflow.md` (Regras inegociáveis)
-3. **Documentações:** `.metadocs/`
-4. **Visão Geral:** `README.md` e arquivos de configuração de stack (`package.json`, `pyproject.toml`, etc.)
+1. `AGENTS.md`
+2. `.agents/rules/workflow.md`
+3. `.metadocs/`
+4. `README.md` e arquivos de stack como `package.json`, `pyproject.toml` ou equivalentes
 
-## 2: Auditoria de Estado Atual
+## 2. Auditoria de Estado Atual
 
-Compare o `.metadocs/roadmap.md` com os arquivos reais no diretório:
+Comparar `.metadocs/roadmap.md` com os arquivos reais do diretório:
 
-- Identifique a última tarefa concluída e a próxima pendente.
-- Verifique se há inconsistências (ex: algo marcado como pronto, mas sem código, ou vice-versa).
+- identificar a última tarefa concluída;
+- identificar a próxima pendente;
+- verificar inconsistências entre documentação e código.
 
-## 3: Relatório de Prontidão
+## 3. Relatório de Prontidão
 
-Apresente um resumo ultra-rápido ao usuário:
+Responder ao usuário com um resumo curto contendo:
 
-- **Status Roadmap:** [Tarefa X concluída | Tarefa Y é a próxima]
-- **Consistência:** [OK | Inconsistência detectada]
-- **Problemas:** [Problemas encontrados]
+- status do roadmap;
+- consistência entre docs e código;
+- problemas encontrados;
+- próxima frente recomendada.
 
-# ⚠️ Regras e Restrições (Guardrails)
+# Regras e Restrições
 
-- **Não gere código** durante a sincronização inicial, a menos que solicitado para um hotfix.
-- O foco é **entendimento e alinhamento**, não execução.
+- **PROIBIDO** gerar código durante a sincronização inicial, salvo hotfix explicitamente pedido.
+- **SEMPRE** priorizar entendimento e alinhamento antes de execução.

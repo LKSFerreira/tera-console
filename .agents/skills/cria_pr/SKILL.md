@@ -1,40 +1,44 @@
 ---
 name: cria_pr
-description: Gera o texto descritivo e estético de Pull Requests baseando-se estritamente no template obrigatório, com foco impecável em formatação.
+description: Gera o texto de Pull Request com base no template obrigatório do projeto, preservando formatação, links relativos e rigor técnico. Use quando o usuário pedir para criar, formatar ou rascunhar a descrição de um PR.
 ---
 
-# 🎯 Propósito
+# Propósito
 
-Use esta skill SEMPRE que for solicitado a criar, formatar ou rascunhar um texto de Pull Request (PR). A estética e o rigor técnico para o usuário são críticos. Nunca crie PRs genéricos sem usar esta estrutura.
+Use esta skill sempre que for solicitado criar, formatar ou rascunhar um texto de Pull Request. Nunca gerar PR genérico sem usar a estrutura obrigatória do projeto.
 
-# 📋 Pré-requisitos
+# Pré-requisitos
 
-- Verifique os commits incluídos nas alterações ou leia o log de diff mais recente para entender o escopo do que foi desenvolvido.
-- Formule todas as métricas, os impactos técnicos arquiteturais e como os testes devem ser rodados.
+- Verificar os commits incluídos ou o diff recente para entender o escopo.
+- Levantar impactos técnicos, riscos e comandos reais de validação.
 
-# 🛠️ Instruções de Execução (Workflow)
+# Instruções de Execução
 
-1. **Reunir Contexto:** Identifique qual das frentes do projeto (.docker, backend/python, app/node) foi afetada e liste as mudanças por categorias.
-2. **Carregar o Molde:** Utilize **exatamente** o template localizado em `resources/pr_template.md`.
-3. **Preenchimento:** Substitua os espaços entre colchetes `[ ]` pelo conteúdo técnico apropriado, prestando MUITA ATENÇÃO às Regras de Formatação abaixo.
-4. **Entrega:** Imprima a saída final em um Code Block Markdown (` ```markdown `).
+1. **Reunir contexto**
+   - Identificar as áreas do projeto afetadas.
+   - Organizar as mudanças por categoria técnica.
 
-# 🚨 Regras Críticas de Formatação de Links (Guardrails) 🚨
+2. **Carregar o molde**
+   - Utilizar exatamente `resources/pr_template.md`.
 
-Essas regras não admitem falhas. A quebra delas invalida o PR:
+3. **Preencher**
+   - Substituir todos os placeholders com conteúdo técnico concreto.
+   - Ajustar as seções conforme o que realmente foi alterado.
 
-1. **PROIBIDO CAMINHOS ABSOLUTOS:** NUNCA use o protocolo `cci:`, `file:///` ou caminhos absolutos do Windows (ex: `c:/Users/...`).
-2. **PROIBIDO LINKS DUPLOS/SMART LINKS:** Nunca envolva links já formatados com colchetes extras (ex: `[[arquivo](link)]`).
-3. **OBRIGATÓRIO:** Ao citar arquivos na seção de "Alterações Realizadas", use EXATAMENTE e APENAS o formato Markdown padrão relativo.
-   - ✅ Correto: `[app/controllers/api_controller.py](app/controllers/api_controller.py)`
-   - ✅ Correto: `[tests/test_main.py](tests/test_main.py)`
-   - ❌ Incorreto: `[[app/main.py](cci:7://...)]`
-   - ❌ Incorreto: `[arquivo](file:///c:/Users/...)`
+4. **Entregar**
+   - Retornar a saída final em bloco de código Markdown.
 
-Nenhum link ou referência deve ter algo como `(cci:7://file:///c:/)`.
+# Regras de Formatação
 
-# 🎨 Regras de Estilo
+1. **Caminhos**
+   - Nunca usar `cci:`, `file:///` ou caminhos absolutos do Windows.
+   - Ao citar arquivos, usar apenas Markdown relativo, como `[src/App.tsx](src/App.tsx)`.
 
-- **Idiomas:** Sempre em `pt-BR`.
-- **Estética:** Mantenha fielmente os emojis do template, os hífens organizados e os títulos principais das áreas de mudanças.
-- Tente categorizar logicamente: Agrupe refatorações em _Melhorias de Arquitetura_ e correções urgentes em outra categoria com o devido emoji de escudo.
+2. **Links**
+   - Não envolver links já formatados com colchetes extras.
+   - Não gerar smart links nem referências inválidas.
+
+3. **Texto**
+   - Manter o texto em `pt-BR`.
+   - Preservar a estética do template e os títulos principais.
+   - Não inventar métricas, testes ou validações que não foram executados.

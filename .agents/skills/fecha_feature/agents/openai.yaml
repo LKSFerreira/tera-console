@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fecha Feature"
+  short_description: "Encerrar feature e sincronizar walkthrough"
+  default_prompt: "Use $fecha_feature para concluir esta feature e atualizar a documentacao historica correspondente."

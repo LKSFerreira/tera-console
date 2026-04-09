@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cria PR"
+  short_description: "Texto de PR com template e formato rigoroso"
+  default_prompt: "Use $cria_pr para montar a descricao deste Pull Request com o template obrigatorio."

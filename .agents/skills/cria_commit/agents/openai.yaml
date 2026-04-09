@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cria Commit"
+  short_description: "Commits atomicos com padrao do projeto"
+  default_prompt: "Use $cria_commit para analisar as alteracoes e preparar commits atomicos com a mensagem correta."

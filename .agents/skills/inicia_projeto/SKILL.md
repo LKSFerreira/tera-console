@@ -1,22 +1,24 @@
 ---
 name: inicia_projeto
-description: Gerador de Contexto de Inicialização e Padronização de Projeto
+description: Inicializa e padroniza a base documental de um projeto novo ou recém-criado, identificando a stack, criando arquivos obrigatórios e preenchendo regras mínimas de operação. Use quando o usuário pedir para iniciar, estruturar ou preparar o contexto base do projeto.
 ---
 
-# 🎯 Propósito
+# Propósito
 
-Atue como um Arquiteto de Software focado em Padronização. Use esta skill SEMPRE que o usuário pedir para analisar, inicializar ou configurar as bases de um projeto novo ou recém-criado, garantindo a infraestrutura documental exigida.
+Atue como arquiteto de software focado em padronização. Use esta skill sempre que o usuário pedir para analisar, inicializar ou configurar as bases de um projeto novo ou recém-criado, garantindo a infraestrutura documental exigida.
 
-# 📋 Pré-requisitos
+# Pré-requisitos
 
-- Verifique se a aplicação está vazia ou já tem arquivos (para não sobrescrever documentações importantes sem querer).
+- Verificar se a aplicação está vazia ou já tem arquivos relevantes, para não sobrescrever documentação importante.
+- Ler `AGENTS.md`, se já existir, antes de regenerar qualquer arquivo central.
 
-# 🛠️ Instruções de Execução (Workflow)
+# Instruções de Execução
 
-## 1: Identificação de Stack (Ação Imperativa)
+## 1. Identificação de Stack
 
-Analise os arquivos na raiz usando ferramentas de leitura de diretório (`list_dir`) para determinar a linguagem dominante.
-**Prioridade de Identificação:**
+Analisar os arquivos na raiz usando ferramentas de listagem e leitura disponíveis no ambiente para determinar a linguagem dominante.
+
+Prioridade de identificação:
 
 1. `package.json` -> `javascript/typescript`
 2. `pyproject.toml` ou `requirements.txt` -> `python`
@@ -24,27 +26,39 @@ Analise os arquivos na raiz usando ferramentas de leitura de diretório (`list_d
 4. `Cargo.toml` -> `rust`
 5. `composer.json` -> `php`
 6. `pom.xml` ou `build.gradle` -> `java`
-7. _Fallback_: Analise as extensões predominantes em `src/`.
+7. Fallback: analisar as extensões predominantes em `src/`
 
-## 2: Mapeamento e Criação de Estrutura Documental
+## 2. Mapeamento e Criação de Estrutura Documental
 
-Verifique a existência dos arquivos primários. Caso não existam, **CRIE-OS IMEDIATAMENTE** usando os templates localizados na pasta `resources/` desta skill:
+Verificar a existência dos arquivos primários. Caso não existam, criar com base nos templates desta skill:
 
-- `AGENTS.md`: Tente buscar em `.agents/rules/projeto/AGENTS.md` (ou estudo). Se não encontrar, use `resources/template_agents.md`.
-- `.agents/rules/workflow.md`: Tente buscar em `.agents/rules/projeto/workflow.md` (ou estudo). Se não encontrar, use `resources/template_workflow.md`.
-- `.metadocs/roadmap.md` (Baseado em `resources/template_roadmap.md`)
-- `README.md` (Se não existir, crie-o para o projeto usando um modelo elegante e moderno)
+- `AGENTS.md`: usar `resources/template_agents.md`.
+- `.agents/rules/workflow.md`: usar `resources/template_workflow.md`.
+- `.metadocs/roadmap.md`: usar `resources/template_roadmap.md`.
+- `README.md`: criar um arquivo enxuto e funcional se ainda não existir.
 
-## 3: Configuração de Regras Específicas
+Se o arquivo já existir, revisar antes de substituir. Não sobrescrever conteúdo maduro sem necessidade.
 
-1. **AGENTS.md:** Substitua a tag `> LINGUAGEM_PROJETO: <linguagem>` dentro do `AGENTS.md` gerado pela linguagem detectada no Passo 1.
-2. **Rules Locais:** Verifique se `.agents/rules/<linguagem>.md` existe.
-   - **Se não existir:** Crie o arquivo contendo as melhores práticas de Clean Code, padrões de nomenclatura e estrutura de pastas para aquela linguagem.
+## 3. Configuração de Regras Específicas
 
-## 4: Finalização e Notificação
+1. **AGENTS.md**
+   - Substituir `> LINGUAGEM_PROJETO: <linguagem>` pela linguagem detectada.
 
-Ao concluir as criações e identificar a stack, use a ferramenta de notificação (`notify_user`) para exibir:
+2. **Rules locais**
+   - Verificar se `.agents/rules/<linguagem>.md` existe.
+   - Se não existir, criar o arquivo com melhores práticas de Clean Code, nomenclatura e estrutura de pastas para a linguagem detectada.
 
-1. Qual linguagem foi detectada.
-2. Quais arquivos foram gerados/configurados.
-3. Se o ambiente parece pronto para a configuração do Docker (`/setup_docker`) ou se precisa de mais algo.
+## 4. Finalização
+
+Ao concluir as criações e identificar a stack, responder objetivamente ao usuário com:
+
+1. linguagem detectada;
+2. arquivos gerados ou ajustados;
+3. pendências para o próximo passo, como Docker, CI ou documentação adicional.
+
+# Regras e Restrições
+
+- **PROIBIDO** citar ferramentas que não existam no ambiente atual como requisito rígido de execução.
+- **PROIBIDO** sobrescrever `AGENTS.md`, `README.md` ou regras locais sem antes verificar se já contêm contexto válido do projeto.
+- **SEMPRE** preferir criar o mínimo necessário para o projeto ficar operável.
+- **SEMPRE** manter coerência entre `AGENTS.md`, regras locais e a stack detectada.
