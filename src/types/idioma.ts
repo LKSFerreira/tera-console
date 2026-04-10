@@ -32,6 +32,13 @@ export interface ConteudoSite {
   shell: {
     portalBadge: string;
     maintainedBy: string;
+    communityBadge: string;
+    communityTitle: string;
+    communityDescription: string;
+    communityCtaLabel: string;
+    communityCtaTitle: string;
+    discordTitle: string;
+    discordCopiedTitle: string;
     updatesTitle: string;
     footerTitle: string;
     footerDescription: string;
