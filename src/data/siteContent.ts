@@ -1,0 +1,190 @@
+import type { ConteudoSite, IdiomaSuportado } from '../types/idioma';
+
+export const conteudoSitePorIdioma: Record<IdiomaSuportado, ConteudoSite> = {
+  'pt-BR': {
+    shell: {
+      portalBadge: 'Portal de Notas de Atualização',
+      maintainedBy: 'Mantido por',
+      updatesTitle: 'Updates',
+      footerTitle: 'TERAConsole',
+      footerDescription: 'Documentação de Patch Notes Independente',
+      githubTitle: 'Acessar o GitHub',
+      linkedinTitle: 'Acessar o LinkedIn',
+      copyrightLabel: 'TERA CONSOLE PORTAL',
+    },
+    seletorIdioma: {
+      title: 'Idioma',
+      pt: 'Brasil',
+      en: 'English',
+      es: 'Español',
+    },
+    patches: {
+      'b131.01': {
+        name: 'Atualização de Abril',
+        date: '9 de Abril de 2026',
+        parts: '(Partes 1 & 2)',
+        tabs: [
+          { id: 'battlepass', label: 'Battle Pass' },
+          { id: 'season', label: 'Temporada' },
+          { id: 'dungeons', label: 'Dungeons' },
+          { id: 'gear', label: 'Equipamentos' },
+          { id: 'events', label: 'Eventos' },
+          { id: 'crafting', label: 'Itens & Craft' },
+          { id: 'system', label: 'Sistema' },
+        ],
+      },
+      'b130.03': {
+        name: 'Hotfix de Março',
+        date: '26 de Março de 2026',
+        parts: '',
+        tabs: [{ id: 'bugs', label: 'Bug Fixes' }],
+      },
+      'b130.02': {
+        name: 'Build Update',
+        date: '12 de Março de 2026',
+        parts: '',
+        tabs: [
+          { id: 'rewards', label: 'Rewards & Dungeons' },
+          { id: 'classes', label: 'Classes & Balance' },
+          { id: 'system', label: 'Bug Fixes' },
+        ],
+      },
+      'b130.01': {
+        name: 'Last Stand Update',
+        date: '26 de Fevereiro de 2026',
+        parts: '',
+        tabs: [
+          { id: 'battlepass', label: 'Battle Pass Event' },
+          { id: 'dungeons', label: 'Dungeons' },
+          { id: 'crafting', label: 'Crafting & Itens' },
+          { id: 'classes', label: 'Classes' },
+          { id: 'system', label: 'Bug Fixes' },
+        ],
+      },
+    },
+  },
+  'en-US': {
+    shell: {
+      portalBadge: 'Patch Notes Portal',
+      maintainedBy: 'Maintained by',
+      updatesTitle: 'Updates',
+      footerTitle: 'TERAConsole',
+      footerDescription: 'Independent Patch Notes Documentation',
+      githubTitle: 'Open GitHub',
+      linkedinTitle: 'Open LinkedIn',
+      copyrightLabel: 'TERA CONSOLE PORTAL',
+    },
+    seletorIdioma: {
+      title: 'Language',
+      pt: 'Brazil',
+      en: 'English',
+      es: 'Spanish',
+    },
+    patches: {
+      'b131.01': {
+        name: 'April Update',
+        date: 'April 9, 2026',
+        parts: '(Parts 1 & 2)',
+        tabs: [
+          { id: 'battlepass', label: 'Battle Pass' },
+          { id: 'season', label: 'Season' },
+          { id: 'dungeons', label: 'Dungeons' },
+          { id: 'gear', label: 'Gear' },
+          { id: 'events', label: 'Events' },
+          { id: 'crafting', label: 'Items & Crafting' },
+          { id: 'system', label: 'System' },
+        ],
+      },
+      'b130.03': {
+        name: 'March Hotfix',
+        date: 'March 26, 2026',
+        parts: '',
+        tabs: [{ id: 'bugs', label: 'Bug Fixes' }],
+      },
+      'b130.02': {
+        name: 'Build Update',
+        date: 'March 12, 2026',
+        parts: '',
+        tabs: [
+          { id: 'rewards', label: 'Rewards & Dungeons' },
+          { id: 'classes', label: 'Classes & Balance' },
+          { id: 'system', label: 'Bug Fixes' },
+        ],
+      },
+      'b130.01': {
+        name: 'Last Stand Update',
+        date: 'February 26, 2026',
+        parts: '',
+        tabs: [
+          { id: 'battlepass', label: 'Battle Pass Event' },
+          { id: 'dungeons', label: 'Dungeons' },
+          { id: 'crafting', label: 'Crafting & Items' },
+          { id: 'classes', label: 'Classes' },
+          { id: 'system', label: 'Bug Fixes' },
+        ],
+      },
+    },
+  },
+  'es-ES': {
+    shell: {
+      portalBadge: 'Portal de Notas del Parche',
+      maintainedBy: 'Mantenido por',
+      updatesTitle: 'Updates',
+      footerTitle: 'TERAConsole',
+      footerDescription: 'Documentación Independiente de Patch Notes',
+      githubTitle: 'Abrir GitHub',
+      linkedinTitle: 'Abrir LinkedIn',
+      copyrightLabel: 'TERA CONSOLE PORTAL',
+    },
+    seletorIdioma: {
+      title: 'Idioma',
+      pt: 'Brasil',
+      en: 'English',
+      es: 'Español',
+    },
+    patches: {
+      'b131.01': {
+        name: 'Actualización de Abril',
+        date: '9 de abril de 2026',
+        parts: '(Partes 1 y 2)',
+        tabs: [
+          { id: 'battlepass', label: 'Battle Pass' },
+          { id: 'season', label: 'Temporada' },
+          { id: 'dungeons', label: 'Dungeons' },
+          { id: 'gear', label: 'Equipamiento' },
+          { id: 'events', label: 'Eventos' },
+          { id: 'crafting', label: 'Ítems y Craft' },
+          { id: 'system', label: 'Sistema' },
+        ],
+      },
+      'b130.03': {
+        name: 'Hotfix de Marzo',
+        date: '26 de marzo de 2026',
+        parts: '',
+        tabs: [{ id: 'bugs', label: 'Bug Fixes' }],
+      },
+      'b130.02': {
+        name: 'Build Update',
+        date: '12 de marzo de 2026',
+        parts: '',
+        tabs: [
+          { id: 'rewards', label: 'Rewards & Dungeons' },
+          { id: 'classes', label: 'Clases y Balance' },
+          { id: 'system', label: 'Bug Fixes' },
+        ],
+      },
+      'b130.01': {
+        name: 'Last Stand Update',
+        date: '26 de febrero de 2026',
+        parts: '',
+        tabs: [
+          { id: 'battlepass', label: 'Battle Pass Event' },
+          { id: 'dungeons', label: 'Dungeons' },
+          { id: 'crafting', label: 'Crafting e Ítems' },
+          { id: 'classes', label: 'Clases' },
+          { id: 'system', label: 'Bug Fixes' },
+        ],
+      },
+    },
+  },
+};

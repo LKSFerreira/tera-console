@@ -1,6 +1,10 @@
-import { useState } from 'react';
-import { AlertTriangle, Award, BookOpen, CalendarDays, Hammer, History, RotateCcw, Settings, Shield, Swords, UserCog } from 'lucide-react';
+import { useState, type ComponentType } from 'react';
+import { AlertTriangle, Award, BookOpen, CalendarDays, Hammer, History, RotateCcw, Settings, Shield, Swords, UserCog, type LucideIcon } from 'lucide-react';
 
+import { SeletorIdioma } from './components/ui';
+import { conteudoSitePorIdioma } from './data/siteContent';
+import { useIdioma } from './i18n/useIdioma';
+import type { AbaPatchId, PatchId } from './types/idioma';
 import {
   B130_01_BattlePassTab,
   B130_01_ClassesTab,
@@ -34,67 +38,53 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const historicoPatches = [
-  {
-    id: 'b131.01',
-    version: 'B131.01',
-    name: 'Atualização de Abril',
-    date: '9 de Abril de 2026',
-    parts: '(Partes 1 & 2)',
-    tabs: [
-      { id: 'battlepass', label: 'Battle Pass', icon: Award, component: B131_BattlePassTab },
-      { id: 'season', label: 'Temporada', icon: BookOpen, component: B131_SeasonTab },
-      { id: 'dungeons', label: 'Dungeons', icon: Swords, component: B131_DungeonsTab },
-      { id: 'gear', label: 'Equipamentos', icon: Shield, component: B131_GearTab },
-      { id: 'events', label: 'Eventos', icon: CalendarDays, component: B131_EventsTab },
-      { id: 'crafting', label: 'Itens & Craft', icon: Hammer, component: B131_CraftingTab },
-      { id: 'system', label: 'Sistema', icon: Settings, component: B131_SystemTab },
-    ],
+type RegistroAbaPatch = {
+  icon: LucideIcon;
+  component: ComponentType;
+};
+
+const registroComponentes: Record<PatchId, Partial<Record<AbaPatchId, RegistroAbaPatch>>> = {
+  'b131.01': {
+    battlepass: { icon: Award, component: B131_BattlePassTab },
+    season: { icon: BookOpen, component: B131_SeasonTab },
+    dungeons: { icon: Swords, component: B131_DungeonsTab },
+    gear: { icon: Shield, component: B131_GearTab },
+    events: { icon: CalendarDays, component: B131_EventsTab },
+    crafting: { icon: Hammer, component: B131_CraftingTab },
+    system: { icon: Settings, component: B131_SystemTab },
   },
-  {
-    id: 'b130.03',
-    version: 'B130.03',
-    name: 'Hotfix de Março',
-    date: '26 de Março de 2026',
-    parts: '',
-    tabs: [{ id: 'bugs', label: 'Bug Fixes', icon: AlertTriangle, component: B130_03_BugFixesTab }],
+  'b130.03': {
+    bugs: { icon: AlertTriangle, component: B130_03_BugFixesTab },
   },
-  {
-    id: 'b130.02',
-    version: 'B130.02',
-    name: 'Build Update',
-    date: '12 de Março de 2026',
-    parts: '',
-    tabs: [
-      { id: 'rewards', label: 'Rewards & Dungeons', icon: Award, component: B130_02_RewardsTab },
-      { id: 'classes', label: 'Classes & Balance', icon: UserCog, component: B130_02_ClassesTab },
-      { id: 'system', label: 'Bug Fixes', icon: AlertTriangle, component: B130_02_SystemTab },
-    ],
+  'b130.02': {
+    rewards: { icon: Award, component: B130_02_RewardsTab },
+    classes: { icon: UserCog, component: B130_02_ClassesTab },
+    system: { icon: AlertTriangle, component: B130_02_SystemTab },
   },
-  {
-    id: 'b130.01',
-    version: 'B130.01',
-    name: 'Last Stand Update',
-    date: '26 de Fevereiro de 2026',
-    parts: '',
-    tabs: [
-      { id: 'battlepass', label: 'Battle Pass Event', icon: Award, component: B130_01_BattlePassTab },
-      { id: 'dungeons', label: 'Dungeons', icon: Swords, component: B130_01_DungeonsTab },
-      { id: 'crafting', label: 'Crafting & Itens', icon: Hammer, component: B130_01_CraftingItemsTab },
-      { id: 'classes', label: 'Classes', icon: UserCog, component: B130_01_ClassesTab },
-      { id: 'system', label: 'Bug Fixes', icon: Settings, component: B130_01_SystemTab },
-    ],
+  'b130.01': {
+    battlepass: { icon: Award, component: B130_01_BattlePassTab },
+    dungeons: { icon: Swords, component: B130_01_DungeonsTab },
+    crafting: { icon: Hammer, component: B130_01_CraftingItemsTab },
+    classes: { icon: UserCog, component: B130_01_ClassesTab },
+    system: { icon: Settings, component: B130_01_SystemTab },
   },
-];
+};
+
+const ordemPatches: PatchId[] = ['b131.01', 'b130.03', 'b130.02', 'b130.01'];
 
 export default function App() {
-  const [patchAtivoId, setPatchAtivoId] = useState(historicoPatches[0].id);
-  const [abaAtivaId, setAbaAtivaId] = useState(historicoPatches[0].tabs[0].id);
+  const { idioma, definirIdioma } = useIdioma();
+  const conteudoSite = conteudoSitePorIdioma[idioma];
+  const [patchAtivoId, setPatchAtivoId] = useState<PatchId>(ordemPatches[0]);
+  const [abaAtivaId, setAbaAtivaId] = useState<AbaPatchId>(conteudoSite.patches[ordemPatches[0]].tabs[0].id);
 
-  const patchAtivo = historicoPatches.find((patchEntry) => patchEntry.id === patchAtivoId) || historicoPatches[0];
-
-  const ComponenteAbaAtiva =
-    patchAtivo.tabs.find((tabEntry) => tabEntry.id === abaAtivaId)?.component || patchAtivo.tabs[0].component;
+  const patchAtivo = conteudoSite.patches[patchAtivoId];
+  const registroAbasAtivas = registroComponentes[patchAtivoId];
+  const abasPatchAtivo = patchAtivo.tabs.map((aba) => ({
+    ...aba,
+    ...(registroAbasAtivas[aba.id] as RegistroAbaPatch),
+  }));
+  const ComponenteAbaAtiva = abasPatchAtivo.find((aba) => aba.id === abaAtivaId)?.component || abasPatchAtivo[0].component;
 
   return (
     <div className="min-h-screen bg-[#090e17] font-sans text-slate-200 selection:bg-amber-500/30 flex flex-col">
@@ -106,56 +96,60 @@ export default function App() {
           <div className="flex flex-col items-center space-y-4 text-center lg:items-start lg:text-left">
             <div className="mb-1 inline-flex items-center gap-2 rounded-full border border-slate-700/50 bg-slate-900/80 px-4 py-1.5 text-sm font-medium tracking-wide text-slate-300 shadow-inner shadow-black/50 backdrop-blur-sm">
               <BookOpen className="h-4 w-4 text-sky-400" />
-              Portal de Notas de Atualização
+              {conteudoSite.shell.portalBadge}
             </div>
             <h1 className="bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200 bg-clip-text text-5xl font-black uppercase tracking-tight text-transparent drop-shadow-sm md:text-6xl">
               TERA Console
             </h1>
             <p className="flex flex-wrap items-center justify-center gap-3 text-2xl font-light tracking-wide text-sky-200/80 lg:justify-start">
-              {patchAtivo.version} - {patchAtivo.name}
+              {patchAtivoId.toUpperCase()} - {patchAtivo.name}
               <span className="ml-1 rounded border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 text-base font-bold text-amber-500 shadow-sm">
                 {patchAtivo.date}
               </span>
             </p>
           </div>
 
-          <div className="flex items-center gap-6 rounded-xl border border-b-2 border-slate-700/50 border-b-amber-500 bg-slate-900/60 p-5 pr-8 shadow-2xl backdrop-blur-md transition-all duration-300 hover:bg-slate-800/80">
-            <div className="flex items-center gap-4">
-              <div className="h-12 w-12 rounded-full bg-gradient-to-tr from-amber-500 to-amber-200 p-[1px] shadow-md shadow-amber-500/20">
-                <div className="flex h-full w-full items-center justify-center rounded-full bg-[#090e17]">
-                  <UserCog className="h-6 w-6 text-amber-400" />
+          <div className="flex w-full max-w-[520px] flex-col gap-4 rounded-xl border border-b-2 border-slate-700/50 border-b-amber-500 bg-slate-900/60 p-5 shadow-2xl backdrop-blur-md transition-all duration-300 hover:bg-slate-800/80 lg:w-auto lg:min-w-[420px]">
+            <div className="flex items-center justify-between gap-6">
+              <div className="flex items-center gap-4">
+                <div className="h-12 w-12 rounded-full bg-gradient-to-tr from-amber-500 to-amber-200 p-[1px] shadow-md shadow-amber-500/20">
+                  <div className="flex h-full w-full items-center justify-center rounded-full bg-[#090e17]">
+                    <UserCog className="h-6 w-6 text-amber-400" />
+                  </div>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-500/90">{conteudoSite.shell.maintainedBy}</span>
+                  <span className="bg-gradient-to-r from-slate-100 to-slate-400 bg-clip-text text-xl font-black leading-tight text-transparent md:text-2xl">
+                    Lucas Ferreira
+                  </span>
                 </div>
               </div>
-              <div className="flex flex-col">
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-500/90">Mantido por</span>
-                <span className="bg-gradient-to-r from-slate-100 to-slate-400 bg-clip-text text-xl font-black leading-tight text-transparent md:text-2xl">
-                  Lucas Ferreira
-                </span>
+
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://github.com/LKSFerreira"
+                  target="_blank"
+                  title={conteudoSite.shell.githubTitle}
+                  rel="noopener noreferrer"
+                  className="group rounded-lg border border-slate-700 bg-[#090e17] p-3 text-slate-400 transition-all duration-300 hover:border-amber-500/50 hover:bg-amber-500/10 hover:text-amber-400"
+                >
+                  <GithubIcon className="h-5 w-5" />
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/lucas-ferreira-developer/"
+                  target="_blank"
+                  title={conteudoSite.shell.linkedinTitle}
+                  rel="noopener noreferrer"
+                  className="group rounded-lg border border-slate-700 bg-[#090e17] p-3 text-slate-400 transition-all duration-300 hover:border-sky-500/50 hover:bg-sky-500/10 hover:text-sky-400"
+                >
+                  <LinkedinIcon className="h-5 w-5" />
+                </a>
               </div>
             </div>
 
-            <div className="hidden h-10 w-px bg-slate-700/60 sm:block" />
-
-            <div className="flex items-center gap-3">
-              <a
-                href="https://github.com/LKSFerreira"
-                target="_blank"
-                title="Acessar o GitHub"
-                rel="noopener noreferrer"
-                className="group rounded-lg border border-slate-700 bg-[#090e17] p-3 text-slate-400 transition-all duration-300 hover:border-amber-500/50 hover:bg-amber-500/10 hover:text-amber-400"
-              >
-                <GithubIcon className="h-5 w-5" />
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/lucas-ferreira-developer/"
-                target="_blank"
-                title="Acessar o LinkedIn"
-                rel="noopener noreferrer"
-                className="group rounded-lg border border-slate-700 bg-[#090e17] p-3 text-slate-400 transition-all duration-300 hover:border-sky-500/50 hover:bg-sky-500/10 hover:text-sky-400"
-              >
-                <LinkedinIcon className="h-5 w-5" />
-              </a>
+            <div className="border-t border-slate-700/60 pt-4">
+              <SeletorIdioma idiomaAtivo={idioma} onChange={definirIdioma} rotulos={conteudoSite.seletorIdioma} />
             </div>
           </div>
         </div>
@@ -165,19 +159,20 @@ export default function App() {
         <aside className="flex w-full shrink-0 flex-col lg:w-max">
           <div className="sticky top-8">
             <h3 className="mb-4 flex items-center gap-2 px-2 text-xs font-bold uppercase tracking-wider text-slate-400">
-              <History className="h-4 w-4" /> Updates
+              <History className="h-4 w-4" /> {conteudoSite.shell.updatesTitle}
             </h3>
 
             <div className="flex snap-x gap-3 overflow-x-auto pb-4 lg:flex-col lg:overflow-visible lg:pb-0">
-              {historicoPatches.map((patchEntry) => {
-                const patchEstaAtivo = patchAtivoId === patchEntry.id;
+              {ordemPatches.map((patchId) => {
+                const patchMetadados = conteudoSite.patches[patchId];
+                const patchEstaAtivo = patchAtivoId === patchId;
 
                 return (
                   <button
-                    key={patchEntry.id}
+                    key={patchId}
                     onClick={() => {
-                      setPatchAtivoId(patchEntry.id);
-                      setAbaAtivaId(patchEntry.tabs[0].id);
+                      setPatchAtivoId(patchId);
+                      setAbaAtivaId(patchMetadados.tabs[0].id);
                     }}
                     className={`min-w-[240px] snap-start whitespace-nowrap rounded-xl border px-4 py-4 text-left transition-all lg:min-w-0 ${
                       patchEstaAtivo
@@ -186,16 +181,12 @@ export default function App() {
                     }`}
                   >
                     <div className="mb-1 flex items-start justify-between">
-                      <span className={`text-lg font-black ${patchEstaAtivo ? 'text-amber-400' : 'text-slate-300'}`}>
-                        {patchEntry.version}
-                      </span>
+                      <span className={`text-lg font-black ${patchEstaAtivo ? 'text-amber-400' : 'text-slate-300'}`}>{patchId.toUpperCase()}</span>
                       {patchEstaAtivo ? <div className="mt-2 h-2 w-2 animate-pulse rounded-full bg-amber-400" /> : null}
                     </div>
-                    <span className={`mb-1 text-sm font-medium ${patchEstaAtivo ? 'text-amber-200/80' : 'text-slate-400'}`}>
-                      {patchEntry.name}
-                    </span>
+                    <span className={`mb-1 text-sm font-medium ${patchEstaAtivo ? 'text-amber-200/80' : 'text-slate-400'}`}>{patchMetadados.name}</span>
                     <span className="mt-auto block border-t border-slate-800/50 pt-2 text-xs text-slate-500">
-                      {patchEntry.date} {patchEntry.parts}
+                      {patchMetadados.date} {patchMetadados.parts}
                     </span>
                   </button>
                 );
@@ -206,14 +197,14 @@ export default function App() {
 
         <div className="flex min-w-0 flex-1 flex-col">
           <div className="scrollbar-none mb-8 flex gap-2 overflow-x-auto border-b border-slate-800/80 pb-4">
-            {patchAtivo.tabs.map((tabEntry) => {
-              const IconeTab = tabEntry.icon;
-              const abaEstaAtiva = abaAtivaId === tabEntry.id;
+            {abasPatchAtivo.map((aba) => {
+              const IconeTab = aba.icon!;
+              const abaEstaAtiva = abaAtivaId === aba.id;
 
               return (
                 <button
-                  key={tabEntry.id}
-                  onClick={() => setAbaAtivaId(tabEntry.id)}
+                  key={aba.id}
+                  onClick={() => setAbaAtivaId(aba.id)}
                   className={`shrink-0 whitespace-nowrap rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
                     abaEstaAtiva
                       ? 'border border-sky-500/30 bg-sky-500/10 text-sky-400 shadow-md shadow-sky-500/5'
@@ -221,7 +212,7 @@ export default function App() {
                   }`}
                 >
                   <IconeTab className={`h-4 w-4 ${abaEstaAtiva ? 'text-sky-400' : 'text-slate-500'}`} />
-                  {tabEntry.label}
+                  {aba.label}
                 </button>
               );
             })}
@@ -246,11 +237,11 @@ export default function App() {
                 TERA<span className="text-amber-500">Console</span>
               </span>
             </div>
-            <p className="text-xs font-medium tracking-wide text-slate-500">Documentação de Patch Notes Independente</p>
+            <p className="text-xs font-medium tracking-wide text-slate-500">{conteudoSite.shell.footerDescription}</p>
           </div>
 
           <div className="text-center text-[10px] font-bold uppercase tracking-widest text-slate-600 md:text-right">
-            © {new Date().getFullYear()} TERA CONSOLE PORTAL
+            © {new Date().getFullYear()} {conteudoSite.shell.copyrightLabel}
           </div>
         </div>
       </footer>

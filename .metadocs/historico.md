@@ -2,6 +2,9 @@
 
 Este arquivo concentra o rastreio cronológico de funcionalidades entregues, walkthroughs e documentações arquiteturais pós-entrega na base.
 
+## 2026-04-10
+- [Internacionalização do Portal em 3 Idiomas](walkthrough/internacionalizacao_idiomas.md): Adição de suporte a `pt-BR`, `en-US` e `es-ES`, com autodetecção por navegador, persistência da preferência local do usuário e seletor visual de idioma no cabeçalho.
+
 ## 2026-04-09
 - [Revisão de Tradução e Consolidação do B131.01](walkthrough/revisao_traducao_b131.md): Reconstrução do conteúdo do patch com base no material oficial extraído, correção de traduções inconsistentes, inclusão das seções faltantes e integração das imagens oficiais nas novas abas do update.
 
