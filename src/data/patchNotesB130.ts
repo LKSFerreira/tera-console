@@ -125,7 +125,7 @@ interface ConteudoPatchB130 {
 export const patchNotesB130PorIdioma = {
   'pt-BR': {
     b130_03: {
-      sectionTitle: 'Bug Fixes & Correções',
+      sectionTitle: 'Correção de Bugs',
       cardTitle: 'Resolução de Problemas',
       issues: [
         {
@@ -242,7 +242,7 @@ export const patchNotesB130PorIdioma = {
         ],
       },
       system: {
-        sectionTitle: 'Bug Fixes & System',
+        sectionTitle: 'Correção de Bugs & Sistema',
         issues: [
           'Corrigido problema em Abyss of the Cursed Antaroth (Last Stand) onde um wipe pattern impossível ocorria ao fazer certas ações.',
           'Corrigido problema em Refined Stigma onde uma opção rara de cooldown poderia ser selecionada.',
@@ -423,7 +423,7 @@ export const patchNotesB130PorIdioma = {
         ],
       },
       system: {
-        sectionTitle: 'Bug Fixes & System',
+        sectionTitle: 'Correção de Bugs & Sistema',
         issues: [
           'Corrigido nome ausente do pet Kunkun em idiomas diferentes do coreano.',
           'Corrigido problema onde o Reaper podia ignorar special patterns do Cursed Antaroth.',
@@ -687,7 +687,7 @@ export const patchNotesB130PorIdioma = {
   },
   'es-ES': {
     b130_03: {
-      sectionTitle: 'Bug Fixes & Correcciones',
+      sectionTitle: 'Corrección de Bugs',
       cardTitle: 'Resolución de Problemas',
       issues: [
         {
@@ -804,7 +804,7 @@ export const patchNotesB130PorIdioma = {
         ],
       },
       system: {
-        sectionTitle: 'Bug Fixes & System',
+        sectionTitle: 'Corrección de Bugs & Sistema',
         issues: [
           'Se corrigió un problema en Abyss of the Cursed Antaroth (Last Stand) donde podía ocurrir un wipe pattern imposible tras ciertas acciones.',
           'Se corrigió un problema en Refined Stigma donde se podía seleccionar una opción rara de cooldown.',
@@ -923,7 +923,7 @@ export const patchNotesB130PorIdioma = {
         ],
       },
       system: {
-        sectionTitle: 'Bug Fixes & System',
+        sectionTitle: 'Corrección de Bugs & Sistema',
         issues: [
           'Se corrigió la ausencia del nombre de la mascota Kunkun en idiomas distintos al coreano.',
           'Se corrigió un problema donde Reaper podía ignorar special patterns de Cursed Antaroth.',

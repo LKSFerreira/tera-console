@@ -14,43 +14,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { Card, SectionTitle } from '../../../components/ui';
-import { patchNotesB131Locale } from '../../../data/patchNotesB131Locale';
-import {
-  accessoryConsolidationHighlights,
-  accessoryPromotionChanges,
-  additionalAccessoryUpgradeHighlights,
-  annihilationBonusBreakdown,
-  annihilationEnhancementHighlights,
-  achievementChanges,
-  battlePassPlus,
-  battlePassRewards,
-  bugFixes,
-  craftingCleanupChanges,
-  craftingRecipes,
-  dungeonDevNote,
-  dungeonOtherChanges,
-  dungeonOverviewHighlights,
-  dungeonScalingChanges,
-  dungeonsList,
-  easterEggHuntSteps,
-  easterEventInfo,
-  easterJackpotRewards,
-  easterShopItems,
-  itemRewardChanges,
-  maskHighlights,
-  maskOfAnnihilation,
-  newItemSources,
-  rapidGrowthChanges,
-  rapidGrowthInfo,
-  seasonAdditionalChanges,
-  seasonRewardBreakdown,
-  seasonRewardSections,
-  serghettoHighlights,
-  systemChanges,
-  systemDevNote,
-  upcomingItemChanges,
-  worldEventChanges,
-} from '../../../data/patchNotesB131';
+import { patchNotesB131PorIdioma } from '../../../data/patchNotesB131';
 import { useIdioma } from '../../../i18n/useIdioma';
 import accessoryConsolidationImage from '../../../assets/imagens/B131_01/accessory_consolidation.webp';
 import additionalAccessoryUpgradesImage from '../../../assets/imagens/B131_01/additional_accessory_upgrades.webp';
@@ -122,60 +86,45 @@ const NotaDesenvolvedor = ({ titulo, paragrafos }: { titulo: string; paragrafos:
 
 export const B131_BattlePassTab = () => {
   const { idioma } = useIdioma();
-  const conteudo = patchNotesB131Locale[idioma] as {
-    battlePass: {
-      sectionTitle: string;
-      periodTitle: string;
-      availableLabel: string;
-      salesLabel: string;
-      notice: string;
-      plusTitle: string;
-      rewardsTitle: string;
-      officialBadge: string;
-      itemLabel: string;
-      qtyLabel: string;
-      levelLabel: string;
-      freeRewardLabel: string;
-      premiumRewardLabel: string;
-    };
-  };
+  const data = patchNotesB131PorIdioma[idioma];
+  const { labels, battlePassPlus, battlePassRewards } = data;
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
-      <SectionTitle title={conteudo.battlePass.sectionTitle} icon={Award} />
+      <SectionTitle title={labels.battlePass.sectionTitle} icon={Award} />
 
       <div className="grid gap-6 md:grid-cols-2">
         <Card className="border-t-4 border-t-amber-500">
           <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-amber-400">
             <CalendarDays className="h-5 w-5" />
-            {conteudo.battlePass.periodTitle}
+            {labels.battlePass.periodTitle}
           </h3>
           <ul className="space-y-3 text-slate-300">
             <li className="flex justify-between border-b border-slate-800 pb-2">
-              <span className="text-slate-400">{conteudo.battlePass.availableLabel}</span>
+              <span className="text-slate-400">{labels.battlePass.availableLabel}</span>
               <span>09/04/2026 a 06/08/2026</span>
             </li>
             <li className="flex justify-between border-b border-slate-800 pb-2">
-              <span className="text-slate-400">{conteudo.battlePass.salesLabel}</span>
+              <span className="text-slate-400">{labels.battlePass.salesLabel}</span>
               <span>09/04/2026 a 30/07/2026</span>
             </li>
           </ul>
           <div className="mt-4 rounded-lg border border-amber-500/20 bg-amber-500/10 p-4 text-sm text-amber-100/90">
-            {conteudo.battlePass.notice}
+            {labels.battlePass.notice}
           </div>
         </Card>
 
         <Card>
           <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-slate-100">
             <Sparkles className="h-5 w-5 text-amber-500" />
-            {conteudo.battlePass.plusTitle}
+            {labels.battlePass.plusTitle}
           </h3>
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
               <thead className="bg-slate-800/50 text-xs uppercase text-slate-400">
                 <tr>
-                  <th className="rounded-tl-lg px-4 py-3">{conteudo.battlePass.itemLabel}</th>
-                  <th className="rounded-tr-lg px-4 py-3 text-right">{conteudo.battlePass.qtyLabel}</th>
+                  <th className="rounded-tl-lg px-4 py-3">{labels.battlePass.itemLabel}</th>
+                  <th className="rounded-tr-lg px-4 py-3 text-right">{labels.battlePass.qtyLabel}</th>
                 </tr>
               </thead>
               <tbody>
@@ -193,20 +142,20 @@ export const B131_BattlePassTab = () => {
 
       <Card>
         <div className="mb-4 flex items-center justify-between gap-4">
-          <h3 className="text-lg font-semibold text-slate-100">{conteudo.battlePass.rewardsTitle}</h3>
+          <h3 className="text-lg font-semibold text-slate-100">{labels.battlePass.rewardsTitle}</h3>
           <span className="rounded-full border border-slate-700 bg-slate-800/60 px-3 py-1 text-xs text-slate-400">
-            {conteudo.battlePass.officialBadge}
+            {labels.battlePass.officialBadge}
           </span>
         </div>
         <div className="overflow-x-auto rounded-lg border border-slate-800">
           <table className="w-full text-left text-sm">
             <thead className="bg-slate-800 text-xs uppercase text-slate-300">
               <tr>
-                <th className="w-16 border-r border-slate-700 px-4 py-4 text-center">{conteudo.battlePass.levelLabel}</th>
-                <th className="border-r border-slate-700 px-4 py-4">{conteudo.battlePass.freeRewardLabel}</th>
-                <th className="w-24 border-r border-slate-700 px-4 py-4 text-center">{conteudo.battlePass.qtyLabel}</th>
-                <th className="border-r border-slate-700 px-4 py-4 text-amber-400">{conteudo.battlePass.premiumRewardLabel}</th>
-                <th className="w-24 px-4 py-4 text-center text-amber-400">{conteudo.battlePass.qtyLabel}</th>
+                <th className="w-16 border-r border-slate-700 px-4 py-4 text-center">{labels.battlePass.levelLabel}</th>
+                <th className="border-r border-slate-700 px-4 py-4">{labels.battlePass.freeRewardLabel}</th>
+                <th className="w-24 border-r border-slate-700 px-4 py-4 text-center">{labels.battlePass.qtyLabel}</th>
+                <th className="border-r border-slate-700 px-4 py-4 text-amber-400">{labels.battlePass.premiumRewardLabel}</th>
+                <th className="w-24 px-4 py-4 text-center text-amber-400">{labels.battlePass.qtyLabel}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60">
@@ -232,36 +181,18 @@ export const B131_BattlePassTab = () => {
 
 export const B131_SeasonTab = () => {
   const { idioma } = useIdioma();
-  const conteudo = patchNotesB131Locale[idioma] as {
-    season: {
-      sectionTitle: string;
-      processingTitle: string;
-      processingParagraphs: string[];
-      additionalTitle: string;
-      planTitle: string;
-      planIntro: string;
-      rangeLabel: string;
-      weaponLabel: string;
-      armorLabel: string;
-      glovesLabel: string;
-      itemLabel: string;
-      priceLabel: string;
-      limitLabel: string;
-      qtyLabel: string;
-      rewardsImageAlt: string;
-      rewardsImageCaption: string;
-    };
-  };
+  const data = patchNotesB131PorIdioma[idioma];
+  const { labels, seasonRewardBreakdown, seasonAdditionalChanges, seasonRewardSections } = data;
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
-      <SectionTitle title={conteudo.season.sectionTitle} icon={BookOpen} />
+      <SectionTitle title={labels.season.sectionTitle} icon={BookOpen} />
 
       <div className="grid gap-6 md:grid-cols-2">
         <Card className="border-l-4 border-l-sky-500 bg-slate-800/30">
-          <h3 className="mb-4 text-lg font-semibold text-sky-400">{conteudo.season.processingTitle}</h3>
+          <h3 className="mb-4 text-lg font-semibold text-sky-400">{labels.season.processingTitle}</h3>
           <div className="space-y-3 text-sm text-slate-300">
-            {conteudo.season.processingParagraphs.map((paragraph) => (
+            {labels.season.processingParagraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
@@ -270,10 +201,10 @@ export const B131_SeasonTab = () => {
             <table className="w-full text-left text-sm">
               <thead className="bg-slate-800 text-xs uppercase text-slate-300">
                 <tr>
-                  <th className="border-r border-slate-700 px-4 py-3">{conteudo.season.rangeLabel}</th>
-                  <th className="border-r border-slate-700 px-4 py-3">{conteudo.season.weaponLabel}</th>
-                  <th className="border-r border-slate-700 px-4 py-3">{conteudo.season.armorLabel}</th>
-                  <th className="px-4 py-3">{conteudo.season.glovesLabel}</th>
+                  <th className="border-r border-slate-700 px-4 py-3">{labels.season.rangeLabel}</th>
+                  <th className="border-r border-slate-700 px-4 py-3">{labels.season.weaponLabel}</th>
+                  <th className="border-r border-slate-700 px-4 py-3">{labels.season.armorLabel}</th>
+                  <th className="px-4 py-3">{labels.season.glovesLabel}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/60 text-slate-300">
@@ -291,11 +222,11 @@ export const B131_SeasonTab = () => {
         </Card>
 
         <Card>
-          <h3 className="mb-4 text-lg font-semibold text-amber-400">{conteudo.season.additionalTitle}</h3>
+          <h3 className="mb-4 text-lg font-semibold text-amber-400">{labels.season.additionalTitle}</h3>
           <FiguraPatch
             src={rewardsDungeonsImage}
-            alt={conteudo.season.rewardsImageAlt}
-            caption={conteudo.season.rewardsImageCaption}
+            alt={labels.season.rewardsImageAlt}
+            caption={labels.season.rewardsImageCaption}
             className="mb-5"
           />
           <ListaSetas itens={seasonAdditionalChanges} />
@@ -303,8 +234,8 @@ export const B131_SeasonTab = () => {
       </div>
 
       <Card className="border border-slate-700/60 bg-slate-800/30">
-        <h3 className="mb-3 text-lg font-semibold text-slate-100">{conteudo.season.planTitle}</h3>
-        <p className="text-sm text-slate-300">{conteudo.season.planIntro}</p>
+        <h3 className="mb-3 text-lg font-semibold text-slate-100">{labels.season.planTitle}</h3>
+        <p className="text-sm text-slate-300">{labels.season.planIntro}</p>
       </Card>
 
       <div className="grid gap-6 xl:grid-cols-2">
@@ -315,10 +246,10 @@ export const B131_SeasonTab = () => {
               <table className="w-full text-left text-sm">
                 <thead className="bg-slate-800 text-xs uppercase text-slate-300">
                   <tr>
-                    <th className="border-r border-slate-700 px-4 py-3">{conteudo.season.itemLabel}</th>
-                    <th className="border-r border-slate-700 px-4 py-3 text-center">{conteudo.season.priceLabel}</th>
-                    <th className="border-r border-slate-700 px-4 py-3 text-center">{conteudo.season.limitLabel}</th>
-                    <th className="px-4 py-3 text-center">{conteudo.season.qtyLabel}</th>
+                    <th className="border-r border-slate-700 px-4 py-3">{labels.battlePass.itemLabel}</th>
+                    <th className="border-r border-slate-700 px-4 py-3 text-center">{labels.season.priceLabel}</th>
+                    <th className="border-r border-slate-700 px-4 py-3 text-center">{labels.season.limitLabel}</th>
+                    <th className="px-4 py-3 text-center">{labels.battlePass.qtyLabel}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-800/60">
@@ -343,34 +274,26 @@ export const B131_SeasonTab = () => {
 
 export const B131_DungeonsTab = () => {
   const { idioma } = useIdioma();
-  const conteudo = patchNotesB131Locale[idioma] as {
-    dungeons: {
-      sectionTitle: string;
-      rotationTitle: string;
-      secretMerchantTitle: string;
-      scalingTitle: string;
-      itemLevelTitle: string;
-      otherChangesTitle: string;
-      achievementsTitle: string;
-      worldEventsTitle: string;
-      devNoteTitle: string;
-      dungeonLabel: string;
-      requiredLabel: string;
-      notesLabel: string;
-      serghettoAlt: string;
-      serghettoCaption: string;
-      serghettoShopAlt: string;
-      serghettoShopCaption: string;
-    };
-  };
+  const data = patchNotesB131PorIdioma[idioma];
+  const {
+    labels,
+    dungeonOverviewHighlights,
+    dungeonsList,
+    serghettoHighlights,
+    dungeonScalingChanges,
+    dungeonOtherChanges,
+    achievementChanges,
+    worldEventChanges,
+    dungeonDevNote,
+  } = data;
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
-      <SectionTitle title={conteudo.dungeons.sectionTitle} icon={Swords} />
+      <SectionTitle title={labels.dungeons.sectionTitle} icon={Swords} />
 
     <div className="grid gap-6 xl:grid-cols-[1.35fr_0.95fr]">
       <Card className="border-l-4 border-l-sky-500 bg-slate-800/30">
-        <h3 className="mb-4 text-lg font-semibold text-sky-400">{conteudo.dungeons.rotationTitle}</h3>
+        <h3 className="mb-4 text-lg font-semibold text-sky-400">{labels.dungeons.rotationTitle}</h3>
         <div className="mb-5 rounded-xl border border-slate-700/60 bg-slate-900/60 p-4">
           <ListaSetas itens={dungeonOverviewHighlights} />
         </div>
@@ -378,9 +301,9 @@ export const B131_DungeonsTab = () => {
           <table className="w-full text-left text-sm">
             <thead className="bg-slate-800 text-xs uppercase text-slate-300">
               <tr>
-                <th className="border-r border-slate-700 px-4 py-3">{conteudo.dungeons.dungeonLabel}</th>
-                <th className="w-28 border-r border-slate-700 px-4 py-3 text-center">{conteudo.dungeons.requiredLabel}</th>
-                <th className="px-4 py-3">{conteudo.dungeons.notesLabel}</th>
+                <th className="border-r border-slate-700 px-4 py-3">{labels.dungeons.dungeonLabel}</th>
+                <th className="w-28 border-r border-slate-700 px-4 py-3 text-center">{labels.dungeons.requiredLabel}</th>
+                <th className="px-4 py-3">{labels.dungeons.notesLabel}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60">
@@ -398,30 +321,30 @@ export const B131_DungeonsTab = () => {
 
       <div className="space-y-6">
         <Card>
-          <h3 className="mb-4 text-lg font-semibold text-amber-400">{conteudo.dungeons.secretMerchantTitle}</h3>
+          <h3 className="mb-4 text-lg font-semibold text-amber-400">{labels.dungeons.secretMerchantTitle}</h3>
           <div className="mb-5 grid gap-4 sm:grid-cols-2">
             <FiguraPatch
               src={serghettoImage}
-              alt={conteudo.dungeons.serghettoAlt}
-              caption={conteudo.dungeons.serghettoCaption}
+              alt={labels.dungeons.serghettoAlt}
+              caption={labels.dungeons.serghettoCaption}
             />
             <FiguraPatch
               src={shopSerghettoImage}
-              alt={conteudo.dungeons.serghettoShopAlt}
-              caption={conteudo.dungeons.serghettoShopCaption}
+              alt={labels.dungeons.serghettoShopAlt}
+              caption={labels.dungeons.serghettoShopCaption}
             />
           </div>
           <ListaSetas itens={serghettoHighlights} />
         </Card>
 
         <Card>
-          <h3 className="mb-4 text-lg font-semibold text-slate-100">{conteudo.dungeons.scalingTitle}</h3>
+          <h3 className="mb-4 text-lg font-semibold text-slate-100">{labels.dungeons.scalingTitle}</h3>
           <div className="mb-5">
-            <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-400">{conteudo.dungeons.itemLevelTitle}</h4>
+            <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-400">{labels.dungeons.itemLevelTitle}</h4>
             <ListaSetas itens={dungeonScalingChanges} />
           </div>
           <div className="border-t border-slate-800/60 pt-5">
-            <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-400">{conteudo.dungeons.otherChangesTitle}</h4>
+            <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-400">{labels.dungeons.otherChangesTitle}</h4>
             <ListaSetas itens={dungeonOtherChanges} />
           </div>
         </Card>
@@ -432,7 +355,7 @@ export const B131_DungeonsTab = () => {
       <Card>
         <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-slate-100">
           <Award className="h-5 w-5 text-amber-500" />
-          {conteudo.dungeons.achievementsTitle}
+          {labels.dungeons.achievementsTitle}
         </h3>
         <ListaSetas itens={achievementChanges} />
       </Card>
@@ -440,51 +363,49 @@ export const B131_DungeonsTab = () => {
       <Card>
         <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-slate-100">
           <CalendarDays className="h-5 w-5 text-sky-400" />
-          {conteudo.dungeons.worldEventsTitle}
+          {labels.dungeons.worldEventsTitle}
         </h3>
         <ListaSetas itens={worldEventChanges} />
       </Card>
     </div>
 
-    <NotaDesenvolvedor titulo={conteudo.dungeons.devNoteTitle} paragrafos={dungeonDevNote} />
+    <NotaDesenvolvedor titulo={labels.dungeons.devNoteTitle} paragrafos={dungeonDevNote} />
   </div>
   );
 };
 
 export const B131_GearTab = () => {
   const { idioma } = useIdioma();
-  const conteudo = patchNotesB131Locale[idioma] as {
-    gear: {
-      sectionTitle: string;
-      consolidationTitle: string;
-      promotionTitle: string;
-      upgradeTitle: string;
-      maskTitle: string;
-      fixedEffectLabel: string;
-      randomEffectLabel: string;
-      annihilationTitle: string;
-      breakpointsTitle: string;
-    };
-  };
+  const data = patchNotesB131PorIdioma[idioma];
+  const {
+    labels,
+    accessoryConsolidationHighlights,
+    accessoryPromotionChanges,
+    additionalAccessoryUpgradeHighlights,
+    maskHighlights,
+    maskOfAnnihilation,
+    annihilationEnhancementHighlights,
+    annihilationBonusBreakdown,
+  } = data;
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
-      <SectionTitle title={conteudo.gear.sectionTitle} icon={Shield} />
+      <SectionTitle title={labels.gear.sectionTitle} icon={Shield} />
 
     <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
       <Card className="border-t-4 border-t-amber-500">
-        <h3 className="mb-4 text-lg font-semibold text-amber-400">{conteudo.gear.consolidationTitle}</h3>
+        <h3 className="mb-4 text-lg font-semibold text-amber-400">{labels.gear.consolidationTitle}</h3>
         <FiguraPatch
           src={accessoryConsolidationImage}
-          alt="Resumo visual da consolidação de acessórios"
-          caption="Stormcry, Heroic Oath, Enhanced Heroic Oath e Kaia's Fury passam a convergir para o mesmo modelo."
+          alt={labels.gear.consolidationImageAlt}
+          caption={labels.gear.consolidationImageCaption}
           className="mb-5"
         />
         <ListaSetas itens={accessoryConsolidationHighlights} />
       </Card>
 
       <Card>
-        <h3 className="mb-4 text-lg font-semibold text-slate-100">{conteudo.gear.promotionTitle}</h3>
+        <h3 className="mb-4 text-lg font-semibold text-slate-100">{labels.gear.promotionTitle}</h3>
         <div className="space-y-4">
           {accessoryPromotionChanges.map((grupo) => (
             <div key={grupo.title} className="rounded-xl border border-slate-800/70 bg-slate-950/60 p-4">
@@ -498,28 +419,28 @@ export const B131_GearTab = () => {
 
     <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
       <Card>
-        <h3 className="mb-4 text-lg font-semibold text-slate-100">{conteudo.gear.upgradeTitle}</h3>
+        <h3 className="mb-4 text-lg font-semibold text-slate-100">{labels.gear.upgradeTitle}</h3>
         <FiguraPatch
           src={additionalAccessoryUpgradesImage}
-          alt="Visão geral dos upgrades adicionais de acessórios"
-          caption="Os acessórios Annihilation passam a ser o próximo passo acima de Kaia's Fury."
+          alt={labels.gear.upgradeImageAlt}
+          caption={labels.gear.upgradeImageCaption}
           className="mb-5"
         />
         <ListaSetas itens={additionalAccessoryUpgradeHighlights} />
       </Card>
 
       <Card>
-        <h3 className="mb-4 text-lg font-semibold text-amber-400">{conteudo.gear.maskTitle}</h3>
+        <h3 className="mb-4 text-lg font-semibold text-amber-400">{labels.gear.maskTitle}</h3>
         <div className="mb-5 grid gap-4 sm:grid-cols-2">
           <FiguraPatch
             src={dropMaskOfAnnihilationImage}
-            alt="Mask of Annihilation obtida em Akeron's Inferno Hard"
-            caption="A máscara cai em Akeron's Inferno (Hard)."
+            alt={labels.gear.maskDropImageAlt}
+            caption={labels.gear.maskDropImageCaption}
           />
           <FiguraPatch
             src={typeOfMaskOfAnnihilationImage}
-            alt="Tipos de Mask of Annihilation"
-            caption="Iron Wall, Salvation e Destruction possuem funções distintas."
+            alt={labels.gear.maskTypesImageAlt}
+            caption={labels.gear.maskTypesImageCaption}
           />
         </div>
         <ListaSetas itens={maskHighlights} />
@@ -532,11 +453,11 @@ export const B131_GearTab = () => {
           <h3 className="mb-3 text-lg font-semibold text-slate-100">{mascara.name}</h3>
           <div className="space-y-4 text-sm text-slate-300">
             <div>
-              <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">{conteudo.gear.fixedEffectLabel}</h4>
+              <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">{labels.gear.fixedEffectLabel}</h4>
               <p className="whitespace-pre-line">{mascara.fixed}</p>
             </div>
             <div className="border-t border-slate-800/60 pt-4">
-              <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">{conteudo.gear.randomEffectLabel}</h4>
+              <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">{labels.gear.randomEffectLabel}</h4>
               <p>{mascara.random}</p>
             </div>
           </div>
@@ -548,22 +469,22 @@ export const B131_GearTab = () => {
       <div className="mb-5 grid gap-4 lg:grid-cols-2">
         <FiguraPatch
           src={annihilationEnhancementImage}
-          alt="Visão geral do aprimoramento Annihilation"
-          caption="O sistema de aprimoramento Annihilation passa a alcançar +15."
+          alt={labels.gear.annihilationImageAlt}
+          caption={labels.gear.annihilationImageCaption}
         />
         <FiguraPatch
           src={weaponAnnihilation15Image}
-          alt="Bônus adicionais do gear Annihilation em +15"
-          caption="Bônus extras são concedidos em +10, +12, +14 e +15."
+          alt={labels.gear.annihilationBonusImageAlt}
+          caption={labels.gear.annihilationBonusImageCaption}
         />
       </div>
-      <h3 className="mb-4 text-lg font-semibold text-sky-400">{conteudo.gear.annihilationTitle}</h3>
+      <h3 className="mb-4 text-lg font-semibold text-sky-400">{labels.gear.annihilationTitle}</h3>
       <ListaSetas itens={annihilationEnhancementHighlights} />
 
       <div className="mt-6 rounded-xl border border-amber-500/20 bg-amber-500/5 p-4">
         <div className="mb-3 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-amber-300">
           <AlertTriangle className="h-4 w-4" />
-          {conteudo.gear.breakpointsTitle}
+          {labels.gear.breakpointsTitle}
         </div>
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
           {annihilationBonusBreakdown.map((bonus) => (
@@ -580,52 +501,44 @@ export const B131_GearTab = () => {
 
 export const B131_EventsTab = () => {
   const { idioma } = useIdioma();
-  const conteudo = patchNotesB131Locale[idioma] as {
-    events: {
-      sectionTitle: string;
-      easterTitle: string;
-      periodLabel: string;
-      shopTitle: string;
-      exchangeRateLabel: string;
-      lillyTitle: string;
-      rewardsTitle: string;
-      eggThiefTitle: string;
-      hiddenEggsTitle: string;
-      rapidGrowthTitle: string;
-      easterPeriod: string;
-      easterOverview: string;
-      easterNote: string;
-      hiddenEggsNotice: string;
-    };
-  };
+  const data = patchNotesB131PorIdioma[idioma];
+  const {
+    labels,
+    easterEventInfo,
+    rapidGrowthInfo,
+    rapidGrowthChanges,
+    easterShopItems,
+    easterJackpotRewards,
+    easterEggHuntSteps,
+  } = data;
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
-      <SectionTitle title={conteudo.events.sectionTitle} icon={CalendarDays} />
+      <SectionTitle title={labels.events.sectionTitle} icon={CalendarDays} />
 
     <div className="grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
       <Card className="border-l-4 border-l-amber-500 bg-slate-800/30">
-        <h3 className="mb-4 text-lg font-semibold text-amber-400">{conteudo.events.easterTitle}</h3>
-        <p className="mb-4 text-sm text-slate-300">{conteudo.events.easterOverview}</p>
+        <h3 className="mb-4 text-lg font-semibold text-amber-400">{labels.events.easterTitle}</h3>
+        <p className="mb-4 text-sm text-slate-300">{labels.events.easterOverview}</p>
         <div className="mb-4 rounded-xl border border-slate-700/60 bg-slate-900/60 p-4">
           <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-sky-300">
             <CalendarDays className="h-4 w-4" />
-            {conteudo.events.periodLabel}
+            {labels.events.periodLabel}
           </div>
-          <p className="text-sm text-slate-200">{conteudo.events.easterPeriod}</p>
-          <p className="mt-2 text-xs italic text-slate-400">{conteudo.events.easterNote}</p>
+          <p className="text-sm text-slate-200">{labels.events.easterPeriod}</p>
+          <p className="mt-2 text-xs italic text-slate-400">{labels.events.easterNote}</p>
         </div>
         <ListaSetas itens={easterEventInfo.unlockRules} />
         <div className="mt-5 grid gap-4 sm:grid-cols-2">
           <FiguraPatch
             src={event2Image}
-            alt="NPC do evento de Páscoa"
-            caption="Ajude Bunbunmin a recuperar os ovos escondidos."
+            alt={labels.events.easterNpcImageAlt}
+            caption={labels.events.easterNpcImageCaption}
           />
           <FiguraPatch
             src={event3Image}
-            alt="Cena do evento de Páscoa"
-            caption="O evento espalha ovos e objetivos por várias regiões."
+            alt={labels.events.easterSceneImageAlt}
+            caption={labels.events.easterSceneImageCaption}
           />
         </div>
       </Card>
@@ -633,7 +546,7 @@ export const B131_EventsTab = () => {
       <Card>
         <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-slate-100">
           <Zap className="h-5 w-5 text-amber-500" />
-          {conteudo.events.rapidGrowthTitle}
+          {labels.events.rapidGrowthTitle}
         </h3>
         <p className="mb-3 text-sm text-slate-300">{rapidGrowthInfo.overview}</p>
         <div className="mb-4 rounded-xl border border-amber-500/20 bg-amber-500/10 p-4 text-sm text-amber-100/90">
@@ -646,13 +559,13 @@ export const B131_EventsTab = () => {
 
     <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
       <Card>
-        <h3 className="mb-4 text-lg font-semibold text-slate-100">{conteudo.events.shopTitle}</h3>
+        <h3 className="mb-4 text-lg font-semibold text-slate-100">{labels.events.shopTitle}</h3>
         <div className="overflow-x-auto rounded-lg border border-slate-800">
           <table className="w-full text-left text-sm">
             <thead className="bg-slate-800 text-xs uppercase text-slate-300">
               <tr>
-                <th className="border-r border-slate-700 px-4 py-3">Item</th>
-                <th className="px-4 py-3 text-center">{conteudo.events.exchangeRateLabel}</th>
+                <th className="border-r border-slate-700 px-4 py-3">{labels.battlePass.itemLabel}</th>
+                <th className="px-4 py-3 text-center">{labels.events.exchangeRateLabel}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60">
@@ -668,21 +581,21 @@ export const B131_EventsTab = () => {
       </Card>
 
       <Card>
-        <h3 className="mb-4 text-lg font-semibold text-amber-400">{conteudo.events.lillyTitle}</h3>
+        <h3 className="mb-4 text-lg font-semibold text-amber-400">{labels.events.lillyTitle}</h3>
         <div className="mb-5 grid gap-4 sm:grid-cols-2">
           <FiguraPatch
             src={event4Image}
-            alt="Montaria [Event] Lilly"
-            caption="[Event] Lilly é uma montaria padrão voadora, sem skill passiva nem efeito adicional."
+            alt={labels.events.lillyImageAlt}
+            caption={labels.events.lillyImageCaption}
           />
           <FiguraPatch
             src={event5Image}
-            alt="Nutrient-Packed Jackpot Egg"
-            caption="O jackpot egg pode conceder várias recompensas aleatórias."
+            alt={labels.events.jackpotEggImageAlt}
+            caption={labels.events.jackpotEggImageCaption}
           />
         </div>
         <div className="rounded-xl border border-slate-800/70 bg-slate-950/60 p-4">
-          <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-400">{conteudo.events.rewardsTitle}</h4>
+          <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-400">{labels.events.rewardsTitle}</h4>
           <ul className="space-y-2 text-sm text-slate-300">
             {easterJackpotRewards.map((recompensa) => (
               <li key={recompensa} className="flex items-center gap-3">
@@ -697,48 +610,48 @@ export const B131_EventsTab = () => {
 
     <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
       <Card>
-        <h3 className="mb-4 text-lg font-semibold text-slate-100">{conteudo.events.eggThiefTitle}</h3>
+        <h3 className="mb-4 text-lg font-semibold text-slate-100">{labels.events.eggThiefTitle}</h3>
         <div className="mb-5 grid gap-4 sm:grid-cols-2">
           <FiguraPatch
             src={event6Image}
-            alt="Caiman Egg Thief no mundo"
-            caption="Derrote o Caiman Egg Thief para recuperar ovos."
+            alt={labels.events.eggThiefWorldImageAlt}
+            caption={labels.events.eggThiefWorldImageCaption}
           />
           <FiguraPatch
             src={event7Image}
-            alt="Caiman Egg Thief em combate"
-            caption="O inimigo aparece pelo mundo durante o evento."
+            alt={labels.events.eggThiefCombatImageAlt}
+            caption={labels.events.eggThiefCombatImageCaption}
           />
           <FiguraPatch
             src={event8Image}
-            alt="Item Event Egg Dye"
-            caption="[Event] Egg Dye chega como recompensa de presença diária."
+            alt={labels.events.eggDyeImageAlt}
+            caption={labels.events.eggDyeImageCaption}
           />
           <FiguraPatch
             src={event9Image}
-            alt="Item Event Red Egg"
-            caption="[Event] Red Egg é usado para trocas adicionais."
+            alt={labels.events.redEggImageAlt}
+            caption={labels.events.redEggImageCaption}
           />
         </div>
         <ListaSetas itens={easterEggHuntSteps} />
       </Card>
 
       <Card>
-        <h3 className="mb-4 text-lg font-semibold text-amber-400">{conteudo.events.hiddenEggsTitle}</h3>
+        <h3 className="mb-4 text-lg font-semibold text-amber-400">{labels.events.hiddenEggsTitle}</h3>
         <div className="mb-5 grid gap-4 sm:grid-cols-2">
           <FiguraPatch
             src={event10Image}
-            alt="Ovos escondidos do evento nas cidades"
-            caption="Procure os ovos escondidos em cada cidade."
+            alt={labels.events.hiddenEggsImageAlt}
+            caption={labels.events.hiddenEggsImageCaption}
           />
           <FiguraPatch
             src={event11Image}
-            alt="Achievements do evento de Páscoa"
-            caption="Os objetivos do evento incluem exploração e coleta."
+            alt={labels.events.achievementsImageAlt}
+            caption={labels.events.achievementsImageCaption}
           />
         </div>
         <div className="rounded-xl border border-sky-500/20 bg-sky-500/10 p-4 text-sm text-sky-100/90">
-          {conteudo.events.hiddenEggsNotice}
+          {labels.events.hiddenEggsNotice}
         </div>
       </Card>
     </div>
@@ -748,35 +661,23 @@ export const B131_EventsTab = () => {
 
 export const B131_CraftingTab = () => {
   const { idioma } = useIdioma();
-  const conteudo = patchNotesB131Locale[idioma] as {
-    crafting: {
-      sectionTitle: string;
-      sourcesTitle: string;
-      dropAdjustmentsTitle: string;
-      futureChangeTitle: string;
-      cleanupTitle: string;
-      recipesTitle: string;
-      itemLabel: string;
-      sourceLabel: string;
-      noteLabel: string;
-      materialsLabel: string;
-    };
-  };
+  const data = patchNotesB131PorIdioma[idioma];
+  const { labels, newItemSources, itemRewardChanges, craftingRecipes } = data;
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
-      <SectionTitle title={conteudo.crafting.sectionTitle} icon={Hammer} />
+      <SectionTitle title={labels.crafting.sectionTitle} icon={Hammer} />
 
     <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
       <Card>
-        <h3 className="mb-4 text-lg font-semibold text-slate-100">{conteudo.crafting.sourcesTitle}</h3>
+        <h3 className="mb-4 text-lg font-semibold text-slate-100">{labels.crafting.sourcesTitle}</h3>
         <div className="overflow-x-auto rounded-lg border border-slate-800">
           <table className="w-full text-left text-sm">
             <thead className="bg-slate-800 text-xs uppercase text-slate-300">
               <tr>
-                <th className="border-r border-slate-700 px-4 py-3">{conteudo.crafting.itemLabel}</th>
-                <th className="border-r border-slate-700 px-4 py-3">{conteudo.crafting.sourceLabel}</th>
-                <th className="px-4 py-3">{conteudo.crafting.noteLabel}</th>
+                <th className="border-r border-slate-700 px-4 py-3">{labels.crafting.itemLabel}</th>
+                <th className="border-r border-slate-700 px-4 py-3">{labels.crafting.sourceLabel}</th>
+                <th className="px-4 py-3">{labels.crafting.noteLabel}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60">
@@ -793,22 +694,22 @@ export const B131_CraftingTab = () => {
       </Card>
 
       <Card>
-        <h3 className="mb-4 text-lg font-semibold text-amber-400">{conteudo.crafting.dropAdjustmentsTitle}</h3>
+        <h3 className="mb-4 text-lg font-semibold text-amber-400">{labels.crafting.dropAdjustmentsTitle}</h3>
         <ListaSetas itens={itemRewardChanges} />
 
         <div className="mt-5 rounded-xl border border-amber-500/20 bg-amber-500/10 p-4">
-          <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-amber-300">{conteudo.crafting.futureChangeTitle}</h4>
-          <ListaSetas itens={upcomingItemChanges} />
+          <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-amber-300">{labels.crafting.futureChangeTitle}</h4>
+          <p className="text-sm text-amber-100/90">{data.upcomingItemChanges[0]}</p>
         </div>
 
         <div className="mt-5 rounded-xl border border-slate-800/70 bg-slate-950/60 p-4">
-          <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-400">{conteudo.crafting.cleanupTitle}</h4>
-          <ListaSetas itens={craftingCleanupChanges} />
+          <h4 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-400">{labels.crafting.cleanupTitle}</h4>
+          <p className="text-sm text-slate-300">{data.craftingCleanupChanges.join(' ')}</p>
         </div>
       </Card>
     </div>
 
-    <SectionTitle title={conteudo.crafting.recipesTitle} icon={Hammer} />
+    <SectionTitle title={labels.crafting.recipesTitle} icon={Hammer} />
 
     <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
       {craftingRecipes.map((receita) => (
@@ -816,7 +717,7 @@ export const B131_CraftingTab = () => {
           <h3 className="mb-3 text-lg font-semibold text-slate-100">{receita.title}</h3>
           <p className="mb-4 text-sm text-slate-300">{receita.description}</p>
           <div className="rounded-xl border border-slate-800/70 bg-slate-950/60 p-4">
-            <h4 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">{conteudo.crafting.materialsLabel}</h4>
+            <h4 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">{labels.crafting.materialsLabel}</h4>
             <ul className="space-y-2 text-sm text-slate-300">
               {receita.materials.map((material) => (
                 <li key={material} className="flex items-center gap-3">
@@ -836,29 +737,23 @@ export const B131_CraftingTab = () => {
 
 export const B131_SystemTab = () => {
   const { idioma } = useIdioma();
-  const conteudo = patchNotesB131Locale[idioma] as {
-    system: {
-      sectionTitle: string;
-      economyTitle: string;
-      bugFixTitle: string;
-      devNoteTitle: string;
-    };
-  };
+  const data = patchNotesB131PorIdioma[idioma];
+  const { labels, systemChanges, systemDevNote, bugFixes } = data;
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
-      <SectionTitle title={conteudo.system.sectionTitle} icon={Settings} />
+      <SectionTitle title={labels.system.sectionTitle} icon={Settings} />
 
     <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr]">
       <Card>
-        <h3 className="mb-4 text-lg font-semibold text-amber-400">{conteudo.system.economyTitle}</h3>
+        <h3 className="mb-4 text-lg font-semibold text-amber-400">{labels.system.economyTitle}</h3>
         <ListaSetas itens={systemChanges} />
       </Card>
 
       <Card className="border-red-900/30 bg-red-950/10">
         <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-red-400">
           <AlertTriangle className="h-5 w-5" />
-          {conteudo.system.bugFixTitle}
+          {labels.system.bugFixTitle}
         </h3>
         <ul className="space-y-3 text-sm text-slate-300">
           {bugFixes.map((bugFix) => (
@@ -874,7 +769,7 @@ export const B131_SystemTab = () => {
     <Card className="border-l-4 border-l-amber-500 bg-slate-800/30">
       <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-amber-400">
         <ShieldAlert className="h-5 w-5" />
-        {conteudo.system.devNoteTitle}
+        {labels.system.devNoteTitle}
       </h3>
       <div className="space-y-4 text-sm italic leading-relaxed text-slate-300">
         {systemDevNote.map((paragrafo) => (

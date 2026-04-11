@@ -1,4 +1,4 @@
-# 📖 Histórico de Modificações do Projeto
+# Histórico de Modificações do Projeto
 
 Este arquivo concentra o rastreio cronológico de funcionalidades entregues, walkthroughs e documentações arquiteturais pós-entrega na base.
 
@@ -7,6 +7,7 @@ Este arquivo concentra o rastreio cronológico de funcionalidades entregues, wal
 - [Consolidação e Redesign do Hero](walkthrough/redesign_hero_simplificacao.md): Simplificação drástica da altura dos cards, transformação do perfil em link direto ao GitHub, seletor de idioma compacto movido para a sidebar e ajuste final de tipografia de marca.
 - [Refinamento Estético do Hero](walkthrough/refinamento_estetico_hero.md): Redesign completo da seção Hero com nova tipografia (Cinzel Decorative), cards da comunidade e mantenedor otimizados e integração de avatar 3D premium.
 - [Internacionalização do Portal em 3 Idiomas](walkthrough/internacionalizacao_idiomas.md): Adição de suporte a `pt-BR`, `en-US` e `es-ES`, com autodetecção por navegador, persistência da preferência local do usuário e seletor visual de idioma no cabeçalho.
+- [Ajuste de Tradução Multidioma do B131 e Navegação](walkthrough/ajuste_traducao_multidioma_b131.md): Refinamento editorial dos rótulos do portal, localização dos textos auxiliares visuais do B131 e correção estrutural do consumo de locale nos 3 idiomas.
 
 ## 2026-04-09
 - [Revisão de Tradução e Consolidação do B131.01](walkthrough/revisao_traducao_b131.md): Reconstrução do conteúdo do patch com base no material oficial extraído, correção de traduções inconsistentes, inclusão das seções faltantes e integração das imagens oficiais nas novas abas do update.
