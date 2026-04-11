@@ -3,6 +3,8 @@ import type { IdiomaSuportado } from '../../types/idioma';
 interface SeletorIdiomaProps {
   idiomaAtivo: IdiomaSuportado;
   onChange: (idioma: IdiomaSuportado) => void;
+  className?: string;
+  compacto?: boolean;
   rotulos: {
     pt: string;
     en: string;
@@ -64,28 +66,30 @@ function BandeiraIdioma({ idioma }: { idioma: IdiomaSuportado }) {
   return <BandeiraEspanha />;
 }
 
-export const SeletorIdioma = ({ idiomaAtivo, onChange, rotulos }: SeletorIdiomaProps) => (
-  <div className="flex flex-wrap items-center gap-2">
-      {OPCOES_IDIOMA.map((opcao) => {
-        const estaAtivo = idiomaAtivo === opcao.idioma;
-        const label = rotulos[opcao.labelKey];
+export const SeletorIdioma = ({ idiomaAtivo, onChange, rotulos, className, compacto = false }: SeletorIdiomaProps) => (
+  <div className={`flex flex-wrap items-center ${compacto ? 'gap-1.5' : 'gap-2'} ${className ?? ''}`.trim()}>
+    {OPCOES_IDIOMA.map((opcao) => {
+      const estaAtivo = idiomaAtivo === opcao.idioma;
+      const label = rotulos[opcao.labelKey];
 
-        return (
-          <button
-            key={opcao.idioma}
-            type="button"
-            onClick={() => onChange(opcao.idioma)}
-            title={label}
-            aria-label={label}
-            className={`inline-flex items-center justify-center rounded-lg border p-2 transition-all ${
-              estaAtivo
-                ? 'border-amber-500/40 bg-amber-500/10 shadow-sm shadow-amber-500/10'
-                : 'border-slate-700 bg-[#090e17] hover:border-slate-500 hover:bg-slate-800'
-            }`}
-          >
-            <BandeiraIdioma idioma={opcao.idioma} />
-          </button>
-        );
-      })}
+      return (
+        <button
+          key={opcao.idioma}
+          type="button"
+          onClick={() => onChange(opcao.idioma)}
+          title={label}
+          aria-label={label}
+          className={`inline-flex items-center justify-center border transition-all ${
+            compacto ? 'rounded-md p-1.5' : 'rounded-lg p-2'
+          } ${
+            estaAtivo
+              ? 'border-amber-500/40 bg-amber-500/10 shadow-sm shadow-amber-500/10'
+              : 'border-slate-700 bg-[#090e17] hover:border-slate-500 hover:bg-slate-800'
+          }`}
+        >
+          <BandeiraIdioma idioma={opcao.idioma} />
+        </button>
+      );
+    })}
   </div>
 );
