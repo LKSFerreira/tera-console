@@ -39,6 +39,10 @@ export interface ConteudoSite {
     communityCtaTitle: string;
     discordTitle: string;
     discordCopiedTitle: string;
+    githubLoadingLabel: string;
+    githubFallbackBio: string;
+    githubFollowersLabel: string;
+    githubReposLabel: string;
     updatesTitle: string;
     footerTitle: string;
     footerDescription: string;
