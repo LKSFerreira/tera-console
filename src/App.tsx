@@ -26,25 +26,6 @@ import {
   B131_SystemTab,
 } from './features/patchNotes/tabs';
 
-const GithubIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-  </svg>
-);
-
-const LinkedinIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect x="2" y="9" width="4" height="12" />
-    <circle cx="4" cy="4" r="2" />
-  </svg>
-);
-
-const DiscordIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path d="M20.317 4.369a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.078.037c-.211.375-.444.864-.608 1.249a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.249.077.077 0 0 0-.078-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.083.083 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.105 13.1 13.1 0 0 1-1.872-.892.078.078 0 0 1-.008-.131c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.073.073 0 0 1 .078.009c.12.1.246.198.373.292a.078.078 0 0 1-.006.131 12.3 12.3 0 0 1-1.873.891.076.076 0 0 0-.04.106c.36.696.771 1.36 1.225 1.993a.076.076 0 0 0 .084.028 19.86 19.86 0 0 0 6.002-3.03.077.077 0 0 0 .031-.055c.5-5.177-.838-9.67-3.549-13.66a.062.062 0 0 0-.031-.03ZM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.211 0 2.176 1.095 2.157 2.418 0 1.334-.956 2.419-2.157 2.419Zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.211 0 2.176 1.095 2.157 2.418 0 1.334-.947 2.419-2.157 2.419Z" />
-  </svg>
-);
 
 type RegistroAbaPatch = {
   icon: LucideIcon;
@@ -67,9 +48,7 @@ type EstadoPerfilGithub =
   | { status: 'error' };
 
 const LINK_DISCORD_COMUNIDADE = 'https://discord.com/invite/vB83wnaykm';
-const CONTATO_DISCORD_PESSOAL = 'LKSFerreira';
 const LINK_GITHUB_PADRAO = 'https://github.com/LKSFerreira';
-const LINK_LINKEDIN = 'https://www.linkedin.com/in/lucas-ferreira-developer/';
 
 const registroComponentes: Record<PatchId, Partial<Record<AbaPatchId, RegistroAbaPatch>>> = {
   'b131.01': {
@@ -105,7 +84,6 @@ export default function App() {
   const conteudoSite = conteudoSitePorIdioma[idioma];
   const [patchAtivoId, setPatchAtivoId] = useState<PatchId>(ordemPatches[0]);
   const [abaAtivaId, setAbaAtivaId] = useState<AbaPatchId>(conteudoSite.patches[ordemPatches[0]].tabs[0].id);
-  const [discordCopiado, setDiscordCopiado] = useState(false);
   const [perfilGithub, setPerfilGithub] = useState<EstadoPerfilGithub>({ status: 'loading' });
 
   const patchAtivo = conteudoSite.patches[patchAtivoId];
@@ -119,10 +97,6 @@ export default function App() {
   const nomeMantenedor = perfilGithubSucesso?.name?.trim() || 'LKS Ferreira';
   const loginMantenedor = perfilGithubSucesso?.login ? `@${perfilGithubSucesso.login}` : '@LKSFerreira';
   const avatarMantenedor = perfilGithubSucesso?.avatar_url || lksAvatar;
-  const bioMantenedor =
-    perfilGithub.status === 'loading'
-      ? conteudoSite.shell.githubLoadingLabel
-      : perfilGithubSucesso?.bio?.trim() || conteudoSite.shell.githubFallbackBio;
   const linkGithubPerfil = perfilGithubSucesso?.html_url || LINK_GITHUB_PADRAO;
   const metricasGithub = perfilGithubSucesso
     ? [
