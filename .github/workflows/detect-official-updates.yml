@@ -82,10 +82,12 @@ jobs:
             echo "_Issue gerada pelo workflow \`detect-official-updates\` (cron ~3 dias)._"
           } > "$BODY_FILE"
 
+          # Cria label se não existir (evita erro "label not found")
+          gh label create "content" --description "Radar / conteúdo de patch" --color "1D76DB" 2>/dev/null || true
+          gh label create "radar" --description "Detect oficial" --color "0E8A16" 2>/dev/null || true
+
           gh issue create \
             --title "Radar: UPDATE(s) oficial(is) pendente(s) de curadoria (${IDS})" \
             --body-file "$BODY_FILE" \
             --label "content" \
-            || gh issue create \
-              --title "Radar: UPDATE(s) oficial(is) pendente(s) de curadoria (${IDS})" \
-              --body-file "$BODY_FILE"
+            --label "radar"
