@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "b130.03",
+  "buildLabel": "B130.03",
+  "kind": "hotfix",
+  "status": "published",
+  "source": {
+    "officialNewsId": 971,
+    "officialUrl": "https://tera-console.com/news/971",
+    "languageType": "EN"
+  },
+  "publishedAt": "2026-03-26",
+  "parse": {
+    "quality": "ok",
+    "warnings": [],
+    "unmappedHeadings": [],
+    "fallbackTabs": []
+  },
+  "display": {
+    "pt-BR": {
+      "name": "Hotfix de Março",
+      "date": "26 de Março de 2026",
+      "parts": ""
+    },
+    "en-US": {
+      "name": "March Hotfix",
+      "date": "March 26, 2026",
+      "parts": ""
+    },
+    "es-ES": {
+      "name": "Hotfix de Marzo",
+      "date": "26 de marzo de 2026",
+      "parts": ""
+    }
+  },
+  "tabs": [
+    {
+      "id": "bugs",
+      "icon": "alert-triangle"
+    }
+  ]
+}

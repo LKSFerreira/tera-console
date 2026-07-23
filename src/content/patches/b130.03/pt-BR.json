@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "locale": "pt-BR",
+  "tabs": {
+    "bugs": {
+      "label": "Correção de Bugs",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Correção de Bugs",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "issueList",
+          "title": "Resolução de Problemas",
+          "icon": "alert-triangle",
+          "items": [
+            {
+              "main": "Corrigido o problema onde o efeito Divine Charge do Priest desaparecia ao usar Energy Stars.",
+              "notes": [
+                "Em dungeons, os efeitos benéficos de Priest e Mystic não podem mais sobrescrever um ao outro.",
+                "Em raid dungeons, os efeitos benéficos de Priest e Mystic continuam podendo sobrescrever um ao outro."
+              ]
+            },
+            {
+              "main": "Corrigido o problema onde os set effects de Accessory não realizavam stack."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

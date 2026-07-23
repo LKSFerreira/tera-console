@@ -2,6 +2,7 @@ import { AlertTriangle, Award, CalendarDays, Hammer, MessageSquare, Sparkles, St
 import { Card, SectionTitle } from '../../../components/ui';
 import { patchNotesB130PorIdioma } from '../../../data/patchNotesB130';
 import { useIdioma } from '../../../i18n/useIdioma';
+import { DynamicPatchRenderer } from '../DynamicPatchRenderer';
 
 const ListaDisc = ({ itens }: { itens: string[] }) => (
   <ul className="list-disc space-y-1 pl-5 text-slate-400">
@@ -11,39 +12,8 @@ const ListaDisc = ({ itens }: { itens: string[] }) => (
   </ul>
 );
 
-export const B130_03_BugFixesTab = () => {
-  const { idioma } = useIdioma();
-  const conteudo = patchNotesB130PorIdioma[idioma].b130_03;
-
-  return (
-    <div className="space-y-8 animate-in fade-in duration-500">
-      <SectionTitle title={conteudo.sectionTitle} icon={AlertTriangle} />
-
-      <Card className="border-red-900/30 bg-red-950/10">
-        <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-red-400">
-          <AlertTriangle className="h-5 w-5" /> {conteudo.cardTitle}
-        </h3>
-        <ul className="space-y-4 text-sm text-slate-300">
-          {conteudo.issues.map((issue) => (
-            <li key={issue.main} className="border-b border-slate-800/60 pb-4 last:border-b-0 last:pb-0">
-              <div className="flex items-start gap-2">
-                <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400" />
-                <span>{issue.main}</span>
-              </div>
-              {issue.notes ? (
-                <div className="pl-6 pt-2 text-slate-400 italic">
-                  {issue.notes.map((note) => (
-                    <p key={note}>• {note}</p>
-                  ))}
-                </div>
-              ) : null}
-            </li>
-          ))}
-        </ul>
-      </Card>
-    </div>
-  );
-};
+/** Hotfix B130.03 migrado para schema data-driven (visual preservado). */
+export const B130_03_BugFixesTab = () => <DynamicPatchRenderer patchId="b130.03" abaId="bugs" />;
 
 export const B130_02_RewardsTab = () => {
   const { idioma } = useIdioma();

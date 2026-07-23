@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "locale": "en-US",
+  "tabs": {
+    "bugs": {
+      "label": "Bug Fixes",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Bug Fixes & Corrections",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "issueList",
+          "title": "Issue Resolution",
+          "icon": "alert-triangle",
+          "items": [
+            {
+              "main": "Fixed an issue where Priest’s Divine Charge effect disappeared when using Energy Stars.",
+              "notes": [
+                "Inside dungeons, beneficial effects from Priest and Mystic can no longer overwrite each other.",
+                "Inside raid dungeons, beneficial effects from Priest and Mystic can still overwrite each other."
+              ]
+            },
+            {
+              "main": "Fixed an issue where Accessory set effects were not stacking properly."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
