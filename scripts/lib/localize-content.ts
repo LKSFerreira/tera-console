@@ -35,10 +35,26 @@ export function carregarGlossario(raizProjeto: string): Glossario {
   return JSON.parse(readFileSync(caminho, 'utf8')) as Glossario;
 }
 
-export function detectarProvedorTraducao(): ProvedorTraducao {
+/**
+ * Sem chave configurada → `none` (rápido: não chama API).
+ * MyMemory só com allowMyMemory / LOCALIZE_PROVIDER=mymemory / --translate no CLI.
+ */
+export function detectarProvedorTraducao(opcoes?: { allowMyMemory?: boolean }): ProvedorTraducao {
+  const forcado = (process.env.LOCALIZE_PROVIDER || '').trim().toLowerCase();
+  if (forcado === 'deepl' || forcado === 'openai' || forcado === 'mymemory' || forcado === 'none') {
+    if (forcado === 'deepl' && !process.env.DEEPL_AUTH_KEY?.trim()) {
+      console.warn('[localize] LOCALIZE_PROVIDER=deepl mas DEEPL_AUTH_KEY ausente');
+    }
+    if (forcado === 'openai' && !process.env.OPENAI_API_KEY?.trim() && !process.env.XAI_API_KEY?.trim()) {
+      console.warn('[localize] LOCALIZE_PROVIDER=openai mas OPENAI_API_KEY/XAI_API_KEY ausente');
+    }
+    return forcado as ProvedorTraducao;
+  }
+
   if (process.env.DEEPL_AUTH_KEY?.trim()) return 'deepl';
   if (process.env.OPENAI_API_KEY?.trim() || process.env.XAI_API_KEY?.trim()) return 'openai';
-  return 'mymemory';
+  if (opcoes?.allowMyMemory) return 'mymemory';
+  return 'none';
 }
 
 function codigoIdiomaProvedor(locale: LocaleAlvo, provedor: ProvedorTraducao): string {
@@ -444,6 +460,42 @@ export async function traduzirBlocos(
   return resultado;
 }
 
+/** Só labels de aba/sectionTitle localizados; corpo permanece EN. Instantâneo. */
+export function localizarSomenteLabels(
+  conteudoEn: ConteudoPatchLocalizado,
+  locale: LocaleAlvo,
+): ResultadoLocalizacao {
+  const labels = locale === 'pt-BR' ? LABELS_ABA_PT : LABELS_ABA_ES;
+  const tabs: ConteudoPatchLocalizado['tabs'] = {};
+
+  for (const [tabId, aba] of Object.entries(conteudoEn.tabs)) {
+    tabs[tabId] = {
+      label: labels[tabId] ?? aba.label,
+      blocks: aba.blocks.map((bloco) => {
+        if (bloco.type === 'sectionTitle') {
+          return {
+            ...bloco,
+            title: labels[tabId] ?? bloco.title,
+            icon: bloco.icon ?? ICONES_POR_ABA[tabId],
+          };
+        }
+        return bloco;
+      }),
+    };
+  }
+
+  return {
+    conteudo: { schemaVersion: 1, locale, tabs },
+    provedor: 'none',
+    warnings: [
+      'Sem provedor de tradução configurado (DEEPL_AUTH_KEY / OPENAI_API_KEY / XAI_API_KEY).',
+      'Corpo do texto permanece em EN; só labels de abas foram localizados.',
+      'Para MT: configure uma chave ou use --translate (MyMemory, lento/limitado).',
+    ],
+    stringsTraduzidas: 0,
+  };
+}
+
 export async function localizarConteudoPatch(
   conteudoEn: ConteudoPatchLocalizado,
   locale: LocaleAlvo,
@@ -457,9 +509,13 @@ export async function localizarConteudoPatch(
   const labels = locale === 'pt-BR' ? LABELS_ABA_PT : LABELS_ABA_ES;
   const tabs: ConteudoPatchLocalizado['tabs'] = {};
 
+  if (provedor === 'none') {
+    return localizarSomenteLabels(conteudoEn, locale);
+  }
+
   if (provedor === 'mymemory') {
     warnings.push(
-      'Usando MyMemory (gratuito). Qualidade e cotas limitadas — revise antes de publicar. Prefira DEEPL_AUTH_KEY ou OPENAI_API_KEY/XAI_API_KEY.',
+      'Usando MyMemory (gratuito). Lento e com cota — revise antes de publicar. Prefira DEEPL_AUTH_KEY ou OPENAI_API_KEY/XAI_API_KEY.',
     );
   }
 

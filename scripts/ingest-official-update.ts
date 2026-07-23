@@ -13,7 +13,10 @@ import { extrairNewsIdDaUrl, itemEhUpdate, obterNewsDetalhe } from './lib/api-of
 import { baixarImagensERemapearBlocos, normalizarUrlsOficiaisNasAbas } from './lib/download-images.ts';
 import { parsearHtmlOficial } from './lib/parse-official-html.ts';
 import { ICONES_POR_ABA, carregarSectionMap } from './lib/section-map.ts';
-import { localizarConteudoPatch } from './lib/localize-content.ts';
+import {
+  detectarProvedorTraducao,
+  localizarConteudoPatch,
+} from './lib/localize-content.ts';
 import {
   atualizarIndicePatches,
   derivarPatchId,
@@ -131,9 +134,19 @@ async function main() {
     tabs: parse.tabs,
   };
 
-  console.log('[ingest] localizando pt-BR / es-ES...');
-  const locPt = await localizarConteudoPatch(conteudoEn, 'pt-BR', raizProjeto);
-  const locEs = await localizarConteudoPatch(conteudoEn, 'es-ES', raizProjeto);
+  const allowMyMemory = process.argv.includes('--translate');
+  const provedor = detectarProvedorTraducao({ allowMyMemory });
+
+  if (provedor === 'none') {
+    console.log(
+      '[ingest] sem chave de tradução — labels pt/es + corpo EN (rápido). Configure DEEPL_/OPENAI_/XAI_ ou use --translate',
+    );
+  } else {
+    console.log(`[ingest] localizando pt-BR / es-ES via ${provedor}...`);
+  }
+
+  const locPt = await localizarConteudoPatch(conteudoEn, 'pt-BR', raizProjeto, provedor);
+  const locEs = await localizarConteudoPatch(conteudoEn, 'es-ES', raizProjeto, provedor);
   parse.warnings.push(
     `Tradução via ${locPt.provedor} (pt-BR: ${locPt.stringsTraduzidas} strings, es-ES: ${locEs.stringsTraduzidas} strings). Revisar antes de publicar.`,
   );

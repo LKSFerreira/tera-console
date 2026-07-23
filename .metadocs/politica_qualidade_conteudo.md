@@ -57,9 +57,10 @@ Não entram no `import.meta.glob` de patches publicados.
 
 ### Provedores (ordem)
 
-1. `DEEPL_AUTH_KEY` → DeepL (melhor para volume)
-2. `OPENAI_API_KEY` ou `XAI_API_KEY` → modelo de chat
-3. **MyMemory** (padrão sem secret) — grátis, cotas e qualidade limitadas
+1. `DEEPL_AUTH_KEY` → DeepL  
+2. `OPENAI_API_KEY` ou `XAI_API_KEY` → LLM  
+3. **Sem chave (padrão)** → `none`: labels de abas em pt/es, **corpo em EN**, **sem HTTP** (não trava)  
+4. Flag `--translate` → MyMemory (grátis, lento, cota) — só se pedir explícito  
 
 Glossário: `src/content/glossary.json` (`doNotTranslate` + `fixedPhrases`).
 
@@ -68,11 +69,15 @@ Glossário: `src/content/glossary.json` (`doNotTranslate` + `fixedPhrases`).
 ### Exemplos
 
 ```bash
-# Relocaliza um draft/archive a partir do en-US.json
-npm run content:localize -- --path src/content/sources/archive/b133.02 --force
-
-# Ingest já tenta localizar pt/es no raw-draft
+# Rápido, sem API configurada
 npm run ingest:update -- --news-id 1018
+
+# MT gratuito (lento)
+npm run ingest:update -- --news-id 1018 --translate
+
+# Com chave (PowerShell)
+# $env:DEEPL_AUTH_KEY="..."
+npm run content:localize -- --path src/content/sources/raw-drafts/b133.02 --force
 ```
 
 ## Imagens oficiais

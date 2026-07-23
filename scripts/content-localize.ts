@@ -10,7 +10,12 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { ConteudoPatchLocalizado, MetadadosPatch } from '../src/types/patchContent.ts';
-import { localizarConteudoPatch, type LocaleAlvo } from './lib/localize-content.ts';
+import {
+  detectarProvedorTraducao,
+  localizarConteudoPatch,
+  type LocaleAlvo,
+  type ProvedorTraducao,
+} from './lib/localize-content.ts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const raiz = resolve(__dirname, '..');
@@ -36,6 +41,15 @@ async function main() {
   }
 
   const force = process.argv.includes('--force');
+  const allowMyMemory = process.argv.includes('--translate') || process.argv.includes('--mymemory');
+  const provedor: ProvedorTraducao = detectarProvedorTraducao({ allowMyMemory });
+  console.log(`[localize] provedor=${provedor}`);
+  if (provedor === 'none') {
+    console.log(
+      '[localize] sem API key — só labels. Use DEEPL_AUTH_KEY / OPENAI_API_KEY / XAI_API_KEY ou --translate (MyMemory).',
+    );
+  }
+
   const conteudoEn = JSON.parse(readFileSync(enPath, 'utf8')) as ConteudoPatchLocalizado;
 
   for (const locale of ['pt-BR', 'es-ES'] as LocaleAlvo[]) {
@@ -54,7 +68,7 @@ async function main() {
     }
 
     console.log(`[localize] ${locale}...`);
-    const resultado = await localizarConteudoPatch(conteudoEn, locale, raiz);
+    const resultado = await localizarConteudoPatch(conteudoEn, locale, raiz, provedor);
     writeFileSync(outPath, `${JSON.stringify(resultado.conteudo, null, 2)}\n`, 'utf8');
     console.log(
       `[localize] ${locale}: ok via ${resultado.provedor} (${resultado.stringsTraduzidas} strings)`,

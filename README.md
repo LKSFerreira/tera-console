@@ -43,8 +43,28 @@ npm run content:localize -- --path src/content/sources/raw-drafts/b133.02 --forc
 npm run content:validate
 ```
 
-Provedores de tradução (env, opcional): `DEEPL_AUTH_KEY`, `OPENAI_API_KEY` ou `XAI_API_KEY`.  
-Sem secret usa MyMemory (grátis, revisar sempre). Glossário: `src/content/glossary.json`.
+Provedores de tradução (**só se configurar**):
+
+| Env | Efeito |
+|-----|--------|
+| `DEEPL_AUTH_KEY` | DeepL |
+| `OPENAI_API_KEY` ou `XAI_API_KEY` | LLM |
+| *(nenhum)* | **Não chama API** — labels pt/es + corpo EN (rápido) |
+| flag `--translate` | Força MyMemory (grátis, lento, cota) |
+
+```bash
+# sem chave (padrão — não trava)
+npm run ingest:update -- --news-id 1018
+
+# com MyMemory explícito
+npm run ingest:update -- --news-id 1018 --translate
+
+# com DeepL
+# $env:DEEPL_AUTH_KEY="..."
+npm run content:localize -- --path src/content/sources/raw-drafts/b133.02 --force
+```
+
+Glossário: `src/content/glossary.json`.
 
 ### GitHub Actions
 
