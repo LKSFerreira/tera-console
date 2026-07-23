@@ -1,8 +1,6 @@
-# EXPERIMENTAL - rascunho bruto da API (NAO e publicacao no portal).
-# O resultado vai para sources/raw-drafts e NUNCA para index.order.
-# Uso: laboratorio / referencia. Curadoria B131 continua manual.
-#
-# Preferir o workflow "Detect official updates" (so radar via Issue).
+# EXPERIMENTAL: rascunho bruto da API (nao publica no portal).
+# Digite LAB no input confirm_lab para rodar.
+# Preferir workflow Detect (so radar via Issue).
 
 name: Experimental raw ingest (lab only)
 
@@ -10,11 +8,11 @@ on:
   workflow_dispatch:
     inputs:
       news_ref:
-        description: 'News ID (ex. 1018) ou URL - gera rascunho bruto, NAO publica'
+        description: "News ID (ex. 1018) ou URL - rascunho bruto, nao publica"
         required: true
         type: string
       confirm_lab:
-        description: 'Digite LAB para confirmar que isto NAO publica no site'
+        description: "Digite LAB para confirmar que isto nao publica no site"
         required: true
         type: string
 
@@ -32,7 +30,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     if: inputs.confirm_lab == 'LAB'
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -42,7 +39,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: "22"
           cache: npm
 
       - name: Install dependencies
@@ -50,7 +47,6 @@ jobs:
 
       - name: Ingest as draft (never published)
         env:
-          # Secret do repositorio (Settings -> Secrets -> Actions). Nao commitar .env.
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.6-flash' }}
         run: |
@@ -65,16 +61,16 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: ':warning: data: rascunho bruto de ingest (NAO publicar no portal)'
-          title: 'WIP/EXPERIMENTAL: rascunho bruto `${{ inputs.news_ref }}` - NAO mergear como conteudo final'
+          commit-message: ":warning: data: rascunho bruto de ingest (nao publicar no portal)"
+          title: "WIP/EXPERIMENTAL: rascunho bruto `${{ inputs.news_ref }}` - nao mergear como conteudo final"
           body: |
-            ## Rascunho experimental - NAO e conteudo do portal
+            ## Rascunho experimental - nao e conteudo do portal
 
             Referencia: `${{ inputs.news_ref }}`
 
             ### Politica
-            - O portal **so** publica conteudo no padrao **B131** (curadoria).
-            - Este PR e lixo estruturado da API / parser - **nao mergear** na `main` como patch pronto.
+            - O portal so publica conteudo no padrao B131 (curadoria).
+            - Este PR e rascunho da API/parser - nao mergear na main como patch pronto.
             - Use so como referencia para curadoria manual.
 
             Se abriu por engano: feche o PR sem merge.

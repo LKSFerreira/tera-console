@@ -1,15 +1,12 @@
-# RADAR apenas: detecta UPDATES oficiais e abre Issue.
-# Nao ingere conteudo no portal. Nao publica patch notes.
-# Cadencia: a cada ~3 dias (~5x/quinzena) + dispatch manual.
-#
-# Setup (uma vez): Settings -> Actions -> Workflow permissions
-#   -> Read and write (issues) / Allow creating issues via Actions
+# Radar: detecta UPDATES oficiais e abre Issue.
+# Nao publica no portal. Curadoria B131 continua manual.
+# Cron: a cada ~3 dias + Run workflow manual.
 
 name: Detect official updates
 
 on:
   schedule:
-    - cron: '0 12 */3 * *'
+    - cron: "0 12 */3 * *"
   workflow_dispatch:
 
 permissions:
@@ -22,10 +19,9 @@ concurrency:
 
 jobs:
   detect:
-    name: Detect + open issue
+    name: Detect and open issue
     runs-on: ubuntu-latest
     timeout-minutes: 15
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,7 +29,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: "22"
           cache: npm
 
       - name: Install dependencies
@@ -45,7 +41,7 @@ jobs:
 
       - name: Nothing new
         if: steps.detect.outputs.count == '0'
-        run: echo "Nenhum UPDATE novo."
+        run: echo "Nenhum UPDATE faltando no portal."
 
       - name: Create tracking issue
         if: steps.detect.outputs.count != '0'
@@ -57,14 +53,11 @@ jobs:
         run: |
           set -euo pipefail
           BODY_FILE=$(mktemp)
-
           npx tsx scripts/format-radar-issue.ts > "$BODY_FILE"
-
           gh label create "content" --description "Radar / conteudo de patch" --color "1D76DB" 2>/dev/null || true
           gh label create "radar" --description "Detect oficial" --color "0E8A16" 2>/dev/null || true
-
           gh issue create \
-            --title "Radar: ${COUNT} update(s) oficial(is) pendente(s) - ${IDS}" \
+            --title "Radar: ${COUNT} update(s) pendente(s) - ${IDS}" \
             --body-file "$BODY_FILE" \
             --label "content" \
             --label "radar"
