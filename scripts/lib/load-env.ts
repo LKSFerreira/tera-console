@@ -38,15 +38,13 @@ export function carregarEnv(raizProjeto: string): void {
     }
   }
 
-  // aliases comuns
+  // Compat: GEMINI legado → nome canônico GEMINI_API_KEY
   if (!process.env.GEMINI_API_KEY?.trim() && process.env.GEMINI?.trim()) {
-    process.env.GEMINI_API_KEY = process.env.GEMINI;
-  }
-  if (!process.env.GEMINI?.trim() && process.env.GEMINI_API_KEY?.trim()) {
-    process.env.GEMINI = process.env.GEMINI_API_KEY;
+    process.env.GEMINI_API_KEY = process.env.GEMINI.trim();
   }
 }
 
+/** Nome canônico: GEMINI_API_KEY. Aceita GEMINI só por compatibilidade. */
 export function obterChaveGemini(): string | undefined {
   const chave = process.env.GEMINI_API_KEY?.trim() || process.env.GEMINI?.trim();
   return chave || undefined;

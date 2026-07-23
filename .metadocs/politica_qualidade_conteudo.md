@@ -57,14 +57,15 @@ Não entram no `import.meta.glob` de patches publicados.
 
 ### Provedores (ordem)
 
-1. **`GEMINI` / `GEMINI_API_KEY` no `.env`** → Gemini API (default **`gemini-3.6-flash`**)  
+1. **`GEMINI_API_KEY` no `.env`** (e no GitHub Secret com o mesmo nome) → Gemini (default **`gemini-3.6-flash`**)  
 2. `DEEPL_AUTH_KEY` → DeepL  
 3. `OPENAI_API_KEY` / `XAI_API_KEY` → LLM OpenAI-compat  
 4. **Sem chave** → `none`: labels pt/es + corpo EN (rápido)  
 5. `--translate` → MyMemory (só se pedir)  
 
-Override de modelo: `GEMINI_MODEL=gemini-3.1-flash-lite` (mais barato) ou `gemini-3.6-flash` (recomendado).  
-Arquivo local: `.env` (gitignored). Modelo: `.env.example`.
+- Nome canônico da chave: **`GEMINI_API_KEY`** (não use só `GEMINI` em docs/novos setups; o código ainda aceita `GEMINI` legado).  
+- Modelo: `GEMINI_MODEL=gemini-3.6-flash` ou `gemini-3.1-flash-lite`.  
+- Arquivo local: `.env` (gitignored). Template: `.env.example`.
 
 Glossário: `src/content/glossary.json` (`doNotTranslate` + `fixedPhrases`).
 

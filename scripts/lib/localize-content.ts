@@ -1,6 +1,6 @@
 /**
  * Localização EN → pt-BR / es-ES com glossário e provedores:
- * 1) GEMINI / GEMINI_API_KEY (default gemini-3.6-flash)
+ * 1) GEMINI_API_KEY (default gemini-3.6-flash; alias legado GEMINI)
  * 2) DEEPL_AUTH_KEY
  * 3) OPENAI_API_KEY / XAI_API_KEY
  * 4) MyMemory só com --translate
@@ -54,7 +54,7 @@ export function detectarProvedorTraducao(opcoes?: { allowMyMemory?: boolean }): 
     forcado === 'none'
   ) {
     if (forcado === 'gemini' && !obterChaveGemini()) {
-      console.warn('[localize] LOCALIZE_PROVIDER=gemini mas GEMINI/GEMINI_API_KEY ausente');
+      console.warn('[localize] LOCALIZE_PROVIDER=gemini mas GEMINI_API_KEY ausente');
     }
     if (forcado === 'deepl' && !process.env.DEEPL_AUTH_KEY?.trim()) {
       console.warn('[localize] LOCALIZE_PROVIDER=deepl mas DEEPL_AUTH_KEY ausente');
@@ -89,7 +89,7 @@ function modeloGemini(): string {
 async function traduzirGemini(texto: string, locale: LocaleAlvo): Promise<string> {
   const apiKey = obterChaveGemini();
   if (!apiKey) {
-    throw new Error('GEMINI / GEMINI_API_KEY ausente');
+    throw new Error('GEMINI_API_KEY ausente');
   }
 
   const model = modeloGemini();
@@ -563,9 +563,9 @@ export function localizarSomenteLabels(
     conteudo: { schemaVersion: 1, locale, tabs },
     provedor: 'none',
     warnings: [
-      'Sem provedor de tradução configurado (GEMINI/GEMINI_API_KEY, DEEPL_AUTH_KEY, OPENAI_API_KEY, XAI_API_KEY).',
+      'Sem provedor de tradução configurado (GEMINI_API_KEY, DEEPL_AUTH_KEY, OPENAI_API_KEY, XAI_API_KEY).',
       'Corpo do texto permanece em EN; só labels de abas foram localizados.',
-      'Para MT: coloque a chave no .env ou use --translate (MyMemory, lento/limitado).',
+      'Para MT: defina GEMINI_API_KEY no .env (ou secret no GitHub) ou use --translate (MyMemory).',
     ],
     stringsTraduzidas: 0,
   };

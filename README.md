@@ -47,7 +47,7 @@ Provedores de tradução (via `.env` na raiz — ver `.env.example`):
 
 | Env | Efeito |
 |-----|--------|
-| `GEMINI` ou `GEMINI_API_KEY` | **Gemini** (default `gemini-3.6-flash`) |
+| `GEMINI_API_KEY` | **Gemini** (default `gemini-3.6-flash`) |
 | `GEMINI_MODEL` | Override (ex.: `gemini-3.1-flash-lite`) |
 | `DEEPL_AUTH_KEY` | DeepL |
 | `OPENAI_API_KEY` / `XAI_API_KEY` | LLM OpenAI-compat |
@@ -55,11 +55,13 @@ Provedores de tradução (via `.env` na raiz — ver `.env.example`):
 | `--translate` | MyMemory (só se pedir) |
 
 ```bash
-# com .env contendo GEMINI=...
+# .env com GEMINI_API_KEY=...
 npm run ingest:update -- --news-id 1018
 
 npm run content:localize -- --path src/content/sources/raw-drafts/b133.02 --force
 ```
+
+No GitHub Actions, cadastre o secret com o **mesmo nome**: `GEMINI_API_KEY`.
 
 Glossário: `src/content/glossary.json`.
 

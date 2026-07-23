@@ -141,7 +141,7 @@ async function main() {
 
   if (provedor === 'none') {
     console.log(
-      '[ingest] sem chave de tradução — labels pt/es + corpo EN. Configure GEMINI no .env (recomendado: gemini-3.6-flash) ou use --translate',
+      '[ingest] sem chave de tradução — labels pt/es + corpo EN. Configure GEMINI_API_KEY no .env (modelo: gemini-3.6-flash) ou use --translate',
     );
   } else if (provedor === 'gemini') {
     console.log(

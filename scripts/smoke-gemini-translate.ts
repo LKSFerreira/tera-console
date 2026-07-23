@@ -13,7 +13,7 @@ carregarEnv(raiz);
 const provedor = detectarProvedorTraducao();
 console.log(`[smoke] provedor=${provedor}`);
 console.log(`[smoke] model=${process.env.GEMINI_MODEL || 'gemini-3.6-flash'}`);
-console.log(`[smoke] chave_configurada=${Boolean(process.env.GEMINI || process.env.GEMINI_API_KEY)}`);
+console.log(`[smoke] chave_configurada=${Boolean(process.env.GEMINI_API_KEY || process.env.GEMINI)}`);
 
 const glossario = carregarGlossario(raiz);
 const amostra =
