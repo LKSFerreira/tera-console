@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "b130.01",
+  "buildLabel": "B130.01",
+  "kind": "update",
+  "status": "published",
+  "parse": {
+    "quality": "ok",
+    "warnings": [
+      "Migrado do legado TypeScript (Etapa 5)"
+    ],
+    "unmappedHeadings": [],
+    "fallbackTabs": []
+  },
+  "display": {
+    "pt-BR": {
+      "name": "Last Stand Update",
+      "date": "26 de Fevereiro de 2026",
+      "parts": ""
+    },
+    "en-US": {
+      "name": "Last Stand Update",
+      "date": "February 26, 2026",
+      "parts": ""
+    },
+    "es-ES": {
+      "name": "Last Stand Update",
+      "date": "26 de febrero de 2026",
+      "parts": ""
+    }
+  },
+  "tabs": [
+    {
+      "id": "battlepass",
+      "icon": "award"
+    },
+    {
+      "id": "dungeons",
+      "icon": "swords"
+    },
+    {
+      "id": "crafting",
+      "icon": "hammer"
+    },
+    {
+      "id": "classes",
+      "icon": "user-cog"
+    },
+    {
+      "id": "system",
+      "icon": "settings"
+    }
+  ]
+}

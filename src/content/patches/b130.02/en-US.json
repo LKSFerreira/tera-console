@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 1,
+  "locale": "en-US",
+  "tabs": {
+    "rewards": {
+      "label": "Rewards & Dungeon Drops",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Rewards & Dungeon Drops",
+          "icon": "award"
+        },
+        {
+          "type": "devNote",
+          "title": "Developer's Notes",
+          "paragraphs": [
+            "The DPS meter is a temporary feature and there are no plans to expand it further, since development related to that feature is viewed negatively from the developer perspective. It will remain until B130, and any continued implementation will be reviewed separately.",
+            "Runes are high-tier progression content, and Rune Stat Change Stone is intended to drop only from higher-tier dungeons. For players with lower item level, rune progression is much less efficient, so access will be intentionally restricted to keep the focus on systems like Stigma and Card.",
+            "Dungeon Reset Scrolls can only be dismantled in composite versions. There are no plans to support dismantling General items, so players are advised to keep them until the relevant dungeons are added later."
+          ],
+          "tone": "sky"
+        },
+        {
+          "type": "cardGrid",
+          "columns": 2,
+          "cards": [
+            {
+              "title": "Dungeon Rewards",
+              "titleTone": "amber",
+              "blocks": [
+                {
+                  "type": "subsection",
+                  "title": "Cursed Antaroth's Abyss",
+                  "blocks": [
+                    {
+                      "type": "bulletList",
+                      "items": [
+                        "Rune Stat Change Stone drops as shared party loot.",
+                        "Rune Stat Change Stone Crate (Tradeable) can drop as a personal loot alternative and grants 5 to 20 stones at random when opened."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "subsection",
+                  "title": "Ghillieglade (ELITE GOLD)",
+                  "blocks": [
+                    {
+                      "type": "bulletList",
+                      "items": [
+                        "Arun/Shara Stone Jewel Gacha Box (Lv. 1) can now grant Rune Stat Change Stone.",
+                        "Arun/Shara Stone Jewel Gacha Box (Lv. 1~3) can now grant Diamond.",
+                        "Bracelet of Absolute Equilibrium can now grant God's Power Stone.",
+                        "Drops of Fluorite Shard, Rune Stat Change and rune materials were increased, while Runestone drop rate was reduced."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Vanguard & Dismantling",
+              "titleTone": "amber",
+              "blocks": [
+                {
+                  "type": "subsection",
+                  "title": "Vanguard Request",
+                  "blocks": [
+                    {
+                      "type": "bulletList",
+                      "items": [
+                        "The base reputation reward for Abyss of the Cursed Antaroth (Last Stand) was adjusted from 1000 to 1150."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "subsection",
+                  "title": "Dismantling Added",
+                  "blocks": [
+                    {
+                      "type": "bulletList",
+                      "items": [
+                        "Growth Support: [Season 1] Enhancement Powder (30 days)",
+                        "Growth Support: [Season 1] Enhancement Powder (Entire Season)",
+                        "Instance Reset Scroll"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "classes": {
+      "label": "Classes & Balance",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Classes & Balance",
+          "icon": "user-cog"
+        },
+        {
+          "type": "card",
+          "title": "Healer Balance",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "After the recent healer coefficient update, the balance between Priest and Mystic became severely distorted. Mystic will be adjusted to bring the situation closer to the intended balance.",
+                "The amplification rate of healer-provided effects increased by more than 8x compared to before, making parties with two healers stronger than parties with one healer. High survivability is intentional, but high performance is not, so measures were taken to prevent both sets of effects from stacking."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "cardGrid",
+          "columns": 2,
+          "cards": [
+            {
+              "title": "Mystic",
+              "titleTone": "amber",
+              "blocks": [
+                {
+                  "type": "subsection",
+                  "title": "Fortified Thrall of Vengeance",
+                  "blocks": [
+                    {
+                      "type": "paragraphs",
+                      "items": [
+                        "Power increase changed from 23 to 28."
+                      ]
+                    },
+                    {
+                      "type": "bulletList",
+                      "items": [
+                        "When applied, it removes Priest’s Blessing of Shakan and Energy Stars."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "subsection",
+                  "title": "Summon: Thrall Lord",
+                  "blocks": [
+                    {
+                      "type": "paragraphs",
+                      "items": [
+                        "Cooldown changed from 600 to 150 seconds."
+                      ]
+                    },
+                    {
+                      "type": "bulletList",
+                      "items": [
+                        "If used after Thrall Augmentation:",
+                        "Power increase changes from 15 to 55.",
+                        "Duration changes from 30s to 25s.",
+                        "Removes Blessing of Shakan and Energy Stars."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Priest",
+              "titleTone": "amber",
+              "blocks": [
+                {
+                  "type": "subsection",
+                  "title": "Blessing of Shakan / Energy Stars",
+                  "blocks": [
+                    {
+                      "type": "paragraphs",
+                      "items": [
+                        "When used, it forcibly removes Mystic's Fortified Thrall of Vengeance and Thrall Lord's Favor."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "subsection",
+                  "title": "Kaia's Shield",
+                  "blocks": [
+                    {
+                      "type": "paragraphs",
+                      "items": [
+                        "Changed from a lock-on shot-type skill into an instant-cast skill."
+                      ]
+                    },
+                    {
+                      "type": "bulletList",
+                      "items": [
+                        "This change was made to reduce cancels in high-ping environments."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Warrior & System",
+              "titleTone": "amber",
+              "blocks": [
+                {
+                  "type": "subsection",
+                  "title": "Warrior: Blade Draw",
+                  "blocks": [
+                    {
+                      "type": "paragraphs",
+                      "items": [
+                        "The effect that reduces the remaining cooldown of Infuriate was significantly reduced."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "subsection",
+                  "title": "System Messages",
+                  "blocks": [
+                    {
+                      "type": "paragraphs",
+                      "items": [
+                        "System messages triggered by class glyph effects will no longer be shown. This may be rolled back if it hurts combat recognition."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "system": {
+      "label": "Bug Fixes & System",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Bug Fixes & System",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "issueList",
+          "title": "Bug Fixes & System",
+          "icon": "alert-triangle",
+          "items": [
+            {
+              "main": "Fixed an issue in Abyss of the Cursed Antaroth (Last Stand) where an impossible wipe pattern could occur after specific actions."
+            },
+            {
+              "main": "Fixed an issue in Refined Stigma where a rare cooldown option could be selected."
+            },
+            {
+              "main": "Fixed an issue in the language package where the translation value for “Will of Battle” was incorrect."
+            },
+            {
+              "main": "Fixed an issue where the entry animation disappeared when applying shaders/post-processing, such as Godsfall skills."
+            },
+            {
+              "main": "Fixed an issue where event recipes could not be crafted."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

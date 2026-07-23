@@ -1,0 +1,509 @@
+{
+  "schemaVersion": 1,
+  "locale": "es-ES",
+  "tabs": {
+    "battlepass": {
+      "label": "Battle Pass - EVENT SEASON",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Battle Pass - EVENT SEASON",
+          "icon": "award"
+        },
+        {
+          "type": "cardGrid",
+          "columns": 2,
+          "cards": [
+            {
+              "title": "Evento Especial: 5 Semanas",
+              "titleTone": "amber",
+              "blocks": [
+                {
+                  "type": "paragraphs",
+                  "items": [
+                    "El evento Battle Pass dura 5 semanas, desde el 26/02/2026 hasta el 02/04/2026."
+                  ]
+                },
+                {
+                  "type": "callout",
+                  "tone": "warning",
+                  "text": "Puede adquirirse por 1.000 TERA Coins."
+                },
+                {
+                  "type": "callout",
+                  "tone": "info",
+                  "text": "Se devuelven 500 TERA Coins como payback en el Nivel 50."
+                }
+              ]
+            },
+            {
+              "title": "Recompensas Principales",
+              "titleTone": "amber",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "[Rare] Passionate Yukata Box",
+                    "Perfect Stigma Crystal (Legendary)",
+                    "Refined Stigma Crystal (Legendary)",
+                    "Dungeon Reset Scroll Fragment",
+                    "500 TERA Coins"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "dungeons": {
+      "label": "Nuevas Dungeons",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Nuevas Dungeons",
+          "icon": "swords"
+        },
+        {
+          "type": "card",
+          "title": "Cursed Antaroth - Last Stand",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "keyValueList",
+              "rows": [
+                {
+                  "label": "Item level",
+                  "value": "Item Level: 900"
+                },
+                {
+                  "label": "Entry",
+                  "value": "Entry limit: 2"
+                }
+              ]
+            },
+            {
+              "type": "cardGrid",
+              "columns": 2,
+              "cards": [
+                {
+                  "title": "Entrada & Leaderboard",
+                  "blocks": [
+                    {
+                      "type": "subsection",
+                      "title": "Entrada & Leaderboard",
+                      "blocks": [
+                        {
+                          "type": "bulletList",
+                          "items": [
+                            "Comparte consumo de entrada con Cursed Antaroth / Hard.",
+                            "Se puede entrar con reset scrolls aunque las entradas compartidas estén en 0.",
+                            "No se puede usar Battle Pass: All Dungeon Reset Scrolls.",
+                            "Se añadió leaderboard en tiempo real sin recompensas asociadas."
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "subsection",
+                      "title": "Mecánicas",
+                      "blocks": [
+                        {
+                          "type": "bulletList",
+                          "items": [
+                            "En ciertos umbrales de HP se aplican aleatoriamente restricciones de heal o resurrección.",
+                            "Se aplica aleatoriamente 1 de 3 mecánicas especiales junto con patterns condicionales."
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "Recompensas y Drops",
+                  "blocks": [
+                    {
+                      "type": "bulletList",
+                      "items": [
+                        "La acquisition en las boxes fue levemente aumentada.",
+                        "El ítem Cursed Abyss Power deja de caer en las boxes.",
+                        "Los materiales de Rune pasan a caer con 100% de cantidad adicional.",
+                        "Drop adicional por probabilidad: Rune Essence of Inheritance, Stone Imbued with Divine Power y Random Engraving Book Box - Legendary."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Frozen Star - Lower",
+          "titleTone": "slate",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Level: 815 | Limit: 2",
+                "Loc: Westonia"
+              ]
+            },
+            {
+              "type": "bulletList",
+              "items": [
+                "La recompensa del Vanguard Request es igual a la del tier 800.",
+                "Incluye parte de la drop table de la versión de tier superior.",
+                "Drops: Refined Stigma Synthesis Scroll, Stigma Refinement Stone, Crafting Design - Powder of Annihilation.",
+                "Baja probabilidad de drop de Random Engraving Book Box - Legendary."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Frozen Star - EVENT (Solo)",
+          "titleTone": "slate",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Level: 500 | Limit: 2",
+                "Loc: Velika, Highwatch",
+                "Aquí se podrán farmear los ítems necesarios para participar en el evento:"
+              ]
+            },
+            {
+              "type": "bulletList",
+              "items": [
+                "[Event] Frozen Heart",
+                "[Event] Burning Heart"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "crafting": {
+      "label": "Crafting, Stigmas & Ítems",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Crafting, Stigmas & Ítems",
+          "icon": "hammer"
+        },
+        {
+          "type": "card",
+          "title": "Bulk Gem Crafting",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Se añadieron nuevas recetas de Bulk Gem para consumir grandes cantidades de Production Points de una sola vez. Pueden obtenerse en dungeons 700+ con baja probabilidad."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "cardGrid",
+          "columns": 2,
+          "cards": [
+            {
+              "title": "Bulk Emeralds",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "PP Consumido: 600",
+                    "Materiales: 50 Sapphires, 1k Crafting Kits",
+                    "Éxito: 10 Emeralds (13 en Great Success)"
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Bulk Diamonds",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "PP Consumido: 3.500",
+                    "Materiales: 100 Emeralds, 10k Crafting Kits",
+                    "Éxito: 10 Diamonds (13 en Great Success)"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "cardGrid",
+          "columns": 2,
+          "cards": [
+            {
+              "title": "Stigma & Runes",
+              "blocks": [
+                {
+                  "type": "subsection",
+                  "title": "Stigma Updates",
+                  "blocks": [
+                    {
+                      "type": "bulletList",
+                      "items": [
+                        "Los efectos Common dejarán de aparecer; los stigmas actuales se convertirán en Superior.",
+                        "Se redujeron los costos de gold para cambiar opciones en las etapas Superior y Rare.",
+                        "La probabilidad de enhancement y la compensación por fallo aumentaron bastante, de 1% a 5%.",
+                        "Legendary Stigmas pueden subir a Refined Stigma por 1.5M gold sin preservar las opciones aleatorias."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "subsection",
+                  "title": "Runes Updates",
+                  "blocks": [
+                    {
+                      "type": "bulletList",
+                      "items": [
+                        "El límite de cambio de opciones sube de 5 a 100 veces.",
+                        "El consumo de option change stones y gold para Rune polishing aumentó de forma notable."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Misc Items & Systems",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "ELITE GOLD: el cooldown de resurrección cambió de 24h a 2 horas.",
+                    "World Event: se añadió un merchant de intercambio de Reputation Point en Highwatch.",
+                    "Pet Adventures: Arborea’s Golden/Silver Plate fueron removidos; se añadieron Fluorite Fragments y Broken Rune Pieces.",
+                    "Bracelets pueden ser desmontados a cambio de 5 Fluorites, con baja probabilidad de drop de Stone Imbued with Divine Power.",
+                    "Reset Scrolls pueden desmontarse en fragmentos para intercambiar por scrolls de otras dungeons, y su cooldown pasó a 30 minutos."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "classes": {
+      "label": "Classes & Skills",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Classes & Skills",
+          "icon": "user-cog"
+        },
+        {
+          "type": "cardGrid",
+          "columns": 2,
+          "cards": [
+            {
+              "title": "Mystic",
+              "titleTone": "amber",
+              "blocks": [
+                {
+                  "type": "subsection",
+                  "title": "Thrall Augmentation + Summon: Thrall Lord",
+                  "blocks": [
+                    {
+                      "type": "bulletList",
+                      "items": [
+                        "Si se invoca durante la skill, concede Power +15 y Attack Speed +5% a la party durante 30s.",
+                        "La animación fue simplificada y ahora invoca un Thrall Lord rosa.",
+                        "No hace dismiss de Thrall of Wrath/Vengeance, aunque la coexistencia sigue restringida."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Priest",
+              "titleTone": "amber",
+              "blocks": [
+                {
+                  "type": "subsection",
+                  "title": "Kaia's Shield V",
+                  "blocks": [
+                    {
+                      "type": "paragraphs",
+                      "items": [
+                        "Después del lock-on, el casteo ahora permite movimiento."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "subsection",
+                  "title": "Divine Charge",
+                  "blocks": [
+                    {
+                      "type": "paragraphs",
+                      "items": [
+                        "Con carga máxima, critical power sube de 20% a 40%."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Berserker",
+              "titleTone": "amber",
+              "blocks": [
+                {
+                  "type": "subsection",
+                  "title": "Unleashed",
+                  "blocks": [
+                    {
+                      "type": "bulletList",
+                      "items": [
+                        "Casting speed 20% más rápido y permanece evasivo hasta que salga el shockwave.",
+                        "Recupera gran cantidad de Rage con el shockwave y puede cancelarse con Beastly Charge al máximo Rage."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "subsection",
+                  "title": "Frenzy",
+                  "blocks": [
+                    {
+                      "type": "paragraphs",
+                      "items": [
+                        "Cooldown reducido de 90s a 70s y Power ajustado de 20% a 16%."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Warrior",
+              "titleTone": "amber",
+              "blocks": [
+                {
+                  "type": "subsection",
+                  "title": "Cross Parry",
+                  "blocks": [
+                    {
+                      "type": "paragraphs",
+                      "items": [
+                        "Después de un bloqueo exitoso, Storm Aura ya no desaparece. Perfect Block habilitado."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "subsection",
+                  "title": "Blade Frenzy: Slash",
+                  "blocks": [
+                    {
+                      "type": "paragraphs",
+                      "items": [
+                        "Al usarla, reduce el cooldown de Infuriate."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Ninja",
+              "titleTone": "amber",
+              "blocks": [
+                {
+                  "type": "subsection",
+                  "title": "Willpower Skills",
+                  "blocks": [
+                    {
+                      "type": "paragraphs",
+                      "items": [
+                        "La recuperación de Willpower aumentó en Shuriken Burst, Spread Shuriken, Throw Fireball y Quick Attack."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "subsection",
+                  "title": "Evasion Skills",
+                  "blocks": [
+                    {
+                      "type": "paragraphs",
+                      "items": [
+                        "El tiempo de evasión aumentó ligeramente en Retreat, Inner Harmony y Evasive Smoke."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "System Messages",
+              "titleTone": "amber",
+              "blocks": [
+                {
+                  "type": "subsection",
+                  "title": "System Messages",
+                  "blocks": [
+                    {
+                      "type": "paragraphs",
+                      "items": [
+                        "Los mensajes de sistema activados por cada clase dejarán de mostrarse. El cambio puede revertirse si afecta el seguimiento del combate."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "system": {
+      "label": "Corrección de Bugs & Sistema",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Corrección de Bugs & Sistema",
+          "icon": "settings"
+        },
+        {
+          "type": "issueList",
+          "title": "Corrección de Bugs & Sistema",
+          "icon": "alert-triangle",
+          "items": [
+            {
+              "main": "Se corrigió la ausencia del nombre de la mascota Kunkun en idiomas distintos al coreano."
+            },
+            {
+              "main": "Se corrigió un problema donde Reaper podía ignorar special patterns de Cursed Antaroth."
+            },
+            {
+              "main": "Se corrigió un problema donde la probabilidad no aumentaba de acuerdo con la gear EXP para Brooch of the Solemn Oath y Circlet of the Solemn Oath."
+            },
+            {
+              "main": "Se corrigió un problema donde no aparecían mensajes en Cursed Antaroth."
+            },
+            {
+              "main": "Se corrigió un wipe attack que no se activaba incluso cuando se cumplían las condiciones en Cursed Antaroth (Hard)."
+            },
+            {
+              "main": "Se corrigieron los quest steps de la misión To Stop the Ghilliedhus en la aldea."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

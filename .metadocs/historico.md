@@ -2,6 +2,9 @@
 
 Este arquivo concentra o rastreio cronológico de funcionalidades entregues, walkthroughs e documentações arquiteturais pós-entrega na base.
 
+## 2026-07-23
+- **Automação de conteúdo (Etapas 1–5 parciais):** renderer data-driven (`DynamicPatchRenderer`), índice dinâmico (`index.json`), CLI de ingestão da API oficial (`npm run ingest:update`), GitHub Actions com cron a cada ~3 dias e PR draft, migração de B130.01/02/03 e importação de B133/B133.02. Legado TSX restante: B131.01. Plano: `.metadocs/implementacao_automacao_patches.md`. Ops: `.metadocs/github_actions_conteudo.md`.
+
 ## 2026-04-10
 - [Correção de Build (Vercel)](walkthrough/fix_build_vercel.md): Remoção de ícones, constantes e estados não utilizados (código morto) que impediam a compilação do TypeScript no ambiente de produção.
 - [Consolidação e Redesign do Hero](walkthrough/redesign_hero_simplificacao.md): Simplificação drástica da altura dos cards, transformação do perfil em link direto ao GitHub, seletor de idioma compacto movido para a sidebar e ajuste final de tipografia de marca.

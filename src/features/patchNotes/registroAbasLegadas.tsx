@@ -1,14 +1,6 @@
-import { AlertTriangle, Award, BookOpen, CalendarDays, Hammer, Settings, Shield, Swords, UserCog, type LucideIcon } from 'lucide-react';
+import { Award, BookOpen, CalendarDays, Hammer, Settings, Shield, Swords, type LucideIcon } from 'lucide-react';
 import type { ComponentType } from 'react';
 import {
-  B130_01_BattlePassTab,
-  B130_01_ClassesTab,
-  B130_01_CraftingItemsTab,
-  B130_01_DungeonsTab,
-  B130_01_SystemTab,
-  B130_02_ClassesTab,
-  B130_02_RewardsTab,
-  B130_02_SystemTab,
   B131_BattlePassTab,
   B131_CraftingTab,
   B131_DungeonsTab,
@@ -24,8 +16,8 @@ export type RegistroAbaPatch = {
 };
 
 /**
- * Abas ainda montadas em TSX legado.
- * Patches data-driven NÃO entram aqui — usam DynamicPatchRenderer + meta.tabs.
+ * Único patch ainda em TSX legado: B131.01.
+ * Demais builds usam DynamicPatchRenderer + content/patches.
  */
 export const registroAbasLegadas: Record<string, Partial<Record<string, RegistroAbaPatch>>> = {
   'b131.01': {
@@ -36,17 +28,5 @@ export const registroAbasLegadas: Record<string, Partial<Record<string, Registro
     events: { icon: CalendarDays, component: B131_EventsTab },
     crafting: { icon: Hammer, component: B131_CraftingTab },
     system: { icon: Settings, component: B131_SystemTab },
-  },
-  'b130.02': {
-    rewards: { icon: Award, component: B130_02_RewardsTab },
-    classes: { icon: UserCog, component: B130_02_ClassesTab },
-    system: { icon: AlertTriangle, component: B130_02_SystemTab },
-  },
-  'b130.01': {
-    battlepass: { icon: Award, component: B130_01_BattlePassTab },
-    dungeons: { icon: Swords, component: B130_01_DungeonsTab },
-    crafting: { icon: Hammer, component: B130_01_CraftingItemsTab },
-    classes: { icon: UserCog, component: B130_01_ClassesTab },
-    system: { icon: Settings, component: B130_01_SystemTab },
   },
 };

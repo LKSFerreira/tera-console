@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "b130.02",
+  "buildLabel": "B130.02",
+  "kind": "update",
+  "status": "published",
+  "parse": {
+    "quality": "ok",
+    "warnings": [
+      "Migrado do legado TypeScript (Etapa 5)"
+    ],
+    "unmappedHeadings": [],
+    "fallbackTabs": []
+  },
+  "display": {
+    "pt-BR": {
+      "name": "Build Update",
+      "date": "12 de Março de 2026",
+      "parts": ""
+    },
+    "en-US": {
+      "name": "Build Update",
+      "date": "March 12, 2026",
+      "parts": ""
+    },
+    "es-ES": {
+      "name": "Build Update",
+      "date": "12 de marzo de 2026",
+      "parts": ""
+    }
+  },
+  "tabs": [
+    {
+      "id": "rewards",
+      "icon": "award"
+    },
+    {
+      "id": "classes",
+      "icon": "user-cog"
+    },
+    {
+      "id": "system",
+      "icon": "alert-triangle"
+    }
+  ]
+}
