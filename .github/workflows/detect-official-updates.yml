@@ -50,14 +50,20 @@ jobs:
           PAYLOAD: ${{ steps.detect.outputs.payload }}
           IDS: ${{ steps.detect.outputs.ids }}
           COUNT: ${{ steps.detect.outputs.count }}
+          # Dono do repo = assignee + mencao (notificacao)
+          ISSUE_ASSIGNEE: ${{ github.repository_owner }}
         run: |
           set -euo pipefail
           BODY_FILE=$(mktemp)
           npx tsx scripts/format-radar-issue.ts > "$BODY_FILE"
+
           gh label create "content" --description "Radar / conteudo de patch" --color "1D76DB" 2>/dev/null || true
           gh label create "radar" --description "Detect oficial" --color "0E8A16" 2>/dev/null || true
+
+          # Labels + te atribui (Assignee) para aparecer em "Assigned to you" e notificar
           gh issue create \
             --title "Radar: ${COUNT} update(s) pendente(s) - ${IDS}" \
             --body-file "$BODY_FILE" \
             --label "content" \
-            --label "radar"
+            --label "radar" \
+            --assignee "${ISSUE_ASSIGNEE}"

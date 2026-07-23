@@ -5,6 +5,10 @@
 const payloadBruto = process.env.PAYLOAD ?? '{}';
 const count = process.env.COUNT ?? '0';
 const ids = process.env.IDS ?? '';
+const assignee = (process.env.ISSUE_ASSIGNEE ?? process.env.GITHUB_REPOSITORY_OWNER ?? 'LKSFerreira').replace(
+  /^@/,
+  '',
+);
 
 type Item = {
   id?: number;
@@ -37,8 +41,8 @@ const secoesPendentes = items
   .map((item, indice) => {
     const titulo = item.title?.trim() || `Update #${item.id ?? '?'}`;
     const url = item.url ?? `https://tera-console.com/news/${item.id ?? ''}`;
-    const id = item.id ?? ' - ';
-    const patchId = item.patchId ?? ' - ';
+    const id = item.id ?? '-';
+    const patchId = item.patchId ?? '-';
 
     return `### ${indice + 1}. ${titulo}
 
@@ -47,7 +51,7 @@ const secoesPendentes = items
 | **News ID** | \`${id}\` |
 | **Patch ID (portal)** | \`${patchId}\` |
 | **Patch note oficial** | [Abrir no tera-console.com](${url}) |
-| **Status no portal** | ⏳ **Faltando** - não está em \`index.order\` |
+| **Status no portal** | ⏳ **Faltando** - nao esta em \`index.order\` |
 `;
   })
   .join('\n---\n\n');
@@ -70,28 +74,41 @@ const checklist = items
   })
   .join('\n');
 
-const corpo = `## 📡 Radar de UPDATE oficial
+const corpo = `## Radar de UPDATE oficial
 
-Olá! Comparando a **API oficial** com o que o **portal publica hoje**, faltam **${count}** update(s) de curadoria.
+@${assignee} - novos updates oficiais precisam de curadoria no portal.
+
+Comparando a **API oficial** com o que o **portal publica hoje**, faltam **${count}** update(s).
 
 > [!IMPORTANT]
-> **Isto não publica nada no site.**
-> O portal só sobe conteúdo no padrão **B131** (curadoria humana, visual caprichado).
-> Ingest automático bruto **não** entra em produção.
+> **Isto nao publica nada no site.**
+> O portal so sobe conteudo no padrao **B131** (curadoria humana, visual caprichado).
+> Ingest automatico bruto **nao** entra em producao.
 
 > [!NOTE]
-> Na página 1 da API há **${page1Count}** UPDATE(s) oficiais.
-> Destes, **${onPortal.length}** já têm correspondência no portal e **${count}** ainda **não**.
+> Na pagina 1 da API ha **${page1Count}** UPDATE(s) oficiais.
+> Destes, **${onPortal.length}** ja tem correspondencia no portal e **${count}** ainda **nao**.
 
 ---
 
-## 📦 Faltando no portal (ação necessária)
+## Metadados desta issue
 
-${secoesPendentes || '_Nenhum pendente (portal em dia com a página 1)._'}
+| Campo | Valor |
+| ----- | ----- |
+| **Assignee** | @${assignee} |
+| **Labels** | \`content\`, \`radar\` |
+| **IDs pendentes** | \`${ids}\` |
+| **Fonte** | \`api.tera-console.com\` |
 
 ---
 
-## ✅ Já cobertos pelo portal (referência)
+## Faltando no portal (acao necessaria)
+
+${secoesPendentes || '_Nenhum pendente (portal em dia com a pagina 1)._'}
+
+---
+
+## Ja cobertos pelo portal (referencia)
 
 IDs em \`index.order\` agora: \`${portalOrder.join('`, `') || '(vazio)'}\`
 
@@ -99,36 +116,36 @@ ${secoesJaNoPortal}
 
 ---
 
-## ✅ Checklist do maintainer
+## Checklist do maintainer
 
-${checklist || '- [ ] Nada pendente na página 1'}
+${checklist || '- [ ] Nada pendente na pagina 1'}
 
-### Critério de “pronto para o portal”
+### Criterio de pronto para o portal
 
-- [ ] Texto legível (sem paredes de HTML / palavras grudadas)
+- [ ] Texto legivel (sem paredes de HTML / palavras grudadas)
 - [ ] Estrutura no visual B131 (cards, abas, listas, tabelas)
 - [ ] \`pt-BR\` natural (e en/es coerentes)
-- [ ] Imagens oficiais (CDN) com legenda útil
+- [ ] Imagens oficiais (CDN) com legenda util
 - [ ] \`meta.status: published\` + entrada em \`index.order\`
 
 ---
 
-## 🔗 Atalhos úteis
+## Atalhos uteis
 
-| Ação | Link / comando |
+| Acao | Link / comando |
 | ---- | -------------- |
 | Lista de news (API EN) | https://api.tera-console.com/news?page=1&size=20&languageType=EN |
-| Lab local (rascunho, **não** publica) | \`npm run ingest:update -- --news-id <ID>\` |
-| Política de qualidade | [.metadocs/politica_qualidade_conteudo.md](https://github.com/LKSFerreira/tera-console/blob/main/.metadocs/politica_qualidade_conteudo.md) |
-| Plano de automação | [.metadocs/implementacao_automacao_patches.md](https://github.com/LKSFerreira/tera-console/blob/main/.metadocs/implementacao_automacao_patches.md) |
+| Lab local (rascunho, **nao** publica) | \`npm run ingest:update -- --news-id <ID>\` |
+| Politica de qualidade | [.metadocs/politica_qualidade_conteudo.md](https://github.com/LKSFerreira/tera-console/blob/main/.metadocs/politica_qualidade_conteudo.md) |
+| Plano de automacao | [.metadocs/implementacao_automacao_patches.md](https://github.com/LKSFerreira/tera-console/blob/main/.metadocs/implementacao_automacao_patches.md) |
 
 ---
 
-## 🆔 IDs pendentes (referência rápida)
+## IDs pendentes (referencia rapida)
 
 \`${ids}\`
 
-<sub>Gerado por <code>detect-official-updates</code> · compara API vs <code>index.order</code> · cron ~a cada 3 dias</sub>
+<sub>Gerado por <code>detect-official-updates</code> · compara API vs <code>index.order</code> · cron ~a cada 3 dias · assignee: @${assignee}</sub>
 `;
 
 process.stdout.write(corpo);
