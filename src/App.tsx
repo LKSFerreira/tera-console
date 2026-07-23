@@ -1,36 +1,21 @@
-import { useEffect, useState, type ComponentType } from 'react';
-import { AlertTriangle, ArrowUpRight, Award, BookOpen, CalendarDays, FolderGit2, Hammer, History, RotateCcw, Settings, Shield, Swords, Users, UserCog, type LucideIcon } from 'lucide-react';
+import { createElement, useEffect, useMemo, useState } from 'react';
+import { ArrowUpRight, FolderGit2, History, RotateCcw, Settings, Users, type LucideIcon } from 'lucide-react';
 
 import teraCommunityArte from './assets/imagens/tera_community/tera_community.webp';
 import lksAvatar from './assets/imagens/perfil/lks_avatar.png';
 import { SeletorIdioma } from './components/ui';
+import {
+  listarOrdemPatches,
+  obterMetadadosPatchLocalizados,
+  obterPatchDataDriven,
+  patchEhDataDriven,
+} from './data/carregarPatches';
 import { conteudoSitePorIdioma } from './data/siteContent';
+import { DynamicPatchRenderer } from './features/patchNotes/DynamicPatchRenderer';
+import { obterIconePorChave } from './features/patchNotes/mapaIcones';
+import { registroAbasLegadas } from './features/patchNotes/registroAbasLegadas';
 import { useIdioma } from './i18n/useIdioma';
 import type { AbaPatchId, PatchId } from './types/idioma';
-import {
-  B130_01_BattlePassTab,
-  B130_01_ClassesTab,
-  B130_01_CraftingItemsTab,
-  B130_01_DungeonsTab,
-  B130_01_SystemTab,
-  B130_02_ClassesTab,
-  B130_02_RewardsTab,
-  B130_02_SystemTab,
-  B130_03_BugFixesTab,
-  B131_BattlePassTab,
-  B131_CraftingTab,
-  B131_DungeonsTab,
-  B131_EventsTab,
-  B131_GearTab,
-  B131_SeasonTab,
-  B131_SystemTab,
-} from './features/patchNotes/tabs';
-
-
-type RegistroAbaPatch = {
-  icon: LucideIcon;
-  component: ComponentType;
-};
 
 interface PerfilGithubPublico {
   avatar_url: string;
@@ -47,52 +32,64 @@ type EstadoPerfilGithub =
   | { status: 'success'; data: PerfilGithubPublico }
   | { status: 'error' };
 
+interface AbaNavegacao {
+  id: string;
+  label: string;
+  icon: LucideIcon;
+}
+
 const LINK_DISCORD_COMUNIDADE = 'https://discord.com/invite/vB83wnaykm';
 const LINK_GITHUB_PADRAO = 'https://github.com/LKSFerreira';
 
-const registroComponentes: Record<PatchId, Partial<Record<AbaPatchId, RegistroAbaPatch>>> = {
-  'b131.01': {
-    battlepass: { icon: Award, component: B131_BattlePassTab },
-    season: { icon: BookOpen, component: B131_SeasonTab },
-    dungeons: { icon: Swords, component: B131_DungeonsTab },
-    gear: { icon: Shield, component: B131_GearTab },
-    events: { icon: CalendarDays, component: B131_EventsTab },
-    crafting: { icon: Hammer, component: B131_CraftingTab },
-    system: { icon: Settings, component: B131_SystemTab },
-  },
-  'b130.03': {
-    bugs: { icon: AlertTriangle, component: B130_03_BugFixesTab },
-  },
-  'b130.02': {
-    rewards: { icon: Award, component: B130_02_RewardsTab },
-    classes: { icon: UserCog, component: B130_02_ClassesTab },
-    system: { icon: AlertTriangle, component: B130_02_SystemTab },
-  },
-  'b130.01': {
-    battlepass: { icon: Award, component: B130_01_BattlePassTab },
-    dungeons: { icon: Swords, component: B130_01_DungeonsTab },
-    crafting: { icon: Hammer, component: B130_01_CraftingItemsTab },
-    classes: { icon: UserCog, component: B130_01_ClassesTab },
-    system: { icon: Settings, component: B130_01_SystemTab },
-  },
-};
+/** Ordem da sidebar — `src/content/patches/index.json`. */
+const ordemPatches = listarOrdemPatches();
 
-const ordemPatches: PatchId[] = ['b131.01', 'b130.03', 'b130.02', 'b130.01'];
+function montarAbasNavegacao(patchId: string, idioma: keyof typeof conteudoSitePorIdioma): AbaNavegacao[] {
+  const metadados = obterMetadadosPatchLocalizados(patchId, idioma);
+
+  if (!metadados) {
+    return [];
+  }
+
+  if (patchEhDataDriven(patchId)) {
+    const patch = obterPatchDataDriven(patchId);
+    return metadados.tabs.map((aba) => {
+      const definicaoMeta = patch?.meta.tabs.find((item) => item.id === aba.id);
+      return {
+        id: aba.id,
+        label: aba.label,
+        icon: obterIconePorChave(definicaoMeta?.icon) ?? Settings,
+      };
+    });
+  }
+
+  const registroLegado = registroAbasLegadas[patchId] ?? {};
+  return metadados.tabs.map((aba) => ({
+    id: aba.id,
+    label: aba.label,
+    icon: registroLegado[aba.id]?.icon ?? Settings,
+  }));
+}
 
 export default function App() {
   const { idioma, definirIdioma } = useIdioma();
   const conteudoSite = conteudoSitePorIdioma[idioma];
-  const [patchAtivoId, setPatchAtivoId] = useState<PatchId>(ordemPatches[0]);
-  const [abaAtivaId, setAbaAtivaId] = useState<AbaPatchId>(conteudoSite.patches[ordemPatches[0]].tabs[0].id);
+  const [patchAtivoId, setPatchAtivoId] = useState<PatchId>(ordemPatches[0] ?? 'b131.01');
+  const [abaAtivaId, setAbaAtivaId] = useState<AbaPatchId>(() => {
+    const primeiro = obterMetadadosPatchLocalizados(ordemPatches[0] ?? 'b131.01', 'pt-BR');
+    return primeiro?.tabs[0]?.id ?? 'bugs';
+  });
   const [perfilGithub, setPerfilGithub] = useState<EstadoPerfilGithub>({ status: 'loading' });
 
-  const patchAtivo = conteudoSite.patches[patchAtivoId];
-  const registroAbasAtivas = registroComponentes[patchAtivoId];
-  const abasPatchAtivo = patchAtivo.tabs.map((aba) => ({
-    ...aba,
-    ...(registroAbasAtivas[aba.id] as RegistroAbaPatch),
-  }));
-  const ComponenteAbaAtiva = abasPatchAtivo.find((aba) => aba.id === abaAtivaId)?.component || abasPatchAtivo[0].component;
+  const abasPatchAtivo = useMemo(
+    () => montarAbasNavegacao(patchAtivoId, idioma),
+    [patchAtivoId, idioma],
+  );
+  const abaAtivaResolvida = abasPatchAtivo.find((aba) => aba.id === abaAtivaId) ?? abasPatchAtivo[0];
+  const registroLegadoAtivo = registroAbasLegadas[patchAtivoId];
+  const ComponenteAbaLegada = abaAtivaResolvida
+    ? registroLegadoAtivo?.[abaAtivaResolvida.id]?.component
+    : undefined;
   const perfilGithubSucesso = perfilGithub.status === 'success' ? perfilGithub.data : null;
   const nomeMantenedor = perfilGithubSucesso?.name?.trim() || 'LKS Ferreira';
   const loginMantenedor = perfilGithubSucesso?.login ? `@${perfilGithubSucesso.login}` : '@LKSFerreira';
@@ -254,15 +251,19 @@ export default function App() {
 
             <div className="flex snap-x gap-3 overflow-x-auto pb-4 lg:flex-col lg:overflow-visible lg:pb-0">
               {ordemPatches.map((patchId) => {
-                const patchMetadados = conteudoSite.patches[patchId];
+                const patchMetadados = obterMetadadosPatchLocalizados(patchId, idioma);
                 const patchEstaAtivo = patchAtivoId === patchId;
+
+                if (!patchMetadados) {
+                  return null;
+                }
 
                 return (
                   <button
                     key={patchId}
                     onClick={() => {
                       setPatchAtivoId(patchId);
-                      setAbaAtivaId(patchMetadados.tabs[0].id);
+                      setAbaAtivaId(patchMetadados.tabs[0]?.id ?? '');
                     }}
                     className={`min-w-[240px] snap-start whitespace-nowrap rounded-xl border px-4 py-4 text-left transition-all lg:min-w-0 ${
                       patchEstaAtivo
@@ -288,8 +289,7 @@ export default function App() {
         <div className="flex min-w-0 flex-1 flex-col">
           <div className="scrollbar-none mb-8 flex gap-2 overflow-x-auto border-b border-slate-800/80 pb-4">
             {abasPatchAtivo.map((aba) => {
-              const IconeTab = aba.icon!;
-              const abaEstaAtiva = abaAtivaId === aba.id;
+              const abaEstaAtiva = (abaAtivaResolvida?.id ?? abaAtivaId) === aba.id;
 
               return (
                 <button
@@ -301,7 +301,9 @@ export default function App() {
                       : 'border border-transparent bg-transparent text-slate-400 hover:bg-slate-800 hover:text-slate-200'
                   }`}
                 >
-                  <IconeTab className={`h-4 w-4 ${abaEstaAtiva ? 'text-sky-400' : 'text-slate-500'}`} />
+                  {createElement(aba.icon, {
+                    className: `h-4 w-4 ${abaEstaAtiva ? 'text-sky-400' : 'text-slate-500'}`,
+                  })}
                   {aba.label}
                 </button>
               );
@@ -309,7 +311,13 @@ export default function App() {
           </div>
 
           <div className="min-h-[500px]">
-            <ComponenteAbaAtiva />
+            {patchEhDataDriven(patchAtivoId) && abaAtivaResolvida ? (
+              <DynamicPatchRenderer patchId={patchAtivoId} abaId={abaAtivaResolvida.id} />
+            ) : ComponenteAbaLegada ? (
+              <ComponenteAbaLegada />
+            ) : (
+              <p className="text-sm text-slate-400">Conteúdo do patch indisponível.</p>
+            )}
           </div>
         </div>
       </main>

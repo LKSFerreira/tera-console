@@ -2,19 +2,11 @@ export type IdiomaSuportado = 'pt-BR' | 'en-US' | 'es-ES';
 
 export type OrigemIdioma = 'armazenado' | 'navegador' | 'fallback';
 
-export type PatchId = 'b131.01' | 'b130.03' | 'b130.02' | 'b130.01';
+/** Identificador de patch (ex.: b131.01). Livre — ordem vem de `content/patches/index.json`. */
+export type PatchId = string;
 
-export type AbaPatchId =
-  | 'battlepass'
-  | 'season'
-  | 'dungeons'
-  | 'gear'
-  | 'events'
-  | 'crafting'
-  | 'system'
-  | 'bugs'
-  | 'rewards'
-  | 'classes';
+/** Identificador de aba (ex.: bugs, dungeons). Livre no schema data-driven. */
+export type AbaPatchId = string;
 
 export interface RotuloAbaPatch {
   id: AbaPatchId;
@@ -56,5 +48,6 @@ export interface ConteudoSite {
     en: string;
     es: string;
   };
-  patches: Record<PatchId, MetadadosPatchLocalizados>;
+  /** Metadados de patches legados (ainda não migrados para content/patches). */
+  patches: Record<string, MetadadosPatchLocalizados>;
 }

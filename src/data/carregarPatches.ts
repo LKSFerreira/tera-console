@@ -1,8 +1,5 @@
 import indiceBruto from '../content/patches/index.json';
-import metaB13003 from '../content/patches/b130.03/meta.json';
-import conteudoB13003En from '../content/patches/b130.03/en-US.json';
-import conteudoB13003Es from '../content/patches/b130.03/es-ES.json';
-import conteudoB13003Pt from '../content/patches/b130.03/pt-BR.json';
+import { conteudoSitePorIdioma } from './siteContent';
 import type {
   ConteudoPatchLocalizado,
   IndicePatches,
@@ -10,23 +7,71 @@ import type {
   PatchDataDriven,
 } from '../types/patchContent';
 import { VERSAO_SCHEMA_PATCH } from '../types/patchContent';
-import type { IdiomaSuportado } from '../types/idioma';
+import type { IdiomaSuportado, MetadadosPatchLocalizados } from '../types/idioma';
 
 const indicePatches = indiceBruto as IndicePatches;
 
-const registroPatchesDataDriven: Record<string, PatchDataDriven> = {
-  'b130.03': {
-    meta: metaB13003 as MetadadosPatch,
-    locales: {
-      'pt-BR': conteudoB13003Pt as ConteudoPatchLocalizado,
-      'en-US': conteudoB13003En as ConteudoPatchLocalizado,
-      'es-ES': conteudoB13003Es as ConteudoPatchLocalizado,
-    },
-  },
-};
+/**
+ * Descobre automaticamente pastas em src/content/patches (meta.json por pasta).
+ * Novo patch data-driven = pasta + entrada em index.json (sem editar App.tsx).
+ */
+const metasGlob = import.meta.glob('../content/patches/*/meta.json', {
+  eager: true,
+  import: 'default',
+}) as Record<string, MetadadosPatch>;
+
+const localesGlob = import.meta.glob('../content/patches/*/*.json', {
+  eager: true,
+  import: 'default',
+}) as Record<string, ConteudoPatchLocalizado>;
+
+function extrairIdPatchDoCaminhoMeta(caminho: string): string | null {
+  const correspondencia = caminho.match(/content\/patches\/([^/]+)\/meta\.json$/);
+  return correspondencia?.[1] ?? null;
+}
+
+function montarRegistroPatchesDataDriven(): Record<string, PatchDataDriven> {
+  const registro: Record<string, PatchDataDriven> = {};
+
+  for (const [caminho, meta] of Object.entries(metasGlob)) {
+    const patchId = extrairIdPatchDoCaminhoMeta(caminho);
+
+    if (!patchId) {
+      continue;
+    }
+
+    if (!indicePatches.dataDrivenIds.includes(patchId)) {
+      continue;
+    }
+
+    const prefixo = `../content/patches/${patchId}/`;
+    const locales: Record<string, ConteudoPatchLocalizado> = {};
+
+    for (const idioma of ['pt-BR', 'en-US', 'es-ES'] as const) {
+      const conteudoLocale = localesGlob[`${prefixo}${idioma}.json`];
+      if (conteudoLocale) {
+        locales[idioma] = conteudoLocale;
+      }
+    }
+
+    registro[patchId] = {
+      meta,
+      locales,
+    };
+  }
+
+  return registro;
+}
+
+const registroPatchesDataDriven = montarRegistroPatchesDataDriven();
 
 export function obterIndicePatches(): IndicePatches {
   return indicePatches;
+}
+
+/** Ordem da sidebar — fonte: `content/patches/index.json`. */
+export function listarOrdemPatches(): string[] {
+  return [...indicePatches.order];
 }
 
 export function patchEhDataDriven(patchId: string): boolean {
@@ -65,6 +110,41 @@ export function obterConteudoLocalizadoPatch(
   }
 
   return conteudoIdioma;
+}
+
+/**
+ * Metadados da sidebar/abas: data-driven via meta+locale, legado via siteContent.
+ */
+export function obterMetadadosPatchLocalizados(
+  patchId: string,
+  idioma: IdiomaSuportado,
+): MetadadosPatchLocalizados | null {
+  if (patchEhDataDriven(patchId)) {
+    const patch = obterPatchDataDriven(patchId);
+    const conteudo = obterConteudoLocalizadoPatch(patchId, idioma);
+
+    if (!patch) {
+      return null;
+    }
+
+    const exibicao = patch.meta.display[idioma] ?? patch.meta.display['en-US'] ?? {
+      name: patch.meta.buildLabel,
+      date: patch.meta.publishedAt ?? '',
+      parts: '',
+    };
+
+    return {
+      name: exibicao.name,
+      date: exibicao.date,
+      parts: exibicao.parts,
+      tabs: patch.meta.tabs.map((aba) => ({
+        id: aba.id,
+        label: conteudo?.tabs[aba.id]?.label ?? aba.id,
+      })),
+    };
+  }
+
+  return conteudoSitePorIdioma[idioma].patches[patchId] ?? null;
 }
 
 export function listarIdsPatchesDataDriven(): string[] {
