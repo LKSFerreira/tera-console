@@ -30,3 +30,7 @@ patch_note_latest_update.md
 image.png
 image copy*.png
 
+
+# rascunhos locais de ingest (lab)
+src/content/sources/raw-drafts/
+
