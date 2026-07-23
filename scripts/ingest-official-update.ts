@@ -13,9 +13,9 @@ import { extrairNewsIdDaUrl, itemEhUpdate, obterNewsDetalhe } from './lib/api-of
 import { baixarImagensERemapearBlocos } from './lib/download-images.ts';
 import { parsearHtmlOficial } from './lib/parse-official-html.ts';
 import { ICONES_POR_ABA, carregarSectionMap } from './lib/section-map.ts';
+import { localizarConteudoPatch } from './lib/localize-content.ts';
 import {
   atualizarIndicePatches,
-  aplicarLabelsLocalizados,
   derivarPatchId,
   registrarSeenNewsId,
   escreverPatchNoDisco,
@@ -123,11 +123,17 @@ async function main() {
     tabs: parse.tabs,
   };
 
-  const conteudoPt = aplicarLabelsLocalizados(conteudoEn, 'pt-BR');
-  const conteudoEs = aplicarLabelsLocalizados(conteudoEn, 'es-ES');
+  console.log('[ingest] localizando pt-BR / es-ES...');
+  const locPt = await localizarConteudoPatch(conteudoEn, 'pt-BR', raizProjeto);
+  const locEs = await localizarConteudoPatch(conteudoEn, 'es-ES', raizProjeto);
+  parse.warnings.push(
+    `Tradução via ${locPt.provedor} (pt-BR: ${locPt.stringsTraduzidas} strings, es-ES: ${locEs.stringsTraduzidas} strings). Revisar antes de publicar.`,
+  );
+  parse.warnings.push(...locPt.warnings.map((aviso) => `[pt-BR] ${aviso}`));
+  parse.warnings.push(...locEs.warnings.map((aviso) => `[es-ES] ${aviso}`));
 
-  // Marca que corpo ainda está em EN nos locales pt/es (sem provedor de tradução)
-  parse.warnings.push('Locales pt-BR/es-ES usam labels localizados; corpo textual ainda em EN (sem API de tradução).');
+  const conteudoPt = locPt.conteudo;
+  const conteudoEs = locEs.conteudo;
 
   const meta: MetadadosPatch = {
     schemaVersion: 1,

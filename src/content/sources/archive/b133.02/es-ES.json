@@ -12,22 +12,22 @@
         },
         {
           "type": "subsection",
-          "title": "Dungeon",
+          "title": "Mazmorra",
           "blocks": [
             {
               "type": "paragraphs",
               "items": [
-                "Ice ThroneThe knockback distance of Boss 2's crescent pattern has been reduced. (Fixed an issue where players were occasionally launched outside the map)",
-                "The knockback distance of Boss 2's crescent pattern has been reduced. (Fixed an issue where players were occasionally launched outside the map)",
-                "Rampaging RK-9 Kennel / RK-9 Kennel (Hard)The HP of the timed bomb has been significantly reduced.",
-                "Rampaging RK-9 Kennel / RK-9 Kennel (Hard)",
-                "The HP of the timed bomb has been significantly reduced.",
-                "Rampaging RK-9 KennelThe reflection effect of Boss 1 has been removed.Damage reduction during Boss 3's perfect defense has been increased.The defense reduction benefit based on the number of Brain Fog pattern triggers for all bosses is now visualized.",
+                "Ice ThroneLa distancia de retroceso del patrón de media luna del Jefe 2 se ha reducido. (Se corrigió un problema en el que los jugadores⟦ fueron⟧ ocasionalmente lanzados fuera del mapa)",
+                "La distancia de retroceso del patrón de media luna del Jefe 2 se ha reducido. (Se corrigió un problema en el que los jugadores⟦ fueron⟧ ocasionalmente lanzados fuera del mapa)",
+                "Rampaging RK-9 Kennel/RK-9 Kennel (Difícil)El HP de la bomba temporizada se ha reducido significativamente.",
+                "Rampaging RK-9 Kennel/RK-9 Kennel (Difícil)",
+                "El HP de la bomba temporizada se ha reducido significativamente.",
+                "Rampaging RK-9 KennelSe ha eliminado el efecto de reflexión del jefe 1. La reducción del daño durante la defensa perfecta del jefe 3 se ha aumentado. Ahora se visualiza el beneficio de la reducción de la defensa en función del número de desencadenantes del patrón de niebla cerebral para todos los jefes.",
                 "Rampaging RK-9 Kennel",
-                "The reflection effect of Boss 1 has been removed.Damage reduction during Boss 3's perfect defense has been increased.The defense reduction benefit based on the number of Brain Fog pattern triggers for all bosses is now visualized.",
-                "The reflection effect of Boss 1 has been removed.",
-                "Damage reduction during Boss 3's perfect defense has been increased.",
-                "The defense reduction benefit based on the number of Brain Fog pattern triggers for all bosses is now visualized."
+                "Se ha eliminado el efecto de reflexión del jefe 1. La reducción del daño durante la defensa perfecta del jefe 3 se ha aumentado. Ahora se visualiza el beneficio de la reducción de la defensa en función del número de desencadenantes del patrón de niebla cerebral para todos los jefes.",
+                "Se ha eliminado el efecto de reflexión del jefe 1.",
+                "Reducción de daños durante la defensa perfecta del Jefe 3 se ha aumentado.",
+                "Ahora se visualiza el beneficio de reducción de la defensa basado en el número de desencadenantes del patrón de Niebla Cerebral para todos los jefes."
               ]
             }
           ]
@@ -44,20 +44,20 @@
         },
         {
           "type": "subsection",
-          "title": "Class",
+          "title": "Curso",
           "blocks": [
             {
               "type": "paragraphs",
               "items": [
-                "ReaperGrim StrikeChained Glyph duration changed: 3s → 6sCable StepAttack Speed Boost Glyph duration changed: 2.5s → 3.5sBinding ScythesInitial stack activation speed has been increased.",
-                "Grim StrikeChained Glyph duration changed: 3s → 6sCable StepAttack Speed Boost Glyph duration changed: 2.5s → 3.5sBinding ScythesInitial stack activation speed has been increased.",
-                "Chained Glyph duration changed: 3s → 6s",
-                "Attack Speed Boost Glyph duration changed: 2.5s → 3.5s",
-                "Initial stack activation speed has been increased.",
-                "ArcherFind WeaknessEffect release trigger rolled back: 1–2 random → 1Effect correction for arrow generation on use has been added.",
-                "Find WeaknessEffect release trigger rolled back: 1–2 random → 1Effect correction for arrow generation on use has been added.",
-                "Effect release trigger rolled back: 1–2 random → 1",
-                "Effect correction for arrow generation on use has been added."
+                "⟦1 Glifo⟧ Grim StrikeChained duración cambiada: 3s 6sCable → StepAttack Speed Boost Duración del glifo cambiada: 2.5s → 3.5s⟦0 Velocidad de activación⟧ inicial de la pila se ha aumentado.",
+                "Duración del glifo Grim StrikeChained cambiada: 3s → 6sCable StepAttack Speed Boost Duración del glifo cambiada: 2.5s → 3.5s⟦0 Velocidad de activación⟧ inicial de la pila se ha aumentado.",
+                "Duración del glifo encadenado cambiada: 3s → 6s",
+                "Duración del glifo de aumento de velocidad de ataque cambiada: 2.5s → 3.5s",
+                "Velocidad de activación inicial de la pila se ha aumentado.",
+                "ArcherEncontrar debilidadDisparador de liberación del efecto revertido: 1–2 1Se ha añadido → la corrección aleatoria del efecto para la generación de flechas en el uso.",
+                "Encontrar debilidadDesencadenante de liberación del efecto revertido: 1–2 1Se ha añadido → la corrección aleatoria del efecto para la generación de flechas en el uso.",
+                "Desencadenante de liberación del efecto revertido: 1–2 aleatorio → 1",
+                "Se ha añadido la corrección del efecto para la generación de flechas en el uso."
               ]
             }
           ]
@@ -74,7 +74,7 @@
         },
         {
           "type": "subsection",
-          "title": "Shop",
+          "title": "Tienda",
           "blocks": [
             {
               "type": "paragraphs",
@@ -103,18 +103,18 @@
         },
         {
           "type": "subsection",
-          "title": "Bug Fixes",
+          "title": "Corrección de Bugs",
           "blocks": [
             {
               "type": "paragraphs",
               "items": [
-                "Fixed an issue where a different NPC was assigned to a Guild Mission.Fixed an issue where some patterns of RK-9 Boss 2 were occasionally cancelled.Fixed an issue where the Hexapleon-related electric bomb pattern of RK-9 Boss 2 was cancelled when a player briefly moved out of range at a specific timing.Fixed an issue in RK-9 Kennel (Hard) where, after completing Boss 3's shield pattern and resetting the NPC, Hard Mode was still applied even when object interaction was ignored, and the leaderboard record time was accumulated with the pre-reset time.Fixed an issue where Ninja's Burning Heart was not affected by Attack Speed.Fixed an issue where Ninja's Burning Heart damage increase effect was not applied based on usage count.",
-                "Fixed an issue where a different NPC was assigned to a Guild Mission.",
-                "Fixed an issue where some patterns of RK-9 Boss 2 were occasionally cancelled.",
-                "Fixed an issue where the Hexapleon-related electric bomb pattern of RK-9 Boss 2 was cancelled when a player briefly moved out of range at a specific timing.",
+                "Se corrigió un problema en el que a different NPC was assigned to a Guild Mission.Se corrigió un problema en el que some patterns of RK-9 Boss 2 were occasionally cancelled.Se corrigió un problema en el que the Hexapleon-related electric bomb pattern of RK-9 Boss 2 was cancelled when a player briefly moved out of range at a specific timing.Fixed an issue in RK-9 Kennel (Hard) where, after completing Boss 3's shield pattern and resetting the NPC, Hard Mode was still applied even when object interaction was ignored, and the leaderboard record time was accumulated with the pre-reset time.Se corrigió un problema en el que Ninja's Burning Heart was not affected by Attack Speed.Se corrigió un problema en el que Ninja's Burning Heart damage increase effect was not applied based on usage count.",
+                "Se corrigió un problema en el que a different NPC was assigned to a Guild Mission.",
+                "Se corrigió un problema en el que some patterns of RK-9 Boss 2 were occasionally cancelled.",
+                "Se corrigió un problema en el que the Hexapleon-related electric bomb pattern of RK-9 Boss 2 was cancelled when a player briefly moved out of range at a specific timing.",
                 "Fixed an issue in RK-9 Kennel (Hard) where, after completing Boss 3's shield pattern and resetting the NPC, Hard Mode was still applied even when object interaction was ignored, and the leaderboard record time was accumulated with the pre-reset time.",
-                "Fixed an issue where Ninja's Burning Heart was not affected by Attack Speed.",
-                "Fixed an issue where Ninja's Burning Heart damage increase effect was not applied based on usage count."
+                "Se corrigió un problema en el que Ninja's Burning Heart was not affected by Attack Speed.",
+                "Se corrigió un problema en el que Ninja's Burning Heart damage increase effect was not applied based on usage count."
               ]
             }
           ]

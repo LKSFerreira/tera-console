@@ -47,9 +47,39 @@ Dumps que falharam o padrão de qualidade (ex. B133 auto) ficam em:
 
 Não entram no `import.meta.glob` de patches publicados.
 
+## Tradução (pt-BR / es-ES)
+
+| Camada | Como funciona |
+|--------|----------------|
+| Conteúdo **publicado** (B131, B130) | Já localizado editorialmente |
+| Lab / ingest | `localizarConteudoPatch` após o EN |
+| CLI | `npm run content:localize -- --path <pasta>` |
+
+### Provedores (ordem)
+
+1. `DEEPL_AUTH_KEY` → DeepL (melhor para volume)
+2. `OPENAI_API_KEY` ou `XAI_API_KEY` → modelo de chat
+3. **MyMemory** (padrão sem secret) — grátis, cotas e qualidade limitadas
+
+Glossário: `src/content/glossary.json` (`doNotTranslate` + `fixedPhrases`).
+
+**Regra:** tradução automática **não** dispensa review no padrão B131 antes de `published`.
+
+### Exemplos
+
+```bash
+# Relocaliza um draft/archive a partir do en-US.json
+npm run content:localize -- --path src/content/sources/archive/b133.02 --force
+
+# Ingest já tenta localizar pt/es no raw-draft
+npm run ingest:update -- --news-id 1018
+```
+
 ## Checklist de publicação (curadoria)
 
 - [ ] Textos em pt-BR naturais (en-US/es-ES coerentes)
+- [ ] Tradução automática revisada (não publicar MT cego)
+- [ ] Termos de jogo preservados (classes, dungeons, itens)
 - [ ] Sem palavras grudadas / paredes de HTML
 - [ ] Abas com hierarquia (SectionTitle, cards, listas, tabelas)
 - [ ] Imagens com legenda útil (não “Official patch image”)

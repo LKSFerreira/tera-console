@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "ingest:update": "tsx scripts/ingest-official-update.ts",
     "ingest:detect": "tsx scripts/detect-new-updates.ts",
-    "content:validate": "tsx scripts/validate-content.ts"
+    "content:validate": "tsx scripts/validate-content.ts",
+    "content:localize": "tsx scripts/content-localize.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",

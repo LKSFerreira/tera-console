@@ -25,17 +25,23 @@ npm run lint
 - B130.x: data-driven já migrados e publicados
 - Rascunhos brutos de API: `src/content/sources/raw-drafts/` ou `sources/archive/` — **fora do ar**
 
-## Radar / lab
+## Radar / lab / tradução
 
 ```bash
 # Lista UPDATES oficiais novos
 npm run ingest:detect
 
-# Lab: grava rascunho em sources/raw-drafts (NÃO publica)
+# Lab: grava rascunho em sources/raw-drafts (NÃO publica) + tenta pt/es
 npm run ingest:update -- --news-id 1018
+
+# Relocaliza pasta com en-US.json → pt-BR.json + es-ES.json
+npm run content:localize -- --path src/content/sources/raw-drafts/b133.02 --force
 
 npm run content:validate
 ```
+
+Provedores de tradução (env, opcional): `DEEPL_AUTH_KEY`, `OPENAI_API_KEY` ou `XAI_API_KEY`.  
+Sem secret usa MyMemory (grátis, revisar sempre). Glossário: `src/content/glossary.json`.
 
 ### GitHub Actions
 

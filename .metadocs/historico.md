@@ -3,6 +3,7 @@
 Este arquivo concentra o rastreio cronológico de funcionalidades entregues, walkthroughs e documentações arquiteturais pós-entrega na base.
 
 ## 2026-07-23
+- **Pipeline de tradução:** `scripts/lib/localize-content.ts` + `npm run content:localize`; glossário expandido; provedores DeepL / OpenAI-compat / MyMemory; integrado ao `ingest:update` (sempre com review antes de `published`).
 - **Automação + freio de qualidade:** renderer data-driven, índice dinâmico, CLI de lab, migração B130.x. Ingest automático de B133 foi **rejeitado como conteúdo de produção** (qualidade abaixo do B131: texto grudado, dump de imagens, EN sem curadoria). B133 movido para `sources/archive/`. Política: portal só `published` + padrão B131; Actions de detect abrem **Issue de radar** (~3 dias), sem publicar. Docs: `politica_qualidade_conteudo.md`, `implementacao_automacao_patches.md`, `github_actions_conteudo.md`.
 
 ## 2026-04-10

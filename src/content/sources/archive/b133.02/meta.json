@@ -15,7 +15,9 @@
     "quality": "partial",
     "warnings": [
       "Headings sem match no section-map: Shop",
-      "Locales pt-BR/es-ES usam labels localizados; corpo textual ainda em EN (sem API de tradução)."
+      "Locales pt-BR/es-ES usam labels localizados; corpo textual ainda em EN (sem API de tradução).",
+      "Localizado em 2026-07-23T19:54:59.899Z via content:localize",
+      "Localizado em 2026-07-23T19:57:00.575Z via content:localize"
     ],
     "unmappedHeadings": [
       "Shop"

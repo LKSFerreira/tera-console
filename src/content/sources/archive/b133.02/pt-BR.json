@@ -12,22 +12,22 @@
         },
         {
           "type": "subsection",
-          "title": "Dungeon",
+          "title": "Masmorra",
           "blocks": [
             {
               "type": "paragraphs",
               "items": [
-                "Ice ThroneThe knockback distance of Boss 2's crescent pattern has been reduced. (Fixed an issue where players were occasionally launched outside the map)",
-                "The knockback distance of Boss 2's crescent pattern has been reduced. (Fixed an issue where players were occasionally launched outside the map)",
-                "Rampaging RK-9 Kennel / RK-9 Kennel (Hard)The HP of the timed bomb has been significantly reduced.",
-                "Rampaging RK-9 Kennel / RK-9 Kennel (Hard)",
-                "The HP of the timed bomb has been significantly reduced.",
-                "Rampaging RK-9 KennelThe reflection effect of Boss 1 has been removed.Damage reduction during Boss 3's perfect defense has been increased.The defense reduction benefit based on the number of Brain Fog pattern triggers for all bosses is now visualized.",
+                "Ice ThroneA distância de knockback do padrão crescente do Chefe 2 foi reduzida. (Corrigido o problema em que os jogadores⟦ foram⟧ ocasionalmente lançados fora do mapa)",
+                "A distância de knockback do padrão crescente do Chefe 2 foi reduzida. (Corrigido o problema em que os jogadores⟦ foram⟧ ocasionalmente lançados fora do mapa)",
+                "Rampaging RK-9 Kennel/RK-9 Kennel (Difícil)O PV da bomba cronometrada foi significativamente reduzido.",
+                "Rampaging RK-9 Kennel/RK-9 Kennel (Difícil)",
+                "O PV da bomba cronometrada foi significativamente reduzido.",
+                "Rampaging RK-9 KennelO efeito de reflexão do Chefe 1 foi removido. A redução de danos durante a defesa perfeita do Chefe 3 foi aumentada. O benefício de redução de defesa com base no número de gatilhos de padrão de Névoa Cerebral para todos os chefes agora é visualizado.",
                 "Rampaging RK-9 Kennel",
-                "The reflection effect of Boss 1 has been removed.Damage reduction during Boss 3's perfect defense has been increased.The defense reduction benefit based on the number of Brain Fog pattern triggers for all bosses is now visualized.",
-                "The reflection effect of Boss 1 has been removed.",
-                "Damage reduction during Boss 3's perfect defense has been increased.",
-                "The defense reduction benefit based on the number of Brain Fog pattern triggers for all bosses is now visualized."
+                "O efeito de reflexão do Chefe 1 foi removido. A redução de danos durante a defesa perfeita do Chefe 3 foi aumentada. O benefício de redução de defesa com base no número de gatilhos de padrão de Névoa Cerebral para todos os chefes agora é visualizado.",
+                "O efeito de reflexão do Chefe 1 foi removido.",
+                "A redução de dano durante a defesa perfeita do Chefe 3 foi aumentada.",
+                "O benefício de redução de defesa com base no número de gatilhos de padrão de Névoa Cerebral para todos os chefes agora é visualizado."
               ]
             }
           ]
@@ -44,20 +44,20 @@
         },
         {
           "type": "subsection",
-          "title": "Class",
+          "title": "Classe",
           "blocks": [
             {
               "type": "paragraphs",
               "items": [
-                "ReaperGrim StrikeChained Glyph duration changed: 3s → 6sCable StepAttack Speed Boost Glyph duration changed: 2.5s → 3.5sBinding ScythesInitial stack activation speed has been increased.",
-                "Grim StrikeChained Glyph duration changed: 3s → 6sCable StepAttack Speed Boost Glyph duration changed: 2.5s → 3.5sBinding ScythesInitial stack activation speed has been increased.",
-                "Chained Glyph duration changed: 3s → 6s",
-                "Attack Speed Boost Glyph duration changed: 2.5s → 3.5s",
-                "Initial stack activation speed has been increased.",
-                "ArcherFind WeaknessEffect release trigger rolled back: 1–2 random → 1Effect correction for arrow generation on use has been added.",
-                "Find WeaknessEffect release trigger rolled back: 1–2 random → 1Effect correction for arrow generation on use has been added.",
-                "Effect release trigger rolled back: 1–2 random → 1",
-                "Effect correction for arrow generation on use has been added."
+                "⟦1 Duração do Glyph⟧ Grim StrikeChained alterada: 3s → 6s StepAttack Speed Boost Glyph duração alterada: 2.5s → 3.5s⟦0 Velocidade⟧ inicial de ativação da pilha foi aumentada.",
+                "Grim StrikeChained Glyph duration changed: 3s 6sCable → StepAttack Speed Boost Glyph duration changed: 2.5s → 3.5sBinding ScythesA velocidade inicial de ativação da pilha foi aumentada.",
+                "Duração do glifo acorrentado alterada: 3s → 6s",
+                "Duração do Glifo de Aumento de Velocidade de Ataque alterada: 2,5s → 3,5s",
+                "A velocidade inicial de ativação da pilha foi aumentada.",
+                "ArcherEncontre o gatilho de liberação WeaknessEffect revertido: 1–2 correção → aleatória de 1Effect para geração de seta em uso foi adicionada.",
+                "Encontrar o gatilho de liberação WeaknessEffect revertido: 1–2 → correção aleatória 1Effect para geração de seta em uso foi adicionada.",
+                "Gatilho de liberação do efeito revertido: 1–2 aleatório → 1",
+                "A correção do efeito para a geração de seta no uso foi adicionada."
               ]
             }
           ]
@@ -74,19 +74,19 @@
         },
         {
           "type": "subsection",
-          "title": "Shop",
+          "title": "Loja",
           "blocks": [
             {
               "type": "paragraphs",
               "items": [
-                "Condensed Dungeon Core Exchange Condition ChangesCondensed Dungeon Core exchange rates have been reduced and purchase limits have been increased.Dungeon Core (Kaia) ShopPrice 250 → 200 / Purchase limit 2 → 4Dungeon Core (Annihilation) ShopPrice 25 → 15 / Purchase limit 4 → 10",
-                "Condensed Dungeon Core Exchange Condition Changes",
-                "Condensed Dungeon Core exchange rates have been reduced and purchase limits have been increased.Dungeon Core (Kaia) ShopPrice 250 → 200 / Purchase limit 2 → 4Dungeon Core (Annihilation) ShopPrice 25 → 15 / Purchase limit 4 → 10",
-                "Condensed Dungeon Core exchange rates have been reduced and purchase limits have been increased.",
-                "Dungeon Core (Kaia) Shop",
-                "Price 250 → 200 / Purchase limit 2 → 4",
-                "Dungeon Core (Annihilation) Shop",
-                "Price 25 → 15 / Purchase limit 4 → 10"
+                "⟦0 Alterações na Condição de⟧ Troca⟦ 1 as taxas de⟧ câmbio foram reduzidas e os limites de compra foram aumentados.Dungeon Core (Kaia) Preço da Loja 250 → 200 /Limite de compra 2 → 4Dungeon Core (Annihilation) Preço da Loja 25 → 15 /Limite de compra 4 → 10",
+                "⟦0 Alterações⟧ na Condição de Troca",
+                "⟦0 taxas⟧ de câmbio foram reduzidas e os limites de compra foram aumentados.Dungeon Core (Kaia) Preço da loja 250 → 200 /Limite de compra 2 → 4Dungeon Core (Annihilation) Preço da loja 25 → 15 /Limite de compra 4 → 10",
+                "⟦0 taxas de⟧ câmbio foram reduzidas e os limites de compra foram aumentados.",
+                "1. Compre.",
+                "Preço 250 → 200 /Limite de compra 2 → 4",
+                "Dungeon Core (Annihilation) Loja",
+                "Preço 25 → 15 /Limite de compra 4 → 10"
               ]
             }
           ]
@@ -103,18 +103,18 @@
         },
         {
           "type": "subsection",
-          "title": "Bug Fixes",
+          "title": "Correção de Bugs",
           "blocks": [
             {
               "type": "paragraphs",
               "items": [
-                "Fixed an issue where a different NPC was assigned to a Guild Mission.Fixed an issue where some patterns of RK-9 Boss 2 were occasionally cancelled.Fixed an issue where the Hexapleon-related electric bomb pattern of RK-9 Boss 2 was cancelled when a player briefly moved out of range at a specific timing.Fixed an issue in RK-9 Kennel (Hard) where, after completing Boss 3's shield pattern and resetting the NPC, Hard Mode was still applied even when object interaction was ignored, and the leaderboard record time was accumulated with the pre-reset time.Fixed an issue where Ninja's Burning Heart was not affected by Attack Speed.Fixed an issue where Ninja's Burning Heart damage increase effect was not applied based on usage count.",
-                "Fixed an issue where a different NPC was assigned to a Guild Mission.",
-                "Fixed an issue where some patterns of RK-9 Boss 2 were occasionally cancelled.",
-                "Fixed an issue where the Hexapleon-related electric bomb pattern of RK-9 Boss 2 was cancelled when a player briefly moved out of range at a specific timing.",
-                "Fixed an issue in RK-9 Kennel (Hard) where, after completing Boss 3's shield pattern and resetting the NPC, Hard Mode was still applied even when object interaction was ignored, and the leaderboard record time was accumulated with the pre-reset time.",
-                "Fixed an issue where Ninja's Burning Heart was not affected by Attack Speed.",
-                "Fixed an issue where Ninja's Burning Heart damage increase effect was not applied based on usage count."
+                "Corrigido o problema em que um PNJ diferente foi atribuído a uma Missão da Guilda.Corrigido o problema em que alguns padrões de RK-9 Chefe 2 foram ocasionalmente cancelados.Corrigido⟦ o problema⟧ em que o padrão de bomba elétrica relacionado ao Hexapleon de RK-9 Chefe 2 foi cancelado quando um jogador se moveu brevemente para fora do alcance em um momento específico.Fixado um problema em RK-9 Kennel (Difícil) onde, depois de completar o padrão de escudo do Chefe 3 e redefinir o NPC, o Modo Difícil ainda foi aplicado mesmo quando a interação do objeto foi ignorada, e o tempo recorde da tabela de classificação foi acumulado com o tempo de pré-redefinição. Corrigido o problema em que o Coração⟧ Ardente de ⟦1 não foi afetado pela Velocidade de Ataque. Corrigido o problema em que o efeito de aumento de dano⟧ do Coração Ardente de ⟦2 não foi aplicado com base na contagem de uso.",
+                "Corrigido o problema em que um PNJ diferente foi designado para uma Missão da Guilda.",
+                "Corrigido o problema em que alguns padrões de RK-9 Chefe⟦ 2 foram⟧ ocasionalmente cancelados.",
+                "Corrigido o problema em que o padrão de bomba elétrica relacionado ao Hexapleon do RK-9 Chefe 2 foi cancelado quando um jogador se moveu brevemente para fora do alcance em um momento específico.",
+                "Corrigido um problema em RK-9 Kennel (Difícil) onde, depois de completar o padrão de escudo do Chefe 3 e redefinir o NPC, o Modo Difícil ainda era aplicado mesmo quando a interação do objeto era ignorada, e o tempo de registro da tabela de classificação era acumulado com o tempo de pré-redefinição.",
+                "Corrigido o problema em que o Coração Ardente⟧ de ⟦0 não foi afetado pela Velocidade de Ataque.",
+                "O efeito de aumento de dano Burning Heart⟧ do Corrigido o problema em que ⟦0 não foi aplicado com base na contagem de uso."
               ]
             }
           ]
