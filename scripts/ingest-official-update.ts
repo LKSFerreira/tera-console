@@ -10,7 +10,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { ConteudoPatchLocalizado, MetadadosPatch } from '../src/types/patchContent.ts';
 import { extrairNewsIdDaUrl, itemEhUpdate, obterNewsDetalhe } from './lib/api-oficial.ts';
-import { baixarImagensERemapearBlocos } from './lib/download-images.ts';
+import { baixarImagensERemapearBlocos, normalizarUrlsOficiaisNasAbas } from './lib/download-images.ts';
 import { parsearHtmlOficial } from './lib/parse-official-html.ts';
 import { ICONES_POR_ABA, carregarSectionMap } from './lib/section-map.ts';
 import { localizarConteudoPatch } from './lib/localize-content.ts';
@@ -88,17 +88,25 @@ async function main() {
   const datas = formatarDataExibicao(detalhe.startDate);
   // Rascunhos brutos NÃO vão para content/patches (portal). Isolados em sources/raw-drafts.
   const pastaDraft = resolve(raizProjeto, 'src/content/sources/raw-drafts', patchId);
-  const pastaImages = join(pastaDraft, 'images');
+  const baixarImagens = process.argv.includes('--download-images');
 
-  const { warnings: avisosImagem } = await baixarImagensERemapearBlocos(
-    parse.imageUrls,
-    pastaImages,
-    patchId,
-    parse.tabs,
-  );
-  parse.warnings.push(...avisosImagem);
-  if (avisosImagem.length > 0 && parse.quality === 'ok') {
-    parse.quality = 'partial';
+  // Padrão: manter links do CDN oficial (sem baixar). Opcional: --download-images
+  if (baixarImagens) {
+    const pastaImages = join(pastaDraft, 'images');
+    const { warnings: avisosImagem } = await baixarImagensERemapearBlocos(
+      parse.imageUrls,
+      pastaImages,
+      patchId,
+      parse.tabs,
+    );
+    parse.warnings.push(...avisosImagem);
+    parse.warnings.push('Imagens baixadas localmente (--download-images).');
+  } else {
+    const { warnings: avisosUrl, totalFiguras } = normalizarUrlsOficiaisNasAbas(parse.tabs);
+    parse.warnings.push(...avisosUrl);
+    parse.warnings.push(
+      `Imagens via CDN oficial (${totalFiguras} figure(s)). Use --download-images para cópia local.`,
+    );
   }
 
   parse.warnings.push(
@@ -200,7 +208,7 @@ async function main() {
   console.log(`[ingest] wrote RAW DRAFT → ${destino}`);
   console.log(`[ingest] patchId=${patchId} status=draft (NÃO publicado no portal)`);
   console.log(`[ingest] tabs=${tabsMeta.map((t) => t.id).join(', ')}`);
-  console.log(`[ingest] images urls: ${parse.imageUrls.length}`);
+  console.log(`[ingest] images: ${parse.imageUrls.length} URL(s) oficiais (${baixarImagens ? 'download' : 'CDN link'})`);
   console.log('[ingest] OK lab — para o site: curadoria padrão B131 + published + index.order');
 }
 

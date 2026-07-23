@@ -75,6 +75,13 @@ npm run content:localize -- --path src/content/sources/archive/b133.02 --force
 npm run ingest:update -- --news-id 1018
 ```
 
+## Imagens oficiais
+
+- **Padrão:** `figure.src` = URL **https** do CDN do post oficial (sem download).
+- Parser e ingest gravam esses links; o `FiguraPatch` renderiza remoto com `object-contain` e fallback se o CDN falhar.
+- **Opcional:** `npm run ingest:update -- --news-id X --download-images` para cópia local + `/patches/...`.
+- Curadoria B131 pode continuar com webp local **ou** link oficial — o que importar é legenda e encaixe no layout.
+
 ## Checklist de publicação (curadoria)
 
 - [ ] Textos em pt-BR naturais (en-US/es-ES coerentes)

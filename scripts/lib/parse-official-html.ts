@@ -53,11 +53,25 @@ function extrairBlocosDeNo(
   const blocks: BlocoConteudo[] = [];
   const imageUrls: string[] = [];
 
+  // Imagens oficiais (CDN) — URL absoluta https, sem download obrigatório
   raiz.find('img').each((_, elemento) => {
-    const src = $(elemento).attr('src');
-    if (src) {
-      imageUrls.push(resolverUrlImagem(src));
-    }
+    const srcBruto = $(elemento).attr('src') || $(elemento).attr('data-src');
+    if (!srcBruto) return;
+
+    const url = resolverUrlImagem(srcBruto);
+    if (!url || url.startsWith('data:')) return;
+
+    imageUrls.push(url);
+    const altBruto = textoLimpo($(elemento).attr('alt') || '');
+    const alt =
+      altBruto && !/^img$/i.test(altBruto) ? altBruto : 'Imagem do patch oficial (TERA Console)';
+
+    blocks.push({
+      type: 'figure',
+      src: url,
+      alt,
+      caption: alt,
+    });
   });
 
   // Tabelas
@@ -135,17 +149,7 @@ function extrairBlocosDeNo(
     }
   }
 
-  // Imagens como figure (src local será resolvido depois no ingest)
-  for (const url of imageUrls) {
-    blocks.push({
-      type: 'figure',
-      src: url,
-      alt: 'Patch image',
-      caption: 'Official patch image',
-    });
-  }
-
-  return { blocks, imageUrls };
+  return { blocks, imageUrls: [...new Set(imageUrls)] };
 }
 
 function extrairHighlights($: cheerio.CheerioAPI): string[] {

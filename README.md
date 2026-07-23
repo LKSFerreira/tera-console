@@ -32,7 +32,10 @@ npm run lint
 npm run ingest:detect
 
 # Lab: grava rascunho em sources/raw-drafts (NÃO publica) + tenta pt/es
+# Imagens usam URL do CDN oficial por padrão (vida visual sem baixar)
 npm run ingest:update -- --news-id 1018
+# Opcional: copiar imagens para disco
+npm run ingest:update -- --news-id 1018 --download-images
 
 # Relocaliza pasta com en-US.json → pt-BR.json + es-ES.json
 npm run content:localize -- --path src/content/sources/raw-drafts/b133.02 --force

@@ -1,3 +1,8 @@
+/**
+ * Imagens do patch oficial.
+ * Padrão: manter URL do CDN (sem baixar).
+ * Opcional: --download-images no ingest grava cópia local.
+ */
 import { createWriteStream, existsSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { pipeline } from 'node:stream/promises';
@@ -12,6 +17,38 @@ function slugArquivo(url: string, indice: number): string {
   } catch {
     return `image-${indice}.jpg`;
   }
+}
+
+/** Normaliza //cdn... → https://cdn... e deduplica figures. */
+export function normalizarUrlsOficiaisNasAbas(
+  tabs: Record<string, { label: string; blocks: BlocoConteudo[] }>,
+): { warnings: string[]; totalFiguras: number } {
+  const warnings: string[] = [];
+  let totalFiguras = 0;
+
+  for (const aba of Object.values(tabs)) {
+    aba.blocks = percorrerBlocos(aba.blocks, (bloco) => {
+      if (bloco.type !== 'figure') return bloco;
+
+      let src = bloco.src;
+      if (src.startsWith('//')) {
+        src = `https:${src}`;
+      }
+      if (!src.startsWith('http://') && !src.startsWith('https://') && !src.startsWith('/')) {
+        warnings.push(`Figure com src inválido: ${src}`);
+      }
+
+      totalFiguras += 1;
+      return {
+        ...bloco,
+        src,
+        alt: bloco.alt || 'Imagem do patch oficial (TERA Console)',
+        caption: bloco.caption || bloco.alt || 'Imagem do patch oficial',
+      };
+    });
+  }
+
+  return { warnings, totalFiguras };
 }
 
 export async function baixarImagensERemapearBlocos(
@@ -42,53 +79,64 @@ export async function baixarImagensERemapearBlocos(
       });
       if (!resposta.ok || !resposta.body) {
         warnings.push(`Falha ao baixar imagem (${resposta.status}): ${url}`);
+        // mantém URL remota no figure
+        mapaUrlLocal[url] = url;
         continue;
       }
 
-      // Node 18+ fetch body as web stream → node stream
       const nodeStream = Readable.fromWeb(resposta.body as import('node:stream/web').ReadableStream);
       await pipeline(nodeStream, createWriteStream(destino));
       mapaUrlLocal[url] = caminhoPublico;
     } catch (erro) {
       warnings.push(`Erro ao baixar imagem ${url}: ${erro instanceof Error ? erro.message : String(erro)}`);
+      mapaUrlLocal[url] = url;
     }
   }
 
-  // Também copia para public/patches/{id} para servir no Vite
-  // (feito no caller com fs.cp)
-
   for (const aba of Object.values(tabs)) {
-    aba.blocks = remapearFiguras(aba.blocks, mapaUrlLocal);
+    aba.blocks = remapearFiguras(aba.blocks, mapaUrlLocal, false);
   }
 
   return { warnings, mapaUrlLocal };
 }
 
-function remapearFiguras(blocos: BlocoConteudo[], mapa: Record<string, string>): BlocoConteudo[] {
-  return blocos.map((bloco) => {
-    if (bloco.type === 'figure') {
-      const local = mapa[bloco.src];
-      if (local) {
-        return { ...bloco, src: local };
+function percorrerBlocos(
+  blocos: BlocoConteudo[],
+  mapear: (bloco: BlocoConteudo) => BlocoConteudo | null,
+): BlocoConteudo[] {
+  return blocos
+    .map((bloco) => {
+      if (bloco.type === 'card') {
+        return { ...bloco, blocks: percorrerBlocos(bloco.blocks, mapear) };
       }
-      // remove figure se download falhou
-      return null;
+      if (bloco.type === 'subsection') {
+        return { ...bloco, blocks: percorrerBlocos(bloco.blocks, mapear) };
+      }
+      if (bloco.type === 'cardGrid') {
+        return {
+          ...bloco,
+          cards: bloco.cards.map((card) => ({
+            ...card,
+            blocks: percorrerBlocos(card.blocks, mapear),
+          })),
+        };
+      }
+      return mapear(bloco);
+    })
+    .filter(Boolean) as BlocoConteudo[];
+}
+
+function remapearFiguras(
+  blocos: BlocoConteudo[],
+  mapa: Record<string, string>,
+  removerSeFalhar: boolean,
+): BlocoConteudo[] {
+  return percorrerBlocos(blocos, (bloco) => {
+    if (bloco.type !== 'figure') return bloco;
+    const destino = mapa[bloco.src];
+    if (destino) {
+      return { ...bloco, src: destino };
     }
-    if (bloco.type === 'card') {
-      return { ...bloco, blocks: remapearFiguras(bloco.blocks, mapa) };
-    }
-    if (bloco.type === 'subsection') {
-      return { ...bloco, blocks: remapearFiguras(bloco.blocks, mapa) };
-    }
-    if (bloco.type === 'cardGrid') {
-      return {
-        ...bloco,
-        cards: bloco.cards.map((card) => ({
-          ...card,
-          blocks: remapearFiguras(card.blocks, mapa),
-        })),
-      };
-    }
-    return bloco;
-  }).filter(Boolean) as BlocoConteudo[];
+    return removerSeFalhar ? null : bloco;
+  });
 }
