@@ -54,9 +54,9 @@
                 "Chained Glyph duration changed: 3s → 6s",
                 "Attack Speed Boost Glyph duration changed: 2.5s → 3.5s",
                 "Initial stack activation speed has been increased.",
-                "ArcherFind WeaknessEffect release trigger rolled back: 1–2 random → 1Effect correction for arrow generation on use has been added.",
-                "Find WeaknessEffect release trigger rolled back: 1–2 random → 1Effect correction for arrow generation on use has been added.",
-                "Effect release trigger rolled back: 1–2 random → 1",
+                "ArcherFind WeaknessEffect release trigger rolled back: 1-2 random → 1Effect correction for arrow generation on use has been added.",
+                "Find WeaknessEffect release trigger rolled back: 1-2 random → 1Effect correction for arrow generation on use has been added.",
+                "Effect release trigger rolled back: 1-2 random → 1",
                 "Effect correction for arrow generation on use has been added."
               ]
             }

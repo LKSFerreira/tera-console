@@ -1,4 +1,4 @@
-# 🗺️ Roadmap — TERA Console Patch Notes
+# 🗺️ Roadmap - TERA Console Patch Notes
 
 > Documento vivo de planejamento e progresso do projeto.
 > Última atualização: 2026-07-23

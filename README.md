@@ -1,4 +1,4 @@
-# TERA Console — Portal de Patch Notes
+# TERA Console - Portal de Patch Notes
 
 Curadoria independente de patch notes do **TERA Console** (React + TypeScript + Vite + Tailwind), com `pt-BR`, `en-US` e `es-ES`.
 
@@ -21,9 +21,9 @@ npm run lint
 ## Conteúdo no portal
 
 - Publicado: `src/content/patches/` + `index.json` (`order` / `dataDrivenIds`) e `meta.status: published`
-- Legado ouro: **B131.01** ainda em TSX (`B131Tabs`) — referência de qualidade
+- Legado ouro: **B131.01** ainda em TSX (`B131Tabs`) - referência de qualidade
 - B130.x: data-driven já migrados e publicados
-- Rascunhos brutos de API: `src/content/sources/raw-drafts/` ou `sources/archive/` — **fora do ar**
+- Rascunhos brutos de API: `src/content/sources/raw-drafts/` ou `sources/archive/` - **fora do ar**
 
 ## Radar / lab / tradução
 
@@ -43,7 +43,7 @@ npm run content:localize -- --path src/content/sources/raw-drafts/b133.02 --forc
 npm run content:validate
 ```
 
-Provedores de tradução (via `.env` na raiz — ver `.env.example`):
+Provedores de tradução (via `.env` na raiz - ver `.env.example`):
 
 | Env | Efeito |
 |-----|--------|
@@ -68,7 +68,7 @@ Glossário: `src/content/glossary.json`.
 ### GitHub Actions
 
 - **Detect** (~a cada 3 dias): abre **Issue** de radar  
-- **Experimental raw ingest**: só com confirmação `LAB` — PR WIP, não é conteúdo final  
+- **Experimental raw ingest**: só com confirmação `LAB` - PR WIP, não é conteúdo final  
 
 Setup: [`.metadocs/github_actions_conteudo.md`](.metadocs/github_actions_conteudo.md)
 

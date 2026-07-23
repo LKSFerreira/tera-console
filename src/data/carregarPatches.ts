@@ -70,7 +70,7 @@ export function obterIndicePatches(): IndicePatches {
 }
 
 /**
- * Ordem da sidebar — fonte: `content/patches/index.json`.
+ * Ordem da sidebar - fonte: `content/patches/index.json`.
  * Patches data-driven só entram se `meta.status === 'published'`
  * (rascunhos de ingest automática NÃO poluem o portal).
  */

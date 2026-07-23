@@ -37,8 +37,8 @@ const secoesPendentes = items
   .map((item, indice) => {
     const titulo = item.title?.trim() || `Update #${item.id ?? '?'}`;
     const url = item.url ?? `https://tera-console.com/news/${item.id ?? ''}`;
-    const id = item.id ?? '—';
-    const patchId = item.patchId ?? '—';
+    const id = item.id ?? ' - ';
+    const patchId = item.patchId ?? ' - ';
 
     return `### ${indice + 1}. ${titulo}
 
@@ -47,7 +47,7 @@ const secoesPendentes = items
 | **News ID** | \`${id}\` |
 | **Patch ID (portal)** | \`${patchId}\` |
 | **Patch note oficial** | [Abrir no tera-console.com](${url}) |
-| **Status no portal** | ⏳ **Faltando** — não está em \`index.order\` |
+| **Status no portal** | ⏳ **Faltando** - não está em \`index.order\` |
 `;
   })
   .join('\n---\n\n');

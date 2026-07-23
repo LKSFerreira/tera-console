@@ -1,4 +1,4 @@
-# GitHub Actions — radar de conteúdo (sem publicação automática)
+# GitHub Actions - radar de conteúdo (sem publicação automática)
 
 ## Política
 

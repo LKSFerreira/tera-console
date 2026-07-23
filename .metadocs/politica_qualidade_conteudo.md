@@ -1,4 +1,4 @@
-# Política de qualidade de conteúdo — TERA Console Portal
+# Política de qualidade de conteúdo - TERA Console Portal
 
 > **Objetivo do produto:** curadoria no padrão **B131** (estrutura, PT, cards, imagens com legenda).  
 > Automação é **radar e apoio**, nunca substituto de qualidade editorial.
@@ -7,8 +7,8 @@
 
 1. **Portal só mostra** patches com qualidade editorial aceitável.
 2. **Data-driven publicado** exige:
-   - `meta.status === "published"`
-   - id em `src/content/patches/index.json` → `order` **e** `dataDrivenIds`
+ - `meta.status === "published"`
+ - id em `src/content/patches/index.json` → `order` **e** `dataDrivenIds`
 3. **Ingest automático / parser da API** gera no máximo **rascunho** (`draft` / `draftIds` / archive).
 4. **Nunca** promover rascunho bruto (texto grudado, EN só, dump de imagem) para `published`.
 5. Legado **B131.01** em TSX permanece como **referência de ouro** visual e editorial.
@@ -85,7 +85,7 @@ npm run content:localize -- --path src/content/sources/raw-drafts/b133.02 --forc
 - **Padrão:** `figure.src` = URL **https** do CDN do post oficial (sem download).
 - Parser e ingest gravam esses links; o `FiguraPatch` renderiza remoto com `object-contain` e fallback se o CDN falhar.
 - **Opcional:** `npm run ingest:update -- --news-id X --download-images` para cópia local + `/patches/...`.
-- Curadoria B131 pode continuar com webp local **ou** link oficial — o que importar é legenda e encaixe no layout.
+- Curadoria B131 pode continuar com webp local **ou** link oficial - o que importar é legenda e encaixe no layout.
 
 ## Checklist de publicação (curadoria)
 

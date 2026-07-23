@@ -314,7 +314,7 @@ export async function traduzirTexto(
   if (!original) return { texto: '' };
 
   // Só números / símbolos
-  if (/^[\d\s\-–—+×x%.,:;()/]+$/i.test(original)) {
+  if (/^[\d\s\-- - +×x%.,:;()/]+$/i.test(original)) {
     return { texto: original };
   }
 
@@ -590,7 +590,7 @@ export async function localizarConteudoPatch(
 
   if (provedor === 'mymemory') {
     warnings.push(
-      'Usando MyMemory (gratuito). Lento e com cota — revise antes de publicar. Prefira DEEPL_AUTH_KEY ou OPENAI_API_KEY/XAI_API_KEY.',
+      'Usando MyMemory (gratuito). Lento e com cota - revise antes de publicar. Prefira DEEPL_AUTH_KEY ou OPENAI_API_KEY/XAI_API_KEY.',
     );
   }
 

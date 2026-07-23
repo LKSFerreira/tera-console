@@ -41,7 +41,7 @@ interface AbaNavegacao {
 const LINK_DISCORD_COMUNIDADE = 'https://discord.com/invite/vB83wnaykm';
 const LINK_GITHUB_PADRAO = 'https://github.com/LKSFerreira';
 
-/** Ordem da sidebar — `src/content/patches/index.json`. */
+/** Ordem da sidebar - `src/content/patches/index.json`. */
 const ordemPatches = listarOrdemPatches();
 
 function montarAbasNavegacao(patchId: string, idioma: keyof typeof conteudoSitePorIdioma): AbaNavegacao[] {

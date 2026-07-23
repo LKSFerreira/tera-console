@@ -1,4 +1,4 @@
-# Plano de Implementação — Automação de Conteúdo (Updates & Eventos)
+# Plano de Implementação - Automação de Conteúdo (Updates & Eventos)
 
 | Campo | Valor |
 |-------|--------|
@@ -7,14 +7,14 @@
 | **Data** | 2026-07-23 |
 | **Escopo** | Manter o portal atualizado sem manutenção manual pesada |
 | **Restrição de produto** | Não alterar padrão visual, formato de leitura nem stack pública do site |
-| **Documento único** | Este arquivo em `.metadocs/` — rascunhos antigos foram **removidos** |
+| **Documento único** | Este arquivo em `.metadocs/` - rascunhos antigos foram **removidos** |
 
 > **Fonte única de verdade.** Não existem outros planos de automação no repositório.
 > Debate + rascunhos anteriores foram fundidos aqui; `discusao_contexto.md` e `plano_automacao_patches.md` foram apagados.
 
 ---
 
-## 0. Snapshot oficial — agora (API, 2026-07-23)
+## 0. Snapshot oficial - agora (API, 2026-07-23)
 
 Como descobrir as últimas notícias **sem adivinhar** `XXXX`:
 
@@ -46,10 +46,10 @@ https://tera-console.com/news/{id}
 
 | Prioridade portal | `newsId` | Título oficial | Data (API) | URL |
 |-------------------|----------|----------------|------------|-----|
-| **P0 — ausente** | **1018** | B133.02 Update - July 23 | 2026-07-23 | https://tera-console.com/news/1018 |
-| **P0 — ausente** | **1008** | B133 Update - July 15 | 2026-07-12 | https://tera-console.com/news/1008 |
-| **P1 — ausente** | **1001** | B132.03 Update - June 18 | 2026-06-15 | https://tera-console.com/news/1001 |
-| **P1 — ausente** | **991** | (Updated) B132.01 Update - May 21 | 2026-05-17 | https://tera-console.com/news/991 |
+| **P0 - ausente** | **1018** | B133.02 Update - July 23 | 2026-07-23 | https://tera-console.com/news/1018 |
+| **P0 - ausente** | **1008** | B133 Update - July 15 | 2026-07-12 | https://tera-console.com/news/1008 |
+| **P1 - ausente** | **1001** | B132.03 Update - June 18 | 2026-06-15 | https://tera-console.com/news/1001 |
+| **P1 - ausente** | **991** | (Updated) B132.01 Update - May 21 | 2026-05-17 | https://tera-console.com/news/991 |
 | Já no portal* | 974 / 973 | B131.01 Update - April 9 (#2 / #1) | 2026-04-06 | `/news/974`, `/news/973` |
 | Já no portal* | 971 | B130.03 Update - March 26 | 2026-03-25 | https://tera-console.com/news/971 |
 | Já no portal* | 962 | B130.02 Build Update - March 12 | 2026-03-08 | https://tera-console.com/news/962 |
@@ -59,7 +59,7 @@ https://tera-console.com/news/{id}
 
 ### 0.2 O que **não** é update (mesmo na timeline recente)
 
-Na mesma listagem da API aparecem muitos `notice` — **não importar no auto**:
+Na mesma listagem da API aparecem muitos `notice` - **não importar no auto**:
 
 | `newsId` | Categoria | Título (exemplo) |
 |----------|-----------|------------------|
@@ -82,7 +82,7 @@ Na mesma listagem da API aparecem muitos `notice` — **não importar no auto**:
 ### 0.4 Comando-alvo do maintainer (pós-automação)
 
 ```bash
-# Em vez de adivinhar XXXX — usar os IDs da tabela 0.1
+# Em vez de adivinhar XXXX - usar os IDs da tabela 0.1
 npm run ingest:update -- --news-id 1018
 npm run ingest:update -- --url https://tera-console.com/news/1008
 ```
@@ -124,7 +124,7 @@ Automatizar **descoberta → ingestão → estruturação → tradução → PR*
 - tom de curadoria independente (não se passar por site oficial do jogo);
 - revisão humana mínima (gate de qualidade), não publicação cega.
 
-**Métrica de sucesso:** de “fim de semana por patch” para “≤ 15–20 minutos de review quando o bot abrir PR”.
+**Métrica de sucesso:** de “fim de semana por patch” para “≤ 15-20 minutos de review quando o bot abrir PR”.
 
 ---
 
@@ -143,7 +143,7 @@ Automatizar **descoberta → ingestão → estruturação → tradução → PR*
 ### 2.2 Taxonomia de NEWS no site oficial (UPDATE vs NOTICE)
 
 Na UI: **ALL | NOTICE | UPDATES**.  
-Na API, **cada item já vem classificado** — não precisamos “adivinhar” manutenção vs patch só por NLP.
+Na API, **cada item já vem classificado** - não precisamos “adivinhar” manutenção vs patch só por NLP.
 
 ```json
 "categoryLabel": { "key": "update", "label": "UPDATE" }
@@ -153,11 +153,11 @@ Na API, **cada item já vem classificado** — não precisamos “adivinhar” m
 
 | Categoria | `key` | Exemplos reais (API, 2026-07-23) | Interesse do portal |
 |-----------|-------|----------------------------------|---------------------|
-| **UPDATES** | `update` | `1018` B133.02, `1008` B133 | **Alta** — vira patch no portal |
-| **NOTICE** | `notice` | `1017` Server Maintenance, shop sale, known issues, event notice, “Future Plans” | **Baixa** — **não** auto-importar |
-| **ALL** | — | Mistura | Só listagem bruta |
+| **UPDATES** | `update` | `1018` B133.02, `1008` B133 | **Alta** - vira patch no portal |
+| **NOTICE** | `notice` | `1017` Server Maintenance, shop sale, known issues, event notice, “Future Plans” | **Baixa** - **não** auto-importar |
+| **ALL** | - | Mistura | Só listagem bruta |
 
-#### Prova empírica — o post de manutenção que parece “notícia de patch”
+#### Prova empírica - o post de manutenção que parece “notícia de patch”
 
 Texto do usuário (manutenção Jul. 23, rewards, UTC/KST) = item oficial:
 
@@ -169,9 +169,9 @@ Texto do usuário (manutenção Jul. 23, rewards, UTC/KST) = item oficial:
 | Corpo | “Scheduled maintenance… Maintenance Schedule… Maintenance Rewards…” |
 | Contraste | `1018` é `update` no **mesmo dia** (B133.02 Patch Note) |
 
-Na página 1 da API (~20 itens): **16 notice / 4 update**. Ou seja, a maior parte do feed é ruído para o portal — e a API já rotula.
+Na página 1 da API (~20 itens): **16 notice / 4 update**. Ou seja, a maior parte do feed é ruído para o portal - e a API já rotula.
 
-#### Pipeline de classificação (camadas — simples, não “IA mágica”)
+#### Pipeline de classificação (camadas - simples, não “IA mágica”)
 
 ```text
 Camada 1 (obrigatória, barata):
@@ -236,7 +236,7 @@ Base: `https://api.tera-console.com`
 Idiomas oficiais observados na SPA (`languageType`): `EN`, `KO`, `JA`, `CN`, `TW`, `DE`, `FR`.  
 **Não há `PT` nem `ES` nativos** → o portal continua sendo a camada de localização para `pt-BR` e `es-ES`; `en-US` pode espelhar o EN oficial com edição leve.
 
-### 2.5 Anatomia de um UPDATE (ex.: id `1008` — B133)
+### 2.5 Anatomia de um UPDATE (ex.: id `1008` - B133)
 
 O campo `description` é HTML rico com padrões recorrentes:
 
@@ -335,7 +335,7 @@ Isso une:
 9. **Localizar** `en-US` (base), `pt-BR`, `es-ES`.
 10. **Gerar PR** com diff só de dados/assets + atualização de índice.
 
-### 4.4 Tradução — política
+### 4.4 Tradução - política
 
 | Idioma | Origem | Política |
 |--------|--------|----------|
@@ -359,7 +359,7 @@ Provedor de tradução na v1: **LLM via API** (quando secret disponível) **ou**
 |-------|------|---------------|--------|
 | `schemaVersion` | `meta.json` e arquivos de locale | **`1`** (inteiro semver-major simples) | Renderer e `content:validate` sabem qual contrato aplicar |
 | `SCHEMA_VERSION` / constante | `src/types/patchContent.ts` + validador | `1` | Fonte de verdade no código |
-| Changelog de schema | este doc §5.0 + comentário no tipo | — | Mudanças breaking sobem a major |
+| Changelog de schema | este doc §5.0 + comentário no tipo | - | Mudanças breaking sobem a major |
 
 **Regras:**
 
@@ -367,8 +367,8 @@ Provedor de tradução na v1: **LLM via API** (quando secret disponível) **ou**
 2. O renderer **recusa** ou entra em modo degradado se `schemaVersion` for maior que a suportada pelo app (mensagem clara no build/dev).
 3. O validador **falha o CI** se faltar `schemaVersion` ou se for incompatível.
 4. Evolução:
-   - **Additive** (novo `type` de bloco opcional, campo opcional) → pode permanecer em `1` se o renderer ignorar desconhecido com warning.
-   - **Breaking** (renomear `type`, mudar shape de `table`, remover campo obrigatório) → `schemaVersion: 2` + migração ou dual-support temporário.
+ - **Additive** (novo `type` de bloco opcional, campo opcional) → pode permanecer em `1` se o renderer ignorar desconhecido com warning.
+ - **Breaking** (renomear `type`, mudar shape de `table`, remover campo obrigatório) → `schemaVersion: 2` + migração ou dual-support temporário.
 5. `content/patches/index.json` também declara `"schemaVersion": 1` no root.
 
 **Exemplo mínimo no locale:**
@@ -462,7 +462,7 @@ content/
 }
 ```
 
-`parse.quality`: `ok` | `partial` | `fallback` | `failed` — ver §5.6.
+`parse.quality`: `ok` | `partial` | `fallback` | `failed` - ver §5.6.
 
 ### 5.3 Blocos de conteúdo (renderer-agnóstico)
 
@@ -506,7 +506,7 @@ Arquivo por idioma:
 }
 ```
 
-### 5.4 Mapeamento de seções — **configurável** (`content/section-map.json`)
+### 5.4 Mapeamento de seções - **configurável** (`content/section-map.json`)
 
 > **Não hardcodar** a tabela de headings no TypeScript do ingestor. O mapa vive em dados versionados no repo; mudar classificação = PR no JSON, sem rebuild de lógica (salvo novo tipo de aba).
 
@@ -607,7 +607,7 @@ Hotfix pequenos (só bugs) → uma aba `bugs`, como B130.03 (tabs do `meta` gera
 }
 ```
 
-Renderer reutiliza os mesmos blocos. UI: seção “Eventos ativos” no shell **ou** aba do patch relacionado — decisão de UX na Etapa 6, sem mudar identidade visual.
+Renderer reutiliza os mesmos blocos. UI: seção “Eventos ativos” no shell **ou** aba do patch relacionado - decisão de UX na Etapa 6, sem mudar identidade visual.
 
 ### 5.6 Política de falhas de parsing (obrigatória na Etapa 3)
 
@@ -624,13 +624,13 @@ Renderer reutiliza os mesmos blocos. UI: seção “Eventos ativos” no shell *
 
 #### Princípios
 
-1. **Nunca falhar em silêncio** — todo run escreve `meta.parse` (quality, warnings, unmappedHeadings, fallbackTabs).
-2. **Preferir conteúdo feio a zero conteúdo** — `fallback` ainda gera página legível no visual atual.
-3. **Não marcar id como “visto com sucesso”** em `failed` — o cron tenta de novo no dia seguinte.
-4. **`partial` / `fallback` ainda abrem PR** — o maintainer decide se publica ou ajusta JSON/`section-map.json`.
+1. **Nunca falhar em silêncio** - todo run escreve `meta.parse` (quality, warnings, unmappedHeadings, fallbackTabs).
+2. **Preferir conteúdo feio a zero conteúdo** - `fallback` ainda gera página legível no visual atual.
+3. **Não marcar id como “visto com sucesso”** em `failed` - o cron tenta de novo no dia seguinte.
+4. **`partial` / `fallback` ainda abrem PR** - o maintainer decide se publica ou ajusta JSON/`section-map.json`.
 5. **Imagem que falha download** → warning + omite `figure` (não derruba o patch inteiro).
 6. **Validação de schema** (`content:validate`) roda sempre no fim:
-   - inválido → trata como `failed` (não commita locale quebrado).
+ - inválido → trata como `failed` (não commita locale quebrado).
 7. **Fixtures** (`content/sources/fixtures/`) com HTML de `1008` e `1018` alimentam testes unitários do parser (Etapa 7, recomendado já na 3).
 
 #### Saída de debug sugerida (CLI)
@@ -645,7 +645,7 @@ Renderer reutiliza os mesmos blocos. UI: seção “Eventos ativos” no shell *
 #### Relação com o renderer
 
 - Renderer **não** implementa lógica de parse; só consome blocos válidos `schemaVersion` suportada.
-- Se `parse.quality === fallback'`, a UI continua idêntica — só há menos abas / mais texto na `system`.
+- Se `parse.quality === fallback'`, a UI continua idêntica - só há menos abas / mais texto na `system`.
 
 ---
 
@@ -730,13 +730,13 @@ npm run content:validate
 
 > Gate do projeto (`workflow.md`): cada etapa de código só após aprovação explícita. Este documento **é** o plano; a implementação começa quando o maintainer aprovar.
 
-### Etapa 0 — Alinhamento documental (esta entrega)
+### Etapa 0 - Alinhamento documental (esta entrega)
 
 - [x] Mapear API oficial e categorias UPDATE/NOTICE
 - [x] Consolidar estratégia e schema
 - [ ] Aprovação do maintainer para iniciar Etapa 1
 
-### Etapa 1 — Fundação de blocos e renderer (sem mudar visual)
+### Etapa 1 - Fundação de blocos e renderer (sem mudar visual)
 
 **Objetivo:** provar que o B131 (ou um subset) renderiza igual via schema.
 
@@ -747,11 +747,11 @@ npm run content:validate
 | 1.3 | Implementar `DynamicPatchRenderer` (recusar schema major desconhecida) | `src/features/patchNotes/DynamicPatchRenderer.tsx` |
 | 1.4 | Converter **um** patch de referência com `schemaVersion: 1` | `content/patches/...` |
 | 1.5 | Wire no `App` para esse patch via renderer | `App.tsx` |
-| 1.6 | `npm run build` + `npm run lint` + checklist visual | — |
+| 1.6 | `npm run build` + `npm run lint` + checklist visual | - |
 
 **Critério de aceite:** side-by-side, diff visual irrelevante; build verde.
 
-### Etapa 2 — Índice dinâmico de patches
+### Etapa 2 - Índice dinâmico de patches
 
 | # | Tarefa |
 |---|--------|
@@ -762,7 +762,7 @@ npm run content:validate
 
 **Critério de aceite:** adicionar pasta + entrada no índice = patch aparece na UI sem editar `App.tsx`.
 
-### Etapa 3 — Ingestor CLI (caminho feliz com update real)
+### Etapa 3 - Ingestor CLI (caminho feliz com update real)
 
 | # | Tarefa |
 |---|--------|
@@ -773,25 +773,25 @@ npm run content:validate
 | 3.5 | Download/otimização de imagens (falha de img = warning, não abort) |
 | 3.6 | Escrita de `meta` + locales com **`schemaVersion: 1`** |
 | 3.7 | Localização pt-BR/es-ES + glossário |
-| 3.8 | Validação de schema (`content:validate`) — falha ⇒ `failed` |
+| 3.8 | Validação de schema (`content:validate`) - falha ⇒ `failed` |
 | 3.9 | Teste com **B133** (`1008`) e **B133.02** (`1018`); gravar fixtures HTML |
 
 **Critério de aceite:** um comando gera pasta completa; build renderiza draft; sem editar TSX; run com HTML “quebrado” artificial produz `fallback` ou `failed` **visível**, nunca silent drop.
 
-### Etapa 4 — GitHub Actions
+### Etapa 4 - GitHub Actions
 
 | # | Workflow | Gatilho | Resultado |
 |---|----------|---------|-----------|
 | 4.1 | `detect-official-updates.yml` | **Cron a cada ~3 dias** (`0 12 */3 * *` UTC, ~5×/quinzena) + dispatch | Se houver `update` novo ≠ `seen-news-ids`, ingesta e abre **PR draft** |
 | 4.2 | `ingest-update.yml` | `workflow_dispatch` com newsId/URL | PR draft sob demanda |
-| 4.3 | Proteções | — | Branches `content/auto-update` / `content/ingest-manual`; labels; **sem auto-merge** |
+| 4.3 | Proteções | - | Branches `content/auto-update` / `content/ingest-manual`; labels; **sem auto-merge** |
 
 **Secrets:** nenhum na v1 (sem tradução paga no CI).  
-**Setup manual (uma vez):** permissões write do Actions — ver `.metadocs/github_actions_conteudo.md`.
+**Setup manual (uma vez):** permissões write do Actions - ver `.metadocs/github_actions_conteudo.md`.
 
 **Critério de aceite:** Action manual com id/URL abre PR draft; cron espaçado não duplica ids em `seen-news-ids`.
 
-### Etapa 5 — Migração do legado e limpeza
+### Etapa 5 - Migração do legado e limpeza
 
 | # | Tarefa |
 |---|--------|
@@ -800,7 +800,7 @@ npm run content:validate
 | 5.3 | Atualizar `roadmap.md` / `historico.md` |
 | 5.4 | README mínimo: como rodar `ingest:update` |
 
-### Etapa 6 — Eventos ativos (v1.1)
+### Etapa 6 - Eventos ativos (v1.1)
 
 | # | Tarefa |
 |---|--------|
@@ -809,7 +809,7 @@ npm run content:validate
 | 6.3 | UI “Eventos ativos” reutilizando blocos (sem redesign) |
 | 6.4 | Cron pode revalidar eventos vigentes (expirar automaticamente) |
 
-### Etapa 7 — Hardening (opcional)
+### Etapa 7 - Hardening (opcional)
 
 - Testes unitários do parser HTML e do section-map
 - Snapshot de um update oficial fixture
@@ -826,7 +826,7 @@ npm run content:validate
 1. Cron detecta update novo.
 2. PR draft aparece no GitHub.
 3. Maintainer abre o preview (Vercel preview se disponível, ou checkout local).
-4. Ajusta 2–3 termos no JSON se necessário.
+4. Ajusta 2-3 termos no JSON se necessário.
 5. Merge → deploy.
 
 ### Modo sob demanda
@@ -876,17 +876,17 @@ npm run ingest:update -- --news-id 1018
 
 ## 11. Catch-up recomendado (conteúdo em atraso)
 
-Ordem após Etapa 3 (ingestor) pronta — IDs **reais** da seção 0:
+Ordem após Etapa 3 (ingestor) pronta - IDs **reais** da seção 0:
 
 | Ordem | Prioridade | Item | `newsId` | URL |
 |-------|------------|------|----------|-----|
-| 1 | P0 | B133 Update — July 15 | `1008` | https://tera-console.com/news/1008 |
-| 2 | P0 | B133.02 Update — July 23 | `1018` | https://tera-console.com/news/1018 |
-| 3 | P1 | B132.01 (Updated) — May 21 | `991` | https://tera-console.com/news/991 |
-| 4 | P1 | B132.03 — June 18 | `1001` | https://tera-console.com/news/1001 |
+| 1 | P0 | B133 Update - July 15 | `1008` | https://tera-console.com/news/1008 |
+| 2 | P0 | B133.02 Update - July 23 | `1018` | https://tera-console.com/news/1018 |
+| 3 | P1 | B132.01 (Updated) - May 21 | `991` | https://tera-console.com/news/991 |
+| 4 | P1 | B132.03 - June 18 | `1001` | https://tera-console.com/news/1001 |
 | 5 | P2 | Evento Last Stand / Leaderboard | event `1016` | após Etapa 6 |
 
-Não reimportar B130/B131 se o conteúdo do portal já estiver correto — só **migrar para o schema** (Etapa 5).
+Não reimportar B130/B131 se o conteúdo do portal já estiver correto - só **migrar para o schema** (Etapa 5).
 
 **Heurística extra:** ocasionalmente a API marca item como `update` com título de manutenção. O ingestor deve exigir sinal de patch no título (`B\d+`, `Update`, `Patch Notes`, `Build Update`) ou revisão no PR.
 
@@ -953,7 +953,7 @@ Para iniciar código, confirmar:
 
 ---
 
-## 16. Apêndice técnico — exemplos de chamada
+## 16. Apêndice técnico - exemplos de chamada
 
 ```http
 GET https://api.tera-console.com/news?page=1&size=30&languageType=EN

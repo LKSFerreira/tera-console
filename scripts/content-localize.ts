@@ -48,7 +48,7 @@ async function main() {
   console.log(`[localize] provedor=${provedor}`);
   if (provedor === 'none') {
     console.log(
-      '[localize] sem API key — só labels. Use DEEPL_AUTH_KEY / OPENAI_API_KEY / XAI_API_KEY ou --translate (MyMemory).',
+      '[localize] sem API key - só labels. Use DEEPL_AUTH_KEY / OPENAI_API_KEY / XAI_API_KEY ou --translate (MyMemory).',
     );
   }
 
@@ -93,7 +93,7 @@ async function main() {
     }
   }
 
-  console.log('[localize] concluído — revise antes de status published');
+  console.log('[localize] concluído - revise antes de status published');
 }
 
 main().catch((erro) => {

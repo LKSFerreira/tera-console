@@ -84,7 +84,7 @@ async function main() {
       JSON.stringify({ newsId, title: detalhe.title, parse, fetchedAt: new Date().toISOString() }, null, 2),
       'utf8',
     );
-    console.error('[ingest] quality=failed — relatório em src/content/sources/failures/');
+    console.error('[ingest] quality=failed - relatório em src/content/sources/failures/');
     process.exit(3);
   }
 
@@ -114,7 +114,7 @@ async function main() {
   }
 
   parse.warnings.push(
-    'POLÍTICA: rascunho em sources/raw-drafts — NÃO publicar no portal sem curadoria padrão B131.',
+    'POLÍTICA: rascunho em sources/raw-drafts - NÃO publicar no portal sem curadoria padrão B131.',
   );
 
   const tabsMeta = Object.keys(parse.tabs).map((tabId) => ({
@@ -140,7 +140,7 @@ async function main() {
 
   if (provedor === 'none') {
     console.log(
-      '[ingest] sem chave de tradução — labels pt/es + corpo EN. Configure GEMINI_API_KEY no .env (modelo: gemini-3.6-flash) ou use --translate',
+      '[ingest] sem chave de tradução - labels pt/es + corpo EN. Configure GEMINI_API_KEY no .env (modelo: gemini-3.6-flash) ou use --translate',
     );
   } else if (provedor === 'gemini') {
     console.log(
@@ -183,17 +183,17 @@ async function main() {
     },
     display: {
       'en-US': {
-        name: detalhe.title.replace(/\s*-\s*/g, ' — '),
+        name: detalhe.title.replace(/\s*-\s*/g, ' - '),
         date: datas.en,
         parts: '',
       },
       'pt-BR': {
-        name: detalhe.title.replace(/\s*-\s*/g, ' — '),
+        name: detalhe.title.replace(/\s*-\s*/g, ' - '),
         date: datas.pt,
         parts: '',
       },
       'es-ES': {
-        name: detalhe.title.replace(/\s*-\s*/g, ' — '),
+        name: detalhe.title.replace(/\s*-\s*/g, ' - '),
         date: datas.es,
         parts: '',
       },
@@ -227,7 +227,7 @@ async function main() {
   console.log(`[ingest] patchId=${patchId} status=draft (NÃO publicado no portal)`);
   console.log(`[ingest] tabs=${tabsMeta.map((t) => t.id).join(', ')}`);
   console.log(`[ingest] images: ${parse.imageUrls.length} URL(s) oficiais (${baixarImagens ? 'download' : 'CDN link'})`);
-  console.log('[ingest] OK lab — para o site: curadoria padrão B131 + published + index.order');
+  console.log('[ingest] OK lab - para o site: curadoria padrão B131 + published + index.order');
 }
 
 main().catch((erro) => {

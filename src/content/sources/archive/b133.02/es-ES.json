@@ -54,9 +54,9 @@
                 "Duración del glifo encadenado cambiada: 3s → 6s",
                 "Duración del glifo de aumento de velocidad de ataque cambiada: 2.5s → 3.5s",
                 "Velocidad de activación inicial de la pila se ha aumentado.",
-                "ArcherEncontrar debilidadDisparador de liberación del efecto revertido: 1–2 1Se ha añadido → la corrección aleatoria del efecto para la generación de flechas en el uso.",
-                "Encontrar debilidadDesencadenante de liberación del efecto revertido: 1–2 1Se ha añadido → la corrección aleatoria del efecto para la generación de flechas en el uso.",
-                "Desencadenante de liberación del efecto revertido: 1–2 aleatorio → 1",
+                "ArcherEncontrar debilidadDisparador de liberación del efecto revertido: 1-2 1Se ha añadido → la corrección aleatoria del efecto para la generación de flechas en el uso.",
+                "Encontrar debilidadDesencadenante de liberación del efecto revertido: 1-2 1Se ha añadido → la corrección aleatoria del efecto para la generación de flechas en el uso.",
+                "Desencadenante de liberación del efecto revertido: 1-2 aleatorio → 1",
                 "Se ha añadido la corrección del efecto para la generación de flechas en el uso."
               ]
             }

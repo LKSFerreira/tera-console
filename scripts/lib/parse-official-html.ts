@@ -53,7 +53,7 @@ function extrairBlocosDeNo(
   const blocks: BlocoConteudo[] = [];
   const imageUrls: string[] = [];
 
-  // Imagens oficiais (CDN) — URL absoluta https, sem download obrigatório
+  // Imagens oficiais (CDN) - URL absoluta https, sem download obrigatório
   raiz.find('img').each((_, elemento) => {
     const srcBruto = $(elemento).attr('src') || $(elemento).attr('data-src');
     if (!srcBruto) return;

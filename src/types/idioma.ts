@@ -2,7 +2,7 @@ export type IdiomaSuportado = 'pt-BR' | 'en-US' | 'es-ES';
 
 export type OrigemIdioma = 'armazenado' | 'navegador' | 'fallback';
 
-/** Identificador de patch (ex.: b131.01). Livre — ordem vem de `content/patches/index.json`. */
+/** Identificador de patch (ex.: b131.01). Livre - ordem vem de `content/patches/index.json`. */
 export type PatchId = string;
 
 /** Identificador de aba (ex.: bugs, dungeons). Livre no schema data-driven. */

@@ -54,9 +54,9 @@
                 "Duração do glifo acorrentado alterada: 3s → 6s",
                 "Duração do Glifo de Aumento de Velocidade de Ataque alterada: 2,5s → 3,5s",
                 "A velocidade inicial de ativação da pilha foi aumentada.",
-                "ArcherEncontre o gatilho de liberação WeaknessEffect revertido: 1–2 correção → aleatória de 1Effect para geração de seta em uso foi adicionada.",
-                "Encontrar o gatilho de liberação WeaknessEffect revertido: 1–2 → correção aleatória 1Effect para geração de seta em uso foi adicionada.",
-                "Gatilho de liberação do efeito revertido: 1–2 aleatório → 1",
+                "ArcherEncontre o gatilho de liberação WeaknessEffect revertido: 1-2 correção → aleatória de 1Effect para geração de seta em uso foi adicionada.",
+                "Encontrar o gatilho de liberação WeaknessEffect revertido: 1-2 → correção aleatória 1Effect para geração de seta em uso foi adicionada.",
+                "Gatilho de liberação do efeito revertido: 1-2 aleatório → 1",
                 "A correção do efeito para a geração de seta no uso foi adicionada."
               ]
             }
