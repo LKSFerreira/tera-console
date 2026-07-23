@@ -21,7 +21,6 @@ import { carregarEnv } from './lib/load-env.ts';
 import {
   atualizarIndicePatches,
   derivarPatchId,
-  registrarSeenNewsId,
   escreverPatchNoDisco,
 } from './lib/write-patch.ts';
 
@@ -217,7 +216,7 @@ async function main() {
   );
 
   atualizarIndicePatches(raizProjeto, patchId);
-  registrarSeenNewsId(raizProjeto, newsId, parse.quality);
+  // Não marca seen-news-ids: radar compara API vs index.order (publicado), não rascunhos de lab.
 
   // Fixture HTML para testes futuros
   const fixturesDir = resolve(raizProjeto, 'src/content/sources/fixtures');

@@ -1,7 +1,5 @@
 {
   "schemaVersion": 1,
-  "ids": [
-    1018,
-    1008
-  ]
+  "ids": [],
+  "_note": "Deprecated for radar filter. Detect now compares official UPDATES vs index.order (portal). Lab ingest does not write here."
 }
