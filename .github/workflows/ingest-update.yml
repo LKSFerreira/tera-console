@@ -1,13 +1,20 @@
-# Ingestão sob demanda de um UPDATE oficial (newsId ou URL).
-# Actions → Ingest official update → Run workflow
+# EXPERIMENTAL — rascunho bruto da API (NÃO é publicação no portal).
+# O resultado vai para sources/raw-drafts e NUNCA para index.order.
+# Uso: laboratório / referência. Curadoria B131 continua manual.
+#
+# Preferir o workflow "Detect official updates" (só radar via Issue).
 
-name: Ingest official update
+name: Experimental raw ingest (lab only)
 
 on:
   workflow_dispatch:
     inputs:
       news_ref:
-        description: 'News ID (ex. 1018) ou URL (https://tera-console.com/news/1018)'
+        description: 'News ID (ex. 1018) ou URL — gera rascunho bruto, NÃO publica'
+        required: true
+        type: string
+      confirm_lab:
+        description: 'Digite LAB para confirmar que isto NÃO publica no site'
         required: true
         type: string
 
@@ -16,14 +23,15 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: ingest-official-update
+  group: experimental-raw-ingest
   cancel-in-progress: false
 
 jobs:
-  ingest:
-    name: Ingest + PR draft
+  raw-ingest:
+    name: Raw draft only
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    if: inputs.confirm_lab == 'LAB'
 
     steps:
       - name: Checkout
@@ -40,36 +48,29 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Ingest update
+      - name: Ingest as draft (never published)
         run: npm run ingest:update -- --url "${{ inputs.news_ref }}"
 
-      - name: Validate content schema
-        run: npm run content:validate
-
-      - name: Build (smoke)
-        run: npm run build
-
-      - name: Create draft pull request
+      - name: Create draft PR (DO NOT merge as product content)
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: ':card_file_box: data: ingestão manual de UPDATE `${{ inputs.news_ref }}`'
-          title: 'content: ingest manual `${{ inputs.news_ref }}`'
+          commit-message: ':warning: data: rascunho bruto de ingest (NÃO publicar no portal)'
+          title: 'WIP/EXPERIMENTAL: rascunho bruto `${{ inputs.news_ref }}` — NÃO mergear como conteúdo final'
           body: |
-            ## Ingestão manual (`workflow_dispatch`)
+            ## ⚠️ Rascunho experimental — NÃO é conteúdo do portal
 
             Referência: `${{ inputs.news_ref }}`
 
-            ### Checklist
-            - [ ] Revisar conteúdo gerado
-            - [ ] Conferir imagens / abas
-            - [ ] Merge quando ok
+            ### Política
+            - O portal **só** publica conteúdo no padrão **B131** (curadoria).
+            - Este PR é lixo estruturado da API / parser — **não mergear** na `main` como patch pronto.
+            - Use só como referência para curadoria manual.
 
-            PR em **draft** — sem auto-merge.
-          branch: content/ingest-manual
+            Se abriu por engano: feche o PR sem merge.
+          branch: lab/raw-ingest
           delete-branch: true
           draft: true
-          labels: content, manual
+          labels: experimental, do-not-merge, content
           add-paths: |
-            src/content/**
-            public/patches/**
+            src/content/sources/**

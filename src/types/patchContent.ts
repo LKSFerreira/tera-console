@@ -115,5 +115,8 @@ export interface PatchDataDriven {
 export interface IndicePatches {
   schemaVersion: number;
   order: string[];
+  /** Patches publicados no portal (data-driven). */
   dataDrivenIds: string[];
+  /** Rascunhos de ingest — não entram na sidebar até curadoria. */
+  draftIds?: string[];
 }

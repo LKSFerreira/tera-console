@@ -5,7 +5,7 @@
  *   npx tsx scripts/ingest-official-update.ts --news-id 1018
  *   npx tsx scripts/ingest-official-update.ts --url https://tera-console.com/news/1008
  */
-import { cpSync, mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { ConteudoPatchLocalizado, MetadadosPatch } from '../src/types/patchContent.ts';
@@ -86,8 +86,9 @@ async function main() {
 
   const patchId = derivarPatchId(parse.buildLabel, newsId, detalhe.title);
   const datas = formatarDataExibicao(detalhe.startDate);
-  const pastaPatch = resolve(raizProjeto, 'src/content/patches', patchId);
-  const pastaImages = join(pastaPatch, 'images');
+  // Rascunhos brutos NÃO vão para content/patches (portal). Isolados em sources/raw-drafts.
+  const pastaDraft = resolve(raizProjeto, 'src/content/sources/raw-drafts', patchId);
+  const pastaImages = join(pastaDraft, 'images');
 
   const { warnings: avisosImagem } = await baixarImagensERemapearBlocos(
     parse.imageUrls,
@@ -100,14 +101,9 @@ async function main() {
     parse.quality = 'partial';
   }
 
-  // Public path para Vite
-  const pastaPublic = resolve(raizProjeto, 'public/patches', patchId);
-  mkdirSync(pastaPublic, { recursive: true });
-  try {
-    cpSync(pastaImages, pastaPublic, { recursive: true });
-  } catch {
-    // pasta images pode estar vazia
-  }
+  parse.warnings.push(
+    'POLÍTICA: rascunho em sources/raw-drafts — NÃO publicar no portal sem curadoria padrão B131.',
+  );
 
   const tabsMeta = Object.keys(parse.tabs).map((tabId) => ({
     id: tabId,
@@ -138,6 +134,7 @@ async function main() {
     id: patchId,
     buildLabel: parse.buildLabel ?? patchId.toUpperCase(),
     kind: 'update',
+    // Nunca publicar direto: portal só mostra status published + index.order
     status: 'draft',
     source: {
       officialNewsId: newsId,
@@ -172,17 +169,21 @@ async function main() {
     tabs: tabsMeta,
   };
 
-  const destino = escreverPatchNoDisco(raizProjeto, {
-    patchId,
-    meta,
-    locales: {
-      'en-US': conteudoEn,
-      'pt-BR': conteudoPt,
-      'es-ES': conteudoEs,
+  const destino = escreverPatchNoDisco(
+    raizProjeto,
+    {
+      patchId,
+      meta,
+      locales: {
+        'en-US': conteudoEn,
+        'pt-BR': conteudoPt,
+        'es-ES': conteudoEs,
+      },
     },
-  });
+    { destino: 'raw-drafts' },
+  );
 
-  atualizarIndicePatches(raizProjeto, patchId, { prepend: true });
+  atualizarIndicePatches(raizProjeto, patchId);
   registrarSeenNewsId(raizProjeto, newsId, parse.quality);
 
   // Fixture HTML para testes futuros
@@ -190,11 +191,11 @@ async function main() {
   mkdirSync(fixturesDir, { recursive: true });
   writeFileSync(join(fixturesDir, `${newsId}.html`), detalhe.description ?? '', 'utf8');
 
-  console.log(`[ingest] wrote ${destino}`);
-  console.log(`[ingest] patchId=${patchId}`);
+  console.log(`[ingest] wrote RAW DRAFT → ${destino}`);
+  console.log(`[ingest] patchId=${patchId} status=draft (NÃO publicado no portal)`);
   console.log(`[ingest] tabs=${tabsMeta.map((t) => t.id).join(', ')}`);
-  console.log(`[ingest] images: ${Object.keys(parse.imageUrls).length} urls processadas`);
-  console.log('[ingest] OK — rode npm run content:validate e npm run build');
+  console.log(`[ingest] images urls: ${parse.imageUrls.length}`);
+  console.log('[ingest] OK lab — para o site: curadoria padrão B131 + published + index.order');
 }
 
 main().catch((erro) => {

@@ -3,7 +3,7 @@
 Este arquivo concentra o rastreio cronológico de funcionalidades entregues, walkthroughs e documentações arquiteturais pós-entrega na base.
 
 ## 2026-07-23
-- **Automação de conteúdo (Etapas 1–5 parciais):** renderer data-driven (`DynamicPatchRenderer`), índice dinâmico (`index.json`), CLI de ingestão da API oficial (`npm run ingest:update`), GitHub Actions com cron a cada ~3 dias e PR draft, migração de B130.01/02/03 e importação de B133/B133.02. Legado TSX restante: B131.01. Plano: `.metadocs/implementacao_automacao_patches.md`. Ops: `.metadocs/github_actions_conteudo.md`.
+- **Automação + freio de qualidade:** renderer data-driven, índice dinâmico, CLI de lab, migração B130.x. Ingest automático de B133 foi **rejeitado como conteúdo de produção** (qualidade abaixo do B131: texto grudado, dump de imagens, EN sem curadoria). B133 movido para `sources/archive/`. Política: portal só `published` + padrão B131; Actions de detect abrem **Issue de radar** (~3 dias), sem publicar. Docs: `politica_qualidade_conteudo.md`, `implementacao_automacao_patches.md`, `github_actions_conteudo.md`.
 
 ## 2026-04-10
 - [Correção de Build (Vercel)](walkthrough/fix_build_vercel.md): Remoção de ícones, constantes e estados não utilizados (código morto) que impediam a compilação do TypeScript no ambiente de produção.

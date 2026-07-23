@@ -32,16 +32,17 @@
 - [x] Deploy automatizado preparatório (Vercel/Netlify)
 - [x] Renderer data-driven + schema `schemaVersion: 1`
 - [x] Índice dinâmico de patches (`index.json`)
-- [x] CLI de ingestão API oficial + section-map + validate
-- [x] GitHub Actions (cron ~3 dias + ingest manual → PR draft)
-- [x] Conteúdo B133 / B133.02 ingerido; B130.x data-driven
+- [x] CLI de lab (raw-drafts) + section-map + validate
+- [x] GitHub Actions radar (cron ~3 dias → Issue; sem auto-publish)
+- [x] B130.x data-driven publicados; B131 referência de ouro em TSX
+- [x] Política de qualidade: rascunho ≠ portal; B133 auto arquivado
 
 ### 🔲 Próximos Passos (Backlog)
 
-- [ ] Migrar B131.01 do TSX legado para o schema JSON
-- [ ] Tradução automática pt-BR/es-ES no pipeline (hoje labels localizados; corpo EN em ingests novos)
-- [ ] Eventos ativos (`/event` API) — fase 1.1 do plano
-- [ ] Otimização de imagens oficiais (webp / tamanho)
+- [ ] Curadoria manual de B133 no **padrão B131** (quando houver tempo) → só então `published`
+- [ ] Migrar B131.01 do TSX legado para o schema JSON **sem perda visual**
+- [ ] Melhorar parser de lab (opcional; nunca bypass do gate de qualidade)
+- [ ] Eventos ativos (`/event`) se couber no padrão editorial
 - [ ] Responsividade mobile refinada
 - [ ] Sistema de busca/filtro dentro das patch notes
 

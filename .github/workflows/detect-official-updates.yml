@@ -1,38 +1,34 @@
-# Detecta UPDATES oficiais novos e abre PR draft com o conteúdo ingerido.
-# Cadência: a cada 3 dias (~5× por quinzena) + disparo manual.
+# RADAR apenas: detecta UPDATES oficiais e abre Issue.
+# NÃO ingere conteúdo no portal. NÃO publica patch notes.
+# Cadência: a cada ~3 dias (~5×/quinzena) + dispatch manual.
 #
-# Requisitos no repo (uma vez):
-#   Settings → Actions → General → Workflow permissions
-#   → Read and write permissions
-#   → Allow GitHub Actions to create and approve pull requests
+# Setup (uma vez): Settings → Actions → Workflow permissions
+#   → Read and write (issues) / Allow creating issues via Actions
 
 name: Detect official updates
 
 on:
   schedule:
-    # 12:00 UTC nos dias 1,4,7,10... do mês (~a cada 3 dias)
     - cron: '0 12 */3 * *'
   workflow_dispatch:
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+  issues: write
 
 concurrency:
   group: detect-official-updates
   cancel-in-progress: false
 
 jobs:
-  detect-and-ingest:
-    name: Detect + ingest + PR draft
+  detect:
+    name: Detect + open issue
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -47,63 +43,49 @@ jobs:
         id: detect
         run: npx tsx scripts/detect-new-updates.ts --json --github-output
 
-      - name: Skip when nothing new
+      - name: Nothing new
         if: steps.detect.outputs.count == '0'
-        run: echo "Nenhum UPDATE novo. Encerrando sem PR."
+        run: echo "Nenhum UPDATE novo."
 
-      - name: Ingest each new update
+      - name: Create tracking issue
         if: steps.detect.outputs.count != '0'
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PAYLOAD: ${{ steps.detect.outputs.payload }}
           IDS: ${{ steps.detect.outputs.ids }}
         run: |
           set -euo pipefail
-          IFS=',' read -ra NEWS_IDS <<< "$IDS"
-          for news_id in "${NEWS_IDS[@]}"; do
-            if [ -z "$news_id" ]; then
-              continue
-            fi
-            echo "::group::Ingest newsId=${news_id}"
-            # partial/fallback ainda grava conteúdo; failed sai com código != 0
-            npm run ingest:update -- --news-id "$news_id" || {
-              code=$?
-              echo "Ingest ${news_id} terminou com código ${code} (seguindo os demais)"
-            }
-            echo "::endgroup::"
-          done
+          BODY_FILE=$(mktemp)
+          {
+            echo "## Radar de UPDATE oficial"
+            echo ""
+            echo "Foram detectados **${{ steps.detect.outputs.count }}** UPDATE(s) novos em \`api.tera-console.com\`."
+            echo ""
+            echo "> **Política de qualidade:** isto **não** publica conteúdo no portal."
+            echo "> O site só aceita patch no padrão **B131** (curadoria humana)."
+            echo "> Ingest automático bruto **não** deve ir para \`order\` / produção."
+            echo ""
+            echo "### Itens"
+            echo ""
+            echo '```json'
+            echo "$PAYLOAD" | jq -c '.items // .'
+            echo '```'
+            echo ""
+            echo "### IDs"
+            echo "\`${IDS}\`"
+            echo ""
+            echo "### Próximos passos (maintainer)"
+            echo "- [ ] Abrir o(s) link(s) oficiais e ler o patch"
+            echo "- [ ] Curar no padrão visual/editorial B131 (pt-BR + estrutura de cards)"
+            echo "- [ ] Só então publicar (\`meta.status: published\` + \`index.order\`)"
+            echo ""
+            echo "_Issue gerada pelo workflow \`detect-official-updates\` (cron ~3 dias)._"
+          } > "$BODY_FILE"
 
-      - name: Validate content schema
-        if: steps.detect.outputs.count != '0'
-        run: npm run content:validate
-
-      - name: Build (smoke)
-        if: steps.detect.outputs.count != '0'
-        run: npm run build
-
-      - name: Create draft pull request
-        if: steps.detect.outputs.count != '0'
-        uses: peter-evans/create-pull-request@v7
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: ':card_file_box: data: ingestão automática de UPDATES oficiais'
-          title: 'content: novos UPDATES oficiais detectados'
-          body: |
-            ## Ingestão automática (cron / dispatch)
-
-            O workflow detectou UPDATE(s) novo(s) em `api.tera-console.com` e gerou conteúdo data-driven.
-
-            **IDs processados:** `${{ steps.detect.outputs.ids }}`
-
-            ### Checklist do maintainer
-            - [ ] Revisar abas e textos (corpo pt-BR/es-ES pode ainda estar em EN)
-            - [ ] Conferir `meta.parse.quality` / warnings
-            - [ ] Preview visual ok (mesmo design do portal)
-            - [ ] Merge quando estiver bom
-
-            > Não é publicação automática: este PR é **draft** de propósito.
-          branch: content/auto-update
-          delete-branch: true
-          draft: true
-          labels: content, automated
-          add-paths: |
-            src/content/**
-            public/patches/**
+          gh issue create \
+            --title "Radar: UPDATE(s) oficial(is) pendente(s) de curadoria (${IDS})" \
+            --body-file "$BODY_FILE" \
+            --label "content" \
+            || gh issue create \
+              --title "Radar: UPDATE(s) oficial(is) pendente(s) de curadoria (${IDS})" \
+              --body-file "$BODY_FILE"

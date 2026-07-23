@@ -1,8 +1,6 @@
 {
   "schemaVersion": 1,
   "order": [
-    "b133.01",
-    "b133.02",
     "b131.01",
     "b130.03",
     "b130.02",
@@ -10,9 +8,9 @@
   ],
   "dataDrivenIds": [
     "b130.03",
-    "b133.02",
-    "b133.01",
     "b130.02",
     "b130.01"
-  ]
+  ],
+  "draftIds": [],
+  "_policy": "Só entra em order+dataDrivenIds com meta.status=published e curadoria no padrão B131. Ingest automático NUNCA publica. Rascunhos brutos de API, se existirem, ficam em sources/archive ou sources/raw-drafts."
 }

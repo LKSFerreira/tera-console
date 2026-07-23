@@ -23,8 +23,21 @@ export function derivarPatchId(buildLabel: string | undefined, newsId: number, t
   return `news-${newsId}`;
 }
 
-export function escreverPatchNoDisco(raizProjeto: string, payload: PayloadIngestao): string {
-  const pasta = resolve(raizProjeto, 'src/content/patches', payload.patchId);
+/**
+ * Por padrão grava em sources/raw-drafts (fora do glob do portal).
+ * Só use pasta patches/ após curadoria humana no padrão B131.
+ */
+export function escreverPatchNoDisco(
+  raizProjeto: string,
+  payload: PayloadIngestao,
+  options?: { destino?: 'raw-drafts' | 'patches' },
+): string {
+  const destino = options?.destino ?? 'raw-drafts';
+  const pasta =
+    destino === 'patches'
+      ? resolve(raizProjeto, 'src/content/patches', payload.patchId)
+      : resolve(raizProjeto, 'src/content/sources/raw-drafts', payload.patchId);
+
   mkdirSync(join(pasta, 'images'), { recursive: true });
 
   writeFileSync(join(pasta, 'meta.json'), JSON.stringify(payload.meta, null, 2) + '\n', 'utf8');
@@ -35,27 +48,29 @@ export function escreverPatchNoDisco(raizProjeto: string, payload: PayloadIngest
   return pasta;
 }
 
-export function atualizarIndicePatches(
-  raizProjeto: string,
-  patchId: string,
-  options?: { prepend?: boolean },
-): void {
+/**
+ * Ingest bruta NÃO toca order/dataDrivenIds (portal).
+ * Apenas anota em draftIds como lembrete opcional de rascunho em raw-drafts.
+ */
+export function atualizarIndicePatches(raizProjeto: string, patchId: string): void {
   const caminho = resolve(raizProjeto, 'src/content/patches/index.json');
   const indice = JSON.parse(readFileSync(caminho, 'utf8')) as {
     schemaVersion: number;
     order: string[];
     dataDrivenIds: string[];
+    draftIds?: string[];
   };
 
-  if (!indice.dataDrivenIds.includes(patchId)) {
-    indice.dataDrivenIds.push(patchId);
+  if (!indice.draftIds) {
+    indice.draftIds = [];
   }
 
+  // Garantia: nunca publicar via ingest
   indice.order = indice.order.filter((id) => id !== patchId);
-  if (options?.prepend !== false) {
-    indice.order.unshift(patchId);
-  } else {
-    indice.order.push(patchId);
+  indice.dataDrivenIds = indice.dataDrivenIds.filter((id) => id !== patchId);
+
+  if (!indice.draftIds.includes(patchId)) {
+    indice.draftIds.unshift(patchId);
   }
 
   writeFileSync(caminho, JSON.stringify(indice, null, 2) + '\n', 'utf8');

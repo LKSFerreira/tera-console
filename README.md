@@ -1,6 +1,13 @@
 # TERA Console — Portal de Patch Notes
 
-Curadoria independente de patch notes do **TERA Console** (React + TypeScript + Vite + Tailwind), com suporte a `pt-BR`, `en-US` e `es-ES`.
+Curadoria independente de patch notes do **TERA Console** (React + TypeScript + Vite + Tailwind), com `pt-BR`, `en-US` e `es-ES`.
+
+## Princípio de qualidade
+
+O portal prioriza o **padrão editorial e visual do B131** (cards, hierarquia, textos curados, imagens com legenda).
+
+Automação serve como **radar** (e rascunho de lab), **nunca** como publicação cega.  
+Política completa: [`.metadocs/politica_qualidade_conteudo.md`](.metadocs/politica_qualidade_conteudo.md)
 
 ## Desenvolvimento
 
@@ -11,38 +18,32 @@ npm run build
 npm run lint
 ```
 
-## Conteúdo data-driven
+## Conteúdo no portal
 
-Patches novos vivem em `src/content/patches/{id}/` (meta + locales + imagens).  
-A ordem da sidebar está em `src/content/patches/index.json`.
+- Publicado: `src/content/patches/` + `index.json` (`order` / `dataDrivenIds`) e `meta.status: published`
+- Legado ouro: **B131.01** ainda em TSX (`B131Tabs`) — referência de qualidade
+- B130.x: data-driven já migrados e publicados
+- Rascunhos brutos de API: `src/content/sources/raw-drafts/` ou `sources/archive/` — **fora do ar**
 
-### Ingestão de UPDATE oficial
+## Radar / lab
 
 ```bash
-# Ver UPDATES novos na API oficial
+# Lista UPDATES oficiais novos
 npm run ingest:detect
 
-# Ingerir por ID ou URL
+# Lab: grava rascunho em sources/raw-drafts (NÃO publica)
 npm run ingest:update -- --news-id 1018
-npm run ingest:update -- --url https://tera-console.com/news/1008
 
-# Validar schema
 npm run content:validate
 ```
 
 ### GitHub Actions
 
-- **Cron ~a cada 3 dias** + dispatch: detecta UPDATES e abre **PR draft**
-- Manual: *Actions → Ingest official update*
+- **Detect** (~a cada 3 dias): abre **Issue** de radar  
+- **Experimental raw ingest**: só com confirmação `LAB` — PR WIP, não é conteúdo final  
 
-Setup de permissões (uma vez): [`.metadocs/github_actions_conteudo.md`](.metadocs/github_actions_conteudo.md)
+Setup: [`.metadocs/github_actions_conteudo.md`](.metadocs/github_actions_conteudo.md)
 
-### Plano de automação
+## Plano técnico
 
-Documentação completa: [`.metadocs/implementacao_automacao_patches.md`](.metadocs/implementacao_automacao_patches.md)
-
-## Notas
-
-- Visual do portal é estável; automação só alimenta conteúdo.
-- NOTICE (manutenção, loja) **não** entra no auto — só `categoryLabel.key === "update"`.
-- Legado ainda em TSX: **B131.01** (migração futura). B130.x e B133.x já são data-driven.
+[`.metadocs/implementacao_automacao_patches.md`](.metadocs/implementacao_automacao_patches.md)

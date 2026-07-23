@@ -69,9 +69,25 @@ export function obterIndicePatches(): IndicePatches {
   return indicePatches;
 }
 
-/** Ordem da sidebar — fonte: `content/patches/index.json`. */
+/**
+ * Ordem da sidebar — fonte: `content/patches/index.json`.
+ * Patches data-driven só entram se `meta.status === 'published'`
+ * (rascunhos de ingest automática NÃO poluem o portal).
+ */
 export function listarOrdemPatches(): string[] {
-  return [...indicePatches.order];
+  return indicePatches.order.filter((patchId) => {
+    if (!indicePatches.dataDrivenIds.includes(patchId)) {
+      // legado (ex.: b131.01 via siteContent)
+      return true;
+    }
+
+    const patch = registroPatchesDataDriven[patchId];
+    if (!patch) {
+      return false;
+    }
+
+    return patch.meta.status === 'published';
+  });
 }
 
 export function patchEhDataDriven(patchId: string): boolean {
