@@ -43,24 +43,21 @@ npm run content:localize -- --path src/content/sources/raw-drafts/b133.02 --forc
 npm run content:validate
 ```
 
-Provedores de tradução (**só se configurar**):
+Provedores de tradução (via `.env` na raiz — ver `.env.example`):
 
 | Env | Efeito |
 |-----|--------|
+| `GEMINI` ou `GEMINI_API_KEY` | **Gemini** (default `gemini-3.6-flash`) |
+| `GEMINI_MODEL` | Override (ex.: `gemini-3.1-flash-lite`) |
 | `DEEPL_AUTH_KEY` | DeepL |
-| `OPENAI_API_KEY` ou `XAI_API_KEY` | LLM |
-| *(nenhum)* | **Não chama API** — labels pt/es + corpo EN (rápido) |
-| flag `--translate` | Força MyMemory (grátis, lento, cota) |
+| `OPENAI_API_KEY` / `XAI_API_KEY` | LLM OpenAI-compat |
+| *(nenhum)* | labels pt/es + corpo EN (rápido) |
+| `--translate` | MyMemory (só se pedir) |
 
 ```bash
-# sem chave (padrão — não trava)
+# com .env contendo GEMINI=...
 npm run ingest:update -- --news-id 1018
 
-# com MyMemory explícito
-npm run ingest:update -- --news-id 1018 --translate
-
-# com DeepL
-# $env:DEEPL_AUTH_KEY="..."
 npm run content:localize -- --path src/content/sources/raw-drafts/b133.02 --force
 ```
 

@@ -17,6 +17,7 @@ import {
   detectarProvedorTraducao,
   localizarConteudoPatch,
 } from './lib/localize-content.ts';
+import { carregarEnv } from './lib/load-env.ts';
 import {
   atualizarIndicePatches,
   derivarPatchId,
@@ -26,6 +27,7 @@ import {
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const raizProjeto = resolve(__dirname, '..');
+carregarEnv(raizProjeto);
 
 function lerArg(nome: string): string | undefined {
   const indice = process.argv.indexOf(nome);
@@ -139,7 +141,11 @@ async function main() {
 
   if (provedor === 'none') {
     console.log(
-      '[ingest] sem chave de tradução — labels pt/es + corpo EN (rápido). Configure DEEPL_/OPENAI_/XAI_ ou use --translate',
+      '[ingest] sem chave de tradução — labels pt/es + corpo EN. Configure GEMINI no .env (recomendado: gemini-3.6-flash) ou use --translate',
+    );
+  } else if (provedor === 'gemini') {
+    console.log(
+      `[ingest] localizando pt-BR / es-ES via Gemini (${process.env.GEMINI_MODEL || 'gemini-3.6-flash'})...`,
     );
   } else {
     console.log(`[ingest] localizando pt-BR / es-ES via ${provedor}...`);

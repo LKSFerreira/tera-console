@@ -1,10 +1,15 @@
 /**
  * Localização EN → pt-BR / es-ES com glossário e provedores:
- * 1) DEEPL_AUTH_KEY  2) OPENAI_API_KEY / XAI_API_KEY  3) MyMemory (gratuito, com limite)
+ * 1) GEMINI / GEMINI_API_KEY (default gemini-3.6-flash)
+ * 2) DEEPL_AUTH_KEY
+ * 3) OPENAI_API_KEY / XAI_API_KEY
+ * 4) MyMemory só com --translate
+ * 5) none (labels only)
  */
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { BlocoConteudo, ConteudoPatchLocalizado } from '../../src/types/patchContent.ts';
+import { obterChaveGemini } from './load-env.ts';
 import { ICONES_POR_ABA, LABELS_ABA_ES, LABELS_ABA_PT } from './section-map.ts';
 
 export type LocaleAlvo = 'pt-BR' | 'es-ES';
@@ -15,7 +20,7 @@ interface Glossario {
   fixedPhrases?: Record<LocaleAlvo, Record<string, string>>;
 }
 
-export type ProvedorTraducao = 'deepl' | 'openai' | 'mymemory' | 'none';
+export type ProvedorTraducao = 'gemini' | 'deepl' | 'openai' | 'mymemory' | 'none';
 
 export interface ResultadoLocalizacao {
   conteudo: ConteudoPatchLocalizado;
@@ -41,7 +46,16 @@ export function carregarGlossario(raizProjeto: string): Glossario {
  */
 export function detectarProvedorTraducao(opcoes?: { allowMyMemory?: boolean }): ProvedorTraducao {
   const forcado = (process.env.LOCALIZE_PROVIDER || '').trim().toLowerCase();
-  if (forcado === 'deepl' || forcado === 'openai' || forcado === 'mymemory' || forcado === 'none') {
+  if (
+    forcado === 'gemini' ||
+    forcado === 'deepl' ||
+    forcado === 'openai' ||
+    forcado === 'mymemory' ||
+    forcado === 'none'
+  ) {
+    if (forcado === 'gemini' && !obterChaveGemini()) {
+      console.warn('[localize] LOCALIZE_PROVIDER=gemini mas GEMINI/GEMINI_API_KEY ausente');
+    }
     if (forcado === 'deepl' && !process.env.DEEPL_AUTH_KEY?.trim()) {
       console.warn('[localize] LOCALIZE_PROVIDER=deepl mas DEEPL_AUTH_KEY ausente');
     }
@@ -51,6 +65,7 @@ export function detectarProvedorTraducao(opcoes?: { allowMyMemory?: boolean }): 
     return forcado as ProvedorTraducao;
   }
 
+  if (obterChaveGemini()) return 'gemini';
   if (process.env.DEEPL_AUTH_KEY?.trim()) return 'deepl';
   if (process.env.OPENAI_API_KEY?.trim() || process.env.XAI_API_KEY?.trim()) return 'openai';
   if (opcoes?.allowMyMemory) return 'mymemory';
@@ -65,6 +80,63 @@ function codigoIdiomaProvedor(locale: LocaleAlvo, provedor: ProvedorTraducao): s
     return locale === 'pt-BR' ? 'pt' : 'es';
   }
   return locale === 'pt-BR' ? 'Portuguese (Brazil)' : 'Spanish';
+}
+
+function modeloGemini(): string {
+  return (process.env.GEMINI_MODEL || 'gemini-3.6-flash').trim();
+}
+
+async function traduzirGemini(texto: string, locale: LocaleAlvo): Promise<string> {
+  const apiKey = obterChaveGemini();
+  if (!apiKey) {
+    throw new Error('GEMINI / GEMINI_API_KEY ausente');
+  }
+
+  const model = modeloGemini();
+  const idiomaAlvo = codigoIdiomaProvedor(locale, 'gemini');
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`;
+
+  const prompt =
+    'You are a professional game localization translator for TERA Console patch notes.\n' +
+    'Translate from English to the target language.\n' +
+    'Keep placeholders like ⟦0⟧ exactly unchanged.\n' +
+    'Do not invent or remove numbers/stats.\n' +
+    'Keep tone clear and natural for players.\n' +
+    'Return only the translation, no quotes or commentary.\n\n' +
+    `Target language: ${idiomaAlvo}\n\n` +
+    `Text:\n${texto}`;
+
+  const resposta = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contents: [{ role: 'user', parts: [{ text: prompt }] }],
+      generationConfig: {
+        temperature: 0.2,
+      },
+    }),
+  });
+
+  if (!resposta.ok) {
+    const corpo = await resposta.text();
+    throw new Error(`Gemini HTTP ${resposta.status}: ${corpo.slice(0, 400)}`);
+  }
+
+  const json = (await resposta.json()) as {
+    candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
+    error?: { message?: string };
+  };
+
+  if (json.error?.message) {
+    throw new Error(`Gemini: ${json.error.message}`);
+  }
+
+  const textoSaida = json.candidates?.[0]?.content?.parts?.map((parte) => parte.text ?? '').join('').trim();
+  if (!textoSaida) {
+    throw new Error('Gemini retornou resposta vazia');
+  }
+
+  return textoSaida;
 }
 
 /** Protege termos do glossário com placeholders curtos (MT costuma quebrar `__GLS__`). */
@@ -260,7 +332,10 @@ export async function traduzirTexto(
   for (const pedaco of pedacos) {
     try {
       let parte: string;
-      if (provedor === 'deepl') {
+      if (provedor === 'gemini') {
+        parte = await traduzirGemini(pedaco, locale);
+        await sleep(80);
+      } else if (provedor === 'deepl') {
         parte = await traduzirDeepL(pedaco, locale);
       } else if (provedor === 'openai') {
         parte = await traduzirOpenAICompativel(pedaco, locale);
@@ -488,9 +563,9 @@ export function localizarSomenteLabels(
     conteudo: { schemaVersion: 1, locale, tabs },
     provedor: 'none',
     warnings: [
-      'Sem provedor de tradução configurado (DEEPL_AUTH_KEY / OPENAI_API_KEY / XAI_API_KEY).',
+      'Sem provedor de tradução configurado (GEMINI/GEMINI_API_KEY, DEEPL_AUTH_KEY, OPENAI_API_KEY, XAI_API_KEY).',
       'Corpo do texto permanece em EN; só labels de abas foram localizados.',
-      'Para MT: configure uma chave ou use --translate (MyMemory, lento/limitado).',
+      'Para MT: coloque a chave no .env ou use --translate (MyMemory, lento/limitado).',
     ],
     stringsTraduzidas: 0,
   };

@@ -57,10 +57,14 @@ Não entram no `import.meta.glob` de patches publicados.
 
 ### Provedores (ordem)
 
-1. `DEEPL_AUTH_KEY` → DeepL  
-2. `OPENAI_API_KEY` ou `XAI_API_KEY` → LLM  
-3. **Sem chave (padrão)** → `none`: labels de abas em pt/es, **corpo em EN**, **sem HTTP** (não trava)  
-4. Flag `--translate` → MyMemory (grátis, lento, cota) — só se pedir explícito  
+1. **`GEMINI` / `GEMINI_API_KEY` no `.env`** → Gemini API (default **`gemini-3.6-flash`**)  
+2. `DEEPL_AUTH_KEY` → DeepL  
+3. `OPENAI_API_KEY` / `XAI_API_KEY` → LLM OpenAI-compat  
+4. **Sem chave** → `none`: labels pt/es + corpo EN (rápido)  
+5. `--translate` → MyMemory (só se pedir)  
+
+Override de modelo: `GEMINI_MODEL=gemini-3.1-flash-lite` (mais barato) ou `gemini-3.6-flash` (recomendado).  
+Arquivo local: `.env` (gitignored). Modelo: `.env.example`.
 
 Glossário: `src/content/glossary.json` (`doNotTranslate` + `fixedPhrases`).
 
@@ -69,14 +73,9 @@ Glossário: `src/content/glossary.json` (`doNotTranslate` + `fixedPhrases`).
 ### Exemplos
 
 ```bash
-# Rápido, sem API configurada
+# Com .env → GEMINI=... (Gemini 3.6 Flash)
 npm run ingest:update -- --news-id 1018
 
-# MT gratuito (lento)
-npm run ingest:update -- --news-id 1018 --translate
-
-# Com chave (PowerShell)
-# $env:DEEPL_AUTH_KEY="..."
 npm run content:localize -- --path src/content/sources/raw-drafts/b133.02 --force
 ```
 

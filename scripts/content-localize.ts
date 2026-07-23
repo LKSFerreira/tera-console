@@ -16,9 +16,11 @@ import {
   type LocaleAlvo,
   type ProvedorTraducao,
 } from './lib/localize-content.ts';
+import { carregarEnv } from './lib/load-env.ts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const raiz = resolve(__dirname, '..');
+carregarEnv(raiz);
 
 function lerArg(nome: string): string | undefined {
   const i = process.argv.indexOf(nome);
