@@ -49,7 +49,17 @@ jobs:
         run: npm ci
 
       - name: Ingest as draft (never published)
-        run: npm run ingest:update -- --url "${{ inputs.news_ref }}"
+        env:
+          # Secret do repositório (Settings → Secrets → Actions). Não commitar .env.
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.6-flash' }}
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "::warning::Secret GEMINI_API_KEY não encontrado — tradução só com labels (corpo EN)."
+          else
+            echo "Gemini configurado (modelo: ${GEMINI_MODEL})"
+          fi
+          npm run ingest:update -- --url "${{ inputs.news_ref }}"
 
       - name: Create draft PR (DO NOT merge as product content)
         uses: peter-evans/create-pull-request@v7
