@@ -1,0 +1,482 @@
+{
+  "schemaVersion": 1,
+  "locale": "en-US",
+  "tabs": {
+    "dungeons": {
+      "label": "Dungeons",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Dungeons",
+          "icon": "swords"
+        },
+        {
+          "type": "subsection",
+          "title": "Dungeon",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Rampaging RK-9 KennelLast StandLast Stand begins. Please check the separate announcement for details.Entry is available via the existing RK-9 Kennel Dimensional Gem.Dungeon matching and party recruitment are both available.Records are only registered if the Boss 3 shield-break pattern (HARD transition) is completed.Vanguard Request rewards can only be obtained if the Boss 3 shield-break pattern (HARD transition) is completed.Item level is 950. Additional rewards including Darkshard can be obtained.New patterns added per boss. HARD I system is not applied.Known Issue — The enrage timing indicator based on boss HP does not match the actual timing.Developer NoteThis Last Stand features the Rampaging RK-9 Kennel. Patterns have been strengthened and reworked to emphasize party cooperation. The overall flow is similar to before, but records can vary significantly depending on how each boss's mechanics are handled.In this Last Stand, if a party already ranked in the top positions makes a record after replacing only 1 or 2 members, that record will be excluded from title reward eligibility. This is to allow more players to receive rewards — as this issue was frequently observed in top 1–5 parties per region.Accordingly, only the leaderboard will be published for now. Reward details will be announced later.Additionally, Darkshard reward quantities have been increased, and the previously criticized entry count sharing restriction has been removed.",
+                "Rampaging RK-9 KennelLast Stand",
+                "Last Stand begins. Please check the separate announcement for details.Entry is available via the existing RK-9 Kennel Dimensional Gem.Dungeon matching and party recruitment are both available.Records are only registered if the Boss 3 shield-break pattern (HARD transition) is completed.Vanguard Request rewards can only be obtained if the Boss 3 shield-break pattern (HARD transition) is completed.Item level is 950. Additional rewards including Darkshard can be obtained.New patterns added per boss. HARD I system is not applied.",
+                "Last Stand begins. Please check the separate announcement for details.",
+                "Entry is available via the existing RK-9 Kennel Dimensional Gem.",
+                "Dungeon matching and party recruitment are both available.",
+                "Records are only registered if the Boss 3 shield-break pattern (HARD transition) is completed.",
+                "Vanguard Request rewards can only be obtained if the Boss 3 shield-break pattern (HARD transition) is completed.",
+                "Item level is 950. Additional rewards including Darkshard can be obtained.",
+                "New patterns added per boss. HARD I system is not applied.",
+                "Known Issue — The enrage timing indicator based on boss HP does not match the actual timing.",
+                "Developer NoteThis Last Stand features the Rampaging RK-9 Kennel. Patterns have been strengthened and reworked to emphasize party cooperation. The overall flow is similar to before, but records can vary significantly depending on how each boss's mechanics are handled.In this Last Stand, if a party already ranked in the top positions makes a record after replacing only 1 or 2 members, that record will be excluded from title reward eligibility. This is to allow more players to receive rewards — as this issue was frequently observed in top 1–5 parties per region.Accordingly, only the leaderboard will be published for now. Reward details will be announced later.Additionally, Darkshard reward quantities have been increased, and the previously criticized entry count sharing restriction has been removed.",
+                "This Last Stand features the Rampaging RK-9 Kennel. Patterns have been strengthened and reworked to emphasize party cooperation. The overall flow is similar to before, but records can vary significantly depending on how each boss's mechanics are handled.",
+                "In this Last Stand, if a party already ranked in the top positions makes a record after replacing only 1 or 2 members, that record will be excluded from title reward eligibility. This is to allow more players to receive rewards — as this issue was frequently observed in top 1–5 parties per region.",
+                "Accordingly, only the leaderboard will be published for now. Reward details will be announced later.",
+                "Additionally, Darkshard reward quantities have been increased, and the previously criticized entry count sharing restriction has been removed.",
+                "HARD I SystemConsumable ChangeThe consumable changes from Dungeon Core (Annihilation) to Condensed Dungeon Core.Condensed Dungeon Core is a separate difficulty-control material and cannot be transferred between characters.Plans to expand this system to allow spending multiple cores for higher difficulty and rewards.How to Obtain Condensed Dungeon Core25× Dungeon Core (Annihilation) — purchase up to 4 per week250× Dungeon Core (Kaia) — purchase up to 2 per weekLow chance to obtain Condensed Dungeon Core Chest from dungeons ilvl 850+ (tradeable, yields 1 core)Obtain Condensed Legacy of Annihilation by defeating bosses in HARD ICombine 10× Condensed Magic Crystal to convert into 1 Condensed Dungeon CoreOther ChangesHARD I resurrection penalty reduced from 10× → 3×. (Applies to Last Stand as well)HARD I ATK increase rate and Crit Power slightly decreased.Developer NoteTo improve HARD I rewards, regular materials have been added in place of Dungeon Core (Annihilation). While the rewards were already higher than those from Dungeon Core (Annihilation), we've heard that they still didn't feel adequate for the difficulty, so we've made adjustments.We've also removed the Last Stand entry count sharing restriction, which should increase overall supply. We'll monitor the situation and make quick follow-up adjustments such as additional events as needed.Additionally, as infinite resurrection by Priests and Mystics is no longer possible, we've reduced the resurrection penalty and recalibrated overall dungeon damage to ensure it doesn't feel excessive.",
+                "The consumable changes from Dungeon Core (Annihilation) to Condensed Dungeon Core.Condensed Dungeon Core is a separate difficulty-control material and cannot be transferred between characters.Plans to expand this system to allow spending multiple cores for higher difficulty and rewards.",
+                "The consumable changes from Dungeon Core (Annihilation) to Condensed Dungeon Core.",
+                "Condensed Dungeon Core is a separate difficulty-control material and cannot be transferred between characters.",
+                "Plans to expand this system to allow spending multiple cores for higher difficulty and rewards.",
+                "How to Obtain Condensed Dungeon Core",
+                "25× Dungeon Core (Annihilation) — purchase up to 4 per week250× Dungeon Core (Kaia) — purchase up to 2 per weekLow chance to obtain Condensed Dungeon Core Chest from dungeons ilvl 850+ (tradeable, yields 1 core)Obtain Condensed Legacy of Annihilation by defeating bosses in HARD ICombine 10× Condensed Magic Crystal to convert into 1 Condensed Dungeon Core",
+                "25× Dungeon Core (Annihilation) — purchase up to 4 per week",
+                "250× Dungeon Core (Kaia) — purchase up to 2 per week",
+                "Low chance to obtain Condensed Dungeon Core Chest from dungeons ilvl 850+ (tradeable, yields 1 core)",
+                "Obtain Condensed Legacy of Annihilation by defeating bosses in HARD I",
+                "Combine 10× Condensed Magic Crystal to convert into 1 Condensed Dungeon Core",
+                "HARD I resurrection penalty reduced from 10× → 3×. (Applies to Last Stand as well)HARD I ATK increase rate and Crit Power slightly decreased.",
+                "HARD I resurrection penalty reduced from 10× → 3×. (Applies to Last Stand as well)",
+                "HARD I ATK increase rate and Crit Power slightly decreased.",
+                "Developer NoteTo improve HARD I rewards, regular materials have been added in place of Dungeon Core (Annihilation). While the rewards were already higher than those from Dungeon Core (Annihilation), we've heard that they still didn't feel adequate for the difficulty, so we've made adjustments.We've also removed the Last Stand entry count sharing restriction, which should increase overall supply. We'll monitor the situation and make quick follow-up adjustments such as additional events as needed.Additionally, as infinite resurrection by Priests and Mystics is no longer possible, we've reduced the resurrection penalty and recalibrated overall dungeon damage to ensure it doesn't feel excessive.",
+                "To improve HARD I rewards, regular materials have been added in place of Dungeon Core (Annihilation). While the rewards were already higher than those from Dungeon Core (Annihilation), we've heard that they still didn't feel adequate for the difficulty, so we've made adjustments.",
+                "We've also removed the Last Stand entry count sharing restriction, which should increase overall supply. We'll monitor the situation and make quick follow-up adjustments such as additional events as needed.",
+                "Additionally, as infinite resurrection by Priests and Mystics is no longer possible, we've reduced the resurrection penalty and recalibrated overall dungeon damage to ensure it doesn't feel excessive.",
+                "Other Dungeon ChangesBoss monsters in all 3 RK-9 Kennel dungeons changed to non-aggressive.RK-9 Kennel: Ultimate leaderboard conditions changed — records only register after Boss 3's shield-break pattern is completed.Incoming damage in dungeons ilvl 850+ has been rebalanced.All skills and brooches reset upon dungeon reset or boss defeat in all dungeons.Consumables available from Oshar's Resurrection Scroll reduced to Prime Battle Solution only.",
+                "Other Dungeon Changes",
+                "Boss monsters in all 3 RK-9 Kennel dungeons changed to non-aggressive.RK-9 Kennel: Ultimate leaderboard conditions changed — records only register after Boss 3's shield-break pattern is completed.Incoming damage in dungeons ilvl 850+ has been rebalanced.All skills and brooches reset upon dungeon reset or boss defeat in all dungeons.Consumables available from Oshar's Resurrection Scroll reduced to Prime Battle Solution only.",
+                "Boss monsters in all 3 RK-9 Kennel dungeons changed to non-aggressive.",
+                "RK-9 Kennel: Ultimate leaderboard conditions changed — records only register after Boss 3's shield-break pattern is completed."
+              ]
+            },
+            {
+              "type": "figure",
+              "src": "/patches/b133.01/B133_7.jpg",
+              "alt": "Patch image",
+              "caption": "Official patch image"
+            },
+            {
+              "type": "figure",
+              "src": "/patches/b133.01/B133_1.png",
+              "alt": "Patch image",
+              "caption": "Official patch image"
+            }
+          ]
+        }
+      ]
+    },
+    "events": {
+      "label": "Events",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Events",
+          "icon": "calendar"
+        },
+        {
+          "type": "subsection",
+          "title": "Battleground",
+          "blocks": [
+            {
+              "type": "table",
+              "columns": [
+                "Item",
+                "Description"
+              ],
+              "rows": [
+                [
+                  "[Event] Starlit Sand",
+                  "Exchange with Starung for items, or combine with Empty Bottle to earn additional rewards"
+                ],
+                [
+                  "[Event] An Empty Bottle to Catch Starlight",
+                  "1 granted per day. Additional 1 obtainable upon completing Coastal Battleground Vanguard Request"
+                ],
+                [
+                  "[Event] Sand That Holds the Glow of the Stars",
+                  "Obtained by combining 7 Empty Bottles + 50 Starlight Sand. Can exchange for Tier 4 Accessory Etchings / Legendary Gear Etchings"
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "columns": [
+                "Tab",
+                "Item",
+                "Price",
+                "Limit"
+              ],
+              "rows": [
+                [
+                  "Accessory",
+                  "Necklace Etching — Power II (and 9 others)",
+                  "20 Sand",
+                  "1× per character"
+                ],
+                [
+                  "Accessory",
+                  "Necklace Etching — Power III (and 9 others)",
+                  "45 Sand",
+                  "1× per character"
+                ],
+                [
+                  "Equipment",
+                  "Superior Weapon Etching: Power (and 15 others)",
+                  "20 Sand",
+                  "1× per character"
+                ],
+                [
+                  "Equipment",
+                  "Rare Weapon Etching: Power (and 15 others)",
+                  "45 Sand",
+                  "1× per character"
+                ],
+                [
+                  "Limited",
+                  "Rare Etching Exchange Coin",
+                  "45 Sand",
+                  "3× per account"
+                ],
+                [
+                  "Limited",
+                  "Accessory Tier 3 Etching Exchange Coin",
+                  "45 Sand",
+                  "3× per account"
+                ],
+                [
+                  "Limited",
+                  "Legendary Etching Exchange Coin",
+                  "200 Sand",
+                  "2× per account"
+                ],
+                [
+                  "Limited",
+                  "Accessory Tier 4 Etching Exchange Coin",
+                  "200 Sand",
+                  "2× per account"
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "columns": [
+                "Coin Used",
+                "Item Received"
+              ],
+              "rows": [
+                [
+                  "Rare Etching Exchange Coin",
+                  "Rare Weapon Etching: Power (and 15 others)"
+                ],
+                [
+                  "Legendary Etching Exchange Coin",
+                  "Legendary Weapon Etching: Power (and 15 others)"
+                ],
+                [
+                  "Accessory Tier 3 Etching Exchange Coin",
+                  "Necklace Etching — Power III (and 9 others)"
+                ],
+                [
+                  "Accessory Tier 4 Etching Exchange Coin",
+                  "Necklace Etching — Power IV (and 9 others)"
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "columns": [
+                "Item Used",
+                "Item Received"
+              ],
+              "rows": [
+                [
+                  "Glowing Starlight Sand",
+                  "Necklace Etching — Power IV (and 19 others)"
+                ],
+                [
+                  "Glowing Starlight Sand",
+                  "Legendary Weapon Etching: Power (and 15 others)"
+                ]
+              ]
+            },
+            {
+              "type": "figure",
+              "src": "/patches/b133.01/B133_2.png",
+              "alt": "Patch image",
+              "caption": "Official patch image"
+            },
+            {
+              "type": "figure",
+              "src": "/patches/b133.01/B133_3.png",
+              "alt": "Patch image",
+              "caption": "Official patch image"
+            },
+            {
+              "type": "figure",
+              "src": "/patches/b133.01/B133_4.png",
+              "alt": "Patch image",
+              "caption": "Official patch image"
+            }
+          ]
+        }
+      ]
+    },
+    "classes": {
+      "label": "Classes",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Classes",
+          "icon": "user-cog"
+        },
+        {
+          "type": "subsection",
+          "title": "Class",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "ReaperShadow Burst — ActiveThe timing to trigger the 2nd hit hotkey after the 1st hit has been made faster.Shadow Reaping — Buff EffectDuration: 8s → 15sRetribution — ActiveDamage dealt on successful Retribution reduced by 90%.Developer NoteThe Retribution nerf is related to the Binding Scythes buff and the change that prevents Shadow Step from being removed by DoT damage, both added in the previous update.Rather than buffing the assassination concept, having a DPS class rush forward to counter-attack and return was deemed contrary to our intended direction.As Binding Scythes was found to provide satisfactory sustained damage after its update, and can partially replace the role of Retribution, we've made this adjustment.",
+                "Shadow Burst — Active",
+                "The timing to trigger the 2nd hit hotkey after the 1st hit has been made faster.",
+                "Shadow Reaping — Buff Effect",
+                "Damage dealt on successful Retribution reduced by 90%.",
+                "Developer NoteThe Retribution nerf is related to the Binding Scythes buff and the change that prevents Shadow Step from being removed by DoT damage, both added in the previous update.Rather than buffing the assassination concept, having a DPS class rush forward to counter-attack and return was deemed contrary to our intended direction.As Binding Scythes was found to provide satisfactory sustained damage after its update, and can partially replace the role of Retribution, we've made this adjustment.",
+                "The Retribution nerf is related to the Binding Scythes buff and the change that prevents Shadow Step from being removed by DoT damage, both added in the previous update.",
+                "Rather than buffing the assassination concept, having a DPS class rush forward to counter-attack and return was deemed contrary to our intended direction.",
+                "As Binding Scythes was found to provide satisfactory sustained damage after its update, and can partially replace the role of Retribution, we've made this adjustment.",
+                "LancerLine Held — PassiveStamina recovery on successful block: 50 → 75Crit Factor increase per stack: 24 → 35Guardian Barrier — ActiveRetribution Shield effect no longer applies when Guardian Barrier is used.Retribution Shield — Buff EffectRetribution Thrust damage increase per stack: 12.5% → 17.5%Maximum stacks: 7 → 5. Guardian Shout activates from 5 stacks.Second Wind — ActiveHP recovery increased by 2×.Focus Glyph cooldown reduction rate changed from % to a fixed value.Developer NoteBalance adjustments were made to improve Lancer usability and shorten warm-up time.Repeatedly using Tenacity to stall without healer support was deemed inappropriate and has been adjusted.",
+                "Stamina recovery on successful block: 50 → 75Crit Factor increase per stack: 24 → 35",
+                "Stamina recovery on successful block: 50 → 75",
+                "Crit Factor increase per stack: 24 → 35",
+                "Guardian Barrier — Active",
+                "Retribution Shield effect no longer applies when Guardian Barrier is used.",
+                "Retribution Shield — Buff Effect",
+                "Retribution Thrust damage increase per stack: 12.5% → 17.5%Maximum stacks: 7 → 5. Guardian Shout activates from 5 stacks.",
+                "Retribution Thrust damage increase per stack: 12.5% → 17.5%",
+                "Maximum stacks: 7 → 5. Guardian Shout activates from 5 stacks.",
+                "HP recovery increased by 2×.Focus Glyph cooldown reduction rate changed from % to a fixed value.",
+                "HP recovery increased by 2×.",
+                "Focus Glyph cooldown reduction rate changed from % to a fixed value.",
+                "Developer NoteBalance adjustments were made to improve Lancer usability and shorten warm-up time.Repeatedly using Tenacity to stall without healer support was deemed inappropriate and has been adjusted.",
+                "Balance adjustments were made to improve Lancer usability and shorten warm-up time.",
+                "Repeatedly using Tenacity to stall without healer support was deemed inappropriate and has been adjusted.",
+                "SorcererEquipoise — PassiveOn hit with a 2-element combination skill: self Crit Rate +10% correction added.On hit with a Fusion skill: self Crit Rate +10% correction added.Element Zero — Buff EffectCrit Factor increase: 10 → 15Developer NoteSorcerer relies on elemental chaining for its primary skills, and has a high proportion of skills without glyph effects. Combined with the recent Crit Resistance increase update, Crit hits were occurring less often than expected, so we've made adjustments.We've also added Crit Factor increase to the Element Zero effect from Fusion skill hits, encouraging more Fusion usage and enabling more stable sustained DPS.",
+                "On hit with a 2-element combination skill: self Crit Rate +10% correction added.On hit with a Fusion skill: self Crit Rate +10% correction added.",
+                "On hit with a 2-element combination skill: self Crit Rate +10% correction added.",
+                "On hit with a Fusion skill: self Crit Rate +10% correction added.",
+                "Element Zero — Buff Effect",
+                "Crit Factor increase: 10 → 15",
+                "Developer NoteSorcerer relies on elemental chaining for its primary skills, and has a high proportion of skills without glyph effects. Combined with the recent Crit Resistance increase update, Crit hits were occurring less often than expected, so we've made adjustments.We've also added Crit Factor increase to the Element Zero effect from Fusion skill hits, encouraging more Fusion usage and enabling more stable sustained DPS.",
+                "Sorcerer relies on elemental chaining for its primary skills, and has a high proportion of skills without glyph effects. Combined with the recent Crit Resistance increase update, Crit hits were occurring less often than expected, so we've made adjustments.",
+                "We've also added Crit Factor increase to the Element Zero effect from Fusion skill hits, encouraging more Fusion usage and enabling more stable sustained DPS.",
+                "NinjaFocus — Buff EffectAdditional Crit Factor increase of 5 per stack.Circular Tactics II — PassiveRanged Crit Rate increase: 40% → 50%Melee skill Crit Rate increase: +10% additionallyBurning Heart — ActiveAttack range hit detection no longer disperses — adjusted to deal equal damage to all targets within range. (Total expected power unchanged)Boomerang Shuriken — ActiveFixed a bug where the skill would lock when cooldown reduction was excessive, causing the remaining cooldown to be applied twice.Developer NoteLike the Sorcerer, Ninja has a high ratio of skills without glyph effects, though it does have some compensating factors. Adjustments have been made for areas that fell short of expectations, and long-standing issues with Burning Heart and Boomerang Shuriken have been fixed.",
+                "Additional Crit Factor increase of 5 per stack.",
+                "Circular Tactics II — Passive",
+                "Ranged Crit Rate increase: 40% → 50%Melee skill Crit Rate increase: +10% additionally",
+                "Ranged Crit Rate increase: 40% → 50%",
+                "Melee skill Crit Rate increase: +10% additionally"
+              ]
+            },
+            {
+              "type": "figure",
+              "src": "/patches/b133.01/B133_5.png",
+              "alt": "Patch image",
+              "caption": "Official patch image"
+            }
+          ]
+        }
+      ]
+    },
+    "system": {
+      "label": "System",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "System",
+          "icon": "settings"
+        },
+        {
+          "type": "subsection",
+          "title": "Rewards",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Developer NoteWhile the low Darkshard drop rate was intentional, we observed that the time required to obtain them was making gameplay feel too loose. We'll increase Darkshard supply while reducing the drop rate of crafting recipes and production-related items.We've also removed Disenchantment Neutralizer and Moonshine Fruit Potion (Non-Tradable) [Untradeable] from Pet Adventure, as they were overloading the loot pool.Additionally, to prevent a single player from monopolizing rewards with an underfilled party, drop rewards will be significantly reduced when the party is short on members.",
+                "While the low Darkshard drop rate was intentional, we observed that the time required to obtain them was making gameplay feel too loose. We'll increase Darkshard supply while reducing the drop rate of crafting recipes and production-related items.",
+                "We've also removed Disenchantment Neutralizer and Moonshine Fruit Potion (Non-Tradable) [Untradeable] from Pet Adventure, as they were overloading the loot pool.",
+                "Additionally, to prevent a single player from monopolizing rewards with an underfilled party, drop rewards will be significantly reduced when the party is short on members.",
+                "Item Level 900+Darkshard drop amount increased. (Applies to HARD I and Last Stand)Rune Option Change Stone drop amount significantly decreased.",
+                "Darkshard drop amount increased. (Applies to HARD I and Last Stand)Rune Option Change Stone drop amount significantly decreased.",
+                "Darkshard drop amount increased. (Applies to HARD I and Last Stand)",
+                "Rune Option Change Stone drop amount significantly decreased.",
+                "Akeron's InfernoDarkshard reward added to Vanguard Request. (2× with ELITE GOLD)Drop penalties when raid is short on members:— 1 player short: Drop rate -80%— 2 players short: Drop rate -99%",
+                "Darkshard reward added to Vanguard Request. (2× with ELITE GOLD)Drop penalties when raid is short on members:— 1 player short: Drop rate -80%— 2 players short: Drop rate -99%",
+                "Darkshard reward added to Vanguard Request. (2× with ELITE GOLD)",
+                "Drop penalties when raid is short on members:— 1 player short: Drop rate -80%— 2 players short: Drop rate -99%",
+                "All DungeonsRecipe: Alexandrite drop rate decreased.Shining Ellinu's Tear drop rate decreased.Disenchantment Neutralizer and Moonshine Fruit Potion (Non-Tradable) [Untradeable] removed from Pet Adventure.Drop penalties when party is short on members:— 1 player short: Drop rate -25%— 2+ players short: Drop rate -50%",
+                "Recipe: Alexandrite drop rate decreased.Shining Ellinu's Tear drop rate decreased.Disenchantment Neutralizer and Moonshine Fruit Potion (Non-Tradable) [Untradeable] removed from Pet Adventure.Drop penalties when party is short on members:— 1 player short: Drop rate -25%— 2+ players short: Drop rate -50%",
+                "Recipe: Alexandrite drop rate decreased.",
+                "Shining Ellinu's Tear drop rate decreased.",
+                "Disenchantment Neutralizer and Moonshine Fruit Potion (Non-Tradable) [Untradeable] removed from Pet Adventure.",
+                "Drop penalties when party is short on members:— 1 player short: Drop rate -25%— 2+ players short: Drop rate -50%",
+                "Vanguard RequestReputation point rewards for all Vanguard Requests significantly increased.Weekly Vanguard Request completion reward: Vanguard Initiative Reputation Points +3,000 added.Daily Vanguard Request completion rewards — Vanguard Initiative Reputation Points added:— 3 completions: 500 pts— 8 completions: 750 pts— 16 completions: 1,000 pts— 25 completions: 2,000 pts",
+                "Reputation point rewards for all Vanguard Requests significantly increased.Weekly Vanguard Request completion reward: Vanguard Initiative Reputation Points +3,000 added.Daily Vanguard Request completion rewards — Vanguard Initiative Reputation Points added:— 3 completions: 500 pts— 8 completions: 750 pts— 16 completions: 1,000 pts— 25 completions: 2,000 pts",
+                "Reputation point rewards for all Vanguard Requests significantly increased.",
+                "Weekly Vanguard Request completion reward: Vanguard Initiative Reputation Points +3,000 added.",
+                "Daily Vanguard Request completion rewards — Vanguard Initiative Reputation Points added:— 3 completions: 500 pts— 8 completions: 750 pts— 16 completions: 1,000 pts— 25 completions: 2,000 pts",
+                "Vanguard Initiative Point ShopEnchantment Powder price decreased.Normal ~ Legendary Card Box prices slightly increased.Blazing Essence of God / Scorching Essence of God prices increased.Rune-related material prices adjusted.Artifact Gemstone price decreased.Consumable prices (excluding Ellinu's Tear) decreased.Howling Rage gear item prices decreased.Developer NoteCurrently, most purchases from the Vanguard Initiative Point Shop are Card Boxes. We see this as a positive — lowering the barrier to card content. However, the core intent of the point system was to allow players to purchase what they actually need, rather than receiving unwanted items — to enable targeted exchanges and reduce accumulation.As demand was concentrated on specific items, we considered removing them. However, since we didn't want to erase an already established culture, we instead raised the prices of high-demand items while increasing the amount of reputation points players can earn.We hope this change leads to a smoother overall experience.",
+                "Vanguard Initiative Point Shop",
+                "Enchantment Powder price decreased.Normal ~ Legendary Card Box prices slightly increased.Blazing Essence of God / Scorching Essence of God prices increased.Rune-related material prices adjusted.Artifact Gemstone price decreased.Consumable prices (excluding Ellinu's Tear) decreased.Howling Rage gear item prices decreased.",
+                "Enchantment Powder price decreased.",
+                "Normal ~ Legendary Card Box prices slightly increased.",
+                "Blazing Essence of God / Scorching Essence of God prices increased.",
+                "Rune-related material prices adjusted.",
+                "Artifact Gemstone price decreased.",
+                "Consumable prices (excluding Ellinu's Tear) decreased.",
+                "Howling Rage gear item prices decreased.",
+                "Developer NoteCurrently, most purchases from the Vanguard Initiative Point Shop are Card Boxes. We see this as a positive — lowering the barrier to card content. However, the core intent of the point system was to allow players to purchase what they actually need, rather than receiving unwanted items — to enable targeted exchanges and reduce accumulation.As demand was concentrated on specific items, we considered removing them. However, since we didn't want to erase an already established culture, we instead raised the prices of high-demand items while increasing the amount of reputation points players can earn.We hope this change leads to a smoother overall experience.",
+                "Currently, most purchases from the Vanguard Initiative Point Shop are Card Boxes. We see this as a positive — lowering the barrier to card content. However, the core intent of the point system was to allow players to purchase what they actually need, rather than receiving unwanted items — to enable targeted exchanges and reduce accumulation.",
+                "As demand was concentrated on specific items, we considered removing them. However, since we didn't want to erase an already established culture, we instead raised the prices of high-demand items while increasing the amount of reputation points players can earn.",
+                "We hope this change leads to a smoother overall experience."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "subsection",
+          "title": "Content",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Pit of Petrax — DPS-only BossBosses have been consolidated.HP increased.Front damage: -50%Side damage: -20%Back damage: +10%",
+                "Pit of Petrax — DPS-only Boss",
+                "Bosses have been consolidated.HP increased.Front damage: -50%Side damage: -20%Back damage: +10%",
+                "Bosses have been consolidated.",
+                "Quick SignalAnimation-based Quick Signals now repeat when used once.",
+                "Animation-based Quick Signals now repeat when used once.",
+                "World EventsHP of Magnuut, Est, Ost, Arcus, Mahardel, Volcanus, Darkripper, and Basilisk significantly increased.",
+                "HP of Magnuut, Est, Ost, Arcus, Mahardel, Volcanus, Darkripper, and Basilisk significantly increased."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "subsection",
+          "title": "UI",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Boss Gauge — Shield Pattern Display AddedWhen a shield pattern activates during boss combat, the boss gauge display changes.The icon on the left side of the boss gauge changes, and the remaining shield value is displayed.",
+                "Boss Gauge — Shield Pattern Display Added",
+                "When a shield pattern activates during boss combat, the boss gauge display changes.The icon on the left side of the boss gauge changes, and the remaining shield value is displayed.",
+                "When a shield pattern activates during boss combat, the boss gauge display changes.",
+                "The icon on the left side of the boss gauge changes, and the remaining shield value is displayed."
+              ]
+            },
+            {
+              "type": "figure",
+              "src": "/patches/b133.01/B133_6.png",
+              "alt": "Patch image",
+              "caption": "Official patch image"
+            }
+          ]
+        },
+        {
+          "type": "subsection",
+          "title": "Other",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Network Latency Ping CompensationA critical issue was discovered during preparation for this feature — it has been postponed. We will implement it in a more complete state. We apologize to those who were waiting for this feature.",
+                "Network Latency Ping Compensation",
+                "A critical issue was discovered during preparation for this feature — it has been postponed. We will implement it in a more complete state. We apologize to those who were waiting for this feature."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "bugs": {
+      "label": "Bug Fixes",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Bug Fixes",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "subsection",
+          "title": "Bug Fixes",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Fixed an issue where Refined Stigma names were not displaying.Fixed an issue where crafting material quantities were not fully shown in the crafting menu when holding large amounts.Fixed an incorrect trade attribute setting on the Evolution Training Book.'Brrr…..' achievement counter target effect changed — now easier to complete than before.Season Runner2 achievement count issue fixed — can now be completed with 1/10 of the required count.Fixed an issue where the Damage Amplification stat was not being applied to Mystic's Aura effect.Fixed an issue where title effects could be stacked under certain conditions to speed up manual fishing.Fixed an issue where the Moonblader's Lunar: Moonlight Resonance Crit Power increase armor option was applying to all skills instead of only the relevant skill.Fixed an issue where HP/MP values decreased when mounting a flying mount while HP/MP increase options were active.Fixed an issue where the cooldown reset effect was not resetting certain skills other than brooches.Fixed an issue where the Season Moonblade weapon level was only applying up to 830.Fixed an issue where patterns overlapped when dealing high burst damage in Ice Throne.Fixed an issue where certain patterns were not applying correctly in Ice Throne (Normal).Fixed an issue in Akeron's Inferno where skills could not be used for a period after a steam vent airborne.Fixed an issue in Timescape dungeons where the Dimensional Gem would not appear after resetting Boss 3.Fixed an issue where items were displaying as [Damaged] in the Trade Broker.Fixed an issue where certain guild quests were functioning abnormally.Fixed an issue where Binding Scythes would intermittently fail to activate.",
+                "Fixed an issue where Refined Stigma names were not displaying.",
+                "Fixed an issue where crafting material quantities were not fully shown in the crafting menu when holding large amounts.",
+                "Fixed an incorrect trade attribute setting on the Evolution Training Book.",
+                "'Brrr…..' achievement counter target effect changed — now easier to complete than before.",
+                "Season Runner2 achievement count issue fixed — can now be completed with 1/10 of the required count.",
+                "Fixed an issue where the Damage Amplification stat was not being applied to Mystic's Aura effect.",
+                "Fixed an issue where title effects could be stacked under certain conditions to speed up manual fishing.",
+                "Fixed an issue where the Moonblader's Lunar: Moonlight Resonance Crit Power increase armor option was applying to all skills instead of only the relevant skill.",
+                "Fixed an issue where HP/MP values decreased when mounting a flying mount while HP/MP increase options were active.",
+                "Fixed an issue where the cooldown reset effect was not resetting certain skills other than brooches.",
+                "Fixed an issue where the Season Moonblade weapon level was only applying up to 830.",
+                "Fixed an issue where patterns overlapped when dealing high burst damage in Ice Throne.",
+                "Fixed an issue where certain patterns were not applying correctly in Ice Throne (Normal).",
+                "Fixed an issue in Akeron's Inferno where skills could not be used for a period after a steam vent airborne.",
+                "Fixed an issue in Timescape dungeons where the Dimensional Gem would not appear after resetting Boss 3.",
+                "Fixed an issue where items were displaying as [Damaged] in the Trade Broker.",
+                "Fixed an issue where certain guild quests were functioning abnormally.",
+                "Fixed an issue where Binding Scythes would intermittently fail to activate."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "highlights": {
+      "label": "Highlights",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Highlights",
+          "icon": "sparkles"
+        },
+        {
+          "type": "sectionTitle",
+          "title": "Update Highlights",
+          "icon": "sparkles"
+        },
+        {
+          "type": "bulletList",
+          "items": [
+            "HARD I system consumables and resurrection penalty have been changed.",
+            "Coastal Battleground opens as a 6-week event.",
+            "Rampaging RK-9 Kennel Last Stand begins.",
+            "Balance adjustments for several classes.",
+            "Darkshard supply and dungeon reward structure adjusted.",
+            "Boss shield pattern gauge UI added.",
+            "Multiple bug fixes."
+          ]
+        }
+      ]
+    }
+  }
+}

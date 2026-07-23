@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "id": "b133.01",
+  "buildLabel": "B133",
+  "kind": "update",
+  "status": "draft",
+  "source": {
+    "officialNewsId": 1008,
+    "officialUrl": "https://tera-console.com/news/1008",
+    "fetchedAt": "2026-07-23T18:10:11.615Z",
+    "languageType": "EN"
+  },
+  "publishedAt": "2026-07-12",
+  "parse": {
+    "quality": "partial",
+    "warnings": [
+      "Headings sem match no section-map: Rewards | Content | Other",
+      "Locales pt-BR/es-ES usam labels localizados; corpo textual ainda em EN (sem API de tradução)."
+    ],
+    "unmappedHeadings": [
+      "Rewards",
+      "Content",
+      "Other"
+    ],
+    "fallbackTabs": []
+  },
+  "display": {
+    "en-US": {
+      "name": "B133 Update — July 15",
+      "date": "July 12, 2026",
+      "parts": ""
+    },
+    "pt-BR": {
+      "name": "B133 Update — July 15",
+      "date": "12 de julho de 2026",
+      "parts": ""
+    },
+    "es-ES": {
+      "name": "B133 Update — July 15",
+      "date": "12 de julio de 2026",
+      "parts": ""
+    }
+  },
+  "tabs": [
+    {
+      "id": "highlights",
+      "icon": "sparkles"
+    },
+    {
+      "id": "bugs",
+      "icon": "alert-triangle"
+    },
+    {
+      "id": "classes",
+      "icon": "user-cog"
+    },
+    {
+      "id": "dungeons",
+      "icon": "swords"
+    },
+    {
+      "id": "events",
+      "icon": "calendar"
+    },
+    {
+      "id": "system",
+      "icon": "settings"
+    }
+  ]
+}

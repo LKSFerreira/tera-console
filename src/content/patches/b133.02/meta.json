@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "id": "b133.02",
+  "buildLabel": "B133.02",
+  "kind": "update",
+  "status": "draft",
+  "source": {
+    "officialNewsId": 1018,
+    "officialUrl": "https://tera-console.com/news/1018",
+    "fetchedAt": "2026-07-23T18:09:40.798Z",
+    "languageType": "EN"
+  },
+  "publishedAt": "2026-07-23",
+  "parse": {
+    "quality": "partial",
+    "warnings": [
+      "Headings sem match no section-map: Shop",
+      "Locales pt-BR/es-ES usam labels localizados; corpo textual ainda em EN (sem API de tradução)."
+    ],
+    "unmappedHeadings": [
+      "Shop"
+    ],
+    "fallbackTabs": []
+  },
+  "display": {
+    "en-US": {
+      "name": "B133.02 Update — July 23",
+      "date": "July 23, 2026",
+      "parts": ""
+    },
+    "pt-BR": {
+      "name": "B133.02 Update — July 23",
+      "date": "23 de julho de 2026",
+      "parts": ""
+    },
+    "es-ES": {
+      "name": "B133.02 Update — July 23",
+      "date": "23 de julio de 2026",
+      "parts": ""
+    }
+  },
+  "tabs": [
+    {
+      "id": "bugs",
+      "icon": "alert-triangle"
+    },
+    {
+      "id": "classes",
+      "icon": "user-cog"
+    },
+    {
+      "id": "dungeons",
+      "icon": "swords"
+    },
+    {
+      "id": "system",
+      "icon": "settings"
+    }
+  ]
+}

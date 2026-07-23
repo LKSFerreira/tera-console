@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "defaultTab": "system",
+  "rules": [
+    {
+      "tab": "highlights",
+      "priority": 5,
+      "match": { "any": ["update highlights", "highlights"] }
+    },
+    {
+      "tab": "battlepass",
+      "priority": 10,
+      "match": { "any": ["battle pass", "season pass"] }
+    },
+    {
+      "tab": "season",
+      "priority": 15,
+      "match": { "any": ["season reward", "season 2", "season rewards"] }
+    },
+    {
+      "tab": "dungeons",
+      "priority": 20,
+      "match": { "any": ["dungeon", "rk-9", "ace dungeon", "rotation", "ice throne", "kennel"] }
+    },
+    {
+      "tab": "classes",
+      "priority": 30,
+      "match": { "any": ["class", "balance", "skill"] }
+    },
+    {
+      "tab": "events",
+      "priority": 40,
+      "match": { "any": ["event", "battleground", "last stand", "coastal"] }
+    },
+    {
+      "tab": "gear",
+      "priority": 50,
+      "match": { "any": ["gear", "accessory", "enchant", "mask of annihilation", "equipment"] }
+    },
+    {
+      "tab": "crafting",
+      "priority": 60,
+      "match": { "any": ["craft", "recipe", "production", "item", "shop", "tera shop"] }
+    },
+    {
+      "tab": "bugs",
+      "priority": 70,
+      "match": { "any": ["bug fix", "bug fixes", "known issue", "fixed an issue", "bug"] }
+    },
+    {
+      "tab": "rewards",
+      "priority": 55,
+      "match": { "any": ["rewards", "reward"] }
+    },
+    {
+      "tab": "system",
+      "priority": 80,
+      "match": { "any": ["system", "ui", "matching", "reward structure", "darkshard", "hard i", "content", "other"] }
+    }
+  ],
+  "normalize": {
+    "caseInsensitive": true,
+    "stripHtml": true
+  }
+}

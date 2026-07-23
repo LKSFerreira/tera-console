@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "locale": "en-US",
+  "tabs": {
+    "dungeons": {
+      "label": "Dungeons",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Dungeons",
+          "icon": "swords"
+        },
+        {
+          "type": "subsection",
+          "title": "Dungeon",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Ice ThroneThe knockback distance of Boss 2's crescent pattern has been reduced. (Fixed an issue where players were occasionally launched outside the map)",
+                "The knockback distance of Boss 2's crescent pattern has been reduced. (Fixed an issue where players were occasionally launched outside the map)",
+                "Rampaging RK-9 Kennel / RK-9 Kennel (Hard)The HP of the timed bomb has been significantly reduced.",
+                "Rampaging RK-9 Kennel / RK-9 Kennel (Hard)",
+                "The HP of the timed bomb has been significantly reduced.",
+                "Rampaging RK-9 KennelThe reflection effect of Boss 1 has been removed.Damage reduction during Boss 3's perfect defense has been increased.The defense reduction benefit based on the number of Brain Fog pattern triggers for all bosses is now visualized.",
+                "Rampaging RK-9 Kennel",
+                "The reflection effect of Boss 1 has been removed.Damage reduction during Boss 3's perfect defense has been increased.The defense reduction benefit based on the number of Brain Fog pattern triggers for all bosses is now visualized.",
+                "The reflection effect of Boss 1 has been removed.",
+                "Damage reduction during Boss 3's perfect defense has been increased.",
+                "The defense reduction benefit based on the number of Brain Fog pattern triggers for all bosses is now visualized."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "classes": {
+      "label": "Classes",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Classes",
+          "icon": "user-cog"
+        },
+        {
+          "type": "subsection",
+          "title": "Class",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "ReaperGrim StrikeChained Glyph duration changed: 3s → 6sCable StepAttack Speed Boost Glyph duration changed: 2.5s → 3.5sBinding ScythesInitial stack activation speed has been increased.",
+                "Grim StrikeChained Glyph duration changed: 3s → 6sCable StepAttack Speed Boost Glyph duration changed: 2.5s → 3.5sBinding ScythesInitial stack activation speed has been increased.",
+                "Chained Glyph duration changed: 3s → 6s",
+                "Attack Speed Boost Glyph duration changed: 2.5s → 3.5s",
+                "Initial stack activation speed has been increased.",
+                "ArcherFind WeaknessEffect release trigger rolled back: 1–2 random → 1Effect correction for arrow generation on use has been added.",
+                "Find WeaknessEffect release trigger rolled back: 1–2 random → 1Effect correction for arrow generation on use has been added.",
+                "Effect release trigger rolled back: 1–2 random → 1",
+                "Effect correction for arrow generation on use has been added."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "system": {
+      "label": "System",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "System",
+          "icon": "settings"
+        },
+        {
+          "type": "subsection",
+          "title": "Shop",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Condensed Dungeon Core Exchange Condition ChangesCondensed Dungeon Core exchange rates have been reduced and purchase limits have been increased.Dungeon Core (Kaia) ShopPrice 250 → 200 / Purchase limit 2 → 4Dungeon Core (Annihilation) ShopPrice 25 → 15 / Purchase limit 4 → 10",
+                "Condensed Dungeon Core Exchange Condition Changes",
+                "Condensed Dungeon Core exchange rates have been reduced and purchase limits have been increased.Dungeon Core (Kaia) ShopPrice 250 → 200 / Purchase limit 2 → 4Dungeon Core (Annihilation) ShopPrice 25 → 15 / Purchase limit 4 → 10",
+                "Condensed Dungeon Core exchange rates have been reduced and purchase limits have been increased.",
+                "Dungeon Core (Kaia) Shop",
+                "Price 250 → 200 / Purchase limit 2 → 4",
+                "Dungeon Core (Annihilation) Shop",
+                "Price 25 → 15 / Purchase limit 4 → 10"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "bugs": {
+      "label": "Bug Fixes",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Bug Fixes",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "subsection",
+          "title": "Bug Fixes",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Fixed an issue where a different NPC was assigned to a Guild Mission.Fixed an issue where some patterns of RK-9 Boss 2 were occasionally cancelled.Fixed an issue where the Hexapleon-related electric bomb pattern of RK-9 Boss 2 was cancelled when a player briefly moved out of range at a specific timing.Fixed an issue in RK-9 Kennel (Hard) where, after completing Boss 3's shield pattern and resetting the NPC, Hard Mode was still applied even when object interaction was ignored, and the leaderboard record time was accumulated with the pre-reset time.Fixed an issue where Ninja's Burning Heart was not affected by Attack Speed.Fixed an issue where Ninja's Burning Heart damage increase effect was not applied based on usage count.",
+                "Fixed an issue where a different NPC was assigned to a Guild Mission.",
+                "Fixed an issue where some patterns of RK-9 Boss 2 were occasionally cancelled.",
+                "Fixed an issue where the Hexapleon-related electric bomb pattern of RK-9 Boss 2 was cancelled when a player briefly moved out of range at a specific timing.",
+                "Fixed an issue in RK-9 Kennel (Hard) where, after completing Boss 3's shield pattern and resetting the NPC, Hard Mode was still applied even when object interaction was ignored, and the leaderboard record time was accumulated with the pre-reset time.",
+                "Fixed an issue where Ninja's Burning Heart was not affected by Attack Speed.",
+                "Fixed an issue where Ninja's Burning Heart damage increase effect was not applied based on usage count."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
