@@ -1,0 +1,75 @@
+# Ingestão sob demanda de um UPDATE oficial (newsId ou URL).
+# Actions → Ingest official update → Run workflow
+
+name: Ingest official update
+
+on:
+  workflow_dispatch:
+    inputs:
+      news_ref:
+        description: 'News ID (ex. 1018) ou URL (https://tera-console.com/news/1018)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: ingest-official-update
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    name: Ingest + PR draft
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Ingest update
+        run: npm run ingest:update -- --url "${{ inputs.news_ref }}"
+
+      - name: Validate content schema
+        run: npm run content:validate
+
+      - name: Build (smoke)
+        run: npm run build
+
+      - name: Create draft pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: ':card_file_box: data: ingestão manual de UPDATE `${{ inputs.news_ref }}`'
+          title: 'content: ingest manual `${{ inputs.news_ref }}`'
+          body: |
+            ## Ingestão manual (`workflow_dispatch`)
+
+            Referência: `${{ inputs.news_ref }}`
+
+            ### Checklist
+            - [ ] Revisar conteúdo gerado
+            - [ ] Conferir imagens / abas
+            - [ ] Merge quando ok
+
+            PR em **draft** — sem auto-merge.
+          branch: content/ingest-manual
+          delete-branch: true
+          draft: true
+          labels: content, manual
+          add-paths: |
+            src/content/**
+            public/patches/**

@@ -1,0 +1,109 @@
+# Detecta UPDATES oficiais novos e abre PR draft com o conteúdo ingerido.
+# Cadência: a cada 3 dias (~5× por quinzena) + disparo manual.
+#
+# Requisitos no repo (uma vez):
+#   Settings → Actions → General → Workflow permissions
+#   → Read and write permissions
+#   → Allow GitHub Actions to create and approve pull requests
+
+name: Detect official updates
+
+on:
+  schedule:
+    # 12:00 UTC nos dias 1,4,7,10... do mês (~a cada 3 dias)
+    - cron: '0 12 */3 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: detect-official-updates
+  cancel-in-progress: false
+
+jobs:
+  detect-and-ingest:
+    name: Detect + ingest + PR draft
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Detect new updates
+        id: detect
+        run: npx tsx scripts/detect-new-updates.ts --json --github-output
+
+      - name: Skip when nothing new
+        if: steps.detect.outputs.count == '0'
+        run: echo "Nenhum UPDATE novo. Encerrando sem PR."
+
+      - name: Ingest each new update
+        if: steps.detect.outputs.count != '0'
+        env:
+          IDS: ${{ steps.detect.outputs.ids }}
+        run: |
+          set -euo pipefail
+          IFS=',' read -ra NEWS_IDS <<< "$IDS"
+          for news_id in "${NEWS_IDS[@]}"; do
+            if [ -z "$news_id" ]; then
+              continue
+            fi
+            echo "::group::Ingest newsId=${news_id}"
+            # partial/fallback ainda grava conteúdo; failed sai com código != 0
+            npm run ingest:update -- --news-id "$news_id" || {
+              code=$?
+              echo "Ingest ${news_id} terminou com código ${code} (seguindo os demais)"
+            }
+            echo "::endgroup::"
+          done
+
+      - name: Validate content schema
+        if: steps.detect.outputs.count != '0'
+        run: npm run content:validate
+
+      - name: Build (smoke)
+        if: steps.detect.outputs.count != '0'
+        run: npm run build
+
+      - name: Create draft pull request
+        if: steps.detect.outputs.count != '0'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: ':card_file_box: data: ingestão automática de UPDATES oficiais'
+          title: 'content: novos UPDATES oficiais detectados'
+          body: |
+            ## Ingestão automática (cron / dispatch)
+
+            O workflow detectou UPDATE(s) novo(s) em `api.tera-console.com` e gerou conteúdo data-driven.
+
+            **IDs processados:** `${{ steps.detect.outputs.ids }}`
+
+            ### Checklist do maintainer
+            - [ ] Revisar abas e textos (corpo pt-BR/es-ES pode ainda estar em EN)
+            - [ ] Conferir `meta.parse.quality` / warnings
+            - [ ] Preview visual ok (mesmo design do portal)
+            - [ ] Merge quando estiver bom
+
+            > Não é publicação automática: este PR é **draft** de propósito.
+          branch: content/auto-update
+          delete-branch: true
+          draft: true
+          labels: content, automated
+          add-paths: |
+            src/content/**
+            public/patches/**

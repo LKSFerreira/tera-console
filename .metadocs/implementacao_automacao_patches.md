@@ -3,7 +3,7 @@
 | Campo | Valor |
 |-------|--------|
 | **Status** | Aguardando aprovação para execução |
-| **Versão** | 1.2 |
+| **Versão** | 1.3 |
 | **Data** | 2026-07-23 |
 | **Escopo** | Manter o portal atualizado sem manutenção manual pesada |
 | **Restrição de produto** | Não alterar padrão visual, formato de leitura nem stack pública do site |
@@ -667,7 +667,7 @@ Renderer reutiliza os mesmos blocos. UI: seção “Eventos ativos” no shell *
                              ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  GitHub Action                                                  │
-│  cron diário + workflow_dispatch(url|newsId) → PR draft         │
+│  cron ~3 dias + workflow_dispatch(url|newsId) → PR draft        │
 └────────────────────────────┬────────────────────────────────────┘
                              │
                      review humana
@@ -782,13 +782,14 @@ npm run content:validate
 
 | # | Workflow | Gatilho | Resultado |
 |---|----------|---------|-----------|
-| 4.1 | `detect-official-updates.yml` | `cron` diário (ex.: 12:00 UTC) | Se houver `update` novo ≠ `seen-news-ids`, roda ingestor e abre **PR draft** |
-| 4.2 | `ingest-update.yml` | `workflow_dispatch` com `newsId` ou `url` | PR draft sob demanda |
-| 4.3 | Proteções | — | Branch `content/update-bxxx`; label `content`; sem auto-merge |
+| 4.1 | `detect-official-updates.yml` | **Cron a cada ~3 dias** (`0 12 */3 * *` UTC, ~5×/quinzena) + dispatch | Se houver `update` novo ≠ `seen-news-ids`, ingesta e abre **PR draft** |
+| 4.2 | `ingest-update.yml` | `workflow_dispatch` com newsId/URL | PR draft sob demanda |
+| 4.3 | Proteções | — | Branches `content/auto-update` / `content/ingest-manual`; labels; **sem auto-merge** |
 
-**Secrets:** apenas se o localizer usar API externa; caso contrário Action só gera EN + placeholder e a tradução roda no ambiente do agente/local.
+**Secrets:** nenhum na v1 (sem tradução paga no CI).  
+**Setup manual (uma vez):** permissões write do Actions — ver `.metadocs/github_actions_conteudo.md`.
 
-**Critério de aceite:** Action manual com id `1018` abre PR válido; cron detecta id novo sem duplicar.
+**Critério de aceite:** Action manual com id/URL abre PR draft; cron espaçado não duplica ids em `seen-news-ids`.
 
 ### Etapa 5 — Migração do legado e limpeza
 
