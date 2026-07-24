@@ -49,3 +49,19 @@ export function obterChaveGemini(): string | undefined {
   const chave = process.env.GEMINI_API_KEY?.trim() || process.env.GEMINI?.trim();
   return chave || undefined;
 }
+
+/** OpenRouter (fallback free de tradução quando Gemini falha). */
+export function obterChaveOpenRouter(): string | undefined {
+  const chave = process.env.OPENROUTER_API_KEY?.trim();
+  return chave || undefined;
+}
+
+/**
+ * Modelo free no OpenRouter para localização de patch notes.
+ * Default: Nemotron 3 Super (qualidade + throughput; não Ultra por latência).
+ */
+export function modeloOpenRouterPadrao(): string {
+  return (
+    process.env.OPENROUTER_MODEL?.trim() || 'nvidia/nemotron-3-super-120b-a12b:free'
+  );
+}

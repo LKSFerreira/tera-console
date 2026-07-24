@@ -1,15 +1,24 @@
 /**
  * Localização EN → pt-BR / es-ES com glossário e provedores:
  * 1) GEMINI_API_KEY (default gemini-3.6-flash; alias legado GEMINI)
- * 2) DEEPL_AUTH_KEY
- * 3) OPENAI_API_KEY / XAI_API_KEY
- * 4) MyMemory só com --translate
- * 5) none (labels only)
+ *    → se falhar (cota/rede/etc.) e houver OPENROUTER_API_KEY → OpenRouter free
+ * 2) OPENROUTER_API_KEY (pode ser primário se Gemini ausente)
+ * 3) DEEPL_AUTH_KEY
+ * 4) OPENAI_API_KEY / XAI_API_KEY
+ * 5) MyMemory só com --translate
+ * 6) none (labels only)
+ *
+ * OpenRouter default: nvidia/nemotron-3-super-120b-a12b:free
+ * (melhor custo/benefício free para localização de patch notes)
  */
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { BlocoConteudo, ConteudoPatchLocalizado } from '../../src/types/patchContent.ts';
-import { obterChaveGemini } from './load-env.ts';
+import {
+  modeloOpenRouterPadrao,
+  obterChaveGemini,
+  obterChaveOpenRouter,
+} from './load-env.ts';
 import { ICONES_POR_ABA, LABELS_ABA_ES, LABELS_ABA_PT } from './section-map.ts';
 
 export type LocaleAlvo = 'pt-BR' | 'es-ES';
@@ -20,7 +29,13 @@ interface Glossario {
   fixedPhrases?: Record<LocaleAlvo, Record<string, string>>;
 }
 
-export type ProvedorTraducao = 'gemini' | 'deepl' | 'openai' | 'mymemory' | 'none';
+export type ProvedorTraducao =
+  | 'gemini'
+  | 'openrouter'
+  | 'deepl'
+  | 'openai'
+  | 'mymemory'
+  | 'none';
 
 export interface ResultadoLocalizacao {
   conteudo: ConteudoPatchLocalizado;
@@ -48,6 +63,7 @@ export function detectarProvedorTraducao(opcoes?: { allowMyMemory?: boolean }): 
   const forcado = (process.env.LOCALIZE_PROVIDER || '').trim().toLowerCase();
   if (
     forcado === 'gemini' ||
+    forcado === 'openrouter' ||
     forcado === 'deepl' ||
     forcado === 'openai' ||
     forcado === 'mymemory' ||
@@ -55,6 +71,9 @@ export function detectarProvedorTraducao(opcoes?: { allowMyMemory?: boolean }): 
   ) {
     if (forcado === 'gemini' && !obterChaveGemini()) {
       console.warn('[localize] LOCALIZE_PROVIDER=gemini mas GEMINI_API_KEY ausente');
+    }
+    if (forcado === 'openrouter' && !obterChaveOpenRouter()) {
+      console.warn('[localize] LOCALIZE_PROVIDER=openrouter mas OPENROUTER_API_KEY ausente');
     }
     if (forcado === 'deepl' && !process.env.DEEPL_AUTH_KEY?.trim()) {
       console.warn('[localize] LOCALIZE_PROVIDER=deepl mas DEEPL_AUTH_KEY ausente');
@@ -66,10 +85,21 @@ export function detectarProvedorTraducao(opcoes?: { allowMyMemory?: boolean }): 
   }
 
   if (obterChaveGemini()) return 'gemini';
+  if (obterChaveOpenRouter()) return 'openrouter';
   if (process.env.DEEPL_AUTH_KEY?.trim()) return 'deepl';
   if (process.env.OPENAI_API_KEY?.trim() || process.env.XAI_API_KEY?.trim()) return 'openai';
   if (opcoes?.allowMyMemory) return 'mymemory';
   return 'none';
+}
+
+/** Erros de cota/rede/modelo que justificam cair no fallback OpenRouter. */
+export function erroPermiteFallbackOpenRouter(mensagem: string): boolean {
+  const texto = mensagem.toLowerCase();
+  return (
+    /429|403|401|500|502|503|504|resource.?exhausted|quota|rate.?limit|billing|unavailable|timeout|econnreset|fetch failed|network|overloaded|capacity|high demand|model.?not.?found|not found|deprecated/i.test(
+      texto,
+    ) || texto.includes('gemini http')
+  );
 }
 
 function codigoIdiomaProvedor(locale: LocaleAlvo, provedor: ProvedorTraducao): string {
@@ -137,6 +167,115 @@ async function traduzirGemini(texto: string, locale: LocaleAlvo): Promise<string
   }
 
   return textoSaida;
+}
+
+async function traduzirOpenRouter(texto: string, locale: LocaleAlvo): Promise<string> {
+  const apiKey = obterChaveOpenRouter();
+  if (!apiKey) {
+    throw new Error('OPENROUTER_API_KEY ausente');
+  }
+
+  const model = modeloOpenRouterPadrao();
+  const idiomaAlvo = codigoIdiomaProvedor(locale, 'openrouter');
+  const baseUrl = (process.env.OPENROUTER_BASE_URL || 'https://openrouter.ai/api/v1').replace(/\/$/, '');
+
+  const resposta = await fetch(`${baseUrl}/chat/completions`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+      'HTTP-Referer': process.env.OPENROUTER_SITE_URL || 'https://github.com/LKSFerreira/tera-console',
+      'X-Title': process.env.OPENROUTER_APP_NAME || 'tera-console-portal-localize',
+    },
+    body: JSON.stringify({
+      model,
+      temperature: 0.2,
+      messages: [
+        {
+          role: 'system',
+          content:
+            'You are a professional game localization translator for TERA Console patch notes. ' +
+            'Translate from English to the target language. Keep placeholders like ⟦0⟧ exactly unchanged. ' +
+            'Do not invent or remove numbers/stats. Do not translate game proper names unless already localized. ' +
+            'Keep tone clear and natural for players. Return only the translation, no quotes or commentary.',
+        },
+        {
+          role: 'user',
+          content: `Target language: ${idiomaAlvo}\n\nText:\n${texto}`,
+        },
+      ],
+    }),
+  });
+
+  if (!resposta.ok) {
+    const corpo = await resposta.text();
+    throw new Error(`OpenRouter HTTP ${resposta.status}: ${corpo.slice(0, 400)}`);
+  }
+
+  const json = (await resposta.json()) as {
+    choices?: Array<{ message?: { content?: string | null } }>;
+    error?: { message?: string };
+  };
+
+  if (json.error?.message) {
+    throw new Error(`OpenRouter: ${json.error.message}`);
+  }
+
+  const textoSaida = json.choices?.[0]?.message?.content?.trim();
+  if (!textoSaida) {
+    throw new Error('OpenRouter retornou resposta vazia');
+  }
+
+  return textoSaida;
+}
+
+/**
+ * Gemini com fallback automático para OpenRouter (modelo free) em qualquer falha elegível.
+ * Se o provedor pedido for openrouter, chama só OpenRouter.
+ */
+async function traduzirLlmComFallback(
+  texto: string,
+  locale: LocaleAlvo,
+  provedor: ProvedorTraducao,
+): Promise<{ texto: string; provedorEfetivo: ProvedorTraducao; warning?: string }> {
+  if (provedor === 'openrouter') {
+    const parte = await traduzirOpenRouter(texto, locale);
+    return { texto: parte, provedorEfetivo: 'openrouter' };
+  }
+
+  if (provedor !== 'gemini') {
+    throw new Error(`traduzirLlmComFallback nao suporta provedor=${provedor}`);
+  }
+
+  try {
+    const parte = await traduzirGemini(texto, locale);
+    return { texto: parte, provedorEfetivo: 'gemini' };
+  } catch (erroGemini) {
+    const msgGemini = erroGemini instanceof Error ? erroGemini.message : String(erroGemini);
+
+    // Qualquer falha do Gemini: tenta OpenRouter free se a chave existir.
+    if (!obterChaveOpenRouter()) {
+      throw erroGemini;
+    }
+
+    try {
+      console.warn(
+        `[localize] Gemini falhou → OpenRouter (${modeloOpenRouterPadrao()}): ${msgGemini.slice(0, 160)}`,
+      );
+      const parte = await traduzirOpenRouter(texto, locale);
+      await sleep(120);
+      return {
+        texto: parte,
+        provedorEfetivo: 'openrouter',
+        warning: `Fallback OpenRouter apos Gemini: ${msgGemini.slice(0, 200)}`,
+      };
+    } catch (erroOpenRouter) {
+      const msgOr = erroOpenRouter instanceof Error ? erroOpenRouter.message : String(erroOpenRouter);
+      throw new Error(
+        `Gemini e OpenRouter falharam. Gemini: ${msgGemini.slice(0, 180)} | OpenRouter: ${msgOr.slice(0, 180)}`,
+      );
+    }
+  }
 }
 
 /** Protege termos do glossário com placeholders curtos (MT costuma quebrar `__GLS__`). */
@@ -314,7 +453,8 @@ export async function traduzirTexto(
   if (!original) return { texto: '' };
 
   // Só números / símbolos
-  if (/^[\d\s\-- - +×x%.,:;()/]+$/i.test(original)) {
+  // Só números / símbolos (sem letras) — não gastar cota de MT
+  if (/^[\d\s+\-–—×x%.,:;()/→←]+$/i.test(original)) {
     return { texto: original };
   }
 
@@ -332,9 +472,11 @@ export async function traduzirTexto(
   for (const pedaco of pedacos) {
     try {
       let parte: string;
-      if (provedor === 'gemini') {
-        parte = await traduzirGemini(pedaco, locale);
-        await sleep(80);
+      if (provedor === 'gemini' || provedor === 'openrouter') {
+        const llm = await traduzirLlmComFallback(pedaco, locale, provedor);
+        parte = llm.texto;
+        if (llm.warning) warning = llm.warning;
+        await sleep(provedor === 'openrouter' || llm.provedorEfetivo === 'openrouter' ? 120 : 80);
       } else if (provedor === 'deepl') {
         parte = await traduzirDeepL(pedaco, locale);
       } else if (provedor === 'openai') {
@@ -563,9 +705,9 @@ export function localizarSomenteLabels(
     conteudo: { schemaVersion: 1, locale, tabs },
     provedor: 'none',
     warnings: [
-      'Sem provedor de tradução configurado (GEMINI_API_KEY, DEEPL_AUTH_KEY, OPENAI_API_KEY, XAI_API_KEY).',
+      'Sem provedor de tradução configurado (GEMINI_API_KEY, OPENROUTER_API_KEY, DEEPL_AUTH_KEY, OPENAI_API_KEY, XAI_API_KEY).',
       'Corpo do texto permanece em EN; só labels de abas foram localizados.',
-      'Para MT: defina GEMINI_API_KEY no .env (ou secret no GitHub) ou use --translate (MyMemory).',
+      'Para MT: GEMINI_API_KEY (+ OPENROUTER_API_KEY como fallback free) ou --translate (MyMemory).',
     ],
     stringsTraduzidas: 0,
   };
@@ -590,7 +732,19 @@ export async function localizarConteudoPatch(
 
   if (provedor === 'mymemory') {
     warnings.push(
-      'Usando MyMemory (gratuito). Lento e com cota - revise antes de publicar. Prefira DEEPL_AUTH_KEY ou OPENAI_API_KEY/XAI_API_KEY.',
+      'Usando MyMemory (gratuito). Lento e com cota - revise antes de publicar. Prefira GEMINI_API_KEY + OPENROUTER_API_KEY, DEEPL ou OpenAI/xAI.',
+    );
+  }
+
+  if (provedor === 'gemini' && obterChaveOpenRouter()) {
+    warnings.push(
+      `Fallback OpenRouter ativo se Gemini falhar (modelo: ${modeloOpenRouterPadrao()}).`,
+    );
+  }
+
+  if (provedor === 'openrouter') {
+    warnings.push(
+      `Tradução via OpenRouter free (${modeloOpenRouterPadrao()}). Revise antes de publicar.`,
     );
   }
 

@@ -48,7 +48,11 @@ async function main() {
   console.log(`[localize] provedor=${provedor}`);
   if (provedor === 'none') {
     console.log(
-      '[localize] sem API key - só labels. Use DEEPL_AUTH_KEY / OPENAI_API_KEY / XAI_API_KEY ou --translate (MyMemory).',
+      '[localize] sem API key - só labels. Use GEMINI_API_KEY (+ OPENROUTER_API_KEY fallback), DEEPL / OPENAI / XAI ou --translate (MyMemory).',
+    );
+  } else if (provedor === 'gemini' && process.env.OPENROUTER_API_KEY?.trim()) {
+    console.log(
+      `[localize] fallback OpenRouter: ${process.env.OPENROUTER_MODEL || 'nvidia/nemotron-3-super-120b-a12b:free'}`,
     );
   }
 
