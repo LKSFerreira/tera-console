@@ -50,23 +50,19 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-3.6-flash' }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          # Model / ranking: Variables preferidas; Secrets tambem funcionam se voce cadastrou la
           OPENROUTER_MODEL: ${{ vars.OPENROUTER_MODEL || secrets.OPENROUTER_MODEL || 'nvidia/nemotron-3-super-120b-a12b:free' }}
           OPENROUTER_SITE_URL: ${{ vars.OPENROUTER_SITE_URL || secrets.OPENROUTER_SITE_URL || '' }}
           OPENROUTER_APP_NAME: ${{ vars.OPENROUTER_APP_NAME || secrets.OPENROUTER_APP_NAME || 'tera-console-portal-localize' }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_MODEL: ${{ vars.GROQ_MODEL || secrets.GROQ_MODEL || 'llama-3.3-70b-versatile' }}
+          LOCALIZE_CHAIN: ${{ vars.LOCALIZE_CHAIN || '' }}
         run: |
-          if [ -z "$GEMINI_API_KEY" ] && [ -z "$OPENROUTER_API_KEY" ]; then
-            echo "::warning::Sem GEMINI_API_KEY nem OPENROUTER_API_KEY - traducao so com labels (corpo EN)."
-          else
-            if [ -n "$GEMINI_API_KEY" ]; then
-              echo "Gemini configurado (modelo: ${GEMINI_MODEL})"
-            fi
-            if [ -n "$OPENROUTER_API_KEY" ]; then
-              echo "OpenRouter configurado (fallback/primario: ${OPENROUTER_MODEL})"
-              echo "OpenRouter app: ${OPENROUTER_APP_NAME:-default}"
-            else
-              echo "::warning::OPENROUTER_API_KEY ausente - sem fallback free se Gemini falhar."
-            fi
+          echo "Cadeia MT (Strategy): gemini → openrouter → groq → deepl → openai → xai"
+          if [ -n "$GEMINI_API_KEY" ]; then echo "  + Gemini (${GEMINI_MODEL})"; fi
+          if [ -n "$OPENROUTER_API_KEY" ]; then echo "  + OpenRouter (${OPENROUTER_MODEL})"; fi
+          if [ -n "$GROQ_API_KEY" ]; then echo "  + Groq (${GROQ_MODEL})"; fi
+          if [ -z "$GEMINI_API_KEY" ] && [ -z "$OPENROUTER_API_KEY" ] && [ -z "$GROQ_API_KEY" ]; then
+            echo "::warning::Nenhuma chave MT - so labels (corpo EN)."
           fi
           npm run ingest:update -- --url "${{ inputs.news_ref }}"
 
