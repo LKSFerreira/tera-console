@@ -113,7 +113,7 @@
                           "type": "bulletList",
                           "items": [
                             "Em certos limiares de HP, efeitos de restrição de heal ou ressurreição são aplicados aleatoriamente.",
-                            "Há aplicação aleatória de 1 entre 3 mecânicas especiais e patterns condicionais."
+                            "Há aplicação aleatória de 1 entre 3 mecânicas especiais e padrões condicionais."
                           ]
                         }
                       ]
@@ -487,7 +487,7 @@
               "main": "Corrigido nome ausente do pet Kunkun em idiomas diferentes do coreano."
             },
             {
-              "main": "Corrigido problema onde o Reaper podia ignorar special patterns do Cursed Antaroth."
+              "main": "Corrigido problema onde o Reaper podia ignorar special padrões do Cursed Antaroth."
             },
             {
               "main": "Corrigido problema onde a chance não aumentava conforme a gear EXP para Brooch of the Solemn Oath e Circlet of the Solemn Oath."

@@ -244,7 +244,7 @@ export const patchNotesB130PorIdioma = {
       system: {
         sectionTitle: 'Correção de Bugs & Sistema',
         issues: [
-          'Corrigido problema em Abyss of the Cursed Antaroth (Last Stand) onde um wipe pattern impossível ocorria ao fazer certas ações.',
+          'Corrigido problema em Abyss of the Cursed Antaroth (Last Stand) onde um padrão de wipe impossível ocorria ao fazer certas ações.',
           'Corrigido problema em Refined Stigma onde uma opção rara de cooldown poderia ser selecionada.',
           'Corrigido problema no pacote de idiomas onde o valor de tradução para “Will of Battle” estava incorreto.',
           'Corrigido problema onde a animação de entrada desaparecia ao aplicar shaders/post-processing, como ao usar skills Godsfall.',
@@ -289,7 +289,7 @@ export const patchNotesB130PorIdioma = {
               title: 'Mecânicas',
               items: [
                 'Em certos limiares de HP, efeitos de restrição de heal ou ressurreição são aplicados aleatoriamente.',
-                'Há aplicação aleatória de 1 entre 3 mecânicas especiais e patterns condicionais.',
+                'Há aplicação aleatória de 1 entre 3 mecânicas especiais e padrões condicionais.',
               ],
             },
           ],
@@ -426,7 +426,7 @@ export const patchNotesB130PorIdioma = {
         sectionTitle: 'Correção de Bugs & Sistema',
         issues: [
           'Corrigido nome ausente do pet Kunkun em idiomas diferentes do coreano.',
-          'Corrigido problema onde o Reaper podia ignorar special patterns do Cursed Antaroth.',
+          'Corrigido problema onde o Reaper podia ignorar padrões especiais do Cursed Antaroth.',
           'Corrigido problema onde a chance não aumentava conforme a gear EXP para Brooch of the Solemn Oath e Circlet of the Solemn Oath.',
           'Corrigido problema de mensagens não aparecendo em Cursed Antaroth.',
           'Corrigido wipe attack que não disparava mesmo quando as condições eram cumpridas em Cursed Antaroth (Hard).',

@@ -92,7 +92,7 @@
                       "items": [
                         "Records só se o shield-break do Boss 3 (HARD) for concluído.",
                         "HARD I não se aplica neste Last Stand.",
-                        "Novos patterns por boss; ênfase em cooperação."
+                        "Novos padrões por boss; ênfase em cooperação."
                       ]
                     }
                   ]
@@ -123,7 +123,7 @@
               "title": "Nota dos devs",
               "tone": "amber",
               "paragraphs": [
-                "Patterns reforçados para cooperação. Clear varia com mecânicas de cada boss.",
+                "Padrões reforçados para cooperação. Clear varia com mecânicas de cada boss.",
                 "Parties top que trocam 1–2 membros não contam para título."
               ]
             }
@@ -667,14 +667,14 @@
             {
               "type": "paragraphs",
               "items": [
-                "Pattern de escudo mostra ícone e valor restante na gauge."
+                "Padrão de escudo mostra ícone e valor restante na gauge."
               ]
             },
             {
               "type": "figure",
               "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B133_6.png",
               "alt": "Boss shield gauge",
-              "caption": "Shield pattern na boss gauge."
+              "caption": "Padrão de escudo na boss gauge."
             }
           ]
         },
@@ -739,10 +739,10 @@
               "main": "Season Moonblade weapon level só até 830."
             },
             {
-              "main": "Patterns sobrepostos com high burst no Ice Throne."
+              "main": "Padrões sobrepostos com high burst no Ice Throne."
             },
             {
-              "main": "Patterns incorretos no Ice Throne (Normal)."
+              "main": "Padrões incorretos no Ice Throne (Normal)."
             },
             {
               "main": "Akeron's Inferno: skills bloqueadas após steam vent airborne."

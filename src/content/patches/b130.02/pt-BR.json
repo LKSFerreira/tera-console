@@ -250,7 +250,7 @@
           "icon": "alert-triangle",
           "items": [
             {
-              "main": "Corrigido problema em Abyss of the Cursed Antaroth (Last Stand) onde um wipe pattern impossível ocorria ao fazer certas ações."
+              "main": "Corrigido problema em Abyss of the Cursed Antaroth (Last Stand) onde um padrão de wipe impossível ocorria ao fazer certas ações."
             },
             {
               "main": "Corrigido problema em Refined Stigma onde uma opção rara de cooldown poderia ser selecionada."

@@ -18,7 +18,7 @@
             {
               "type": "bulletList",
               "items": [
-                "A distância de knockback do pattern em crescente do Boss 2 foi reduzida (corrige casos em que o jogador era lançado para fora do mapa)."
+                "A distância de knockback do padrão em crescente do Boss 2 foi reduzida (corrige casos em que o jogador era lançado para fora do mapa)."
               ]
             }
           ]
@@ -48,7 +48,7 @@
               "items": [
                 "O efeito de reflexão do Boss 1 foi removido.",
                 "A redução de dano durante a perfect defense do Boss 3 foi aumentada.",
-                "O benefício de redução de defesa baseado no número de acionamentos do pattern Brain Fog (todos os bosses) agora é visualizado na UI."
+                "O benefício de redução de defesa baseado no número de acionamentos do padrão Brain Fog (todos os bosses) agora é visualizado na UI."
               ]
             }
           ]
@@ -192,13 +192,13 @@
               "main": "Corrigido o problema em que um NPC diferente era atribuído a uma Guild Mission."
             },
             {
-              "main": "Corrigido o problema em que alguns patterns do RK-9 Boss 2 eram ocasionalmente cancelados."
+              "main": "Corrigido o problema em que alguns padrões do RK-9 Boss 2 eram ocasionalmente cancelados."
             },
             {
-              "main": "Corrigido o problema em que o pattern de bomba elétrica relacionado ao Hexapleon (RK-9 Boss 2) era cancelado quando o jogador saía brevemente do alcance em um timing específico."
+              "main": "Corrigido o problema em que o padrão de bomba elétrica relacionado ao Hexapleon (RK-9 Boss 2) era cancelado quando o jogador saía brevemente do alcance em um timing específico."
             },
             {
-              "main": "Corrigido o problema no RK-9 Kennel (Hard) em que, após completar o pattern de escudo do Boss 3 e resetar o NPC, o Hard Mode ainda era aplicado mesmo ignorando a interação com o objeto, e o tempo do leaderboard acumulava com o tempo pré-reset."
+              "main": "Corrigido o problema no RK-9 Kennel (Hard) em que, após completar o padrão de escudo do Boss 3 e resetar o NPC, o Hard Mode ainda era aplicado mesmo ignorando a interação com o objeto, e o tempo do leaderboard acumulava com o tempo pré-reset."
             },
             {
               "main": "Corrigido o problema em que Burning Heart (Ninja) não era afetado por Attack Speed."
