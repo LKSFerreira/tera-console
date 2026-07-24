@@ -1,27 +1,22 @@
 /**
- * Localização EN → pt-BR / es-ES com glossário e provedores:
- * 1) GEMINI_API_KEY (default gemini-3.6-flash; alias legado GEMINI)
- *    → se falhar (cota/rede/etc.) e houver OPENROUTER_API_KEY → OpenRouter free
- * 2) OPENROUTER_API_KEY (pode ser primário se Gemini ausente)
- * 3) DEEPL_AUTH_KEY
- * 4) OPENAI_API_KEY / XAI_API_KEY
- * 5) MyMemory só com --translate
- * 6) none (labels only)
- *
- * OpenRouter default: nvidia/nemotron-3-super-120b-a12b:free
- * (melhor custo/benefício free para localização de patch notes)
+ * Localização EN → pt-BR / es-ES (glossário + Strategy de MT).
+ * Provedores e fallback: scripts/lib/traducao/ (cadeia escalável).
  */
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { BlocoConteudo, ConteudoPatchLocalizado } from '../../src/types/patchContent.ts';
-import {
-  modeloOpenRouterPadrao,
-  obterChaveGemini,
-  obterChaveOpenRouter,
-} from './load-env.ts';
 import { ICONES_POR_ABA, LABELS_ABA_ES, LABELS_ABA_PT } from './section-map.ts';
+import {
+  criarCadeiaTraducao,
+  detectarProvedorTraducao,
+  type CadeiaTraducao,
+  type IdProvedorTraducao,
+  type LocaleAlvo,
+  type OpcoesCadeiaTraducao,
+} from './traducao/index.ts';
 
-export type LocaleAlvo = 'pt-BR' | 'es-ES';
+export type { LocaleAlvo, IdProvedorTraducao as ProvedorTraducao };
+export { detectarProvedorTraducao, criarCadeiaTraducao };
 
 interface Glossario {
   schemaVersion: number;
@@ -29,38 +24,34 @@ interface Glossario {
   fixedPhrases?: Record<LocaleAlvo, Record<string, string>>;
 }
 
-export type ProvedorTraducao =
-  | 'gemini'
-  | 'openrouter'
-  | 'deepl'
-  | 'openai'
-  | 'mymemory'
-  | 'none';
-
 export interface ResultadoLocalizacao {
   conteudo: ConteudoPatchLocalizado;
-  provedor: ProvedorTraducao;
+  provedor: IdProvedorTraducao;
   warnings: string[];
   stringsTraduzidas: number;
 }
 
 const cacheTraducao = new Map<string, string>();
 
-/**
- * Após o 1º erro Gemini (ex. 429 cota), o resto do processo usa só OpenRouter.
- * Evita ~20 min de spam HTTP 429 string a string (visto no lab Actions).
- */
-let geminiDesabilitadoNestaExecucao = false;
-let avisoGeminiDesabilitadoJaEmitido = false;
+/** Uma cadeia por processo de localizar — preserva circuit breakers entre strings. */
+let cadeiaAtiva: CadeiaTraducao | null = null;
+let opcoesCadeiaAtiva: OpcoesCadeiaTraducao | undefined;
 
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolveSleep) => setTimeout(resolveSleep, ms));
+export function obterCadeiaTraducao(opcoes?: OpcoesCadeiaTraducao): CadeiaTraducao {
+  const chaveOpcoes = JSON.stringify(opcoes ?? {});
+  if (!cadeiaAtiva || JSON.stringify(opcoesCadeiaAtiva ?? {}) !== chaveOpcoes) {
+    cadeiaAtiva = criarCadeiaTraducao(opcoes);
+    opcoesCadeiaAtiva = opcoes;
+  }
+  return cadeiaAtiva;
 }
 
-/** Só para testes / reset entre runs no mesmo processo. */
+/** Reset entre runs / testes. */
 export function resetarEstadoFallbackGemini(): void {
-  geminiDesabilitadoNestaExecucao = false;
-  avisoGeminiDesabilitadoJaEmitido = false;
+  cadeiaAtiva?.resetarCircuitBreakers();
+  cadeiaAtiva = null;
+  opcoesCadeiaAtiva = undefined;
+  cacheTraducao.clear();
 }
 
 export function carregarGlossario(raizProjeto: string): Glossario {
@@ -68,246 +59,13 @@ export function carregarGlossario(raizProjeto: string): Glossario {
   return JSON.parse(readFileSync(caminho, 'utf8')) as Glossario;
 }
 
-/**
- * Sem chave configurada → `none` (rápido: não chama API).
- * MyMemory só com allowMyMemory / LOCALIZE_PROVIDER=mymemory / --translate no CLI.
- */
-export function detectarProvedorTraducao(opcoes?: { allowMyMemory?: boolean }): ProvedorTraducao {
-  const forcado = (process.env.LOCALIZE_PROVIDER || '').trim().toLowerCase();
-  if (
-    forcado === 'gemini' ||
-    forcado === 'openrouter' ||
-    forcado === 'deepl' ||
-    forcado === 'openai' ||
-    forcado === 'mymemory' ||
-    forcado === 'none'
-  ) {
-    if (forcado === 'gemini' && !obterChaveGemini()) {
-      console.warn('[localize] LOCALIZE_PROVIDER=gemini mas GEMINI_API_KEY ausente');
-    }
-    if (forcado === 'openrouter' && !obterChaveOpenRouter()) {
-      console.warn('[localize] LOCALIZE_PROVIDER=openrouter mas OPENROUTER_API_KEY ausente');
-    }
-    if (forcado === 'deepl' && !process.env.DEEPL_AUTH_KEY?.trim()) {
-      console.warn('[localize] LOCALIZE_PROVIDER=deepl mas DEEPL_AUTH_KEY ausente');
-    }
-    if (forcado === 'openai' && !process.env.OPENAI_API_KEY?.trim() && !process.env.XAI_API_KEY?.trim()) {
-      console.warn('[localize] LOCALIZE_PROVIDER=openai mas OPENAI_API_KEY/XAI_API_KEY ausente');
-    }
-    return forcado as ProvedorTraducao;
-  }
-
-  if (obterChaveGemini()) return 'gemini';
-  if (obterChaveOpenRouter()) return 'openrouter';
-  if (process.env.DEEPL_AUTH_KEY?.trim()) return 'deepl';
-  if (process.env.OPENAI_API_KEY?.trim() || process.env.XAI_API_KEY?.trim()) return 'openai';
-  if (opcoes?.allowMyMemory) return 'mymemory';
-  return 'none';
-}
-
-/** Erros de cota/rede/modelo que justificam cair no fallback OpenRouter. */
+/** @deprecated use mensagem da cadeia; mantido para imports legados */
 export function erroPermiteFallbackOpenRouter(mensagem: string): boolean {
   const texto = mensagem.toLowerCase();
-  return (
-    /429|403|401|500|502|503|504|resource.?exhausted|quota|rate.?limit|billing|unavailable|timeout|econnreset|fetch failed|network|overloaded|capacity|high demand|model.?not.?found|not found|deprecated/i.test(
-      texto,
-    ) || texto.includes('gemini http')
-  );
+  return /429|403|401|500|502|503|504|resource.?exhausted|quota|rate.?limit/i.test(texto);
 }
 
-function codigoIdiomaProvedor(locale: LocaleAlvo, provedor: ProvedorTraducao): string {
-  if (provedor === 'deepl') {
-    return locale === 'pt-BR' ? 'PT-BR' : 'ES';
-  }
-  if (provedor === 'mymemory') {
-    return locale === 'pt-BR' ? 'pt' : 'es';
-  }
-  return locale === 'pt-BR' ? 'Portuguese (Brazil)' : 'Spanish';
-}
-
-function modeloGemini(): string {
-  return (process.env.GEMINI_MODEL || 'gemini-3.6-flash').trim();
-}
-
-async function traduzirGemini(texto: string, locale: LocaleAlvo): Promise<string> {
-  const apiKey = obterChaveGemini();
-  if (!apiKey) {
-    throw new Error('GEMINI_API_KEY ausente');
-  }
-
-  const model = modeloGemini();
-  const idiomaAlvo = codigoIdiomaProvedor(locale, 'gemini');
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`;
-
-  const prompt =
-    'You are a professional game localization translator for TERA Console patch notes.\n' +
-    'Translate from English to the target language.\n' +
-    'Keep placeholders like ⟦0⟧ exactly unchanged.\n' +
-    'Do not invent or remove numbers/stats.\n' +
-    'Keep tone clear and natural for players.\n' +
-    'Return only the translation, no quotes or commentary.\n\n' +
-    `Target language: ${idiomaAlvo}\n\n` +
-    `Text:\n${texto}`;
-
-  const resposta = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      contents: [{ role: 'user', parts: [{ text: prompt }] }],
-      generationConfig: {
-        temperature: 0.2,
-      },
-    }),
-  });
-
-  if (!resposta.ok) {
-    const corpo = await resposta.text();
-    throw new Error(`Gemini HTTP ${resposta.status}: ${corpo.slice(0, 400)}`);
-  }
-
-  const json = (await resposta.json()) as {
-    candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
-    error?: { message?: string };
-  };
-
-  if (json.error?.message) {
-    throw new Error(`Gemini: ${json.error.message}`);
-  }
-
-  const textoSaida = json.candidates?.[0]?.content?.parts?.map((parte) => parte.text ?? '').join('').trim();
-  if (!textoSaida) {
-    throw new Error('Gemini retornou resposta vazia');
-  }
-
-  return textoSaida;
-}
-
-async function traduzirOpenRouter(texto: string, locale: LocaleAlvo): Promise<string> {
-  const apiKey = obterChaveOpenRouter();
-  if (!apiKey) {
-    throw new Error('OPENROUTER_API_KEY ausente');
-  }
-
-  const model = modeloOpenRouterPadrao();
-  const idiomaAlvo = codigoIdiomaProvedor(locale, 'openrouter');
-  const baseUrl = (process.env.OPENROUTER_BASE_URL || 'https://openrouter.ai/api/v1').replace(/\/$/, '');
-
-  const resposta = await fetch(`${baseUrl}/chat/completions`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-      'HTTP-Referer': process.env.OPENROUTER_SITE_URL || 'https://github.com/LKSFerreira/tera-console',
-      'X-Title': process.env.OPENROUTER_APP_NAME || 'tera-console-portal-localize',
-    },
-    body: JSON.stringify({
-      model,
-      temperature: 0.2,
-      messages: [
-        {
-          role: 'system',
-          content:
-            'You are a professional game localization translator for TERA Console patch notes. ' +
-            'Translate from English to the target language. Keep placeholders like ⟦0⟧ exactly unchanged. ' +
-            'Do not invent or remove numbers/stats. Do not translate game proper names unless already localized. ' +
-            'Keep tone clear and natural for players. Return only the translation, no quotes or commentary.',
-        },
-        {
-          role: 'user',
-          content: `Target language: ${idiomaAlvo}\n\nText:\n${texto}`,
-        },
-      ],
-    }),
-  });
-
-  if (!resposta.ok) {
-    const corpo = await resposta.text();
-    throw new Error(`OpenRouter HTTP ${resposta.status}: ${corpo.slice(0, 400)}`);
-  }
-
-  const json = (await resposta.json()) as {
-    choices?: Array<{ message?: { content?: string | null } }>;
-    error?: { message?: string };
-  };
-
-  if (json.error?.message) {
-    throw new Error(`OpenRouter: ${json.error.message}`);
-  }
-
-  const textoSaida = json.choices?.[0]?.message?.content?.trim();
-  if (!textoSaida) {
-    throw new Error('OpenRouter retornou resposta vazia');
-  }
-
-  return textoSaida;
-}
-
-/**
- * Gemini com fallback automático para OpenRouter (modelo free) em qualquer falha elegível.
- * Se o provedor pedido for openrouter, chama só OpenRouter.
- */
-async function traduzirLlmComFallback(
-  texto: string,
-  locale: LocaleAlvo,
-  provedor: ProvedorTraducao,
-): Promise<{ texto: string; provedorEfetivo: ProvedorTraducao; warning?: string }> {
-  if (provedor === 'openrouter') {
-    const parte = await traduzirOpenRouter(texto, locale);
-    return { texto: parte, provedorEfetivo: 'openrouter' };
-  }
-
-  if (provedor !== 'gemini') {
-    throw new Error(`traduzirLlmComFallback nao suporta provedor=${provedor}`);
-  }
-
-  // Circuit breaker: cota Gemini estourada → resto da execução só OpenRouter
-  if (geminiDesabilitadoNestaExecucao && obterChaveOpenRouter()) {
-    const parte = await traduzirOpenRouter(texto, locale);
-    return {
-      texto: parte,
-      provedorEfetivo: 'openrouter',
-      warning: 'Gemini desabilitado nesta execucao (cota/erro previo); so OpenRouter.',
-    };
-  }
-
-  try {
-    const parte = await traduzirGemini(texto, locale);
-    return { texto: parte, provedorEfetivo: 'gemini' };
-  } catch (erroGemini) {
-    const msgGemini = erroGemini instanceof Error ? erroGemini.message : String(erroGemini);
-
-    // Qualquer falha do Gemini: tenta OpenRouter free se a chave existir.
-    if (!obterChaveOpenRouter()) {
-      throw erroGemini;
-    }
-
-    geminiDesabilitadoNestaExecucao = true;
-    if (!avisoGeminiDesabilitadoJaEmitido) {
-      avisoGeminiDesabilitadoJaEmitido = true;
-      console.warn(
-        `[localize] Gemini desabilitado pelo resto desta execucao apos falha. ` +
-          `Usando so OpenRouter (${modeloOpenRouterPadrao()}). Motivo: ${msgGemini.slice(0, 200)}`,
-      );
-    }
-
-    try {
-      const parte = await traduzirOpenRouter(texto, locale);
-      await sleep(120);
-      return {
-        texto: parte,
-        provedorEfetivo: 'openrouter',
-        warning: `Fallback OpenRouter apos Gemini: ${msgGemini.slice(0, 200)}`,
-      };
-    } catch (erroOpenRouter) {
-      const msgOr = erroOpenRouter instanceof Error ? erroOpenRouter.message : String(erroOpenRouter);
-      throw new Error(
-        `Gemini e OpenRouter falharam. Gemini: ${msgGemini.slice(0, 180)} | OpenRouter: ${msgOr.slice(0, 180)}`,
-      );
-    }
-  }
-}
-
-/** Protege termos do glossário com placeholders curtos (MT costuma quebrar `__GLS__`). */
+/** Protege termos do glossário com placeholders curtos. */
 export function protegerTermos(texto: string, termos: string[]): { texto: string; mapa: Map<string, string> } {
   const mapa = new Map<string, string>();
   const ordenados = [...termos].sort((a, b) => b.length - a.length);
@@ -321,7 +79,6 @@ export function protegerTermos(texto: string, termos: string[]): { texto: string
     resultado = resultado.replace(regex, (match) => {
       const chave = `⟦${indice}⟧`;
       mapa.set(chave, match);
-      // variantes que o MT às vezes inventa
       mapa.set(`[${indice}]`, match);
       mapa.set(`[[${indice}]]`, match);
       indice += 1;
@@ -337,8 +94,10 @@ export function restaurarTermos(texto: string, mapa: Map<string, string>): strin
   for (const [chave, valor] of mapa.entries()) {
     resultado = resultado.split(chave).join(valor);
   }
-  // limpa placeholders órfãos tipo ⟦0⟧ se sobrarem sem mapa (não deve)
-  resultado = resultado.replace(/⟦\s*(\d+)\s*⟧/g, (_, num: string) => mapa.get(`⟦${num}⟧`) ?? mapa.get(`[${num}]`) ?? _);
+  resultado = resultado.replace(
+    /⟦\s*(\d+)\s*⟧/g,
+    (_, num: string) => mapa.get(`⟦${num}⟧`) ?? mapa.get(`[${num}]`) ?? _,
+  );
   return resultado;
 }
 
@@ -353,107 +112,6 @@ function aplicarFrasesFixas(texto: string, locale: LocaleAlvo, glossario: Glossa
     resultado = resultado.replace(new RegExp(escaped, 'gi'), destino);
   }
   return resultado;
-}
-
-async function traduzirDeepL(texto: string, locale: LocaleAlvo): Promise<string> {
-  const chave = process.env.DEEPL_AUTH_KEY!;
-  const free = chave.endsWith(':fx') || process.env.DEEPL_API_URL?.includes('api-free');
-  const base = process.env.DEEPL_API_URL ?? (free ? 'https://api-free.deepl.com' : 'https://api.deepl.com');
-  const resposta = await fetch(`${base}/v2/translate`, {
-    method: 'POST',
-    headers: {
-      Authorization: `DeepL-Auth-Key ${chave}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: new URLSearchParams({
-      text: texto,
-      source_lang: 'EN',
-      target_lang: codigoIdiomaProvedor(locale, 'deepl'),
-      preserve_formatting: '1',
-    }),
-  });
-
-  if (!resposta.ok) {
-    throw new Error(`DeepL HTTP ${resposta.status}: ${await resposta.text()}`);
-  }
-
-  const json = (await resposta.json()) as { translations?: Array<{ text: string }> };
-  return json.translations?.[0]?.text ?? texto;
-}
-
-async function traduzirOpenAICompativel(texto: string, locale: LocaleAlvo): Promise<string> {
-  const usaXai = Boolean(process.env.XAI_API_KEY?.trim());
-  const apiKey = (usaXai ? process.env.XAI_API_KEY : process.env.OPENAI_API_KEY)!;
-  const baseUrl = usaXai
-    ? (process.env.XAI_BASE_URL ?? 'https://api.x.ai/v1')
-    : (process.env.OPENAI_BASE_URL ?? 'https://api.openai.com/v1');
-  const model = usaXai
-    ? (process.env.XAI_MODEL ?? 'grok-4-1-fast-non-reasoning')
-    : (process.env.OPENAI_MODEL ?? 'gpt-4o-mini');
-
-  const idiomaAlvo = codigoIdiomaProvedor(locale, 'openai');
-  const resposta = await fetch(`${baseUrl}/chat/completions`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model,
-      temperature: 0.2,
-      messages: [
-        {
-          role: 'system',
-          content:
-            'You are a professional game localization translator for TERA Console patch notes. ' +
-            'Translate from English to the target language. Keep placeholders like ⟦0⟧ exactly unchanged. ' +
-            'Do not translate game proper names. Keep tone clear and natural for players. ' +
-            'Return only the translation, no quotes or commentary.',
-        },
-        {
-          role: 'user',
-          content: `Target language: ${idiomaAlvo}\n\nText:\n${texto}`,
-        },
-      ],
-    }),
-  });
-
-  if (!resposta.ok) {
-    throw new Error(`OpenAI-compatible HTTP ${resposta.status}: ${await resposta.text()}`);
-  }
-
-  const json = (await resposta.json()) as {
-    choices?: Array<{ message?: { content?: string } }>;
-  };
-  return json.choices?.[0]?.message?.content?.trim() ?? texto;
-}
-
-async function traduzirMyMemory(texto: string, locale: LocaleAlvo): Promise<string> {
-  const langpair = `en|${codigoIdiomaProvedor(locale, 'mymemory')}`;
-  const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(texto)}&langpair=${langpair}`;
-  const resposta = await fetch(url, {
-    headers: { 'User-Agent': 'tera-console-portal-localize/1.0' },
-  });
-
-  if (!resposta.ok) {
-    throw new Error(`MyMemory HTTP ${resposta.status}`);
-  }
-
-  const json = (await resposta.json()) as {
-    responseData?: { translatedText?: string };
-    responseStatus?: number;
-  };
-
-  if (json.responseStatus && json.responseStatus !== 200) {
-    throw new Error(`MyMemory status ${json.responseStatus}`);
-  }
-
-  const traduzido = json.responseData?.translatedText?.trim();
-  if (!traduzido || /MYMEMORY WARNING/i.test(traduzido)) {
-    throw new Error(`MyMemory sem tradução útil: ${traduzido ?? 'vazio'}`);
-  }
-
-  return traduzido;
 }
 
 function particionarTexto(texto: string, maxLen = 420): string[] {
@@ -476,15 +134,18 @@ export async function traduzirTexto(
   texto: string,
   locale: LocaleAlvo,
   glossario: Glossario,
-  provedor: ProvedorTraducao,
-): Promise<{ texto: string; warning?: string }> {
+  provedor: IdProvedorTraducao,
+  opcoesCadeia?: OpcoesCadeiaTraducao,
+): Promise<{ texto: string; warning?: string; provedorEfetivo?: IdProvedorTraducao }> {
   const original = texto.trim();
   if (!original) return { texto: '' };
 
-  // Só números / símbolos
-  // Só números / símbolos (sem letras) — não gastar cota de MT
   if (/^[\d\s+\-–—×x%.,:;()/→←]+$/i.test(original)) {
     return { texto: original };
+  }
+
+  if (provedor === 'none') {
+    return { texto: original, provedorEfetivo: 'none', warning: 'Nenhum provedor de tradução configurado' };
   }
 
   const cacheKey = `${provedor}|${locale}|${original}`;
@@ -497,39 +158,17 @@ export async function traduzirTexto(
   const pedacos = particionarTexto(protegido);
   const traduzidos: string[] = [];
   let warning: string | undefined;
+  let provedorEfetivo: IdProvedorTraducao = provedor;
+
+  // LOCALIZE_PROVIDER / LOCALIZE_CHAIN resolvidos em criarCadeiaTraducao
+  const cadeiaEfetiva = obterCadeiaTraducao(opcoesCadeia);
 
   for (const pedaco of pedacos) {
     try {
-      let parte: string;
-      if (provedor === 'gemini' || provedor === 'openrouter') {
-        const llm = await traduzirLlmComFallback(pedaco, locale, provedor);
-        parte = llm.texto;
-        if (llm.warning) warning = llm.warning;
-        await sleep(provedor === 'openrouter' || llm.provedorEfetivo === 'openrouter' ? 120 : 80);
-      } else if (provedor === 'deepl') {
-        parte = await traduzirDeepL(pedaco, locale);
-      } else if (provedor === 'openai') {
-        parte = await traduzirOpenAICompativel(pedaco, locale);
-      } else if (provedor === 'mymemory') {
-        // rate limit agressivo no free tier
-        await sleep(600);
-        try {
-          parte = await traduzirMyMemory(pedaco, locale);
-        } catch (erro) {
-          // retry único em 429
-          const msg = erro instanceof Error ? erro.message : String(erro);
-          if (msg.includes('429')) {
-            await sleep(2000);
-            parte = await traduzirMyMemory(pedaco, locale);
-          } else {
-            throw erro;
-          }
-        }
-      } else {
-        parte = pedaco;
-        warning = 'Nenhum provedor de tradução configurado';
-      }
-      traduzidos.push(restaurarTermos(parte, mapa));
+      const resultado = await cadeiaEfetiva.traduzir(pedaco, locale);
+      traduzidos.push(restaurarTermos(resultado.texto, mapa));
+      provedorEfetivo = resultado.provedorEfetivo;
+      if (resultado.warning) warning = resultado.warning;
     } catch (erro) {
       warning = erro instanceof Error ? erro.message : String(erro);
       traduzidos.push(restaurarTermos(pedaco, mapa));
@@ -538,19 +177,20 @@ export async function traduzirTexto(
 
   const final = aplicarFrasesFixas(traduzidos.join(' ').replace(/\s+/g, ' ').trim(), locale, glossario);
   cacheTraducao.set(cacheKey, final);
-  return { texto: final, warning };
+  return { texto: final, warning, provedorEfetivo };
 }
 
 async function traduzirLista(
   itens: string[],
   locale: LocaleAlvo,
   glossario: Glossario,
-  provedor: ProvedorTraducao,
+  provedor: IdProvedorTraducao,
   warnings: string[],
+  opcoesCadeia?: OpcoesCadeiaTraducao,
 ): Promise<string[]> {
   const saida: string[] = [];
   for (const item of itens) {
-    const r = await traduzirTexto(item, locale, glossario, provedor);
+    const r = await traduzirTexto(item, locale, glossario, provedor, opcoesCadeia);
     if (r.warning) warnings.push(r.warning);
     saida.push(r.texto);
   }
@@ -561,35 +201,36 @@ export async function traduzirBlocos(
   blocos: BlocoConteudo[],
   locale: LocaleAlvo,
   glossario: Glossario,
-  provedor: ProvedorTraducao,
+  provedor: IdProvedorTraducao,
   warnings: string[],
   contador: { n: number },
+  opcoesCadeia?: OpcoesCadeiaTraducao,
 ): Promise<BlocoConteudo[]> {
   const resultado: BlocoConteudo[] = [];
 
   for (const bloco of blocos) {
     switch (bloco.type) {
       case 'sectionTitle': {
-        const r = await traduzirTexto(bloco.title, locale, glossario, provedor);
+        const r = await traduzirTexto(bloco.title, locale, glossario, provedor, opcoesCadeia);
         if (r.warning) warnings.push(r.warning);
         contador.n += 1;
         resultado.push({ ...bloco, title: r.texto });
         break;
       }
       case 'paragraphs': {
-        const items = await traduzirLista(bloco.items, locale, glossario, provedor, warnings);
+        const items = await traduzirLista(bloco.items, locale, glossario, provedor, warnings, opcoesCadeia);
         contador.n += bloco.items.length;
         resultado.push({ ...bloco, items });
         break;
       }
       case 'bulletList': {
-        const items = await traduzirLista(bloco.items, locale, glossario, provedor, warnings);
+        const items = await traduzirLista(bloco.items, locale, glossario, provedor, warnings, opcoesCadeia);
         contador.n += bloco.items.length;
         resultado.push({ ...bloco, items });
         break;
       }
       case 'callout': {
-        const r = await traduzirTexto(bloco.text, locale, glossario, provedor);
+        const r = await traduzirTexto(bloco.text, locale, glossario, provedor, opcoesCadeia);
         if (r.warning) warnings.push(r.warning);
         contador.n += 1;
         resultado.push({ ...bloco, text: r.texto });
@@ -598,8 +239,8 @@ export async function traduzirBlocos(
       case 'keyValueList': {
         const rows = [];
         for (const row of bloco.rows) {
-          const label = await traduzirTexto(row.label, locale, glossario, provedor);
-          const value = await traduzirTexto(row.value, locale, glossario, provedor);
+          const label = await traduzirTexto(row.label, locale, glossario, provedor, opcoesCadeia);
+          const value = await traduzirTexto(row.value, locale, glossario, provedor, opcoesCadeia);
           if (label.warning) warnings.push(label.warning);
           if (value.warning) warnings.push(value.warning);
           contador.n += 2;
@@ -609,19 +250,19 @@ export async function traduzirBlocos(
         break;
       }
       case 'table': {
-        const columns = await traduzirLista(bloco.columns, locale, glossario, provedor, warnings);
+        const columns = await traduzirLista(bloco.columns, locale, glossario, provedor, warnings, opcoesCadeia);
         contador.n += bloco.columns.length;
         const rows = [];
         for (const linha of bloco.rows) {
-          rows.push(await traduzirLista(linha, locale, glossario, provedor, warnings));
+          rows.push(await traduzirLista(linha, locale, glossario, provedor, warnings, opcoesCadeia));
           contador.n += linha.length;
         }
         resultado.push({ ...bloco, columns, rows });
         break;
       }
       case 'figure': {
-        const alt = await traduzirTexto(bloco.alt, locale, glossario, provedor);
-        const caption = await traduzirTexto(bloco.caption, locale, glossario, provedor);
+        const alt = await traduzirTexto(bloco.alt, locale, glossario, provedor, opcoesCadeia);
+        const caption = await traduzirTexto(bloco.caption, locale, glossario, provedor, opcoesCadeia);
         if (alt.warning) warnings.push(alt.warning);
         if (caption.warning) warnings.push(caption.warning);
         contador.n += 2;
@@ -629,8 +270,15 @@ export async function traduzirBlocos(
         break;
       }
       case 'devNote': {
-        const title = await traduzirTexto(bloco.title, locale, glossario, provedor);
-        const paragraphs = await traduzirLista(bloco.paragraphs, locale, glossario, provedor, warnings);
+        const title = await traduzirTexto(bloco.title, locale, glossario, provedor, opcoesCadeia);
+        const paragraphs = await traduzirLista(
+          bloco.paragraphs,
+          locale,
+          glossario,
+          provedor,
+          warnings,
+          opcoesCadeia,
+        );
         if (title.warning) warnings.push(title.warning);
         contador.n += 1 + bloco.paragraphs.length;
         resultado.push({ ...bloco, title: title.texto, paragraphs });
@@ -639,12 +287,20 @@ export async function traduzirBlocos(
       case 'card': {
         let title = bloco.title;
         if (title) {
-          const r = await traduzirTexto(title, locale, glossario, provedor);
+          const r = await traduzirTexto(title, locale, glossario, provedor, opcoesCadeia);
           if (r.warning) warnings.push(r.warning);
           title = r.texto;
           contador.n += 1;
         }
-        const blocks = await traduzirBlocos(bloco.blocks, locale, glossario, provedor, warnings, contador);
+        const blocks = await traduzirBlocos(
+          bloco.blocks,
+          locale,
+          glossario,
+          provedor,
+          warnings,
+          contador,
+          opcoesCadeia,
+        );
         resultado.push({ ...bloco, title, blocks });
         break;
       }
@@ -653,44 +309,60 @@ export async function traduzirBlocos(
         for (const card of bloco.cards) {
           let title = card.title;
           if (title) {
-            const r = await traduzirTexto(title, locale, glossario, provedor);
+            const r = await traduzirTexto(title, locale, glossario, provedor, opcoesCadeia);
             if (r.warning) warnings.push(r.warning);
             title = r.texto;
             contador.n += 1;
           }
-          const blocks = await traduzirBlocos(card.blocks, locale, glossario, provedor, warnings, contador);
+          const blocks = await traduzirBlocos(
+            card.blocks,
+            locale,
+            glossario,
+            provedor,
+            warnings,
+            contador,
+            opcoesCadeia,
+          );
           cards.push({ ...card, title, blocks });
         }
         resultado.push({ ...bloco, cards });
         break;
       }
       case 'subsection': {
-        const title = await traduzirTexto(bloco.title, locale, glossario, provedor);
+        const title = await traduzirTexto(bloco.title, locale, glossario, provedor, opcoesCadeia);
         let badge = bloco.badge;
         if (badge) {
-          const b = await traduzirTexto(badge, locale, glossario, provedor);
+          const b = await traduzirTexto(badge, locale, glossario, provedor, opcoesCadeia);
           if (b.warning) warnings.push(b.warning);
           badge = b.texto;
           contador.n += 1;
         }
         if (title.warning) warnings.push(title.warning);
         contador.n += 1;
-        const blocks = await traduzirBlocos(bloco.blocks, locale, glossario, provedor, warnings, contador);
+        const blocks = await traduzirBlocos(
+          bloco.blocks,
+          locale,
+          glossario,
+          provedor,
+          warnings,
+          contador,
+          opcoesCadeia,
+        );
         resultado.push({ ...bloco, title: title.texto, badge, blocks });
         break;
       }
       case 'issueList': {
-        const title = await traduzirTexto(bloco.title, locale, glossario, provedor);
+        const title = await traduzirTexto(bloco.title, locale, glossario, provedor, opcoesCadeia);
         if (title.warning) warnings.push(title.warning);
         contador.n += 1;
         const items = [];
         for (const item of bloco.items) {
-          const main = await traduzirTexto(item.main, locale, glossario, provedor);
+          const main = await traduzirTexto(item.main, locale, glossario, provedor, opcoesCadeia);
           if (main.warning) warnings.push(main.warning);
           contador.n += 1;
           let notes = item.notes;
           if (notes?.length) {
-            notes = await traduzirLista(notes, locale, glossario, provedor, warnings);
+            notes = await traduzirLista(notes, locale, glossario, provedor, warnings, opcoesCadeia);
             contador.n += notes.length;
           }
           items.push({ main: main.texto, notes });
@@ -706,7 +378,6 @@ export async function traduzirBlocos(
   return resultado;
 }
 
-/** Só labels de aba/sectionTitle localizados; corpo permanece EN. Instantâneo. */
 export function localizarSomenteLabels(
   conteudoEn: ConteudoPatchLocalizado,
   locale: LocaleAlvo,
@@ -734,9 +405,9 @@ export function localizarSomenteLabels(
     conteudo: { schemaVersion: 1, locale, tabs },
     provedor: 'none',
     warnings: [
-      'Sem provedor de tradução configurado (GEMINI_API_KEY, OPENROUTER_API_KEY, DEEPL_AUTH_KEY, OPENAI_API_KEY, XAI_API_KEY).',
+      'Sem provedor de tradução configurado (cadeia vazia).',
       'Corpo do texto permanece em EN; só labels de abas foram localizados.',
-      'Para MT: GEMINI_API_KEY (+ OPENROUTER_API_KEY como fallback free) ou --translate (MyMemory).',
+      'Configure GEMINI_API_KEY, OPENROUTER_API_KEY, GROQ_API_KEY, DEEPL, OPENAI/XAI ou --translate.',
     ],
     stringsTraduzidas: 0,
   };
@@ -746,46 +417,46 @@ export async function localizarConteudoPatch(
   conteudoEn: ConteudoPatchLocalizado,
   locale: LocaleAlvo,
   raizProjeto: string,
-  provedorForcado?: ProvedorTraducao,
+  provedorForcado?: IdProvedorTraducao,
 ): Promise<ResultadoLocalizacao> {
   const glossario = carregarGlossario(raizProjeto);
-  const provedor = provedorForcado ?? detectarProvedorTraducao();
+  const allowMyMemory = process.argv.includes('--translate') || process.argv.includes('--mymemory');
+  const opcoes: OpcoesCadeiaTraducao = { allowMyMemory };
+  const provedor = provedorForcado ?? detectarProvedorTraducao(opcoes);
   const warnings: string[] = [];
   const contador = { n: 0 };
   const labels = locale === 'pt-BR' ? LABELS_ABA_PT : LABELS_ABA_ES;
   const tabs: ConteudoPatchLocalizado['tabs'] = {};
 
-  if (provedor === 'none') {
+  // Reusa cadeia do processo (circuit breakers sobrevivem entre pt-BR e es-ES)
+  const cadeia = obterCadeiaTraducao(opcoes);
+  const desc = cadeia.descricaoCadeia();
+
+  if (provedor === 'none' || !desc) {
     return localizarSomenteLabels(conteudoEn, locale);
   }
 
-  if (provedor === 'mymemory') {
-    warnings.push(
-      'Usando MyMemory (gratuito). Lento e com cota - revise antes de publicar. Prefira GEMINI_API_KEY + OPENROUTER_API_KEY, DEEPL ou OpenAI/xAI.',
-    );
-  }
+  warnings.push(`Cadeia MT (Strategy): ${desc || '(vazia)'}`);
 
-  if (provedor === 'gemini' && obterChaveOpenRouter()) {
-    warnings.push(
-      `Fallback OpenRouter ativo se Gemini falhar (modelo: ${modeloOpenRouterPadrao()}).`,
-    );
-  }
-
-  if (provedor === 'openrouter') {
-    warnings.push(
-      `Tradução via OpenRouter free (${modeloOpenRouterPadrao()}). Revise antes de publicar.`,
-    );
-  }
+  let ultimoProvedorEfetivo: IdProvedorTraducao = provedor;
 
   for (const [tabId, aba] of Object.entries(conteudoEn.tabs)) {
     const labelPadrao = labels[tabId] ?? aba.label;
-    const labelTrad = await traduzirTexto(aba.label, locale, glossario, provedor);
+    const labelTrad = await traduzirTexto(aba.label, locale, glossario, provedor, opcoes);
     if (labelTrad.warning) warnings.push(labelTrad.warning);
+    if (labelTrad.provedorEfetivo) ultimoProvedorEfetivo = labelTrad.provedorEfetivo;
     contador.n += 1;
 
-    const blocks = await traduzirBlocos(aba.blocks, locale, glossario, provedor, warnings, contador);
+    const blocks = await traduzirBlocos(
+      aba.blocks,
+      locale,
+      glossario,
+      provedor,
+      warnings,
+      contador,
+      opcoes,
+    );
 
-    // Garante sectionTitle com label amigável da aba quando for o título genérico EN
     const blocksAjustados = blocks.map((bloco) => {
       if (bloco.type === 'sectionTitle' && labels[tabId]) {
         return {
@@ -803,8 +474,7 @@ export async function localizarConteudoPatch(
     };
   }
 
-  // Dedup warnings
-  const warningsUnicos = [...new Set(warnings)].slice(0, 20);
+  const warningsUnicos = [...new Set(warnings)].slice(0, 30);
 
   return {
     conteudo: {
@@ -812,7 +482,7 @@ export async function localizarConteudoPatch(
       locale,
       tabs,
     },
-    provedor,
+    provedor: ultimoProvedorEfetivo,
     warnings: warningsUnicos,
     stringsTraduzidas: contador.n,
   };

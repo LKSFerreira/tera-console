@@ -140,22 +140,13 @@ async function main() {
 
   if (provedor === 'none') {
     console.log(
-      '[ingest] sem chave de tradução - labels pt/es + corpo EN. Configure GEMINI_API_KEY (+ OPENROUTER_API_KEY fallback) ou --translate',
-    );
-  } else if (provedor === 'gemini') {
-    const temOpenRouter = Boolean(process.env.OPENROUTER_API_KEY?.trim());
-    console.log(
-      `[ingest] localizando pt-BR / es-ES via Gemini (${process.env.GEMINI_MODEL || 'gemini-3.6-flash'})` +
-        (temOpenRouter
-          ? ` → fallback OpenRouter (${process.env.OPENROUTER_MODEL || 'nvidia/nemotron-3-super-120b-a12b:free'})`
-          : ' (sem OPENROUTER_API_KEY: sem fallback free)'),
-    );
-  } else if (provedor === 'openrouter') {
-    console.log(
-      `[ingest] localizando pt-BR / es-ES via OpenRouter (${process.env.OPENROUTER_MODEL || 'nvidia/nemotron-3-super-120b-a12b:free'})...`,
+      '[ingest] sem provedor na cadeia MT - labels pt/es + corpo EN. ' +
+        'Configure GEMINI_API_KEY / OPENROUTER_API_KEY / GROQ_API_KEY (Strategy) ou --translate',
     );
   } else {
-    console.log(`[ingest] localizando pt-BR / es-ES via ${provedor}...`);
+    const { criarCadeiaTraducao } = await import('./lib/traducao/index.ts');
+    const cadeia = criarCadeiaTraducao({ allowMyMemory });
+    console.log(`[ingest] cadeia MT (Strategy): ${cadeia.descricaoCadeia() || provedor}`);
   }
 
   const locPt = await localizarConteudoPatch(conteudoEn, 'pt-BR', raizProjeto, provedor);
