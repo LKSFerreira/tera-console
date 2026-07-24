@@ -46,8 +46,21 @@ export interface ResultadoLocalizacao {
 
 const cacheTraducao = new Map<string, string>();
 
+/**
+ * Após o 1º erro Gemini (ex. 429 cota), o resto do processo usa só OpenRouter.
+ * Evita ~20 min de spam HTTP 429 string a string (visto no lab Actions).
+ */
+let geminiDesabilitadoNestaExecucao = false;
+let avisoGeminiDesabilitadoJaEmitido = false;
+
 function sleep(ms: number): Promise<void> {
   return new Promise((resolveSleep) => setTimeout(resolveSleep, ms));
+}
+
+/** Só para testes / reset entre runs no mesmo processo. */
+export function resetarEstadoFallbackGemini(): void {
+  geminiDesabilitadoNestaExecucao = false;
+  avisoGeminiDesabilitadoJaEmitido = false;
 }
 
 export function carregarGlossario(raizProjeto: string): Glossario {
@@ -247,6 +260,16 @@ async function traduzirLlmComFallback(
     throw new Error(`traduzirLlmComFallback nao suporta provedor=${provedor}`);
   }
 
+  // Circuit breaker: cota Gemini estourada → resto da execução só OpenRouter
+  if (geminiDesabilitadoNestaExecucao && obterChaveOpenRouter()) {
+    const parte = await traduzirOpenRouter(texto, locale);
+    return {
+      texto: parte,
+      provedorEfetivo: 'openrouter',
+      warning: 'Gemini desabilitado nesta execucao (cota/erro previo); so OpenRouter.',
+    };
+  }
+
   try {
     const parte = await traduzirGemini(texto, locale);
     return { texto: parte, provedorEfetivo: 'gemini' };
@@ -258,10 +281,16 @@ async function traduzirLlmComFallback(
       throw erroGemini;
     }
 
-    try {
+    geminiDesabilitadoNestaExecucao = true;
+    if (!avisoGeminiDesabilitadoJaEmitido) {
+      avisoGeminiDesabilitadoJaEmitido = true;
       console.warn(
-        `[localize] Gemini falhou → OpenRouter (${modeloOpenRouterPadrao()}): ${msgGemini.slice(0, 160)}`,
+        `[localize] Gemini desabilitado pelo resto desta execucao apos falha. ` +
+          `Usando so OpenRouter (${modeloOpenRouterPadrao()}). Motivo: ${msgGemini.slice(0, 200)}`,
       );
+    }
+
+    try {
       const parte = await traduzirOpenRouter(texto, locale);
       await sleep(120);
       return {
