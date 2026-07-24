@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "locale": "en-US",
+  "tabs": {
+    "dungeons": {
+      "label": "Dungeons",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Dungeons",
+          "icon": "swords"
+        },
+        {
+          "type": "card",
+          "title": "Ice Throne",
+          "titleTone": "slate",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Boss 2 crescent pattern knockback distance has been reduced (fixes cases where players were launched outside the map)."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Rampaging RK-9 Kennel / RK-9 Kennel (Hard)",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Timed bomb HP has been significantly reduced."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Rampaging RK-9 Kennel",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Boss 1 reflection effect has been removed.",
+                "Damage reduction during Boss 3 perfect defense has been increased.",
+                "Defense reduction benefit based on Brain Fog pattern trigger count (all bosses) is now visualized."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "classes": {
+      "label": "Classes",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Classes",
+          "icon": "user-cog"
+        },
+        {
+          "type": "card",
+          "title": "Reaper",
+          "titleTone": "amber",
+          "border": "amber-left",
+          "blocks": [
+            {
+              "type": "subsection",
+              "title": "Grim Strike",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Chained Glyph duration: 3s → 6s"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "subsection",
+              "title": "Cable Step",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Attack Speed Boost Glyph duration: 2.5s → 3.5s"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "subsection",
+              "title": "Binding Scythes",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Initial stack activation speed has been increased."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Archer",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "subsection",
+              "title": "Find Weakness",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Effect release trigger rolled back: 1–2 random → 1",
+                    "Effect correction for arrow generation on use has been added."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "system": {
+      "label": "Shop",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Shop",
+          "icon": "settings"
+        },
+        {
+          "type": "card",
+          "title": "Condensed Dungeon Core exchange",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Condensed Dungeon Core exchange rates have been reduced and purchase limits have been increased."
+              ]
+            },
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Shop",
+                "Price",
+                "Purchase limit"
+              ],
+              "rows": [
+                [
+                  "Dungeon Core (Kaia)",
+                  "250 → 200",
+                  "2 → 4"
+                ],
+                [
+                  "Dungeon Core (Annihilation)",
+                  "25 → 15",
+                  "4 → 10"
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "bugs": {
+      "label": "Bug Fixes",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Bug Fixes",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "issueList",
+          "title": "Issue resolution",
+          "icon": "alert-triangle",
+          "items": [
+            {
+              "main": "Fixed an issue where a different NPC was assigned to a Guild Mission."
+            },
+            {
+              "main": "Fixed an issue where some patterns of RK-9 Boss 2 were occasionally cancelled."
+            },
+            {
+              "main": "Fixed an issue where the Hexapleon-related electric bomb pattern of RK-9 Boss 2 was cancelled when a player briefly moved out of range at a specific timing."
+            },
+            {
+              "main": "Fixed an issue in RK-9 Kennel (Hard) where, after completing Boss 3's shield pattern and resetting the NPC, Hard Mode was still applied even when object interaction was ignored, and the leaderboard record time was accumulated with the pre-reset time."
+            },
+            {
+              "main": "Fixed an issue where Ninja's Burning Heart was not affected by Attack Speed."
+            },
+            {
+              "main": "Fixed an issue where Ninja's Burning Heart damage increase effect was not applied based on usage count."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 1,
+  "locale": "en-US",
+  "tabs": {
+    "dungeons": {
+      "label": "Dungeons",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Dungeons",
+          "icon": "swords"
+        },
+        {
+          "type": "card",
+          "title": "RK-9 Kennel: Ultimate (New)",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/RK-9.png",
+              "alt": "RK-9 Ultimate",
+              "caption": "New RK-9 Kennel: Ultimate (ilvl 920)."
+            },
+            {
+              "type": "keyValueList",
+              "rows": [
+                {
+                  "label": "Item level",
+                  "value": "920"
+                },
+                {
+                  "label": "Notes",
+                  "value": "Leaderboard updated and rebalanced"
+                }
+              ]
+            },
+            {
+              "type": "bulletList",
+              "items": [
+                "Item level 920.",
+                "Leaderboard dungeon updated.",
+                "Dungeon rebalanced."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "HARD difficulty system",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/난이도조작OBJ.png",
+              "alt": "Difficulty object",
+              "caption": "Difficulty object at entrance."
+            },
+            {
+              "type": "bulletList",
+              "items": [
+                "Interact at entrance to select difficulty (15s).",
+                "No interaction after combat starts.",
+                "Costs 1× Dungeon Core – Annihilation.",
+                "Balder's Arbitration resets difficulty (items not refunded).",
+                "Tier under HP gauge; empowered bosses; combat-area penalty.",
+                "Hard clear: extra Annihilation Core and Vanguard points."
+              ]
+            },
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/보스게이지.png",
+              "alt": "Boss gauge tier",
+              "caption": "Tier on boss gauge."
+            },
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/하드모드버프.png",
+              "alt": "Hard buffs",
+              "caption": "Hard Mode buffs and penalty."
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Other changes",
+          "titleTone": "slate",
+          "blocks": [
+            {
+              "type": "subsection",
+              "title": "RK-9 / Forbidden Arena / Timescape / Akeron",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Boss skills reset on boss reset (RK-9 Ultimate / Forbidden Arena Advanced).",
+                    "Normal: rewards slightly down, difficulty down; Hard: extra Enchanting Dust and Reputation.",
+                    "Timescape: dragon reflection −50%; safer Orbs; teleportal after dragon.",
+                    "Akeron Hard: entry at first combat; teleportal between bosses.",
+                    "RK-9 bosses: Time Bomb HP down; wipe/Press/Electric/Lock-On damage up."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "subsection",
+              "title": "Training Ground",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Monster DEF at level 900; Priest/Mystic object buffs updated.",
+                    "Reset Stone resets all skill CDs (brooch excluded)."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "classes": {
+      "label": "Classes",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Balance",
+          "icon": "user-cog"
+        },
+        {
+          "type": "card",
+          "title": "Ninja / Lancer / Warrior / Slayer",
+          "titleTone": "amber",
+          "border": "amber-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Ninja: Inner Harmony Stamina 1000 → 3000; pet Stamina bonuses apply.",
+                "Lancer: Retribution Shield stacks 10 → 7; Counter 1.1× → 1.125×; Guardian Shout at 7 stacks (10s).",
+                "Warrior: Poison Blade no longer removes Stab AS; duration 15→10s; AS 12%→10%; Cascade Rage CDR up.",
+                "Slayer: BTS CD reductions up; In Cold Blood Crit Factor 30→60; Linkage/Swift 10s."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Sorcerer / Archer / Reaper",
+          "titleTone": "sky",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Sorcerer: element grants on Flaming Barrage/Ice Lance/Lightning Trap; Mana Boost grants all 3.",
+                "Archer: Find Weakness hitbox improved.",
+                "Reaper: Binding Scythes expire burst up; stacks/hit 50 → 100."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "items": {
+      "label": "Items",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Items & shops",
+          "icon": "shield"
+        },
+        {
+          "type": "card",
+          "title": "Gear / item level",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Ilvl reset around Annihilation (+15 = 850); season may drop slightly.",
+                "Arun/Shara boxes → Amplifying Stone Shards; season mats on Vanguard and 900+.",
+                "Message and weapon FX on Annihilation +10+."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Dungeon Core Shops",
+          "titleTone": "sky",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Anger/Oath/Kaia/Annihilation: card boxes, Elin Coin, Training Books, Succession Runestone, Rare Etching Crystal.",
+                "Advanced/Ultimate Training Books disassemble; tradeable Ellinu's Tears down."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "crafting": {
+      "label": "Crafting",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Crafting & Etching",
+          "icon": "hammer"
+        },
+        {
+          "type": "card",
+          "title": "Crafting",
+          "titleTone": "slate",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Proficiency up; Training Books to Tier 5 + Ascension; page shop.",
+                "New merchant schematics."
+              ]
+            },
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/펫제작.png",
+              "alt": "Training books",
+              "caption": "Training Book crafting."
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Etching",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "devNote",
+              "title": "Developer note",
+              "tone": "amber",
+              "paragraphs": [
+                "Accessory Etching crafting supports reliable progress up to STR 7 (Crit Factor 2×)."
+              ]
+            },
+            {
+              "type": "bulletList",
+              "items": [
+                "T1 STR1 · T2 STR3 · T3 STR5 · T4 STR7."
+              ]
+            },
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/각인.png",
+              "alt": "Etching tiers",
+              "caption": "Craftable Etching tiers."
+            }
+          ]
+        }
+      ]
+    },
+    "system": {
+      "label": "System",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "BG, Pet, Gathering",
+          "icon": "settings"
+        },
+        {
+          "type": "card",
+          "title": "Battleground / Pet / Gathering / Achievements",
+          "titleTone": "sky",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Kumas Royale 3v3 lv65; unified BG gear; pet reflect/CDR off in BG.",
+                "Legendary pets: White options become Green values; White removed from reroll.",
+                "Fieldstones jackpot + rate up; Lieutenants on Island of Dawn.",
+                "Achievement tiers down; some become Forgotten."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "bugs": {
+      "label": "Bugs",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Bug Fixes",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "issueList",
+          "title": "Issue resolution",
+          "icon": "alert-triangle",
+          "items": [
+            {
+              "main": "Gunner Castanic dealt higher damage with certain skills."
+            },
+            {
+              "main": "Legacy gear upgrade required discontinued materials."
+            },
+            {
+              "main": "Season 2 level 820 rewards incorrectly restricted to 830."
+            },
+            {
+              "main": "Some achievements had unattainable completion flags."
+            },
+            {
+              "main": "Incorrect enhancement notifications for Annihilation +10–+15."
+            },
+            {
+              "main": "Sheik Cat / Apron set showed 0 Liberation charges."
+            },
+            {
+              "main": "Title \"Beyond the Limit\" could not be obtained."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

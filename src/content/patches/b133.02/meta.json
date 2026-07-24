@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "b133.02",
+  "buildLabel": "B133.02",
+  "kind": "update",
+  "status": "published",
+  "source": {
+    "officialNewsId": 1018,
+    "officialUrl": "https://tera-console.com/news/1018",
+    "languageType": "EN"
+  },
+  "publishedAt": "2026-07-23",
+  "parse": {
+    "quality": "ok",
+    "warnings": [],
+    "unmappedHeadings": [],
+    "fallbackTabs": []
+  },
+  "display": {
+    "pt-BR": {
+      "name": "Update de 23 de Julho",
+      "date": "23 de julho de 2026",
+      "parts": "Dungeons · Classes · Shop · Bugs"
+    },
+    "en-US": {
+      "name": "July 23 Update",
+      "date": "July 23, 2026",
+      "parts": "Dungeons · Classes · Shop · Bugs"
+    },
+    "es-ES": {
+      "name": "Update del 23 de julio",
+      "date": "23 de julio de 2026",
+      "parts": "Dungeons · Classes · Shop · Bugs"
+    }
+  },
+  "tabs": [
+    {
+      "id": "dungeons",
+      "icon": "swords"
+    },
+    {
+      "id": "classes",
+      "icon": "user-cog"
+    },
+    {
+      "id": "system",
+      "icon": "settings"
+    },
+    {
+      "id": "bugs",
+      "icon": "alert-triangle"
+    }
+  ]
+}

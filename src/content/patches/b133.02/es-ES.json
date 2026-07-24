@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "locale": "es-ES",
+  "tabs": {
+    "dungeons": {
+      "label": "Dungeons",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Dungeons",
+          "icon": "swords"
+        },
+        {
+          "type": "card",
+          "title": "Ice Throne",
+          "titleTone": "slate",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se redujo la distancia de knockback del pattern en media luna del Boss 2 (corrige casos en los que el jugador era lanzado fuera del mapa)."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Rampaging RK-9 Kennel / RK-9 Kennel (Hard)",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "El HP de la bomba temporizada se ha reducido de forma significativa."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Rampaging RK-9 Kennel",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se eliminó el efecto de reflexión del Boss 1.",
+                "Se aumentó la reducción de daño durante la perfect defense del Boss 3.",
+                "El beneficio de reducción de defensa según el número de activaciones del pattern Brain Fog (todos los bosses) ahora se visualiza en la UI."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "classes": {
+      "label": "Classes",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Classes",
+          "icon": "user-cog"
+        },
+        {
+          "type": "card",
+          "title": "Reaper",
+          "titleTone": "amber",
+          "border": "amber-left",
+          "blocks": [
+            {
+              "type": "subsection",
+              "title": "Grim Strike",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Duración del Chained Glyph: 3s → 6s"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "subsection",
+              "title": "Cable Step",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Duración del Attack Speed Boost Glyph: 2.5s → 3.5s"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "subsection",
+              "title": "Binding Scythes",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Aumentada la velocidad de activación inicial de las stacks."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Archer",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "subsection",
+              "title": "Find Weakness",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Gatillo de liberación del efecto revertido: 1–2 aleatorio → 1",
+                    "Corrección del efecto en la generación de flechas al usar la skill."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "system": {
+      "label": "Shop",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Shop",
+          "icon": "settings"
+        },
+        {
+          "type": "card",
+          "title": "Condensed Dungeon Core — intercambio",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Se redujeron las tasas de intercambio del Condensed Dungeon Core y se aumentaron los límites de compra."
+              ]
+            },
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Tienda",
+                "Precio",
+                "Límite de compra"
+              ],
+              "rows": [
+                [
+                  "Dungeon Core (Kaia)",
+                  "250 → 200",
+                  "2 → 4"
+                ],
+                [
+                  "Dungeon Core (Annihilation)",
+                  "25 → 15",
+                  "4 → 10"
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "bugs": {
+      "label": "Corrección de Bugs",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Corrección de Bugs",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "issueList",
+          "title": "Problemas resueltos",
+          "icon": "alert-triangle",
+          "items": [
+            {
+              "main": "Se corrigió un problema en el que se asignaba un NPC diferente a una Guild Mission."
+            },
+            {
+              "main": "Se corrigió un problema en el que algunos patterns del RK-9 Boss 2 se cancelaban ocasionalmente."
+            },
+            {
+              "main": "Se corrigió un problema en el que el pattern de bomba eléctrica relacionado con Hexapleon (RK-9 Boss 2) se cancelaba cuando el jugador salía brevemente del alcance en un timing concreto."
+            },
+            {
+              "main": "Se corrigió un problema en RK-9 Kennel (Hard) en el que, tras completar el pattern de escudo del Boss 3 y reiniciar el NPC, el Hard Mode seguía aplicándose aunque se ignorara la interacción con el objeto, y el tiempo del leaderboard se acumulaba con el tiempo previo al reset."
+            },
+            {
+              "main": "Se corrigió un problema en el que Burning Heart (Ninja) no se veía afectado por Attack Speed."
+            },
+            {
+              "main": "Se corrigió un problema en el que el aumento de daño de Burning Heart (Ninja) no se aplicaba según el número de usos."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

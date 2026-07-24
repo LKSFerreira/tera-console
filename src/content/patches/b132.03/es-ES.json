@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "locale": "es-ES",
+  "tabs": {
+    "dungeons": {
+      "label": "Dungeons",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Dungeons",
+          "icon": "swords"
+        },
+        {
+          "type": "card",
+          "title": "Forbidden Arena — Hard",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Crit Factor ligeramente aumentado.",
+                "Crit Resistance reducido."
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "info",
+              "text": "Compensa la reducción de HARD I: en la práctica, la diferencia apenas se nota."
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "RK-9 Kennel: Ultimate",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Crit Factor reducido de forma significativa."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Efecto de dificultad HARD I",
+          "titleTone": "slate",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Crit Factor ligeramente reducido.",
+                "Crit Resistance reducido."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "bugs": {
+      "label": "Corrección de Bugs",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Corrección de Bugs",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "issueList",
+          "title": "Items",
+          "icon": "alert-triangle",
+          "items": [
+            {
+              "main": "Se corrigió un problema en el que el efecto de critical hit del Ghost Horse del Battle Pass bloqueaba los efectos de pet."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

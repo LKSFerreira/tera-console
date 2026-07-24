@@ -1,0 +1,767 @@
+{
+  "schemaVersion": 1,
+  "locale": "es-ES",
+  "tabs": {
+    "highlights": {
+      "label": "Destacados",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Destacados del update",
+          "icon": "sparkles"
+        },
+        {
+          "type": "cardGrid",
+          "columns": 2,
+          "cards": [
+            {
+              "title": "Contenido principal",
+              "titleTone": "amber",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Last Stand: Rampaging RK-9 Kennel (ilvl 950).",
+                    "HARD I: Condensed Dungeon Core; resurrection penalty 10× → 3×.",
+                    "Coastal Battleground 6-week event (5v5)."
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Balance, rewards y UI",
+              "titleTone": "sky",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Class balance across multiple classes.",
+                    "More Darkshard; Vanguard and drops rebalanced.",
+                    "Boss shield gauge UI.",
+                    "Multiple bug fixes."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "dungeons": {
+      "label": "Dungeons",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Dungeons",
+          "icon": "swords"
+        },
+        {
+          "type": "card",
+          "title": "Rampaging RK-9 Kennel — Last Stand",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B133_7.jpg",
+              "alt": "Last Stand RK-9",
+              "caption": "Official art for Rampaging RK-9 Kennel Last Stand."
+            },
+            {
+              "type": "keyValueList",
+              "rows": [
+                {
+                  "label": "Item level",
+                  "value": "950"
+                },
+                {
+                  "label": "Entrada",
+                  "value": "RK-9 Dimensional Gem · matching and party recruitment"
+                }
+              ]
+            },
+            {
+              "type": "cardGrid",
+              "columns": 2,
+              "cards": [
+                {
+                  "title": "Rules & leaderboard",
+                  "blocks": [
+                    {
+                      "type": "bulletList",
+                      "items": [
+                        "Records only after Boss 3 shield-break (HARD).",
+                        "HARD I not applied in this Last Stand.",
+                        "New patterns per boss; party cooperation focus."
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "Rewards",
+                  "blocks": [
+                    {
+                      "type": "bulletList",
+                      "items": [
+                        "Vanguard only with Boss 3 shield-break.",
+                        "Extra Darkshard and rewards (increased).",
+                        "Last Stand entry sharing restriction removed.",
+                        "Leaderboard only for now; titles later."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "warning",
+              "text": "Known issue: enrage HP indicator does not match actual timing."
+            },
+            {
+              "type": "devNote",
+              "title": "Nota de los devs",
+              "tone": "amber",
+              "paragraphs": [
+                "Patterns reworked for cooperation. Clear times vary by boss mechanics.",
+                "Top parties swapping 1–2 members excluded from title eligibility."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "HARD I system",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B133_1.png",
+              "alt": "HARD I Condensed Core",
+              "caption": "Condensed Dungeon Core for HARD I."
+            },
+            {
+              "type": "subsection",
+              "title": "Consumable change",
+              "blocks": [
+                {
+                  "type": "paragraphs",
+                  "items": [
+                    "Dungeon Core (Annihilation) → Condensed Dungeon Core.",
+                    "Not transferable between characters."
+                  ]
+                },
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "25× Dungeon Core (Annihilation) — até 4/semana",
+                    "250× Dungeon Core (Kaia) — até 2/semana",
+                    "Chest em dungeons 850+ (tradeable, 1 core)",
+                    "Legacy of Annihilation em bosses HARD I",
+                    "10× Condensed Magic Crystal → 1 core"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "subsection",
+              "title": "Other HARD I changes",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "HARD I resurrection penalty: 10× → 3× (also Last Stand).",
+                    "HARD I ATK and Crit Power slightly decreased."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "devNote",
+              "title": "Nota de los devs",
+              "tone": "sky",
+              "paragraphs": [
+                "Regular materials replace Dungeon Core (Annihilation). Last Stand entry sharing removed."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Other dungeon changes",
+          "titleTone": "slate",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "RK-9 bosses (all 3) non-aggressive.",
+                "Ultimate leaderboard only after Boss 3 shield-break.",
+                "850+ damage rebalanced; skills/brooches reset on reset/boss kill.",
+                "Oshar's Resurrection Scroll: Prime Battle Solution only."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "events": {
+      "label": "Eventos",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Battleground y eventos",
+          "icon": "calendar"
+        },
+        {
+          "type": "card",
+          "title": "General Battleground",
+          "titleTone": "slate",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Faster AFK warning.",
+                "HP ×4 on BG matching entry."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Coastal Battleground — 6 weeks",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "6-week 5v5 event via matchmaking."
+              ]
+            },
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B133_2.png",
+              "alt": "Coastal Battleground",
+              "caption": "Coastal Battleground 5v5."
+            },
+            {
+              "type": "subsection",
+              "title": "Tokens",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B133_3.png",
+                  "alt": "Event tokens",
+                  "caption": "Coastal event tokens."
+                },
+                {
+                  "type": "table",
+                  "headerTone": "amber",
+                  "columns": [
+                    "Item",
+                    "Description"
+                  ],
+                  "rows": [
+                    [
+                      "[Event] Starlit Sand",
+                      "Troca com Starung ou craft com Empty Bottle"
+                    ],
+                    [
+                      "[Event] Empty Bottle to Catch Starlight",
+                      "1/dia + 1 no Vanguard Coastal"
+                    ],
+                    [
+                      "[Event] Sand That Holds the Glow of the Stars",
+                      "7 bottles + 50 sand → etchings Tier 4 / Legendary"
+                    ]
+                  ]
+                },
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "7 Empty Bottles + 50 Starlight Sand → 1 Glowing Starlight Sand."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "subsection",
+              "title": "Starung shop",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B133_4.png",
+                  "alt": "Starung shop",
+                  "caption": "Event etchings and exchange coins."
+                },
+                {
+                  "type": "table",
+                  "headerTone": "amber",
+                  "columns": [
+                    "Tab",
+                    "Item",
+                    "Price",
+                    "Limit"
+                  ],
+                  "rows": [
+                    [
+                      "Accessory",
+                      "Necklace Etching Power II (+9)",
+                      "20 Sand",
+                      "1× char"
+                    ],
+                    [
+                      "Accessory",
+                      "Necklace Etching Power III (+9)",
+                      "45 Sand",
+                      "1× char"
+                    ],
+                    [
+                      "Equipment",
+                      "Superior Weapon Etching (+15)",
+                      "20 Sand",
+                      "1× char"
+                    ],
+                    [
+                      "Equipment",
+                      "Rare Weapon Etching (+15)",
+                      "45 Sand",
+                      "1× char"
+                    ],
+                    [
+                      "Limited",
+                      "Rare / T3 Etching Coin",
+                      "45 Sand",
+                      "3× conta"
+                    ],
+                    [
+                      "Limited",
+                      "Legendary / T4 Etching Coin",
+                      "200 Sand",
+                      "2× conta"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "danger",
+              "text": "Coastal etchings deleted Aug 27, 2026. Use before the deadline."
+            }
+          ]
+        }
+      ]
+    },
+    "classes": {
+      "label": "Classes",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Balance de classes",
+          "icon": "user-cog"
+        },
+        {
+          "type": "card",
+          "title": "Reaper",
+          "titleTone": "amber",
+          "border": "amber-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Shadow Burst: 2nd hit hotkey timing faster / timing do 2º hit mais rápido.",
+                "Shadow Reaping duration: 8s → 15s.",
+                "Retribution: damage on success −90%."
+              ]
+            },
+            {
+              "type": "devNote",
+              "title": "Dev note",
+              "tone": "amber",
+              "paragraphs": [
+                "Retribution nerf aligns with Binding Scythes buff and Shadow Step no longer removed by DoT."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Lancer",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Line Held: Stamina on block 50 → 75; Crit Factor/stack 24 → 35.",
+                "Guardian Barrier no longer applies Retribution Shield.",
+                "Retribution Shield: Thrust dmg/stack 12.5% → 17.5%; stacks 7 → 5.",
+                "Second Wind: HP recovery ×2; Focus Glyph CD from % to fixed."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Sorcerer",
+          "titleTone": "amber",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Equipoise: +10% Crit Rate on 2-element combo and Fusion hits.",
+                "Element Zero: Crit Factor 10 → 15."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Ninja",
+          "titleTone": "sky",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Focus: +5 Crit Factor per stack.",
+                "Circular Tactics II: ranged Crit Rate 40% → 50%; +10% melee Crit Rate.",
+                "Burning Heart: equal damage to all targets in range.",
+                "Boomerang Shuriken: fix for lock with excessive CDR."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Berserker",
+          "titleTone": "slate",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Cyclone: back hit uses damage hit position.",
+                "Unleash: left/right stacks apply 10% of own Crit Factor.",
+                "Bloodlust: Crit Factor +50."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Archer",
+          "titleTone": "slate",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Find Weakness: partial fix when effect consumed without real damage.",
+                "Find Weakness damage increase: 40% → 50%."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Slayer",
+          "titleTone": "amber",
+          "border": "amber-left",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "New passive Reload (auto at level 65):"
+              ]
+            },
+            {
+              "type": "bulletList",
+              "items": [
+                "[Knock Down] crit → [One Strike] CD −0.5s",
+                "[Whirlwind] crit → [One Strike] CD −0.5s",
+                "[Knock Down] hit → [Whirlwind] CD −0.75s",
+                "[In Cold Blood]/[Ultimate In Cold Blood] hit → [Whirlwind] CD −0.5s"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Healers",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Gear/preset swap clears party/raid buffs.",
+                "Buff Scaling on detailed stats page."
+              ]
+            },
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B133_5.png",
+              "alt": "Buff scaling UI",
+              "caption": "Buff scaling UI."
+            },
+            {
+              "type": "subsection",
+              "title": "Mystic",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Vow of Rebirth Focus Glyph: CD fixo.",
+                    "Contagion: −2% Crit Resistance."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "subsection",
+              "title": "Priest",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Grace of Resurrection Focus Glyph: CD fixo.",
+                    "Divine Charge: Crit Power 40% → 20%; Power 15 → 25; duração 10s → 8s."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "rewards": {
+      "label": "Rewards",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Rewards y economía",
+          "icon": "gift"
+        },
+        {
+          "type": "devNote",
+          "title": "Nota de los devs",
+          "tone": "amber",
+          "paragraphs": [
+            "More Darkshard; fewer recipes. Underfilled parties take heavy drop penalties."
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Item level 900+",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Darkshard up (HARD I & Last Stand).",
+                "Rune Option Change Stone down."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Akeron's Inferno",
+          "titleTone": "slate",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Darkshard on Vanguard (2× ELITE GOLD).",
+                "Raid −1: −80%; −2: −99%."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "All dungeons",
+          "titleTone": "slate",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Alexandrite and Shining Ellinu's Tear down.",
+                "Party −1: −25%; −2+: −50%."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Vanguard Request",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Vanguard reputation up.",
+                "Weekly +3000 Initiative pts; daily 3/8/16/25 = 500/750/1000/2000."
+              ]
+            },
+            {
+              "type": "subsection",
+              "title": "Vanguard Initiative Shop",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Enchantment Powder cheaper; Card Boxes pricier; Essences/Rune adjusted."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "system": {
+      "label": "Sistema",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Contenido y UI",
+          "icon": "settings"
+        },
+        {
+          "type": "card",
+          "title": "Pit of Petrax",
+          "titleTone": "slate",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Bosses consolidated; HP up.",
+                "Front −50%; side −20%; back +10%."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Quick Signal / World Events",
+          "titleTone": "slate",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Quick Signal animation repeats.",
+                "World boss HP up."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Boss Gauge — shield",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Shield pattern shows icon and remaining value on the gauge."
+              ]
+            },
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B133_6.png",
+              "alt": "Boss shield gauge",
+              "caption": "Shield pattern on boss gauge."
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Other",
+          "titleTone": "slate",
+          "blocks": [
+            {
+              "type": "callout",
+              "tone": "warning",
+              "text": "Ping Compensation postponed (critical issue during prep)."
+            }
+          ]
+        }
+      ]
+    },
+    "bugs": {
+      "label": "Bugs",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Corrección de Bugs",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "issueList",
+          "title": "Problemas resueltos",
+          "icon": "alert-triangle",
+          "items": [
+            {
+              "main": "Refined Stigma names not displaying."
+            },
+            {
+              "main": "Crafting material quantities not fully shown with large stacks."
+            },
+            {
+              "main": "Incorrect trade attribute on Evolution Training Book."
+            },
+            {
+              "main": "\"Brrr…..\" achievement easier to complete."
+            },
+            {
+              "main": "Season Runner2 count fixed (1/10 of previous requirement)."
+            },
+            {
+              "main": "Damage Amplification not applying to Mystic Aura."
+            },
+            {
+              "main": "Title effects could speed up manual fishing."
+            },
+            {
+              "main": "Moonblader Lunar: Moonlight Resonance Crit Power applied to all skills."
+            },
+            {
+              "main": "HP/MP dropped when mounting a flying mount with HP/MP increase options."
+            },
+            {
+              "main": "Cooldown reset not resetting certain skills besides brooches."
+            },
+            {
+              "main": "Season Moonblade weapon level only up to 830."
+            },
+            {
+              "main": "Overlapping patterns with high burst in Ice Throne."
+            },
+            {
+              "main": "Incorrect patterns in Ice Throne (Normal)."
+            },
+            {
+              "main": "Akeron's Inferno: skills unusable after steam vent airborne."
+            },
+            {
+              "main": "Timescape: Dimensional Gem missing after Boss 3 reset."
+            },
+            {
+              "main": "Items showing as [Damaged] on Trade Broker."
+            },
+            {
+              "main": "Certain guild quests functioning abnormally."
+            },
+            {
+              "main": "Binding Scythes intermittently failing to activate."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

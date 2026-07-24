@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "id": "b133.01",
+  "buildLabel": "B133",
+  "kind": "update",
+  "status": "published",
+  "source": {
+    "officialNewsId": 1008,
+    "officialUrl": "https://tera-console.com/news/1008",
+    "languageType": "EN"
+  },
+  "publishedAt": "2026-07-15",
+  "parse": {
+    "quality": "ok",
+    "warnings": [],
+    "unmappedHeadings": [],
+    "fallbackTabs": []
+  },
+  "display": {
+    "pt-BR": {
+      "name": "Update de 15 de Julho",
+      "date": "15 de julho de 2026",
+      "parts": "Last Stand · HARD I · Classes · BG · Rewards"
+    },
+    "en-US": {
+      "name": "July 15 Update",
+      "date": "July 15, 2026",
+      "parts": "Last Stand · HARD I · Classes · BG · Rewards"
+    },
+    "es-ES": {
+      "name": "Update del 15 de julio",
+      "date": "15 de julio de 2026",
+      "parts": "Last Stand · HARD I · Classes · BG · Rewards"
+    }
+  },
+  "tabs": [
+    {
+      "id": "highlights",
+      "icon": "sparkles"
+    },
+    {
+      "id": "dungeons",
+      "icon": "swords"
+    },
+    {
+      "id": "events",
+      "icon": "calendar"
+    },
+    {
+      "id": "classes",
+      "icon": "user-cog"
+    },
+    {
+      "id": "rewards",
+      "icon": "gift"
+    },
+    {
+      "id": "system",
+      "icon": "settings"
+    },
+    {
+      "id": "bugs",
+      "icon": "alert-triangle"
+    }
+  ]
+}

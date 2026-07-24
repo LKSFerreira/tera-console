@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "id": "b132.01",
+  "buildLabel": "B132.01",
+  "kind": "update",
+  "status": "published",
+  "source": {
+    "officialNewsId": 991,
+    "officialUrl": "https://tera-console.com/news/991",
+    "languageType": "EN"
+  },
+  "publishedAt": "2026-05-21",
+  "parse": {
+    "quality": "ok",
+    "warnings": [],
+    "unmappedHeadings": [],
+    "fallbackTabs": []
+  },
+  "display": {
+    "pt-BR": {
+      "name": "Update de 21 de Maio",
+      "date": "21 de maio de 2026",
+      "parts": "RK-9 Ultimate · HARD · Classes · Crafting"
+    },
+    "en-US": {
+      "name": "May 21 Update",
+      "date": "May 21, 2026",
+      "parts": "RK-9 Ultimate · HARD · Classes · Crafting"
+    },
+    "es-ES": {
+      "name": "Update del 21 de mayo",
+      "date": "21 de mayo de 2026",
+      "parts": "RK-9 Ultimate · HARD · Classes · Crafting"
+    }
+  },
+  "tabs": [
+    {
+      "id": "dungeons",
+      "icon": "swords"
+    },
+    {
+      "id": "classes",
+      "icon": "user-cog"
+    },
+    {
+      "id": "items",
+      "icon": "shield"
+    },
+    {
+      "id": "crafting",
+      "icon": "hammer"
+    },
+    {
+      "id": "system",
+      "icon": "settings"
+    },
+    {
+      "id": "bugs",
+      "icon": "alert-triangle"
+    }
+  ]
+}

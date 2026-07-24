@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "locale": "en-US",
+  "tabs": {
+    "dungeons": {
+      "label": "Dungeons",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Dungeons",
+          "icon": "swords"
+        },
+        {
+          "type": "card",
+          "title": "Forbidden Arena — Hard",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Crit Factor slightly increased.",
+                "Crit Resistance decreased."
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "info",
+              "text": "Offset by the HARD I reduction — no noticeable difference in practice."
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "RK-9 Kennel: Ultimate",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Crit Factor significantly decreased."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "HARD I difficulty effect",
+          "titleTone": "slate",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Crit Factor slightly decreased.",
+                "Crit Resistance decreased."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "bugs": {
+      "label": "Bug Fixes",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Bug Fixes",
+          "icon": "alert-triangle"
+        },
+        {
+          "type": "issueList",
+          "title": "Items",
+          "icon": "alert-triangle",
+          "items": [
+            {
+              "main": "Fixed an issue where the Battle Pass Ghost Horse's critical hit effect was blocking pet effects."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

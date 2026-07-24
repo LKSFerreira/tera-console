@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "b132.03",
+  "buildLabel": "B132.03",
+  "kind": "hotfix",
+  "status": "published",
+  "source": {
+    "officialNewsId": 1001,
+    "officialUrl": "https://tera-console.com/news/1001",
+    "languageType": "EN"
+  },
+  "publishedAt": "2026-06-18",
+  "parse": {
+    "quality": "ok",
+    "warnings": [],
+    "unmappedHeadings": [],
+    "fallbackTabs": []
+  },
+  "display": {
+    "pt-BR": {
+      "name": "Update de 18 de Junho",
+      "date": "18 de junho de 2026",
+      "parts": "Dungeons · Bugs"
+    },
+    "en-US": {
+      "name": "June 18 Update",
+      "date": "June 18, 2026",
+      "parts": "Dungeons · Bugs"
+    },
+    "es-ES": {
+      "name": "Update del 18 de junio",
+      "date": "18 de junio de 2026",
+      "parts": "Dungeons · Bugs"
+    }
+  },
+  "tabs": [
+    {
+      "id": "dungeons",
+      "icon": "swords"
+    },
+    {
+      "id": "bugs",
+      "icon": "alert-triangle"
+    }
+  ]
+}
