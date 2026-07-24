@@ -47,14 +47,17 @@ Provedores de tradução (via `.env` na raiz - ver `.env.example`):
 
 | Env | Efeito |
 |-----|--------|
-| `GEMINI_API_KEY` | **Gemini** primário (default `gemini-3.6-flash`) |
-| `GEMINI_MODEL` | Override (ex.: `gemini-3.1-flash-lite`) |
-| `OPENROUTER_API_KEY` | **Fallback free** se Gemini falhar (ou primário se não houver Gemini) |
-| `OPENROUTER_MODEL` | Default `nvidia/nemotron-3-super-120b-a12b:free` |
-| `DEEPL_AUTH_KEY` | DeepL |
-| `OPENAI_API_KEY` / `XAI_API_KEY` | LLM OpenAI-compat |
-| *(nenhum)* | labels pt/es + corpo EN (rápido) |
-| `--translate` | MyMemory (só se pedir) |
+| `GEMINI_API_KEY` | Strategy Gemini (default model `gemini-3.6-flash`) |
+| `OPENROUTER_API_KEY` | Strategy OpenRouter free (`nvidia/nemotron-3-super-120b-a12b:free`) |
+| `GROQ_API_KEY` | Strategy Groq free-tier (`llama-3.3-70b-versatile`) |
+| `DEEPL_AUTH_KEY` / `OPENAI_*` / `XAI_*` | Strategies seguintes na cadeia |
+| `LOCALIZE_CHAIN` | Ordem custom: `gemini,openrouter,groq` |
+| `LOCALIZE_PROVIDER` | Força um só (sem fallback) ou `cadeia` |
+| *(nenhum)* | labels pt/es + corpo EN |
+| `--translate` | Inclui MyMemory no fim da cadeia |
+
+Cadeia padrão (Strategy + circuit breaker): **gemini → openrouter → groq → deepl → openai → xai**.  
+Código: `scripts/lib/traducao/`.
 
 ```bash
 # .env com GEMINI_API_KEY=...

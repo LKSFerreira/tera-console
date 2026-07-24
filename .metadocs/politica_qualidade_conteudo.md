@@ -64,20 +64,26 @@ Não entram no `import.meta.glob` de patches publicados.
 | Lab / ingest | `localizarConteudoPatch` após o EN |
 | CLI | `npm run content:localize -- --path <pasta>` |
 
-### Provedores (ordem)
+### Provedores (Strategy Pattern + cadeia)
 
-1. **`GEMINI_API_KEY` no `.env`** → Gemini (default **`gemini-3.6-flash`**)  
-   - Se **qualquer** chamada Gemini falhar e existir **`OPENROUTER_API_KEY`** → fallback **OpenRouter free**  
-   - Modelo free padrão: **`nvidia/nemotron-3-super-120b-a12b:free`** (Nemotron 3 Super; override: `OPENROUTER_MODEL`)  
-2. Só `OPENROUTER_API_KEY` (sem Gemini) → OpenRouter como primário  
-3. `DEEPL_AUTH_KEY` → DeepL  
-4. `OPENAI_API_KEY` / `XAI_API_KEY` → LLM OpenAI-compat  
-5. **Sem chave** → `none`: labels pt/es + corpo EN (rápido)  
-6. `--translate` → MyMemory (só se pedir)  
+Implementação: `scripts/lib/traducao/` — cada provider é uma **estratégia**; a **cadeia** aplica fallback e circuit breaker (1 erro desliga o provider no resto da execução).
 
-- Nome canônico Gemini: **`GEMINI_API_KEY`**.  
-- Secrets GitHub: `GEMINI_API_KEY` + `OPENROUTER_API_KEY` (recomendado para não ficar sem MT se a cota Gemini acabar).  
-- Arquivo local: `.env` (gitignored). Template: `.env.example`.
+**Ordem padrão:** `gemini → openrouter → groq → deepl → openai → xai`  
+(+ `mymemory` só com `--translate`)
+
+| Provider | Chave | Modelo default |
+|----------|--------|----------------|
+| Gemini | `GEMINI_API_KEY` | `gemini-3.6-flash` |
+| OpenRouter | `OPENROUTER_API_KEY` | `nvidia/nemotron-3-super-120b-a12b:free` |
+| Groq | `GROQ_API_KEY` | `llama-3.3-70b-versatile` |
+| DeepL | `DEEPL_AUTH_KEY` | — |
+| OpenAI / xAI | `OPENAI_API_KEY` / `XAI_API_KEY` | `gpt-4o-mini` / grok |
+
+- Custom ordem: `LOCALIZE_CHAIN=gemini,groq,openrouter`  
+- Forçar um só: `LOCALIZE_PROVIDER=groq`  
+- Sem chave: labels pt/es + corpo EN  
+- Secrets GitHub: mesmas chaves; lab repassa Gemini, OpenRouter e Groq  
+- Template: `.env.example`
 
 Glossário: `src/content/glossary.json` (`doNotTranslate` + `fixedPhrases`).
 

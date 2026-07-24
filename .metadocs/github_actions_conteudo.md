@@ -40,13 +40,17 @@ Se faltam 4 updates → 4 PRs independentes
 
 | Nome | Tipo | Obrigatório? | Uso |
 |------|------|----------------|-----|
-| **`GEMINI_API_KEY`** | Secret | MT primário | Gemini |
-| **`OPENROUTER_API_KEY`** | Secret | Recomendado | Fallback free (Nemotron 3 Super) |
-| `OPENROUTER_MODEL` | Variable (ou Secret) | Não | Default `nvidia/nemotron-3-super-120b-a12b:free` |
-| `OPENROUTER_SITE_URL` | Variable (ou Secret) | Não | Ranking OpenRouter (`HTTP-Referer`) |
-| `OPENROUTER_APP_NAME` | Variable (ou Secret) | Não | Ranking OpenRouter (`X-Title`) |
+| **`GEMINI_API_KEY`** | Secret | MT | Strategy Gemini |
+| **`OPENROUTER_API_KEY`** | Secret | Recomendado | Strategy OpenRouter free |
+| **`GROQ_API_KEY`** | Secret | Opcional | Strategy Groq free-tier |
+| `OPENROUTER_MODEL` | Variable (ou Secret) | Não | Default Nemotron 3 Super free |
+| `GROQ_MODEL` | Variable (ou Secret) | Não | Default `llama-3.3-70b-versatile` |
+| `OPENROUTER_SITE_URL` / `APP_NAME` | Variable | Não | Ranking OpenRouter |
 | `GEMINI_MODEL` | Variable | Não | Default `gemini-3.6-flash` |
+| `LOCALIZE_CHAIN` | Variable | Não | Ordem custom da cadeia Strategy |
 | `GITHUB_TOKEN` | Automático | Sim | PRs do workflow |
+
+Cadeia: **gemini → openrouter → groq → …** com circuit breaker (`scripts/lib/traducao/`).
 
 **Não** commite `.env`.
 
