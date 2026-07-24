@@ -14,6 +14,11 @@ export interface RotuloAbaPatch {
 }
 
 export interface MetadadosPatchLocalizados {
+  /**
+   * Rótulo oficial na sidebar (ex.: B133, B133.02).
+   * Obrigatório em runtime via carregarPatches; legado sem campo usa o id em maiúsculas.
+   */
+  buildLabel?: string;
   name: string;
   date: string;
   parts: string;

@@ -150,6 +150,7 @@ export function obterMetadadosPatchLocalizados(
     };
 
     return {
+      buildLabel: patch.meta.buildLabel,
       name: exibicao.name,
       date: exibicao.date,
       parts: exibicao.parts,
@@ -160,7 +161,15 @@ export function obterMetadadosPatchLocalizados(
     };
   }
 
-  return conteudoSitePorIdioma[idioma].patches[patchId] ?? null;
+  const legado = conteudoSitePorIdioma[idioma].patches[patchId];
+  if (!legado) {
+    return null;
+  }
+
+  return {
+    ...legado,
+    buildLabel: legado.buildLabel ?? patchId.toUpperCase(),
+  };
 }
 
 export function listarIdsPatchesDataDriven(): string[] {

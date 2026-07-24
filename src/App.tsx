@@ -272,7 +272,9 @@ export default function App() {
                     }`}
                   >
                     <div className="mb-1 flex items-start justify-between">
-                      <span className={`text-lg font-black ${patchEstaAtivo ? 'text-amber-400' : 'text-slate-300'}`}>{patchId.toUpperCase()}</span>
+                      <span className={`text-lg font-black ${patchEstaAtivo ? 'text-amber-400' : 'text-slate-300'}`}>
+                        {patchMetadados.buildLabel ?? patchId.toUpperCase()}
+                      </span>
                       {patchEstaAtivo ? <div className="mt-2 h-2 w-2 animate-pulse rounded-full bg-amber-400" /> : null}
                     </div>
                     <span className={`mb-1 text-sm font-medium ${patchEstaAtivo ? 'text-amber-200/80' : 'text-slate-400'}`}>{patchMetadados.name}</span>

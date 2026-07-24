@@ -31,7 +31,8 @@ export const conteudoSitePorIdioma: Record<IdiomaSuportado, ConteudoSite> = {
     },
     patches: {
       'b131.01': {
-        name: 'Atualização de Abril',
+        buildLabel: 'B131.01',
+        name: 'B131.01 Update',
         date: '9 de Abril de 2026',
         parts: '(Partes 1 & 2)',
         tabs: [
@@ -45,13 +46,15 @@ export const conteudoSitePorIdioma: Record<IdiomaSuportado, ConteudoSite> = {
         ],
       },
       'b130.03': {
-        name: 'Hotfix de Março',
+        buildLabel: 'B130.03',
+        name: 'B130.03 Hotfix',
         date: '26 de Março de 2026',
         parts: '',
         tabs: [{ id: 'bugs', label: 'Correção de Bugs' }],
       },
       'b130.02': {
-        name: 'Build Update',
+        buildLabel: 'B130.02',
+        name: 'B130.02 Build Update',
         date: '12 de Março de 2026',
         parts: '',
         tabs: [
@@ -61,7 +64,8 @@ export const conteudoSitePorIdioma: Record<IdiomaSuportado, ConteudoSite> = {
         ],
       },
       'b130.01': {
-        name: 'Last Stand Update',
+        buildLabel: 'B130.01',
+        name: 'B130.01 Last Stand Update',
         date: '26 de Fevereiro de 2026',
         parts: '',
         tabs: [
@@ -104,7 +108,8 @@ export const conteudoSitePorIdioma: Record<IdiomaSuportado, ConteudoSite> = {
     },
     patches: {
       'b131.01': {
-        name: 'April Update',
+        buildLabel: 'B131.01',
+        name: 'B131.01 Update',
         date: 'April 9, 2026',
         parts: '(Parts 1 & 2)',
         tabs: [
@@ -118,31 +123,34 @@ export const conteudoSitePorIdioma: Record<IdiomaSuportado, ConteudoSite> = {
         ],
       },
       'b130.03': {
-        name: 'March Hotfix',
+        buildLabel: 'B130.03',
+        name: 'B130.03 Hotfix',
         date: 'March 26, 2026',
         parts: '',
-        tabs: [{ id: 'bugs', label: 'Corrección de Bugs' }],
+        tabs: [{ id: 'bugs', label: 'Bug Fixes' }],
       },
       'b130.02': {
-        name: 'Build Update',
+        buildLabel: 'B130.02',
+        name: 'B130.02 Build Update',
         date: 'March 12, 2026',
         parts: '',
         tabs: [
-          { id: 'rewards', label: 'Recompensa y Dungeons' },
+          { id: 'rewards', label: 'Rewards & Dungeons' },
           { id: 'classes', label: 'Classes & Balance' },
-          { id: 'system', label: 'Corrección de Bugs' },
+          { id: 'system', label: 'Bug Fixes' },
         ],
       },
       'b130.01': {
-        name: 'Last Stand Update',
+        buildLabel: 'B130.01',
+        name: 'B130.01 Last Stand Update',
         date: 'February 26, 2026',
         parts: '',
         tabs: [
-          { id: 'battlepass', label: 'Evento de Pase de Batalla' },
+          { id: 'battlepass', label: 'Battle Pass Event' },
           { id: 'dungeons', label: 'Dungeons' },
           { id: 'crafting', label: 'Crafting & Items' },
           { id: 'classes', label: 'Classes' },
-          { id: 'system', label: 'Corrección de Bugs' },
+          { id: 'system', label: 'Bug Fixes' },
         ],
       },
     },
@@ -177,7 +185,8 @@ export const conteudoSitePorIdioma: Record<IdiomaSuportado, ConteudoSite> = {
     },
     patches: {
       'b131.01': {
-        name: 'Actualización de Abril',
+        buildLabel: 'B131.01',
+        name: 'B131.01 Update',
         date: '9 de abril de 2026',
         parts: '(Partes 1 y 2)',
         tabs: [
@@ -191,31 +200,34 @@ export const conteudoSitePorIdioma: Record<IdiomaSuportado, ConteudoSite> = {
         ],
       },
       'b130.03': {
-        name: 'Hotfix de Marzo',
+        buildLabel: 'B130.03',
+        name: 'B130.03 Hotfix',
         date: '26 de marzo de 2026',
         parts: '',
-        tabs: [{ id: 'bugs', label: 'Bug Fixes' }],
+        tabs: [{ id: 'bugs', label: 'Corrección de Bugs' }],
       },
       'b130.02': {
-        name: 'Build Update',
+        buildLabel: 'B130.02',
+        name: 'B130.02 Build Update',
         date: '12 de marzo de 2026',
         parts: '',
         tabs: [
-          { id: 'rewards', label: 'Rewards & Dungeons' },
+          { id: 'rewards', label: 'Recompensas y Dungeons' },
           { id: 'classes', label: 'Clases y Balance' },
-          { id: 'system', label: 'Bug Fixes' },
+          { id: 'system', label: 'Corrección de Bugs' },
         ],
       },
       'b130.01': {
-        name: 'Last Stand Update',
+        buildLabel: 'B130.01',
+        name: 'B130.01 Last Stand Update',
         date: '26 de febrero de 2026',
         parts: '',
         tabs: [
-          { id: 'battlepass', label: 'Battle Pass Event' },
+          { id: 'battlepass', label: 'Evento de Pase de Batalla' },
           { id: 'dungeons', label: 'Dungeons' },
           { id: 'crafting', label: 'Crafting e Ítems' },
           { id: 'classes', label: 'Clases' },
-          { id: 'system', label: 'Bug Fixes' },
+          { id: 'system', label: 'Corrección de Bugs' },
         ],
       },
     },
