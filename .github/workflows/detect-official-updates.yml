@@ -1,13 +1,32 @@
-# Radar: detecta UPDATES oficiais e abre Issue.
-# Nao publica no portal. Curadoria B131 continua manual.
-# Cron: a cada ~3 dias + Run workflow manual.
+# =============================================================================
+# DESATIVADO (2026-07-23) - modelo preservado para reuso em outros projetos
+# =============================================================================
+# Motivo: o radar por GitHub Issue foi abandonado neste portal.
+# Gate de qualidade passa a ser o PR de merge para main (markdown, links,
+# checkboxes, Preview Vercel). Ver politica e github_actions_conteudo.md.
+#
+# Para reativar noutro projeto / no futuro:
+# 1. Restaurar o bloco `on.schedule` abaixo
+# 2. Remover `if: false` do job
+# 3. Ajustar assignee / labels se preciso
+#
+# Scripts relacionados (nao apagar):
+#   scripts/detect-new-updates.ts
+#   scripts/format-radar-issue.ts  (template markdown reutilizavel em PR)
+# =============================================================================
 
-name: Detect official updates
+name: Detect official updates (DISABLED - issue radar)
 
+# Sem cron. workflow_dispatch mantido so para o ficheiro continuar valido no
+# GitHub; o job esta com if: false e nao cria Issues.
 on:
-  schedule:
-    - cron: "0 12 */3 * *"
   workflow_dispatch:
+    inputs:
+      note:
+        description: "Workflow desativado de proposito. Nao cria Issues. Modelo preservado."
+        required: false
+        default: "disabled"
+        type: string
 
 permissions:
   contents: read
@@ -19,7 +38,9 @@ concurrency:
 
 jobs:
   detect:
-    name: Detect and open issue
+    name: Detect and open issue (disabled)
+    # Hard off: job nunca corre ate alguem remover este if.
+    if: false
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
