@@ -1,5 +1,10 @@
 /**
- * Gera o corpo Markdown da Issue de radar a partir do payload do detect.
+ * Template Markdown de radar (checklist + links oficiais).
+ *
+ * Historico: usado na GitHub Issue do workflow detect-official-updates.
+ * Esse workflow esta DESATIVADO no portal; o mesmo formato serve de base
+ * para corpo de PR de merge (homolog → main). Nao apagar - modelo reutilizavel.
+ *
  * Uso: PAYLOAD='...' COUNT=2 IDS='1001,991' npx tsx scripts/format-radar-issue.ts > body.md
  */
 const payloadBruto = process.env.PAYLOAD ?? '{}';

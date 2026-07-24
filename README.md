@@ -6,7 +6,7 @@ Curadoria independente de patch notes do **TERA Console** (React + TypeScript + 
 
 O portal prioriza o **padrão editorial e visual do B131** (cards, hierarquia, textos curados, imagens com legenda).
 
-Automação serve como **radar** (e rascunho de lab), **nunca** como publicação cega.  
+Automação prepara conteúdo e abre **PR**; o freio de qualidade é **Preview + merge em `main`**, nunca publicação cega.  
 Política completa: [`.metadocs/politica_qualidade_conteudo.md`](.metadocs/politica_qualidade_conteudo.md)
 
 ## Desenvolvimento
@@ -47,8 +47,10 @@ Provedores de tradução (via `.env` na raiz - ver `.env.example`):
 
 | Env | Efeito |
 |-----|--------|
-| `GEMINI_API_KEY` | **Gemini** (default `gemini-3.6-flash`) |
+| `GEMINI_API_KEY` | **Gemini** primário (default `gemini-3.6-flash`) |
 | `GEMINI_MODEL` | Override (ex.: `gemini-3.1-flash-lite`) |
+| `OPENROUTER_API_KEY` | **Fallback free** se Gemini falhar (ou primário se não houver Gemini) |
+| `OPENROUTER_MODEL` | Default `nvidia/nemotron-3-super-120b-a12b:free` |
 | `DEEPL_AUTH_KEY` | DeepL |
 | `OPENAI_API_KEY` / `XAI_API_KEY` | LLM OpenAI-compat |
 | *(nenhum)* | labels pt/es + corpo EN (rápido) |
@@ -67,8 +69,9 @@ Glossário: `src/content/glossary.json`.
 
 ### GitHub Actions
 
-- **Detect** (~a cada 3 dias): abre **Issue** de radar  
-- **Experimental raw ingest**: só com confirmação `LAB` - PR WIP, não é conteúdo final  
+- **Detect (Issue radar):** **desativado** (workflow + template preservados como modelo)  
+- **Experimental raw ingest:** só com confirmação `LAB` - PR WIP, não é conteúdo final  
+- **Gate de produção (Opção A):** **1 update = 1 PR** para `main` (checklist no body + Preview Vercel)
 
 Setup: [`.metadocs/github_actions_conteudo.md`](.metadocs/github_actions_conteudo.md)
 

@@ -296,21 +296,33 @@ Com renderer, automação só gera **dados + assets**.
 
 ## 4. Estratégia recomendada (decisão consolidada)
 
-### 4.1 Estratégia vencedora: **Híbrida A+B com gate de PR**
+### 4.0 Homologação: **Opção A — PR por update** (decidido 2026-07-23)
+
+| Decisão | Valor |
+|---------|--------|
+| Modelo | **1 UPDATE oficial = 1 branch = 1 PR = 1 Preview Vercel** |
+| Branch | `content/<patchId>-<newsId>` (ex. `content/b133.02-1018`) |
+| Base do PR | sempre `main` |
+| Corpo do PR | checklist QA (markdown, links, checkboxes) — substitui a Issue de radar |
+| Rejeitado | branch `homolog` fixa sobrescrita com vários patches misturados |
+| Issue radar | workflow **desativado** (modelo preservado no repo) |
+
+### 4.1 Estratégia vencedora: **Híbrida com gate de PR (Opção A)**
 
 | Camada | Nome | Comportamento |
 |--------|------|----------------|
-| **Fundação** | Conteúdo data-driven + `DynamicPatchRenderer` | Novo patch = JSON/YAML + imagens; **zero TSX novo** |
-| **Ingestão sob demanda** | CLI / Action `workflow_dispatch` | Cola URL ou `newsId` → gera draft |
-| **Descoberta** | Cron diário na API | Detecta `update` novo → abre PR draft |
-| **Publicação** | Pull Request | **Nunca** merge automático na `main` na v1 |
-| **Tradução** | EN oficial + LLM/tradutor para `pt-BR` e `es-ES` | Review humano rápido nos termos de jogo |
+| **Fundação** | Conteúdo data-driven + `DynamicPatchRenderer` | Novo patch = JSON + imagens CDN; **zero TSX novo** |
+| **Ingestão** | CLI / Action | Um `newsId` → conteudo na branch do PR |
+| **Descoberta** | Cron / detect | Cada update faltante → **PR separado** (nao Issue) |
+| **Homologação** | Preview Vercel do PR | HTTPS para QA visual/editorial |
+| **Publicação** | Merge do PR em `main` | **Nunca** merge automatico na v1 |
+| **Tradução** | EN oficial + Gemini → `pt-BR` / `es-ES` | Review humano no Preview |
 
 Isso une:
 
 - **Detecção automática** (Actions/cron na API)
 - **CLI com URL ou `newsId`** sob demanda
-- **Gate humano** (PR) em vez de commit cego
+- **Gate humano** (PR + Preview) em vez de Issue ou commit cego
 
 ### 4.2 Por que não as alternativas puras
 

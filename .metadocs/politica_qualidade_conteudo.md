@@ -1,43 +1,52 @@
 # Política de qualidade de conteúdo - TERA Console Portal
 
 > **Objetivo do produto:** curadoria no padrão **B131** (estrutura, PT, cards, imagens com legenda).  
-> Automação é **radar e apoio**, nunca substituto de qualidade editorial.
+> Automação prepara conteúdo e abre **PR**; o freio de qualidade é **review no Preview + merge em `main`**, nunca publicação cega.
 
 ## Regras absolutas
 
-1. **Portal só mostra** patches com qualidade editorial aceitável.
+1. **Portal de produção** (`main`) só mostra patches com qualidade editorial aceitável.
 2. **Data-driven publicado** exige:
  - `meta.status === "published"`
  - id em `src/content/patches/index.json` → `order` **e** `dataDrivenIds`
-3. **Ingest automático / parser da API** gera no máximo **rascunho** (`draft` / `draftIds` / archive).
-4. **Nunca** promover rascunho bruto (texto grudado, EN só, dump de imagem) para `published`.
+3. **Ingest automático / parser da API** não pusha direto em `main`.
+4. **Nunca** mergear rascunho bruto (texto grudado, EN só, dump de imagem) como conteúdo final.
 5. Legado **B131.01** em TSX permanece como **referência de ouro** visual e editorial.
+6. **Gate humano** = corpo do **PR** (markdown, links, checkboxes) + HTTPS de Preview — **não** GitHub Issue de radar.
+7. **Modelo de homologação (decisão 2026-07-23): Opção A — PR por update.**  
+   Um UPDATE oficial → uma branch → um PR para `main` → um Preview Vercel.  
+   **Não** usar branch `homolog` fixa sobrescrita com vários patches misturados.
 
 ## O que cada peça faz
 
-| Peça | Papel | Publica no site? |
-|------|--------|------------------|
-| Workflow **Detect official updates** | Issue de radar (~3 dias) | **Não** |
+| Peça | Papel | Publica em produção? |
+|------|--------|----------------------|
+| Workflow **Detect official updates** | **Desativado** (modelo Issue preservado no repo) | **Não** |
 | Workflow **Experimental raw ingest** | Lab / referência bruta | **Não** (PR WIP) |
 | CLI `ingest:update` | Lab local; grava draft | **Não** (sem curadoria) |
-| Curadoria humana (padrão B131) | Cards, PT, imagens, abas | **Sim** |
-| `DynamicPatchRenderer` | Render de conteúdo **já curado** | Sim, se published |
+| PR de conteúdo + Preview Vercel | Homologação / QA | **Não** até merge |
+| Review + merge em `main` | Freio editorial B131 | **Sim** |
+| `DynamicPatchRenderer` | Render de conteúdo **já aprovado** | Sim, se published |
 
-## Fluxo correto de um update novo
+## Fluxo correto de um update novo (Opção A)
 
 ```text
-1. Radar (Issue Actions ou ingest:detect local)
-2. Ler patch oficial
-3. Curar no padrão B131 (manual ou agente sob revisão)
-4. meta.status = published + index.order
-5. Review visual → merge/deploy
+1. Detect / ingest de UM newsId (ex. 1018)
+2. Branch content/<patchId>-<newsId> (ex. content/b133.02-1018)
+3. PR unico para main: checklist + link oficial + Preview Vercel
+4. QA no Preview (traducao, visual, identidade, formatacao)
+5. Ajustes no mesmo PR se preciso
+6. Merge → producao (so aquele update)
 ```
+
+Se chegarem 4 updates de uma vez: **4 PRs**, nao um monstro. Pode mergear o hotfix pequeno e segurar o major.
 
 ## O que não fazer
 
 - Mergear PR de ingest bruto “porque build passou”
-- Colocar B133 auto na sidebar “para não ficar atrasado”
+- Publicar direto em `main` sem Preview/review
 - Confundir “schema válido” com “conteúdo bom”
+- Reativar Issue de radar neste portal sem necessidade (modelo fica no repo para outros usos)
 
 ## Arquivo de rascunhos ruins
 
@@ -57,14 +66,17 @@ Não entram no `import.meta.glob` de patches publicados.
 
 ### Provedores (ordem)
 
-1. **`GEMINI_API_KEY` no `.env`** (e no GitHub Secret com o mesmo nome) → Gemini (default **`gemini-3.6-flash`**)  
-2. `DEEPL_AUTH_KEY` → DeepL  
-3. `OPENAI_API_KEY` / `XAI_API_KEY` → LLM OpenAI-compat  
-4. **Sem chave** → `none`: labels pt/es + corpo EN (rápido)  
-5. `--translate` → MyMemory (só se pedir)  
+1. **`GEMINI_API_KEY` no `.env`** → Gemini (default **`gemini-3.6-flash`**)  
+   - Se **qualquer** chamada Gemini falhar e existir **`OPENROUTER_API_KEY`** → fallback **OpenRouter free**  
+   - Modelo free padrão: **`nvidia/nemotron-3-super-120b-a12b:free`** (Nemotron 3 Super; override: `OPENROUTER_MODEL`)  
+2. Só `OPENROUTER_API_KEY` (sem Gemini) → OpenRouter como primário  
+3. `DEEPL_AUTH_KEY` → DeepL  
+4. `OPENAI_API_KEY` / `XAI_API_KEY` → LLM OpenAI-compat  
+5. **Sem chave** → `none`: labels pt/es + corpo EN (rápido)  
+6. `--translate` → MyMemory (só se pedir)  
 
-- Nome canônico da chave: **`GEMINI_API_KEY`** (não use só `GEMINI` em docs/novos setups; o código ainda aceita `GEMINI` legado).  
-- Modelo: `GEMINI_MODEL=gemini-3.6-flash` ou `gemini-3.1-flash-lite`.  
+- Nome canônico Gemini: **`GEMINI_API_KEY`**.  
+- Secrets GitHub: `GEMINI_API_KEY` + `OPENROUTER_API_KEY` (recomendado para não ficar sem MT se a cota Gemini acabar).  
 - Arquivo local: `.env` (gitignored). Template: `.env.example`.
 
 Glossário: `src/content/glossary.json` (`doNotTranslate` + `fixedPhrases`).

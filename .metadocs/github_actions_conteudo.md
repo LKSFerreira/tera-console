@@ -1,56 +1,71 @@
-# GitHub Actions - radar de conteúdo (sem publicação automática)
+# GitHub Actions - conteúdo (sem publicação cega em main)
 
 ## Política
 
-O portal **não** publica patch notes gerados só por parser.  
-Padrão de qualidade = **B131** (curadoria). Ver [politica_qualidade_conteudo.md](./politica_qualidade_conteudo.md).
+O portal **não** publica patch notes em produção só porque o parser/build passou.  
+Padrão de qualidade = **B131** (curadoria). Gate humano = **PR de merge para `main`** (Preview Vercel + checklist no corpo do PR).
+
+Ver [politica_qualidade_conteudo.md](./politica_qualidade_conteudo.md).
 
 ## Workflows
 
-| Arquivo | Gatilho | O que faz | Publica no site? |
-|---------|---------|-----------|------------------|
-| `detect-official-updates.yml` | Cron `0 12 */3 * *` UTC (~5×/quinzena) + manual | Detecta UPDATES novos → **abre Issue** | **Não** |
-| `ingest-update.yml` | Manual + confirmação `LAB` | Rascunho bruto + tradução Gemini (se secret) → PR WIP | **Não** |
+| Arquivo | Estado | O que faz | Publica em produção? |
+|---------|--------|-----------|----------------------|
+| `detect-official-updates.yml` | **DESATIVADO** (modelo preservado) | Antes: cron → GitHub **Issue** de radar | **Não** |
+| `ingest-update.yml` | Lab manual (`LAB`) | Rascunho bruto + Gemini (se secret) → PR WIP | **Não** |
+
+### Por que a Issue de radar foi desligada
+
+O checklist (markdown, links oficiais, checkboxes) migra para o **corpo do PR** de homolog → `main`.  
+O workflow e o template (`scripts/format-radar-issue.ts`) **não foram apagados** — servem de modelo para outros projetos ou reativação futura.
+
+Para reativar o radar por Issue: ver comentários no topo de `detect-official-updates.yml` (restaurar cron, remover `if: false`).
+
+## Alvo de produto (esteira) — **Opção A: PR por update**
+
+Decisão 2026-07-23: **não** branch `homolog` fixa. Um update = um PR.
+
+```text
+Detect encontra newsId 1018 (e so ele neste job, ou um PR por id)
+  → branch content/b133.02-1018
+  → PR para main (checklist no body; template baseado em format-radar-issue)
+  → Preview Vercel daquele PR
+  → QA (traducao, visual, identidade, formatacao)
+  → merge → producao
+
+Se faltam 4 updates → 4 PRs independentes
+```
 
 ## Secrets (repositório)
 
-| Secret | Obrigatório? | Uso |
-|--------|----------------|-----|
-| **`GEMINI_API_KEY`** | Para MT no lab do Actions | Mesmo valor do `.env` local |
-| `GITHUB_TOKEN` | Automático | Issues / PRs do workflow |
+| Nome | Tipo | Obrigatório? | Uso |
+|------|------|----------------|-----|
+| **`GEMINI_API_KEY`** | Secret | MT primário | Gemini |
+| **`OPENROUTER_API_KEY`** | Secret | Recomendado | Fallback free (Nemotron 3 Super) |
+| `OPENROUTER_MODEL` | Variable (ou Secret) | Não | Default `nvidia/nemotron-3-super-120b-a12b:free` |
+| `OPENROUTER_SITE_URL` | Variable (ou Secret) | Não | Ranking OpenRouter (`HTTP-Referer`) |
+| `OPENROUTER_APP_NAME` | Variable (ou Secret) | Não | Ranking OpenRouter (`X-Title`) |
+| `GEMINI_MODEL` | Variable | Não | Default `gemini-3.6-flash` |
+| `GITHUB_TOKEN` | Automático | Sim | PRs do workflow |
 
-**Não** commite `.env`. A chave só existe em:
+**Não** commite `.env`.
 
-- Local: `.env` → `GEMINI_API_KEY=...`
-- CI: Settings → Secrets and variables → Actions → `GEMINI_API_KEY`
+- Local: `.env` com as mesmas chaves  
+- CI: Secrets + Variables → Actions (nomes **exatos** acima)  
+- O workflow **só usa** o que estiver no `env:` do YAML **e** o código já estiver em `main` (push)
 
-Opcional (Variables, não secret): `GEMINI_MODEL` (default no workflow: `gemini-3.6-flash`).
-
-### Setup da secret (já feito se você criou)
+### Setup da secret
 
 1. Settings → Secrets and variables → Actions  
 2. New repository secret  
 3. Name: **`GEMINI_API_KEY`**  
 4. Value: a chave do Google AI Studio  
 
-## Outras permissões (uma vez)
+## Permissões
 
-**Detect (Issue):**
+**Experimental ingest:** write + create pull requests (PR draft de lab).
 
-1. Settings → Actions → General  
-2. Actions habilitadas  
-3. Workflow permissions: permitir criar issues / read-write conforme a UI  
-
-**Experimental ingest:** write + create pull requests (para o PR draft de lab).
-
-Sem auto-merge.
-
-## Uso
-
-1. Cron ou *Run workflow* no **Detect** → Issue “Radar: UPDATE…”  
-2. (Opcional) *Experimental raw ingest* com `news_ref` + digite `LAB` → rascunho com Gemini se a secret existir  
-3. Curadoria no padrão B131  
-4. Só então `published` + `index.json`
+Sem auto-merge em `main`.
 
 ## Local
 

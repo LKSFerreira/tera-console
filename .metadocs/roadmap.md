@@ -33,7 +33,9 @@
 - [x] Renderer data-driven + schema `schemaVersion: 1`
 - [x] Índice dinâmico de patches (`index.json`)
 - [x] CLI de lab (raw-drafts) + section-map + validate
-- [x] GitHub Actions radar (cron ~3 dias → Issue; sem auto-publish)
+- [x] GitHub Actions radar por Issue (implementado; **desativado** 2026-07-23 — modelo preservado)
+- [x] Decisão homologação: **Opção A — PR por update** (1 newsId = 1 PR + Preview; sem branch homolog fixa)
+- [ ] Esteira Opção A: detect/ingest → `content/<id>` → PR + Preview Vercel → QA no PR → merge main
 - [x] B130.x data-driven publicados; B131 referência de ouro em TSX
 - [x] Política de qualidade: rascunho ≠ portal; B133 auto arquivado
 
