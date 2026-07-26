@@ -371,9 +371,9 @@
             {
               "type": "bulletList",
               "items": [
-                "Shadow Burst: 2nd hit hotkey timing faster / timing do 2º hit mais rápido.",
-                "Shadow Reaping duration: 8s → 15s.",
-                "Retribution: damage on success −90%."
+                "Shadow Burst: tempo do 2º hit no atalho mais rápido.",
+                "Shadow Reaping: duração 8s → 15s.",
+                "Retribution: dano em caso de acerto −90%."
               ]
             },
             {
@@ -381,7 +381,7 @@
               "title": "Dev note",
               "tone": "amber",
               "paragraphs": [
-                "Retribution nerf aligns with Binding Scythes buff and Shadow Step no longer removed by DoT."
+                "O nerf de Retribution alinha-se ao buff de Binding Scythes, e Shadow Step não é mais removido por DoT."
               ]
             }
           ]
@@ -395,10 +395,10 @@
             {
               "type": "bulletList",
               "items": [
-                "Line Held: Stamina on block 50 → 75; Crit Factor/stack 24 → 35.",
-                "Guardian Barrier no longer applies Retribution Shield.",
-                "Retribution Shield: Thrust dmg/stack 12.5% → 17.5%; stacks 7 → 5.",
-                "Second Wind: HP recovery ×2; Focus Glyph CD from % to fixed."
+                "Line Held: Stamina ao bloquear 50 → 75; Crit Factor por acúmulo 24 → 35.",
+                "Guardian Barrier não aplica mais Retribution Shield.",
+                "Retribution Shield: dano de Thrust por acúmulo 12.5% → 17.5%; acúmulos 7 → 5.",
+                "Second Wind: recuperação de HP ×2; CD do Focus Glyph alterado de % para valor fixo."
               ]
             }
           ]
@@ -411,7 +411,7 @@
             {
               "type": "bulletList",
               "items": [
-                "Equipoise: +10% Crit Rate on 2-element combo and Fusion hits.",
+                "Equipoise: +10% de Crit Rate em combos de 2 elementos e acertos de Fusion.",
                 "Element Zero: Crit Factor 10 → 15."
               ]
             }
@@ -425,10 +425,10 @@
             {
               "type": "bulletList",
               "items": [
-                "Focus: +5 Crit Factor per stack.",
-                "Circular Tactics II: ranged Crit Rate 40% → 50%; +10% melee Crit Rate.",
-                "Burning Heart: equal damage to all targets in range.",
-                "Boomerang Shuriken: fix for lock with excessive CDR."
+                "Focus: +5 de Crit Factor por acúmulo.",
+                "Circular Tactics II: Crit Rate à distância 40% → 50%; +10% de Crit Rate corpo a corpo.",
+                "Burning Heart: dano igual para todos os alvos no alcance.",
+                "Boomerang Shuriken: correção para travamento com CDR excessivo."
               ]
             }
           ]
@@ -441,8 +441,8 @@
             {
               "type": "bulletList",
               "items": [
-                "Cyclone: back hit uses damage hit position.",
-                "Unleash: left/right stacks apply 10% of own Crit Factor.",
+                "Cyclone: acerto pelas costas (back hit) usa a posição de impacto do dano.",
+                "Unleash: acúmulos esquerdo/direito aplicam 10% do próprio Crit Factor.",
                 "Bloodlust: Crit Factor +50."
               ]
             }
@@ -456,8 +456,8 @@
             {
               "type": "bulletList",
               "items": [
-                "Find Weakness: partial fix when effect consumed without real damage.",
-                "Find Weakness damage increase: 40% → 50%."
+                "Find Weakness: correção parcial quando o efeito é consumido sem causar dano real.",
+                "Find Weakness: aumento de dano 40% → 50%."
               ]
             }
           ]
@@ -471,16 +471,16 @@
             {
               "type": "paragraphs",
               "items": [
-                "New passive Reload (auto at level 65):"
+                "Nova passiva Reload (adquirida automaticamente no nível 65):"
               ]
             },
             {
               "type": "bulletList",
               "items": [
-                "[Knock Down] crit → [One Strike] CD −0.5s",
-                "[Whirlwind] crit → [One Strike] CD −0.5s",
-                "[Knock Down] hit → [Whirlwind] CD −0.75s",
-                "[In Cold Blood]/[Ultimate In Cold Blood] hit → [Whirlwind] CD −0.5s"
+                "Crítico de [Knock Down] → CD de [One Strike] −0.5s",
+                "Crítico de [Whirlwind] → CD de [One Strike] −0.5s",
+                "Acerto de [Knock Down] → CD de [Whirlwind] −0.75s",
+                "Acerto de [In Cold Blood]/[Ultimate In Cold Blood] → CD de [Whirlwind] −0.5s"
               ]
             }
           ]
@@ -494,15 +494,15 @@
             {
               "type": "bulletList",
               "items": [
-                "Trocar gear/preset remove buffs de party/raid.",
-                "Buff Scaling na página de stats detalhados."
+                "Trocar equipamentos/preset remove buffs de grupo/raid.",
+                "Escalonamento de Buffs (Buff Scaling) adicionado à página de atributos detalhados."
               ]
             },
             {
               "type": "figure",
               "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B133_5.png",
               "alt": "Buff scaling UI",
-              "caption": "UI de buff scaling."
+              "caption": "UI de escalonamento de buffs."
             },
             {
               "type": "subsection",
@@ -511,8 +511,8 @@
                 {
                   "type": "bulletList",
                   "items": [
-                    "Vow of Rebirth Focus Glyph: CD fixo.",
-                    "Contagion: −2% Crit Resistance."
+                    "Vow of Rebirth: CD do Focus Glyph agora é fixo.",
+                    "Contagion: −2% de Crit Resistance."
                   ]
                 }
               ]
@@ -524,7 +524,7 @@
                 {
                   "type": "bulletList",
                   "items": [
-                    "Grace of Resurrection Focus Glyph: CD fixo.",
+                    "Grace of Resurrection: CD do Focus Glyph agora é fixo.",
                     "Divine Charge: Crit Power 40% → 20%; Power 15 → 25; duração 10s → 8s."
                   ]
                 }

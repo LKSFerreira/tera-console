@@ -86,7 +86,7 @@ def b133_01() -> None:
         "Binding Scythes falhava intermitentemente.",
     ]
 
-    class_cards = [
+    class_cards_pt = [
         {
             "type": "card",
             "title": "Reaper",
@@ -96,7 +96,249 @@ def b133_01() -> None:
                 {
                     "type": "bulletList",
                     "items": [
-                        "Shadow Burst: 2nd hit hotkey timing faster / timing do 2º hit mais rápido.",
+                        "Shadow Burst: tempo do 2º hit no atalho mais rápido.",
+                        "Shadow Reaping: duração 8s → 15s.",
+                        "Retribution: dano em caso de acerto −90%.",
+                    ],
+                },
+                {
+                    "type": "devNote",
+                    "title": "Dev note",
+                    "tone": "amber",
+                    "paragraphs": [
+                        "O nerf de Retribution alinha-se ao buff de Binding Scythes, e Shadow Step não é mais removido por DoT.",
+                    ],
+                },
+            ],
+        },
+        {
+            "type": "card",
+            "title": "Lancer",
+            "titleTone": "sky",
+            "border": "sky-left",
+            "blocks": [
+                {
+                    "type": "bulletList",
+                    "items": [
+                        "Line Held: Stamina ao bloquear 50 → 75; Crit Factor por acúmulo 24 → 35.",
+                        "Guardian Barrier não aplica mais Retribution Shield.",
+                        "Retribution Shield: dano de Thrust por acúmulo 12.5% → 17.5%; acúmulos 7 → 5.",
+                        "Second Wind: recuperação de HP ×2; CD do Focus Glyph alterado de % para valor fixo.",
+                    ],
+                }
+            ],
+        },
+        {
+            "type": "card",
+            "title": "Sorcerer",
+            "titleTone": "amber",
+            "blocks": [
+                {
+                    "type": "bulletList",
+                    "items": [
+                        "Equipoise: +10% de Crit Rate em combos de 2 elementos e acertos de Fusion.",
+                        "Element Zero: Crit Factor 10 → 15.",
+                    ],
+                }
+            ],
+        },
+        {
+            "type": "card",
+            "title": "Ninja",
+            "titleTone": "sky",
+            "blocks": [
+                {
+                    "type": "bulletList",
+                    "items": [
+                        "Focus: +5 de Crit Factor por acúmulo.",
+                        "Circular Tactics II: Crit Rate à distância 40% → 50%; +10% de Crit Rate corpo a corpo.",
+                        "Burning Heart: dano igual para todos os alvos no alcance.",
+                        "Boomerang Shuriken: correção para travamento com CDR excessivo.",
+                    ],
+                }
+            ],
+        },
+        {
+            "type": "card",
+            "title": "Berserker",
+            "titleTone": "slate",
+            "blocks": [
+                {
+                    "type": "bulletList",
+                    "items": [
+                        "Cyclone: acerto pelas costas (back hit) usa a posição de impacto do dano.",
+                        "Unleash: acúmulos esquerdo/direito aplicam 10% do próprio Crit Factor.",
+                        "Bloodlust: Crit Factor +50.",
+                    ],
+                }
+            ],
+        },
+        {
+            "type": "card",
+            "title": "Archer",
+            "titleTone": "slate",
+            "blocks": [
+                {
+                    "type": "bulletList",
+                    "items": [
+                        "Find Weakness: correção parcial quando o efeito é consumido sem causar dano real.",
+                        "Find Weakness: aumento de dano 40% → 50%.",
+                    ],
+                }
+            ],
+        },
+        {
+            "type": "card",
+            "title": "Slayer",
+            "titleTone": "amber",
+            "border": "amber-left",
+            "blocks": [
+                {"type": "paragraphs", "items": ["Nova passiva Reload (adquirida automaticamente no nível 65):"]},
+                {
+                    "type": "bulletList",
+                    "items": [
+                        "Crítico de [Knock Down] → CD de [One Strike] −0.5s",
+                        "Crítico de [Whirlwind] → CD de [One Strike] −0.5s",
+                        "Acerto de [Knock Down] → CD de [Whirlwind] −0.75s",
+                        "Acerto de [In Cold Blood]/[Ultimate In Cold Blood] → CD de [Whirlwind] −0.5s",
+                    ],
+                },
+            ],
+        },
+    ]
+
+    class_cards_es = [
+        {
+            "type": "card",
+            "title": "Reaper",
+            "titleTone": "amber",
+            "border": "amber-left",
+            "blocks": [
+                {
+                    "type": "bulletList",
+                    "items": [
+                        "Shadow Burst: tiempo del 2.º golpe en el atajo más rápido.",
+                        "Shadow Reaping: duración 8s → 15s.",
+                        "Retribution: daño en caso de éxito −90%.",
+                    ],
+                },
+                {
+                    "type": "devNote",
+                    "title": "Dev note",
+                    "tone": "amber",
+                    "paragraphs": [
+                        "El nerf de Retribution se alinea con el buff de Binding Scythes, y Shadow Step ya no se elimina por DoT.",
+                    ],
+                },
+            ],
+        },
+        {
+            "type": "card",
+            "title": "Lancer",
+            "titleTone": "sky",
+            "border": "sky-left",
+            "blocks": [
+                {
+                    "type": "bulletList",
+                    "items": [
+                        "Line Held: Stamina al bloquear 50 → 75; Crit Factor por acumulación 24 → 35.",
+                        "Guardian Barrier ya no aplica Retribution Shield.",
+                        "Retribution Shield: daño de Thrust por acumulación 12.5% → 17.5%; acumulaciones 7 → 5.",
+                        "Second Wind: recuperación de HP ×2; CD de Focus Glyph cambiado de % a valor fijo.",
+                    ],
+                }
+            ],
+        },
+        {
+            "type": "card",
+            "title": "Sorcerer",
+            "titleTone": "amber",
+            "blocks": [
+                {
+                    "type": "bulletList",
+                    "items": [
+                        "Equipoise: +10% de Crit Rate en combos de 2 elementos y golpes de Fusion.",
+                        "Element Zero: Crit Factor 10 → 15.",
+                    ],
+                }
+            ],
+        },
+        {
+            "type": "card",
+            "title": "Ninja",
+            "titleTone": "sky",
+            "blocks": [
+                {
+                    "type": "bulletList",
+                    "items": [
+                        "Focus: +5 de Crit Factor por acumulación.",
+                        "Circular Tactics II: Crit Rate a distancia 40% → 50%; +10% de Crit Rate cuerpo a cuerpo.",
+                        "Burning Heart: daño igual para todos los objetivos en el alcance.",
+                        "Boomerang Shuriken: corrección para bloqueo con CDR excesivo.",
+                    ],
+                }
+            ],
+        },
+        {
+            "type": "card",
+            "title": "Berserker",
+            "titleTone": "slate",
+            "blocks": [
+                {
+                    "type": "bulletList",
+                    "items": [
+                        "Cyclone: el golpe por la espalda (back hit) usa la posición de impacto del daño.",
+                        "Unleash: acumulaciones izquierda/derecha aplican 10% de su propio Crit Factor.",
+                        "Bloodlust: Crit Factor +50.",
+                    ],
+                }
+            ],
+        },
+        {
+            "type": "card",
+            "title": "Archer",
+            "titleTone": "slate",
+            "blocks": [
+                {
+                    "type": "bulletList",
+                    "items": [
+                        "Find Weakness: corrección parcial cuando el efecto se consume sin daño real.",
+                        "Find Weakness: aumento de daño 40% → 50%.",
+                    ],
+                }
+            ],
+        },
+        {
+            "type": "card",
+            "title": "Slayer",
+            "titleTone": "amber",
+            "border": "amber-left",
+            "blocks": [
+                {"type": "paragraphs", "items": ["Nueva pasiva Reload (adquirida automáticamente en nivel 65):"]},
+                {
+                    "type": "bulletList",
+                    "items": [
+                        "Crítico de [Knock Down] → CD de [One Strike] −0.5s",
+                        "Crítico de [Whirlwind] → CD de [One Strike] −0.5s",
+                        "Golpe de [Knock Down] → CD de [Whirlwind] −0.75s",
+                        "Golpe de [In Cold Blood]/[Ultimate In Cold Blood] → CD de [Whirlwind] −0.5s",
+                    ],
+                },
+            ],
+        },
+    ]
+
+    class_cards_en = [
+        {
+            "type": "card",
+            "title": "Reaper",
+            "titleTone": "amber",
+            "border": "amber-left",
+            "blocks": [
+                {
+                    "type": "bulletList",
+                    "items": [
+                        "Shadow Burst: 2nd hit hotkey timing faster.",
                         "Shadow Reaping duration: 8s → 15s.",
                         "Retribution: damage on success −90%.",
                     ],
@@ -389,7 +631,7 @@ def b133_01() -> None:
                     "label": L["cl_l"],
                     "blocks": [
                         {"type": "sectionTitle", "title": L["cl_t"], "icon": "user-cog"},
-                        *class_cards,
+                        *L["class_cards"],
                         {
                             "type": "card",
                             "title": L["heal_t"],
@@ -655,6 +897,7 @@ def b133_01() -> None:
         "bu_t": "Correção de Bugs",
         "bu_list": "Problemas resolvidos",
         "bugs": bugs_pt,
+        "class_cards": class_cards_pt,
     }
 
     L_en = {
@@ -775,10 +1018,12 @@ def b133_01() -> None:
         "bu_t": "Bug Fixes",
         "bu_list": "Issue resolution",
         "bugs": bugs_en,
+        "class_cards": class_cards_en,
     }
 
     L_es = {
         **L_en,
+        "class_cards": class_cards_es,
         "hl_l": "Destacados",
         "hl_t": "Destacados del update",
         "hl1": "Contenido principal",
