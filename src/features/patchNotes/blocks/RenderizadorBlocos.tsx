@@ -180,7 +180,7 @@ function RenderizarBloco({ bloco, indice }: { bloco: BlocoConteudo; indice: numb
       return (
         <Card key={`card-${indice}`} className={classeBordaCard(bloco.border)}>
           {bloco.title ? (
-            <h3 className={`mb-4 flex items-center gap-2 text-lg font-semibold ${classeTomTitulo(bloco.titleTone)}`}>
+            <h3 className={`mb-4 flex items-center gap-2 text-xl font-bold ${classeTomTitulo(bloco.titleTone)}`}>
               {renderizarIcone(bloco.icon)}
               {bloco.title}
             </h3>
@@ -198,7 +198,7 @@ function RenderizarBloco({ bloco, indice }: { bloco: BlocoConteudo; indice: numb
           {bloco.cards.map((cartao, indiceCartao) => (
             <Card key={`grid-card-${indice}-${indiceCartao}`}>
               {cartao.title ? (
-                <h3 className={`mb-4 text-lg font-semibold ${classeTomTitulo(cartao.titleTone)}`}>{cartao.title}</h3>
+                <h3 className={`mb-4 text-xl font-bold ${classeTomTitulo(cartao.titleTone)}`}>{cartao.title}</h3>
               ) : null}
               <RenderizadorBlocos blocos={cartao.blocks} />
             </Card>
@@ -208,9 +208,9 @@ function RenderizarBloco({ bloco, indice }: { bloco: BlocoConteudo; indice: numb
 
     case 'subsection':
       return (
-        <div key={`sub-${indice}`} className="space-y-4">
+        <div key={`sub-${indice}`} className="space-y-2.5">
           <div className="flex flex-wrap items-center gap-2">
-            <h3 className="text-lg font-semibold text-slate-100">{bloco.title}</h3>
+            <h4 className="text-base font-semibold text-slate-100">{bloco.title}</h4>
             {bloco.badge ? (
               <span className="rounded-full border border-slate-700 bg-slate-800/60 px-3 py-1 text-xs text-slate-400">
                 {bloco.badge}
@@ -253,9 +253,9 @@ function RenderizarBloco({ bloco, indice }: { bloco: BlocoConteudo; indice: numb
 }
 
 export const RenderizadorBlocos = ({ blocos }: RenderizadorBlocosProps) => (
-  <>
+  <div className="space-y-6">
     {blocos.map((bloco, indice) => (
       <RenderizarBloco key={`${bloco.type}-${indice}`} bloco={bloco} indice={indice} />
     ))}
-  </>
+  </div>
 );
