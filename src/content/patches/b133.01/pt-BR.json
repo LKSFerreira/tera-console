@@ -37,7 +37,7 @@
                   "items": [
                     "Balance em várias classes.",
                     "Mais Darkshard; Vanguard e drops rebalanceados.",
-                    "UI de gauge de escudo em bosses.",
+                    "UI da barra de escudo em chefes.",
                     "Várias correções de bugs."
                   ]
                 }
@@ -660,21 +660,21 @@
         },
         {
           "type": "card",
-          "title": "Boss Gauge — escudo",
+          "title": "Barra do Chefe — Escudo",
           "titleTone": "amber",
           "border": "amber-top",
           "blocks": [
             {
               "type": "paragraphs",
               "items": [
-                "Padrão de escudo mostra ícone e valor restante na gauge."
+                "O padrão de escudo mostra o ícone e o valor restante na barra do chefe."
               ]
             },
             {
               "type": "figure",
               "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B133_6.png",
               "alt": "Boss shield gauge",
-              "caption": "Padrão de escudo na boss gauge."
+              "caption": "Padrão de escudo na barra do chefe."
             }
           ]
         },

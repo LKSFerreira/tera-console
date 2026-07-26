@@ -37,7 +37,7 @@
                   "items": [
                     "Class balance across multiple classes.",
                     "More Darkshard; Vanguard and drops rebalanced.",
-                    "Boss shield gauge UI.",
+                    "UI de la barra de escudo en jefes.",
                     "Multiple bug fixes."
                   ]
                 }
@@ -660,21 +660,21 @@
         },
         {
           "type": "card",
-          "title": "Boss Gauge — shield",
+          "title": "Barra del Jefe — Escudo",
           "titleTone": "amber",
           "border": "amber-top",
           "blocks": [
             {
               "type": "paragraphs",
               "items": [
-                "Shield pattern shows icon and remaining value on the gauge."
+                "El patrón de escudo muestra el icono y el valor restante en la barra del jefe."
               ]
             },
             {
               "type": "figure",
               "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B133_6.png",
               "alt": "Boss shield gauge",
-              "caption": "Shield pattern on boss gauge."
+              "caption": "Patrón de escudo en la barra del jefe."
             }
           ]
         },

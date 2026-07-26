@@ -64,7 +64,7 @@
                 "No interaction after combat starts.",
                 "Costs 1× Dungeon Core – Annihilation.",
                 "Balder's Arbitration resets difficulty (items not refunded).",
-                "Tier under HP gauge; empowered bosses; combat-area penalty.",
+                "Nivel (Tier) debajo de la barra de HP; jefes potenciados; penalización en el área de combate.",
                 "Hard clear: extra Annihilation Core and Vanguard points."
               ]
             },
@@ -72,7 +72,7 @@
               "type": "figure",
               "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/보스게이지.png",
               "alt": "Boss gauge tier",
-              "caption": "Tier on boss gauge."
+              "caption": "Nivel (Tier) en la barra del jefe."
             },
             {
               "type": "figure",
