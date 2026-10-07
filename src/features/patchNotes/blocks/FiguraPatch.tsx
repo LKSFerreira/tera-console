@@ -41,7 +41,7 @@ export const FiguraPatch = ({ alt, caption, src, className = '' }: FiguraPatchPr
 
   return (
     <figure
-      className={`overflow-hidden rounded-xl border border-slate-800/70 bg-slate-950/60 shadow-xl ${className}`}
+      className={`mx-auto w-fit max-w-full overflow-hidden rounded-xl border border-slate-800/70 bg-slate-950/60 shadow-xl ${className}`}
     >
       <img
         src={srcResolvido}
@@ -49,7 +49,7 @@ export const FiguraPatch = ({ alt, caption, src, className = '' }: FiguraPatchPr
         loading="lazy"
         decoding="async"
         referrerPolicy="no-referrer"
-        className="mx-auto max-h-[min(70vh,720px)] w-full object-contain transition-transform duration-300 hover:scale-[1.01]"
+        className="block h-auto max-h-[min(70vh,720px)] max-w-full object-contain transition-transform duration-300 hover:scale-[1.01]"
         onError={() => setFalhou(true)}
       />
       {caption ? (

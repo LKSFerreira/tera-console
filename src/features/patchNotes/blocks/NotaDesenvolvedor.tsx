@@ -13,9 +13,9 @@ export const NotaDesenvolvedor = ({ titulo, paragrafos, tone = 'amber' }: NotaDe
 
   return (
     <Card className={`border-l-4 ${classeBorda} bg-slate-800/30`}>
-      <h3 className={`mb-4 flex items-center gap-2 text-lg font-semibold ${classeTitulo}`}>
-        <MessageSquare className="h-5 w-5" />
-        {titulo}
+      <h3 className={`mb-4 flex min-w-0 items-start gap-2 break-words text-lg font-semibold ${classeTitulo}`}>
+        <MessageSquare className="mt-0.5 h-5 w-5 shrink-0" />
+        <span className="min-w-0">{titulo}</span>
       </h3>
       <div className="space-y-4 text-sm italic leading-relaxed text-slate-300">
         {paragrafos.map((paragrafo) => (

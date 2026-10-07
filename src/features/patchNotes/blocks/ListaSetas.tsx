@@ -9,7 +9,7 @@ export const ListaSetas = ({ itens }: ListaSetasProps) => (
     {itens.map((item) => (
       <li key={item} className="flex items-start gap-3">
         <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-amber-500" />
-        <span>{item}</span>
+        <span className="min-w-0 break-words">{item}</span>
       </li>
     ))}
   </ul>

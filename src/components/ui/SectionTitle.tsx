@@ -6,8 +6,8 @@ interface SectionTitleProps {
 }
 
 export const SectionTitle: React.FC<SectionTitleProps> = ({ title, icon: Icon }) => (
-  <h2 className="text-2xl font-bold text-slate-100 flex items-center gap-3 mb-6 pb-2 border-b border-slate-800">
-    {Icon && <Icon className="text-amber-500 w-6 h-6" />}
-    {title}
+  <h2 className="mb-5 flex min-w-0 items-start gap-3 border-b border-slate-800 pb-2 text-xl font-bold text-slate-100 sm:mb-6 sm:text-2xl">
+    {Icon && <Icon className="mt-0.5 h-5 w-5 shrink-0 text-amber-500 sm:h-6 sm:w-6" />}
+    <span className="min-w-0 break-words">{title}</span>
   </h2>
 );

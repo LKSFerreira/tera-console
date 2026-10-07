@@ -83,7 +83,7 @@ function RenderizarBloco({ bloco, indice }: { bloco: BlocoConteudo; indice: numb
 
     case 'paragraphs':
       return (
-        <div key={`paragraphs-${indice}`} className="space-y-3 text-sm text-slate-300">
+        <div key={`paragraphs-${indice}`} className="min-w-0 space-y-3 break-words text-sm leading-relaxed text-slate-300">
           {bloco.items.map((item) => (
             <p key={item}>{item}</p>
           ))}
@@ -97,7 +97,7 @@ function RenderizarBloco({ bloco, indice }: { bloco: BlocoConteudo; indice: numb
       return (
         <div
           key={`callout-${indice}`}
-          className={`rounded-lg border p-4 text-sm ${classeCallout(bloco.tone)}`}
+          className={`min-w-0 break-words rounded-lg border p-4 text-sm leading-relaxed ${classeCallout(bloco.tone)}`}
         >
           {bloco.text}
         </div>
@@ -107,9 +107,12 @@ function RenderizarBloco({ bloco, indice }: { bloco: BlocoConteudo; indice: numb
       return (
         <ul key={`kv-${indice}`} className="space-y-3 text-slate-300">
           {bloco.rows.map((linha) => (
-            <li key={`${linha.label}-${linha.value}`} className="flex justify-between border-b border-slate-800 pb-2">
+            <li
+              key={`${linha.label}-${linha.value}`}
+              className="flex min-w-0 flex-col gap-1 border-b border-slate-800 pb-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4"
+            >
               <span className="text-slate-400">{linha.label}</span>
-              <span>{linha.value}</span>
+              <span className="min-w-0 break-words sm:text-right">{linha.value}</span>
             </li>
           ))}
         </ul>
@@ -117,8 +120,8 @@ function RenderizarBloco({ bloco, indice }: { bloco: BlocoConteudo; indice: numb
 
     case 'table':
       return (
-        <div key={`table-${indice}`} className="overflow-x-auto rounded-lg border border-slate-800">
-          <table className="w-full text-left text-sm">
+        <div key={`table-${indice}`} className="max-w-full overflow-x-auto overscroll-x-contain rounded-lg border border-slate-800">
+          <table className="w-full min-w-max text-left text-xs sm:text-sm">
             <thead
               className={
                 bloco.headerTone === 'amber'
@@ -130,7 +133,9 @@ function RenderizarBloco({ bloco, indice }: { bloco: BlocoConteudo; indice: numb
                 {bloco.columns.map((coluna, indiceColuna) => (
                   <th
                     key={coluna}
-                    className={`px-4 py-3 ${indiceColuna < bloco.columns.length - 1 ? 'border-r border-slate-700' : ''}`}
+                    className={`min-w-32 whitespace-normal px-3 py-2.5 sm:px-4 sm:py-3 ${
+                      indiceColuna === 0 ? 'sticky left-0 z-20 bg-slate-800' : ''
+                    } ${indiceColuna < bloco.columns.length - 1 ? 'border-r border-slate-700' : ''}`}
                   >
                     {coluna}
                   </th>
@@ -143,7 +148,9 @@ function RenderizarBloco({ bloco, indice }: { bloco: BlocoConteudo; indice: numb
                   {linha.map((celula, indiceCelula) => (
                     <td
                       key={`${celula}-${indiceCelula}`}
-                      className={`px-4 py-3 text-slate-300 ${indiceCelula < linha.length - 1 ? 'border-r border-slate-800/60' : ''}`}
+                      className={`max-w-md min-w-32 whitespace-normal break-words px-3 py-2.5 text-slate-300 sm:px-4 sm:py-3 ${
+                        indiceCelula === 0 ? 'sticky left-0 z-10 bg-slate-900' : ''
+                      } ${indiceCelula < linha.length - 1 ? 'border-r border-slate-800/60' : ''}`}
                     >
                       {celula}
                     </td>
@@ -180,7 +187,7 @@ function RenderizarBloco({ bloco, indice }: { bloco: BlocoConteudo; indice: numb
       return (
         <Card key={`card-${indice}`} className={classeBordaCard(bloco.border)}>
           {bloco.title ? (
-            <h3 className={`mb-4 flex items-center gap-2 text-xl font-bold ${classeTomTitulo(bloco.titleTone)}`}>
+            <h3 className={`mb-4 flex min-w-0 items-start gap-2 break-words text-lg font-bold sm:text-xl ${classeTomTitulo(bloco.titleTone)}`}>
               {renderizarIcone(bloco.icon)}
               {bloco.title}
             </h3>
@@ -193,12 +200,12 @@ function RenderizarBloco({ bloco, indice }: { bloco: BlocoConteudo; indice: numb
       return (
         <div
           key={`grid-${indice}`}
-          className={`grid gap-6 ${bloco.columns === 1 ? 'grid-cols-1' : 'md:grid-cols-2'}`}
+          className={`grid min-w-0 gap-4 sm:gap-6 ${bloco.columns === 1 ? 'grid-cols-1' : 'lg:grid-cols-2'}`}
         >
           {bloco.cards.map((cartao, indiceCartao) => (
             <Card key={`grid-card-${indice}-${indiceCartao}`}>
               {cartao.title ? (
-                <h3 className={`mb-4 text-xl font-bold ${classeTomTitulo(cartao.titleTone)}`}>{cartao.title}</h3>
+                <h3 className={`mb-4 break-words text-lg font-bold sm:text-xl ${classeTomTitulo(cartao.titleTone)}`}>{cartao.title}</h3>
               ) : null}
               <RenderizadorBlocos blocos={cartao.blocks} />
             </Card>
