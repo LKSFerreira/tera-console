@@ -1,0 +1,1085 @@
+{
+  "schemaVersion": 1,
+  "locale": "es-ES",
+  "tabs": {
+    "highlights": {
+      "label": "Destacados",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Resumen de B135",
+          "icon": "sparkles"
+        },
+        {
+          "type": "cardGrid",
+          "columns": 2,
+          "cards": [
+            {
+              "title": "Progresión en Dungeons",
+              "titleTone": "amber",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Las dificultades HARD I y HARD II ya están disponibles en las Dungeons compatibles.",
+                    "Los bonos para principiantes ahora se aplican hasta la 15.ª finalización y otorgan recompensas adicionales al grupo.",
+                    "Varias Dungeons recibieron ajustes de ritmo, dificultad y drops."
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Impacto en las builds",
+              "titleTone": "sky",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Sorcerer, Archer, Valkyrie, Priest, Mystic y Warrior recibieron ajustes.",
+                    "Se rediseñó el escalado de Fuerza de los Healers y de Resistencia de los Tankers.",
+                    "Se añadieron Etchings de accesorios y mejores atributos en las armaduras Annihilation."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Los cambios de mayor impacto son las dificultades HARD y el nuevo escalado de atributos de Healers y Tankers. Revisa esas pestañas antes de rehacer tu equipamiento."
+        }
+      ]
+    },
+    "dungeons": {
+      "label": "Dungeons",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Dungeons y niveles de dificultad",
+          "icon": "swords"
+        },
+        {
+          "type": "card",
+          "title": "Ayuda para principiantes y reputación Vanguard",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Derrotar monstruos comunes en Dungeons de nivel 500~700 ahora otorga puntos de reputación de Vanguard Initiative.",
+                "El límite del bono de principiante en Dungeons aumentó de 5 a 15 finalizaciones.",
+                "Si al menos un miembro del grupo tiene menos de 15 finalizaciones, todo el grupo recibe un 50 % más de recompensas.",
+                "Los principiantes reciben un 25 % más de HP y Poder de Ataque.",
+                "Se aplica a las Dungeons de grupo con nivel de ítem 500~850.",
+                "Se añadieron puntos de reputación de Vanguard Initiative a los drops de las siguientes Dungeons.",
+                "Balder's Temple (3-Person)",
+                "Argon Corpus (Advanced)",
+                "Sky Cruiser Endeavor",
+                "Bathysmal Rise"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Sky Cruiser Endeavor",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se acortó la fase de oleadas anterior al primer jefe.",
+                "El HP de Putrion, el primer jefe, se redujo considerablemente.",
+                "Se añadieron puntos de reputación de Vanguard Initiative a los drops."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Sky Cruiser Endeavor (Hard)",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se acortó la fase de oleadas anterior al primer jefe.",
+                "El HP de Putrion, el primer jefe, se redujo considerablemente."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Corrupted Skynest",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se aumentaron las probabilidades de drop de Annihilation Dust y Darkshard."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "HARD I: Nivel 950",
+          "titleTone": "amber",
+          "border": "amber-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se pueden obtener Condensed Legacy of Annihilation y Condensed Dungeon Core.",
+                "Se puede obtener una gran cantidad de Annihilation Material de Tier 1.",
+                "Se pueden obtener materiales de Runa.",
+                "Las recompensas equivalen a las de una Dungeon de nivel 950.",
+                "No hay penalización de resurrección ni recuperación."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "HARD II: Nivel 1000",
+          "titleTone": "red",
+          "border": "red-soft",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se pueden obtener Condensed Legacy of Annihilation y Condensed Dungeon Core.",
+                "Las recompensas de drop aumentan un 50 % adicional.",
+                "No hay penalización de resurrección ni recuperación.",
+                "El drop de Darkshard Enhancement Stone está garantizado."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Broken Prison",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Primer jefe",
+                "Se aumentó el daño de la zona exterior.",
+                "Tercer jefe",
+                "Se aumentó el daño de la zona de veneno."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Ruinous Manor (Hard)",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Primer jefe",
+                "El efecto de la mecánica de maldición ahora se aplica inmediatamente después de iniciar el combate.",
+                "Segundo jefe",
+                "Ya no se reproducirá la cinemática de derrota.",
+                "Tercer jefe",
+                "El daño del ataque de barrido aumentó considerablemente.",
+                "El daño del ataque láser aumentó considerablemente.",
+                "Se aumentó el daño del ataque del círculo mágico."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Bathysmal Rise (Hard)",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se redujo el Poder de Ataque base.",
+                "Se eliminó el minijuego.",
+                "Los monstruos comunes ahora otorgan drops.",
+                "Se corrigió el problema que permitía obtener el Reset Scroll de Ice Throne en esta Dungeon.",
+                "Se aumentaron las probabilidades de drop de Annihilation Dust y Darkshard."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Forbidden Arena [Undying Warlord]",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se aumentaron las probabilidades de drop de Annihilation Dust y Darkshard."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Velik's Sanctuary (Hard)",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se aumentó el Poder de Ataque base de los jefes.",
+                "Los monstruos comunes ahora otorgan drops.",
+                "Se aumentaron las probabilidades de drop de Annihilation Dust y Darkshard.",
+                "Los récords del ranking solo se registrarán en HARD II.",
+                "Primer jefe",
+                "El daño fijo dirigido aumentó considerablemente.",
+                "El daño fijo de área aumentó considerablemente."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Corrupted Skynest (Hard)",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Esta Dungeon ya es de nivel 950, por lo que no admite el ajuste de dificultad Tier 1.",
+                "Se puede aplicar HARD II.",
+                "Los récords del ranking solo se registrarán en HARD II."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Ace Dungeon",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Las Ace Dungeons ahora tienen una pequeña probabilidad de otorgar una caja de recompensas de Dungeon normal correspondiente a su nivel.",
+                "Derrotar al jefe final otorga puntos de reputación de Vanguard Initiative.",
+                "Se cambiaron las recompensas de las Vanguard Requests."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Recompensas visuales adicionales",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Corrupted Skynest (Hard)",
+                "Las cajas de armas Style: Blazing Flame/Frost ahora pueden obtenerse como drop.",
+                "Velik's Sanctuary (Hard)",
+                "La armadura Style: Evil God ahora puede obtenerse como drop.",
+                "El casco y la capa Style: Evil God ahora pueden obtenerse como drop.",
+                "El arma Style: Evil God ahora puede obtenerse como drop.",
+                "Solo puede equiparse con Lancers."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Matchmaking",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Los Warriors ahora pueden entrar al matchmaking de grupo con la función Tanker.",
+                "Sin embargo, no se aplicará el bono del 100 % en la cantidad de entradas que normalmente reciben los Tankers.",
+                "Como los Warriors pueden activar y desactivar libremente sus skills, no sería posible controlar el bono de forma condicional.",
+                "En las Dungeons de Matchmaking Automático se usará tu propio equipamiento si tiene nivel de ítem 900 o superior."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "rewards": {
+      "label": "Recompensas",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Recompensas de Island of Dawn y Vanguard",
+          "icon": "award"
+        },
+        {
+          "type": "card",
+          "title": "Island of Dawn",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Los materiales de crafting de Style Etching de Island of Dawn ahora se obtienen sin importar el tipo de monstruo.",
+                "Los tres tipos de material pueden caer de cualquier monstruo, cada uno con una probabilidad diferente.",
+                "Se reorganizó la tienda de Dawnstorm Tokens.",
+                "Se renovó el catálogo de la tienda y ahora tiene un límite de compra por cuenta.",
+                "El catálogo de la tienda se reinicia cada 7 días.",
+                "Disponible en el NPC comerciante de cada campamento regional de Island of Dawn."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Materiales de Mejora",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Nombre del ítem",
+                "Dawnstorm Tokens necesarios",
+                "Límite por 7 días"
+              ],
+              "rows": [
+                [
+                  "Arun Stone Lv.2",
+                  "200",
+                  "5"
+                ],
+                [
+                  "Shara Stone Lv.2",
+                  "200",
+                  "5"
+                ],
+                [
+                  "Medium Training Book",
+                  "20",
+                  "150"
+                ],
+                [
+                  "[Random] Common ~ Legendary Card Box",
+                  "60",
+                  "30"
+                ],
+                [
+                  "[Random] Advanced ~ Legendary Card Box",
+                  "120",
+                  "7"
+                ],
+                [
+                  "Rare Stigma Exchange Coin",
+                  "15",
+                  "100"
+                ],
+                [
+                  "Legendary Stigma Option Change Stone",
+                  "60",
+                  "100"
+                ],
+                [
+                  "Stigma Feedstock [Rare]",
+                  "60",
+                  "100"
+                ],
+                [
+                  "Fluorite Shard x20 Box",
+                  "20",
+                  "999"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Otros ítems de la tienda semanal",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Nombre del ítem",
+                "Dawnstorm Tokens necesarios",
+                "Límite por 7 días"
+              ],
+              "rows": [
+                [
+                  "Smart Dyad Niveot Structure",
+                  "60",
+                  "50"
+                ],
+                [
+                  "Enchanted Fashion Item Box (Common)",
+                  "120",
+                  "30"
+                ],
+                [
+                  "Earth Accessory Engraving II",
+                  "60",
+                  "10"
+                ],
+                [
+                  "Storm's Accessory Engraving II",
+                  "60",
+                  "10"
+                ],
+                [
+                  "Health Potion",
+                  "5",
+                  "30"
+                ],
+                [
+                  "Uncommon Noctenium Elixir",
+                  "5",
+                  "30"
+                ],
+                [
+                  "Flying Skill: Battle Thrush (7 Days)",
+                  "1200",
+                  "1"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Vanguard Requests",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Se eliminaron Gems y todos los tipos de EXP de las recompensas diarias y semanales de los niveles 1~64."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "classes": {
+      "label": "Balance de Clases",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Ajustes de balance de clases",
+          "icon": "user-cog"
+        },
+        {
+          "type": "card",
+          "title": "Sorcerer",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Pasiva: Elemental Attunement",
+                "Se eliminó el aumento del 4 % de daño de Meteor Strike e Ice Lances.",
+                "En su lugar, los impactos de skills de Awakening infligen un 15 % más de daño. Se aplica a Ice Lances, Fusion e Implosion.",
+                "Pasiva: Burst of Celerity",
+                "Se ajustó el aumento de Velocidad de Ataque de Burst of Celerity en cada nivel.",
+                "Burst of Celerity I: 20% → 10%",
+                "Burst of Celerity II: 25% → 12.5%",
+                "Burst of Celerity III: 30% → 15%",
+                "Pasiva: Meteor Strike Enhancement I",
+                "Se eliminó el aumento de daño al golpear a varios objetivos.",
+                "Meteor Strike inflige un 20 % más de daño al acertar.",
+                "Se corrigió el problema que impedía aplicar el aumento de daño de Meteor Strike.",
+                "Buff: Element Zero",
+                "Aumento de la Tasa Crítica por acumulación: +15 → +20",
+                "Activa: Mana Boost II",
+                "Se añadió un aumento del 15 % de Fuerza."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Archer",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Pasiva: Safe Space",
+                "Se corrigió el alcance mínimo, que era de 7 m en vez de 5 m.",
+                "El aumento de Poder de Ataque pasó del 30 % al 50 %.",
+                "Activa: Wind Walk",
+                "Bajo el efecto de Quivering Bowstring, el aumento de Poder de Radiant Arrow, Arrow Volley, Thunderbolt e Incendiary Trap Arrow pasó del 10 % al 25 %."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Valkyrie",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Activa: Godsfall: The Wrath of the Red Moon",
+                "El tiempo de indisponibilidad pasó de 45 a 15 segundos.",
+                "El aumento de Fuerza pasó del 18 % al 25 %.",
+                "La duración pasó de 25 a 20 segundos."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Priest",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Activa: Divine Charge",
+                "Con la carga máxima, el aumento de Fuerza pasó de 25 a 35.",
+                "Con la carga máxima, la duración pasó de 8 a 10 segundos.",
+                "Activa: Blessing of Shakan",
+                "El aumento de Fuerza pasó de 30 a 33.",
+                "Activa: Kaia's Shield",
+                "La absorción del Escudo aumentó un 50 % en todos los niveles.",
+                "Otorga 0,5 segundos de invencibilidad y elimina los estados de reacción al aplicar Kaia's Shield.",
+                "El efecto no se acumula con usos consecutivos.",
+                "Activa: Edict of Judgment",
+                "El aumento de Fuerza pasó de 60 a 80."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Mystic",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Activa: Thrall of Vengeance",
+                "Con Thrall Augmentation activo, la duración del efecto pasó de 12 a 13 segundos.",
+                "Activa: Thrall of Wrath",
+                "Con Thrall Augmentation activo, la duración del efecto pasó de 20 a 22 segundos."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Warrior",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Pasiva: Enhanced Defensive Stance",
+                "El aumento de Poder contra monstruos situados delante pasó del 10 % al 40 %.",
+                "Activa: Defensive Stance",
+                "La generación de Aggro aumentó considerablemente.",
+                "Se eliminó la corrección de Tasa Crítica contra monstruos.",
+                "El cambio ya está activo en el servidor, pero la tooltip del cliente aún no se ha actualizado y puede mostrar el valor anterior."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "scaling": {
+      "label": "Escalado de Atributos",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Cambios en Glifos y escalado de atributos",
+          "icon": "shield"
+        },
+        {
+          "type": "card",
+          "title": "Cálculo de cooldown de los Glifos",
+          "titleTone": "amber",
+          "border": "amber-left",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "El cálculo del efecto de reducción porcentual del cooldown de skills ahora es multiplicativo.",
+                "Ejemplo: skill de 100 segundos con un Glifo que reduce el cooldown un 30 %, después de aplicar una reducción total del 70 % por equipamiento."
+              ]
+            },
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Caso",
+                "Tiempo restante"
+              ],
+              "rows": [
+                [
+                  "Antes (70 % de reducción total por equipamiento)",
+                  "0 s"
+                ],
+                [
+                  "Después (70 % de reducción total por equipamiento)",
+                  "21 s"
+                ]
+              ]
+            },
+            {
+              "type": "paragraphs",
+              "items": [
+                "Tras aplicar la reducción del equipamiento, el 30 % del Glifo se calcula sobre los 30 segundos restantes."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Visualización de los atributos Fuerza y Resistencia",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B135_stat.png",
+              "alt": "Visualización de los atributos",
+              "caption": "Nueva visualización de los atributos Fuerza y Resistencia."
+            },
+            {
+              "type": "bulletList",
+              "items": [
+                "Se cambió el formato de visualización de los atributos.",
+                "Antes: Base + valor total de aumento del atributo",
+                "Después: Base + valor total del equipamiento + valor de los buffs",
+                "Como los atributos de buffs no se incluyen en el escalado, se cambió la visualización para evitar confusiones.",
+                "El valor mostrado en blanco es el que realmente genera eficiencia en el escalado."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Escalado de Fuerza de los Healers",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "El valor inicial del escalado pasó de 300 a 200.",
+                "Se aplicó un límite según el rango de escalado.",
+                "El límite no se aplica a los atributos de Amplificación de Daño.",
+                "Por cada punto de Fuerza se aplica el aumento de eficiencia indicado a continuación.",
+                "Rango de Fuerza 200~500: 1 %",
+                "Rango de Fuerza 500~600: 0,5 %"
+              ]
+            },
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Fuerza (Poder)",
+                "Aumento del valor de los buffs"
+              ],
+              "rows": [
+                [
+                  "100 o menos",
+                  "+0 % (sin bono)"
+                ],
+                [
+                  "200 (inicio del efecto perceptible)",
+                  "+0%"
+                ],
+                [
+                  "300",
+                  "+100%"
+                ],
+                [
+                  "400",
+                  "+200%"
+                ],
+                [
+                  "500 (límite suave)",
+                  "+300%"
+                ],
+                [
+                  "550",
+                  "+325%"
+                ],
+                [
+                  "600 (límite estricto)",
+                  "+350%"
+                ],
+                [
+                  "650 o más (límite estricto, sin aumento adicional)",
+                  "+350%"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Taunt",
+          "titleTone": "red",
+          "border": "red-soft",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "La duración de las skills de Taunt se redujo un 50 %: de 36 a 18 segundos.",
+                "Tras recibir una skill de Taunt, el monstruo será inmune a nuevos Taunts durante un periodo determinado.",
+                "Las skills de Taunt de otras clases también estarán sujetas a esta inmunidad.",
+                "El Aggro natural generado al reducir el HP del monstruo mantiene una duración de 36 segundos."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "text": "La fuente describe el límite de Resistencia de los Tankers de dos formas: sin eficiencia adicional por encima de 550, pero después indica un límite suave entre 500~600 y un límite estricto en 600. Confirma el punto efectivo dentro del juego."
+        },
+        {
+          "type": "card",
+          "title": "Escalado de Resistencia de los Tankers",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Las clases Tanker ahora reciben efectos adicionales proporcionales al atributo Resistencia.",
+                "Aumento de la duración del Taunt al usar una skill de Taunt",
+                "Aumento de la duración de los efectos de Perfect Defense",
+                "Mayor reducción de daño del efecto del arma al bloquear",
+                "Efectos adicionales según la clase",
+                "El escalado de Resistencia de los Tankers comienza en 200.",
+                "No se obtiene eficiencia adicional por encima de 550 de Resistencia.",
+                "Efectos comunes",
+                "Los valores siguientes son ejemplos por rango de Resistencia. La eficiencia aumenta proporcionalmente con cada punto adicional.",
+                "Ejemplo: con 300 de Resistencia, la duración adicional de Perfect Defense aumenta 0,1 segundos.",
+                "La eficiencia siguiente aumenta con cada punto de Resistencia."
+              ]
+            },
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Rango 200~500",
+                "Aumento por punto de Resistencia"
+              ],
+              "rows": [
+                [
+                  "Duración del Taunt",
+                  "+0,1 s"
+                ],
+                [
+                  "Duración adicional de Perfect Defense",
+                  "+0,001 s"
+                ],
+                [
+                  "Eficiencia defensiva del arma",
+                  "+0.1%"
+                ],
+                [
+                  "Eficiencia de Defensa (Lancer)",
+                  "+0.3333%"
+                ],
+                [
+                  "Aumento del Poder de Ataque propio (Brawler, Warrior)",
+                  "+0.1667%"
+                ]
+              ]
+            },
+            {
+              "type": "paragraphs",
+              "items": [
+                "En el rango 500~600 se aplica un límite suave y los valores anteriores se reducen a la mitad.",
+                "A partir de 600 se aplica un límite estricto y no hay más aumentos."
+              ]
+            },
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Resistencia",
+                "Duración total del Taunt",
+                "Duración adicional de Perfect Defense",
+                "Eficiencia defensiva del arma"
+              ],
+              "rows": [
+                [
+                  "200 o menos",
+                  "18,0 s",
+                  "0 s",
+                  "+0%"
+                ],
+                [
+                  "400",
+                  "38,0 s",
+                  "+0,2 s",
+                  "+20%"
+                ],
+                [
+                  "500",
+                  "48,0 s",
+                  "+0,3 s",
+                  "+30%"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Lancer",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Se aumentó la eficiencia de la skill Armor Break.",
+                "Armor Break aplica 6 % × 2 acumulaciones, calculadas por separado.",
+                "Ejemplo: con 500 de Resistencia, 12 % + 12 % resultan en un 24 % de eficiencia."
+              ]
+            },
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Resistencia",
+                "Aumento de eficiencia de Armor Break"
+              ],
+              "rows": [
+                [
+                  "200 o menos",
+                  "100%"
+                ],
+                [
+                  "400",
+                  "166.7%"
+                ],
+                [
+                  "500 (límite)",
+                  "200%"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Warrior y Brawler",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se aumenta el Poder de Ataque pasivo.",
+                "Warrior: Enhanced Defensive Stance",
+                "Brawler: Self-Control",
+                "Para Warrior, solo se aplica mientras el efecto de Defensive Stance esté activo.",
+                "El bono se suma al efecto base."
+              ]
+            },
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Resistencia",
+                "Aumento del Poder de Ataque propio"
+              ],
+              "rows": [
+                [
+                  "200 o menos",
+                  "+0%"
+                ],
+                [
+                  "400",
+                  "+33.3%"
+                ],
+                [
+                  "500 (límite)",
+                  "+50%"
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "items": {
+      "label": "Ítems",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Ítems y Etchings",
+          "icon": "hammer"
+        },
+        {
+          "type": "card",
+          "title": "Etchings de Accesorio",
+          "titleTone": "amber",
+          "border": "amber-left",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Se añadieron Etchings para Collar, Pendiente, Anillo, Cinturón y Broche."
+              ]
+            },
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Grado",
+                "Aumento de Resistencia"
+              ],
+              "rows": [
+                [
+                  "Accessory Etching - Endurance I",
+                  "+1"
+                ],
+                [
+                  "Accessory Etching - Endurance II",
+                  "+3"
+                ],
+                [
+                  "Accessory Etching - Endurance III",
+                  "+5"
+                ],
+                [
+                  "Accessory Etching - Endurance IV",
+                  "+7"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Equipamiento Annihilation",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se aumentaron los atributos adicionales obtenidos al mejorar armaduras y botas.",
+                "Resistencia: el doble del valor anterior.",
+                "Resistencia Crítica: el triple del valor anterior."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "system": {
+      "label": "Sistema y Correcciones",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Cambios y correcciones del sistema",
+          "icon": "settings"
+        },
+        {
+          "type": "card",
+          "title": "Correo",
+          "titleTone": "amber",
+          "border": "amber-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se añadió la eliminación masiva de mensajes.",
+                "Se pueden eliminar en masa los mensajes sin ítems ni Gold adjuntos.",
+                "Los mensajes eliminados no se pueden recuperar. Usa la función con cuidado."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Tienda",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se corrigió el problema que bloqueaba la interfaz al intentar comprar de nuevo sin cambiar de pestaña.",
+                "Se corrigió la visualización indebida de nivel de ítem en el equipamiento de la tienda."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Runas",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se corrigió el problema que desbloqueaba ocasionalmente opciones protegidas al cambiar opciones de Runa.",
+                "Se corrigió el problema que impedía recibir recompensas al desmantelar Runas de Accesorio.",
+                "Ahora funciona igual que las Runas de armadura y arma."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Otros",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se corrigió el problema que solo permitía usar mayúscula en la primera letra de los apodos en inglés.",
+                "Los jugadores bloqueados ya no podrán enviar solicitudes de duelo."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

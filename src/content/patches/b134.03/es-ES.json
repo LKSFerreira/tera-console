@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "locale": "es-ES",
+  "tabs": {
+    "dungeons": {
+      "label": "Dungeons",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Ajustes de transición y recompensas de Dungeons",
+          "icon": "swords"
+        },
+        {
+          "type": "card",
+          "title": "Velik's Sanctuary / Velik's Hold",
+          "titleTone": "amber",
+          "border": "amber-left",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Se corrigió el problema que trasladaba a los jugadores al interior de Velika al completar la Dungeon."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Dungeons de Matchmaking Automático",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se aumentaron las recompensas de las Dungeons de Matchmaking Automático.",
+                "Se cambiaron las recompensas de Vanguard Request."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Ace Dungeon",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se cambiaron las recompensas.",
+                "Se cambiaron las recompensas de Vanguard Request."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

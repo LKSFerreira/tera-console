@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "b135",
+  "buildLabel": "B135",
+  "kind": "update",
+  "status": "published",
+  "source": {
+    "languageType": "EN"
+  },
+  "publishedAt": "2026-10-05",
+  "parse": {
+    "quality": "ok",
+    "warnings": [],
+    "unmappedHeadings": [],
+    "fallbackTabs": []
+  },
+  "display": {
+    "pt-BR": {
+      "name": "B135 Update",
+      "date": "5 de outubro de 2026",
+      "parts": "HARD · Dungeons · Classes · Escalonamento · Itens"
+    },
+    "en-US": {
+      "name": "B135 Update",
+      "date": "October 5, 2026",
+      "parts": "HARD · Dungeons · Classes · Scaling · Items"
+    },
+    "es-ES": {
+      "name": "B135 Update",
+      "date": "5 de octubre de 2026",
+      "parts": "HARD · Dungeons · Clases · Escalado · Ítems"
+    }
+  },
+  "tabs": [
+    {
+      "id": "highlights",
+      "icon": "sparkles"
+    },
+    {
+      "id": "dungeons",
+      "icon": "swords"
+    },
+    {
+      "id": "rewards",
+      "icon": "award"
+    },
+    {
+      "id": "classes",
+      "icon": "user-cog"
+    },
+    {
+      "id": "scaling",
+      "icon": "shield"
+    },
+    {
+      "id": "items",
+      "icon": "hammer"
+    },
+    {
+      "id": "system",
+      "icon": "settings"
+    }
+  ]
+}

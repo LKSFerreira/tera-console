@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "b134.03",
+  "buildLabel": "B134.03",
+  "kind": "hotfix",
+  "status": "published",
+  "source": {
+    "languageType": "EN"
+  },
+  "publishedAt": "2026-09-22",
+  "parse": {
+    "quality": "ok",
+    "warnings": [],
+    "unmappedHeadings": [],
+    "fallbackTabs": []
+  },
+  "display": {
+    "pt-BR": {
+      "name": "B134.03 Update",
+      "date": "22 de setembro de 2026",
+      "parts": "Dungeons · Matchmaking · Recompensas"
+    },
+    "en-US": {
+      "name": "B134.03 Update",
+      "date": "September 22, 2026",
+      "parts": "Dungeons · Matchmaking · Rewards"
+    },
+    "es-ES": {
+      "name": "B134.03 Update",
+      "date": "22 de septiembre de 2026",
+      "parts": "Dungeons · Matchmaking · Recompensas"
+    }
+  },
+  "tabs": [
+    {
+      "id": "dungeons",
+      "icon": "swords"
+    }
+  ]
+}

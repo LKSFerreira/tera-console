@@ -12,7 +12,7 @@
         },
         {
           "type": "card",
-          "title": "Forbidden Arena — Hard",
+          "title": "Forbidden Arena: Hard",
           "titleTone": "amber",
           "border": "amber-top",
           "blocks": [
@@ -26,7 +26,7 @@
             {
               "type": "callout",
               "tone": "info",
-              "text": "O aumento de Crit Factor compensa a redução do HARD I — na prática, a diferença deve ser pouco perceptível."
+              "text": "O aumento de Crit Factor compensa a redução do HARD I. Na prática, a diferença deve ser pouco perceptível."
             }
           ]
         },

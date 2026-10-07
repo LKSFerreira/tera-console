@@ -12,7 +12,7 @@
         },
         {
           "type": "card",
-          "title": "Forbidden Arena — Hard",
+          "title": "Forbidden Arena: Hard",
           "titleTone": "amber",
           "border": "amber-top",
           "blocks": [
@@ -26,7 +26,7 @@
             {
               "type": "callout",
               "tone": "info",
-              "text": "Offset by the HARD I reduction — no noticeable difference in practice."
+              "text": "The HARD I reduction offsets the increase, so there should be no noticeable difference in practice."
             }
           ]
         },

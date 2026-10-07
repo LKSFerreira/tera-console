@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "b134",
+  "buildLabel": "B134",
+  "kind": "update",
+  "status": "published",
+  "source": {
+    "languageType": "EN"
+  },
+  "publishedAt": "2026-08-27",
+  "parse": {
+    "quality": "ok",
+    "warnings": [],
+    "unmappedHeadings": [],
+    "fallbackTabs": []
+  },
+  "display": {
+    "pt-BR": {
+      "name": "B134 Update",
+      "date": "27 de agosto de 2026",
+      "parts": "Battle Pass · Temporada · Dungeons · Runas · Classes"
+    },
+    "en-US": {
+      "name": "B134 Update",
+      "date": "August 27, 2026",
+      "parts": "Battle Pass · Season · Dungeons · Runes · Classes"
+    },
+    "es-ES": {
+      "name": "B134 Update",
+      "date": "27 de agosto de 2026",
+      "parts": "Battle Pass · Temporada · Dungeons · Runas · Clases"
+    }
+  },
+  "tabs": [
+    {
+      "id": "highlights",
+      "icon": "sparkles"
+    },
+    {
+      "id": "battlepass",
+      "icon": "award"
+    },
+    {
+      "id": "season",
+      "icon": "award"
+    },
+    {
+      "id": "dungeons",
+      "icon": "swords"
+    },
+    {
+      "id": "runes",
+      "icon": "sparkles"
+    },
+    {
+      "id": "classes",
+      "icon": "user-cog"
+    },
+    {
+      "id": "system",
+      "icon": "settings"
+    }
+  ]
+}

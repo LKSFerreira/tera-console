@@ -1,0 +1,2308 @@
+{
+  "schemaVersion": 1,
+  "locale": "es-ES",
+  "tabs": {
+    "highlights": {
+      "label": "Destacados",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Resumen de B134",
+          "icon": "sparkles"
+        },
+        {
+          "type": "cardGrid",
+          "columns": 2,
+          "cards": [
+            {
+              "title": "Qué cambia en tu progresión",
+              "titleTone": "amber",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "La Temporada 22 del Battle Pass comienza con 50 niveles de recompensas.",
+                    "El equipamiento de la Temporada 2 se puede desmantelar para obtener Forgotten Steel Fragments.",
+                    "Se reorganizaron las rotaciones de Dungeons y las recompensas exclusivas del matchmaking."
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Qué cambia en tu build",
+              "titleTone": "sky",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Las Runas de Accesorio añaden atributos básicos y efectos de skills específicos de cada clase.",
+                    "La mejora de Heroic Oath y Kaia's Fury ahora es más accesible.",
+                    "La Valkyrie recibió una importante renovación de Godsfall y Ragnarok."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "text": "El sistema de dificultad HARD anunciado para B134 se aplazó hasta el próximo update."
+        }
+      ]
+    },
+    "battlepass": {
+      "label": "Battle Pass",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Battle Pass - Temporada 22",
+          "icon": "award"
+        },
+        {
+          "type": "card",
+          "title": "Periodo",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "keyValueList",
+              "rows": [
+                {
+                  "label": "Periodo de venta",
+                  "value": "Desde la finalización del mantenimiento del 27 de agosto de 2026 hasta el 3 de enero de 2027"
+                },
+                {
+                  "label": "Periodo activo",
+                  "value": "Desde la finalización del mantenimiento del 27 de agosto de 2026 hasta antes del mantenimiento del 7 de enero de 2027"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Contenido del Battle Pass PLUS Premium",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Estas recompensas adicionales se reciben al usar el ítem."
+              ]
+            },
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Ítem",
+                "Cant."
+              ],
+              "rows": [
+                [
+                  "Card EXP 5000",
+                  "1"
+                ],
+                [
+                  "Battle Pass Level +30",
+                  "1"
+                ],
+                [
+                  "[Costumes] [Style] Face Etching - Aurora Wings VIII",
+                  "4"
+                ],
+                [
+                  "Battle Pass: SEASON 22 Redemption Coins",
+                  "500"
+                ],
+                [
+                  "Legendary Card Exchange Token",
+                  "1"
+                ],
+                [
+                  "Transcendence's Training Book Exchange Coin",
+                  "3"
+                ],
+                [
+                  "Annihilation Equipment Enhancement Material Exchange Coin",
+                  "16"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Recompensas por nivel de la Temporada 22",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Nivel",
+                "Recompensas Gratuitas",
+                "Recompensas Premium"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "Battle Pass: Rune Exchange Ticket ×10",
+                  "Battle Pass: Rune Exchange Ticket ×1,000"
+                ],
+                [
+                  "2",
+                  "Fluorite Niveot Stone ×5",
+                  "Fluorite Niveot Stone ×30"
+                ],
+                [
+                  "3",
+                  "Stigma Shard ×200",
+                  "Stigma Shard ×2,000"
+                ],
+                [
+                  "4",
+                  "Stigma Shard ×200",
+                  "Stigma Shard ×2,000"
+                ],
+                [
+                  "5",
+                  "[Costumes] [Style] Face Etching - Aurora Wings VII ×1",
+                  "Item EXP Buff 500% (3 days) ×1"
+                ],
+                [
+                  "6",
+                  "Battle Pass: Rune Exchange Ticket ×10",
+                  "Battle Pass: Rune Exchange Ticket ×500"
+                ],
+                [
+                  "7",
+                  "Dungeon Reset Scroll Fragment ×10",
+                  "Dungeon Reset Scroll Fragment ×50"
+                ],
+                [
+                  "8",
+                  "High Training Book ×1",
+                  "Masterwork Training Book 20% (untradeable) ×1"
+                ],
+                [
+                  "9",
+                  "Fluorite Niveot Stone ×5",
+                  "Fluorite Niveot Stone ×30"
+                ],
+                [
+                  "10",
+                  "Fluorite Niveot Stone ×5",
+                  "Annihilation Enhancement Material Exchange Coin ×4"
+                ],
+                [
+                  "11",
+                  "[Random] Common~Legendary Card Box ×10",
+                  "[Random] Rare~Legendary Card Box ×10"
+                ],
+                [
+                  "12",
+                  "Battle Pass: SEASON 22 Redemption Coins ×20",
+                  "Battle Pass: SEASON 22 Redemption Coins ×200"
+                ],
+                [
+                  "13",
+                  "High Training Book ×1",
+                  "Transcendence's Training Book Exchange Coin ×1"
+                ],
+                [
+                  "14",
+                  "High Training Book ×1",
+                  "Mastery +500% (3 days) ×1"
+                ],
+                [
+                  "15",
+                  "[Costumes] [Style] Face Etching - Aurora Wings VII ×1",
+                  "Rare Etching Exchange Coin ×3"
+                ],
+                [
+                  "16",
+                  "Fluorite Niveot Stone ×5",
+                  "Fluorite Niveot Stone ×30"
+                ],
+                [
+                  "17",
+                  "Dungeon Reset Scroll Fragment ×10",
+                  "Dungeon Reset Scroll Fragment ×50"
+                ],
+                [
+                  "18",
+                  "Battle Pass: SEASON 22 Redemption Coins ×20",
+                  "Battle Pass: SEASON 22 Redemption Coins ×200"
+                ],
+                [
+                  "19",
+                  "High Training Book ×1",
+                  "Masterwork Training Book 20% (untradeable) ×1"
+                ],
+                [
+                  "20",
+                  "Lein's Dark Root Beer ×30",
+                  "Lein’s Refreshing Dark Root Beer ×150"
+                ],
+                [
+                  "21",
+                  "Health Potion ×30",
+                  "Battle Pass Special Potion ×100"
+                ],
+                [
+                  "22",
+                  "Lein's Dark Root Beer ×30",
+                  "Lein’s Refreshing Dark Root Beer ×150"
+                ],
+                [
+                  "23",
+                  "[Costumes] [Style] Face Etching - Aurora Wings VII ×1",
+                  "[Costumes] [Style] Face Etching - Aurora Wings VIII ×1"
+                ],
+                [
+                  "24",
+                  "High Training Book ×1",
+                  "Mastery +500% (3 days) ×1"
+                ],
+                [
+                  "25",
+                  "Battle Pass: Rune Exchange Ticket ×10",
+                  "Annihilation Enhancement Material Exchange Coin ×8"
+                ],
+                [
+                  "26",
+                  "Battle Pass: SEASON 22 Redemption Coins ×20",
+                  "Battle Pass: SEASON 22 Redemption Coins ×200"
+                ],
+                [
+                  "27",
+                  "[Random] Common~Legendary Card Box ×10",
+                  "[Random] Rare~Legendary Card Box ×10"
+                ],
+                [
+                  "28",
+                  "High Training Book ×1",
+                  "Masterwork Training Book 20% (untradeable) ×1"
+                ],
+                [
+                  "29",
+                  "High Training Book ×1",
+                  "Transcendence's Training Book Exchange Coin ×1"
+                ],
+                [
+                  "30",
+                  "[Costumes] [Style] Face Etching - Aurora Wings VII ×1",
+                  "Rare Etching Exchange Coin ×3"
+                ],
+                [
+                  "31",
+                  "Dungeon Reset Scroll Fragment ×10",
+                  "Dungeon Reset Scroll Fragment ×50"
+                ],
+                [
+                  "32",
+                  "Fluorite Niveot Stone ×5",
+                  "Fluorite Niveot Stone ×30"
+                ],
+                [
+                  "33",
+                  "Health Potion ×30",
+                  "Battle Pass Special Potion ×100"
+                ],
+                [
+                  "34",
+                  "High Training Book ×1",
+                  "Mastery +500% (3 days) ×1"
+                ],
+                [
+                  "35",
+                  "Battle Pass: Rune Exchange Ticket ×10",
+                  "Battle Pass: Rune Exchange Ticket ×500"
+                ],
+                [
+                  "36",
+                  "Battle Pass: SEASON 22 Redemption Coins ×20",
+                  "Battle Pass: SEASON 22 Redemption Coins ×200"
+                ],
+                [
+                  "37",
+                  "[Random] Common~Legendary Card Box ×10",
+                  "God's Power Stone ×3"
+                ],
+                [
+                  "38",
+                  "[Random] Common~Legendary Card Box ×10",
+                  "[Random] Rare~Legendary Card Box ×10"
+                ],
+                [
+                  "39",
+                  "Lein's Dark Root Beer ×30",
+                  "Lein’s Refreshing Dark Root Beer ×150"
+                ],
+                [
+                  "40",
+                  "[Costumes] [Style] Face Etching - Aurora Wings VII ×1",
+                  "Annihilation Enhancement Material Exchange Coin ×8"
+                ],
+                [
+                  "41",
+                  "Battle Pass: Rune Exchange Ticket ×10",
+                  "Battle Pass: Rune Exchange Ticket ×500"
+                ],
+                [
+                  "42",
+                  "Dungeon Reset Scroll Fragment ×10",
+                  "Dungeon Reset Scroll Fragment ×50"
+                ],
+                [
+                  "43",
+                  "[Random] Common~Legendary Card Box ×10",
+                  "[Random] Rare~Legendary Card Box ×10"
+                ],
+                [
+                  "44",
+                  "Battle Pass: SEASON 22 Redemption Coins ×20",
+                  "Battle Pass: SEASON 22 Redemption Coins ×200"
+                ],
+                [
+                  "45",
+                  "Battle Pass: Rune Exchange Ticket ×10",
+                  "Rare Etching Exchange Coin ×3"
+                ],
+                [
+                  "46",
+                  "High Training Book ×1",
+                  "Transcendence's Training Book Exchange Coin ×1"
+                ],
+                [
+                  "47",
+                  "Battle Pass: Rune Exchange Ticket ×10",
+                  "Battle Pass: Rune Exchange Ticket ×500"
+                ],
+                [
+                  "48",
+                  "Fluorite Niveot Stone ×5",
+                  "Fluorite Niveot Stone ×30"
+                ],
+                [
+                  "49",
+                  "High Training Book ×1",
+                  "Mastery +500% (3 days) ×1"
+                ],
+                [
+                  "50",
+                  "Battle Pass: SEASON 22 Redemption Coins ×100",
+                  "Annihilation Enhancement Material Exchange Coin ×20"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "text": "Bug conocido: el reclamo de ítems adicionales quedará desactivado temporalmente después del nivel 50. Las recompensas acumuladas se entregarán juntas en el próximo update."
+        }
+      ]
+    },
+    "season": {
+      "label": "Recompensas de la Temporada",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Conversión del equipamiento de la Temporada 2",
+          "icon": "award"
+        },
+        {
+          "type": "card",
+          "title": "Qué ocurre con el equipamiento de la Temporada 2",
+          "titleTone": "amber",
+          "border": "amber-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "El equipamiento de la Temporada 2 ahora se puede desmantelar.",
+                "Ya no será posible mejorarlos.",
+                "Se eliminarán todos los atributos principales."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Forgotten Steel Fragments por nivel de mejora",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Mejora",
+                "Arma",
+                "Armadura",
+                "Botas/Guantes"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "20",
+                  "19",
+                  "17"
+                ],
+                [
+                  "2",
+                  "88",
+                  "84",
+                  "75"
+                ],
+                [
+                  "3",
+                  "156",
+                  "148",
+                  "133"
+                ],
+                [
+                  "4",
+                  "224",
+                  "213",
+                  "190"
+                ],
+                [
+                  "5",
+                  "292",
+                  "277",
+                  "248"
+                ],
+                [
+                  "6",
+                  "360",
+                  "342",
+                  "306"
+                ],
+                [
+                  "7",
+                  "428",
+                  "407",
+                  "364"
+                ],
+                [
+                  "8",
+                  "496",
+                  "471",
+                  "422"
+                ],
+                [
+                  "9",
+                  "564",
+                  "536",
+                  "479"
+                ],
+                [
+                  "10",
+                  "632",
+                  "600",
+                  "537"
+                ],
+                [
+                  "11",
+                  "700",
+                  "665",
+                  "595"
+                ],
+                [
+                  "12",
+                  "768",
+                  "730",
+                  "653"
+                ],
+                [
+                  "13",
+                  "836",
+                  "794",
+                  "711"
+                ],
+                [
+                  "14",
+                  "904",
+                  "859",
+                  "768"
+                ],
+                [
+                  "15",
+                  "972",
+                  "923",
+                  "826"
+                ],
+                [
+                  "16",
+                  "1,040",
+                  "988",
+                  "884"
+                ],
+                [
+                  "17",
+                  "1,108",
+                  "1,053",
+                  "942"
+                ],
+                [
+                  "18",
+                  "1,176",
+                  "1,117",
+                  "1,000"
+                ],
+                [
+                  "19",
+                  "1,244",
+                  "1,182",
+                  "1,057"
+                ],
+                [
+                  "20",
+                  "1,312",
+                  "1,246",
+                  "1,115"
+                ],
+                [
+                  "21",
+                  "1,380",
+                  "1,311",
+                  "1,173"
+                ],
+                [
+                  "22",
+                  "1,448",
+                  "1,376",
+                  "1,231"
+                ],
+                [
+                  "23",
+                  "1,516",
+                  "1,440",
+                  "1,289"
+                ],
+                [
+                  "24",
+                  "1,584",
+                  "1,505",
+                  "1,346"
+                ],
+                [
+                  "25",
+                  "1,652",
+                  "1,569",
+                  "1,404"
+                ],
+                [
+                  "26",
+                  "1,720",
+                  "1,634",
+                  "1,462"
+                ],
+                [
+                  "27",
+                  "1,788",
+                  "1,699",
+                  "1,520"
+                ],
+                [
+                  "28",
+                  "1,856",
+                  "1,763",
+                  "1,578"
+                ],
+                [
+                  "29",
+                  "1,924",
+                  "1,828",
+                  "1,635"
+                ],
+                [
+                  "30",
+                  "2,000",
+                  "1,900",
+                  "1,700"
+                ],
+                [
+                  "31",
+                  "3,160",
+                  "3,002",
+                  "2,686"
+                ],
+                [
+                  "32",
+                  "3,634",
+                  "3,452",
+                  "3,089"
+                ],
+                [
+                  "33",
+                  "4,324",
+                  "4,108",
+                  "3,676"
+                ],
+                [
+                  "34",
+                  "6,270",
+                  "5,957",
+                  "5,330"
+                ],
+                [
+                  "35",
+                  "7,148",
+                  "6,791",
+                  "6,076"
+                ],
+                [
+                  "36",
+                  "12,224",
+                  "11,612",
+                  "10,390"
+                ],
+                [
+                  "37",
+                  "12,957",
+                  "12,309",
+                  "11,014"
+                ],
+                [
+                  "38",
+                  "20,343",
+                  "19,325",
+                  "17,291"
+                ],
+                [
+                  "39",
+                  "21,563",
+                  "20,485",
+                  "18,329"
+                ],
+                [
+                  "40",
+                  "22,800",
+                  "21,660",
+                  "19,380"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraphs",
+          "items": [
+            "Visita a Laura (Elin) en Highwatch para canjear tus recompensas de temporada."
+          ]
+        },
+        {
+          "type": "figure",
+          "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B134_1.png",
+          "alt": "Laura (Elin)",
+          "caption": "Laura (Elin), NPC de canje de recompensas de temporada en Highwatch."
+        },
+        {
+          "type": "card",
+          "title": "Tienda de Recompensas de Temporada",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "keyValueList",
+              "rows": [
+                {
+                  "label": "Moneda",
+                  "value": "Forgotten Steel Fragment"
+                },
+                {
+                  "label": "Reinicio",
+                  "value": "Los límites de compra se reiniciarán"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Equipamiento",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Ítem",
+                "Precio",
+                "Límite de compra"
+              ],
+              "rows": [
+                [
+                  "+7 Kaia's Fury Weapon Box",
+                  "1,500",
+                  "1x por cuenta"
+                ],
+                [
+                  "+7 Kaia's Fury Armor Box",
+                  "1,250",
+                  "1x por cuenta"
+                ],
+                [
+                  "+7 Kaia's Fury Gauntlet Box",
+                  "1,000",
+                  "1x por cuenta"
+                ],
+                [
+                  "+7 Kaia's Fury Footwear Box",
+                  "1,000",
+                  "1x por cuenta"
+                ],
+                [
+                  "+3 Kaia's Fury Weapon Box",
+                  "3,000",
+                  "1x por personaje"
+                ],
+                [
+                  "+3 Kaia's Fury Armor Box",
+                  "2,500",
+                  "1x por personaje"
+                ],
+                [
+                  "+3 Kaia's Fury Gauntlet Box",
+                  "2,000",
+                  "1x por personaje"
+                ],
+                [
+                  "+3 Kaia's Fury Footwear Box",
+                  "2,000",
+                  "1x por personaje"
+                ],
+                [
+                  "Kaia's Fury Belt",
+                  "3,000",
+                  "1x por personaje"
+                ],
+                [
+                  "Kaia's Fury Circlet",
+                  "3,000",
+                  "2x por cuenta"
+                ],
+                [
+                  "Kaia's Fury Brooch",
+                  "3,000",
+                  "2x por cuenta"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Materiales de Mejora",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Ítem",
+                "Precio",
+                "Límite de compra"
+              ],
+              "rows": [
+                [
+                  "Rare Etching Exchange Coin",
+                  "1,500",
+                  "20x por cuenta"
+                ],
+                [
+                  "Enchanting Dust (Raging Dragon) ×1000 Box",
+                  "100",
+                  "1x por personaje"
+                ],
+                [
+                  "Enchanting Dust (Heroic Oath) ×1000 Box",
+                  "500",
+                  "10x por personaje"
+                ],
+                [
+                  "Enchanting Dust (Kaia's Fury) ×1000 Box",
+                  "800",
+                  "10x por personaje"
+                ],
+                [
+                  "Enchanting Dust (Annihilation) ×1000 Box",
+                  "1,000",
+                  "10x por personaje"
+                ],
+                [
+                  "Fluorite Shard x100 Crate",
+                  "5",
+                  "100x por personaje"
+                ],
+                [
+                  "Fluorite Fragment x100 Crate",
+                  "50",
+                  "100x por personaje"
+                ],
+                [
+                  "Fluorite Niveot Stones x100 Crate",
+                  "500",
+                  "100x por personaje"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Premium",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Ítem",
+                "Precio",
+                "Límite de compra"
+              ],
+              "rows": [
+                [
+                  "[Random] Uncommon~Legendary Card Box",
+                  "40",
+                  "100x por personaje"
+                ],
+                [
+                  "Card EXP 10000",
+                  "5,000",
+                  "10x por personaje"
+                ],
+                [
+                  "Offensive Training Book X",
+                  "100",
+                  "50x por personaje"
+                ],
+                [
+                  "Defensive Training Book X",
+                  "100",
+                  "50x por personaje"
+                ],
+                [
+                  "Enlightenment Training Book X",
+                  "100",
+                  "50x por personaje"
+                ],
+                [
+                  "Transcendence's Training Book Exchange Coin",
+                  "1,500",
+                  "10x por personaje"
+                ],
+                [
+                  "LV 7 Arun Stone",
+                  "10,000",
+                  "2x por personaje"
+                ],
+                [
+                  "LV 7 Shara Stone",
+                  "10,000",
+                  "2x por personaje"
+                ],
+                [
+                  "Stat Change Stone [Superior]",
+                  "100",
+                  "300x por personaje"
+                ],
+                [
+                  "Refined Stat Change Stone [Legendary]",
+                  "350",
+                  "100x por personaje"
+                ],
+                [
+                  "Perfect Stigma Crystal (Legendary)",
+                  "1,000",
+                  "1x por personaje"
+                ],
+                [
+                  "Refined Stigma Crystal (Legendary)",
+                  "5,000",
+                  "1x por personaje"
+                ],
+                [
+                  "Skill Book: Combat Canary [Rare]",
+                  "1,000",
+                  "1x por personaje"
+                ],
+                [
+                  "High Training Book",
+                  "40",
+                  "1000x por personaje"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Otros",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Ítem",
+                "Precio",
+                "Límite de compra"
+              ],
+              "rows": [
+                [
+                  "Unlimited High-Potency All-Purpose Elixir (7 days) Box",
+                  "1,500",
+                  "4x por cuenta"
+                ],
+                [
+                  "Unlimited Rapid Recovery Potion (7 days) Box",
+                  "300",
+                  "4x por cuenta"
+                ],
+                [
+                  "Elixir of Infinity (7 days) Box",
+                  "900",
+                  "4x por cuenta"
+                ],
+                [
+                  "Health Potion",
+                  "2",
+                  "10000x por personaje"
+                ],
+                [
+                  "Elixir",
+                  "5",
+                  "100x por personaje"
+                ],
+                [
+                  "Feast",
+                  "10",
+                  "100x por personaje"
+                ],
+                [
+                  "Multi-Nostrum",
+                  "4",
+                  "10000x por personaje"
+                ],
+                [
+                  "Lein’s Refreshing Dark Root Beer",
+                  "20",
+                  "1000x por personaje"
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "dungeons": {
+      "label": "Dungeons y Contenido",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Contenido y rotación de Dungeons",
+          "icon": "swords"
+        },
+        {
+          "type": "card",
+          "title": "Misión",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "La misión Guardian Training V (Instance Matching) se completará temporalmente al hablar con el NPC."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Dungeons retiradas de la rotación",
+          "titleTone": "red",
+          "border": "red-soft",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "La dificultad se reiniciará. La tienda de Reset Scroll pasará a ofrecer las Dungeons de la rotación normal; no se incluyen las exclusivas de matchmaking."
+              ]
+            },
+            {
+              "type": "bulletList",
+              "items": [
+                "Demokron Factory (Normal)",
+                "Timescape",
+                "Dark Reach Citadel",
+                "Ice Throne",
+                "Forbidden Arena (Normal)",
+                "RK-9 Kennel",
+                "RK-9 Kennel (Hard)",
+                "Ravenous Gorge (3-Person)"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Rotación normal de Dungeons",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Se puede entrar mediante matchmaking normal, reclutamiento de grupo o Dimensional Gems. Los logros pasan de Olvidados a Activos."
+              ]
+            },
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Dungeon",
+                "Nivel de ítem",
+                "Grupo recomendado"
+              ],
+              "rows": [
+                [
+                  "Balder's Temple",
+                  "500",
+                  "3 jugadores"
+                ],
+                [
+                  "Argon Corpus (Hard)",
+                  "550",
+                  "5 jugadores"
+                ],
+                [
+                  "Sky Cruiser Endeavor",
+                  "600",
+                  "5 jugadores"
+                ],
+                [
+                  "Bathysmal Rise",
+                  "600",
+                  "5 jugadores"
+                ],
+                [
+                  "Vault of Kaprima",
+                  "650",
+                  "5 jugadores"
+                ],
+                [
+                  "Velik's Sanctuary",
+                  "650",
+                  "5 jugadores"
+                ],
+                [
+                  "Kalivan's Dreadnaught (Hard)",
+                  "700",
+                  "5 jugadores"
+                ],
+                [
+                  "Velik's Hold (Hard)",
+                  "700",
+                  "5 jugadores"
+                ],
+                [
+                  "Forbidden Arena [Nightmare Undying Warlord]",
+                  "750",
+                  "5 jugadores"
+                ],
+                [
+                  "Sky Cruiser Endeavor (Hard)",
+                  "750",
+                  "5 jugadores"
+                ],
+                [
+                  "Broken Prison",
+                  "800",
+                  "5 jugadores"
+                ],
+                [
+                  "Ruinous Manor (Hard)",
+                  "800",
+                  "5 jugadores"
+                ],
+                [
+                  "Bathysmal Rise (Hard)",
+                  "850",
+                  "5 jugadores"
+                ],
+                [
+                  "Forbidden Arena [Undying Warlord]",
+                  "850",
+                  "5 jugadores"
+                ],
+                [
+                  "Wonderholme (Hard) (10-Person)",
+                  "890",
+                  "Raid para 10 jugadores"
+                ],
+                [
+                  "Corrupted Skynest",
+                  "900",
+                  "5 jugadores"
+                ],
+                [
+                  "Velik's Sanctuary (Hard)",
+                  "900",
+                  "5 jugadores"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Rotación exclusiva de matchmaking",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Disponible en la pestaña 'Dungeons Exclusivas de Matchmaking' de la interfaz.",
+                "Se aplica un límite compartido de 2 entradas. Healers y Tanks reciben un bono de +100% en la cantidad de entradas.",
+                "No se permite entrar con Dimensional Gems. Requiere nivel de ítem 450+ y personaje de nivel 65+.",
+                "La dificultad real de las Dungeons equivale al nivel 850."
+              ]
+            },
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B134_2.png",
+              "alt": "Imagen de las recompensas",
+              "caption": "Resumen oficial de las recompensas de las Dungeons exclusivas de matchmaking."
+            },
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Dungeon",
+                "Nivel de ítem",
+                "Grupo recomendado"
+              ],
+              "rows": [
+                [
+                  "Rampaging RK-9 Kennel",
+                  "450",
+                  "5 jugadores"
+                ],
+                [
+                  "Forbidden Arena [Nightmare Hagufna]",
+                  "450",
+                  "5 jugadores"
+                ],
+                [
+                  "Chaos Ice Throne",
+                  "450",
+                  "5 jugadores"
+                ],
+                [
+                  "Timescape (Hard)",
+                  "450",
+                  "5 jugadores"
+                ],
+                [
+                  "Demokron Factory (Hard)",
+                  "450",
+                  "5 jugadores"
+                ],
+                [
+                  "Dark Reach Citadel (Hard)",
+                  "450",
+                  "5 jugadores"
+                ],
+                [
+                  "Akeron's Inferno (Hard)",
+                  "No especificado",
+                  "No especificado"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Equipamiento proporcionado",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Se proporciona equipamiento y Stigmas estandarizados en las Dungeons de matchmaking automático."
+              ]
+            },
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B134_3.png",
+              "alt": "Imagen del equipamiento proporcionado",
+              "caption": "Equipamiento proporcionado en las Dungeons de matchmaking automático."
+            },
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B134_4.png",
+              "alt": "Imagen de los Stigmas proporcionados",
+              "caption": "Stigmas proporcionados en las Dungeons de matchmaking automático."
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Recompensas exclusivas de matchmaking",
+          "titleTone": "amber",
+          "border": "amber-left",
+          "blocks": [
+            {
+              "type": "keyValueList",
+              "rows": [
+                {
+                  "label": "Vanguard Request",
+                  "value": "Item EXP 5,000 · 2 Common–Legendary Card Boxes · 250 Stigma Fragments · Training Book · 20,000 Gold"
+                },
+                {
+                  "label": "Drops del jefe final",
+                  "value": "Training Books · Stigmas · Common–Legendary Card Boxes"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "text": "El sistema de dificultad HARD previsto para B134 se aplazó al próximo update debido a la reorganización del sistema."
+        },
+        {
+          "type": "card",
+          "title": "Logros y Cartas",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "La temporada de logros cambiará y la puntuación requerida por categoría aumentará según el total de logros desbloqueados.",
+                "Se eliminarán ítems inadecuados de algunos logros.",
+                "Los títulos mostrados en negro en la selección de títulos de logros pasarán a mostrarse en blanco.",
+                "La colección de conjunto legendaria 'Blessing of Shakan' se dividirá en 5 etapas de 5 niveles, con efectos cada 5 niveles."
+              ]
+            },
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B134_5.png",
+              "alt": "Imagen de las cinco Cartas",
+              "caption": "Las cinco etapas de la colección de Cartas legendarias Blessing of Shakan."
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Battleground y equipamiento",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "El Battleground Beach Water Balloon será desactivado.",
+                "Se eliminarán todos los Etchings obtenidos en el evento Beach Water Balloon.",
+                "La probabilidad base de mejora de algunos equipos aumentará y los costes se reducirán ligeramente.",
+                "Equipamiento Heroic Oath",
+                "Equipamiento Kaia's Fury"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "runes": {
+      "label": "Runas de Accesorio",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Runas de Accesorio",
+          "icon": "sparkles"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Las Runas de Accesorio son una nueva capa de progresión: evoluciones más potentes de los cristales de accesorios que combinan atributos básicos con efectos de skills de clase."
+        },
+        {
+          "type": "card",
+          "title": "Funcionamiento de las Runas y nuevos ítems",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "Al bloquear un efecto de Runa y cambiar las opciones, el efecto permanecerá bloqueado.",
+                "Se añadirá el nuevo ítem Runa de Accesorio."
+              ]
+            },
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B134_6.png",
+              "alt": "Imagen de las nuevas Runas de Accesorio",
+              "caption": "Nuevas Runas de Accesorio."
+            },
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Ítem",
+                "Descripción"
+              ],
+              "rows": [
+                [
+                  "Rune - Powerful",
+                  "Aumenta la Fuerza en 4."
+                ],
+                [
+                  "Rune - Teaching of Endurance and Resistance",
+                  "Aumenta la Resistencia y la Resistencia Crítica en 8."
+                ],
+                [
+                  "Rune - Keen",
+                  "Aumenta el Factor Crítico en 8."
+                ],
+                [
+                  "Rune - Swift",
+                  "Aumenta la Velocidad de Ataque en un 1,2 %."
+                ],
+                [
+                  "Rune - Touch of Healing and Protection",
+                  "Aumenta la Recuperación de HP y la eficacia de los Escudos en un 3 %."
+                ],
+                [
+                  "Rune - Steadfast Warrior's Roar",
+                  "Aumenta la Resistencia en 4 y el Aggro en un 11 % adicional."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Crafting y evolución",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Combinar un artefacto de accesorio con una Succession Runestone otorga un efecto de sucesión.",
+                "Combinar un artefacto de accesorio con una Runestone otorga una Runa de Accesorio aleatoria.",
+                "Los siguientes artefactos otorgan una Runa aleatoria incluso al usar una Succession Runestone.",
+                "Artifact - Teaching of Endurance",
+                "Artifact - Teaching of Resistance",
+                "Artifact - Essence of Vitality",
+                "Artifact - Essence of Mana",
+                "Artifact - Touch of Healing",
+                "Artifact - Warrior's Roar",
+                "La evolución de la Runa usa la misma receta de crafting, pero también requiere el nuevo ítem 'Ancient Freshness Rune Energy'."
+              ]
+            },
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B134_7.png",
+              "alt": "Ejemplo de evolución de las Runas de Accesorio",
+              "caption": "Ejemplo de crafting y evolución de Runas de Accesorio."
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Cómo funcionan las opciones adicionales",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "figure",
+              "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B134_8.png",
+              "alt": "Ejemplo de las opciones de las Runas de Accesorio",
+              "caption": "Ejemplos de opciones de Runas de Accesorio."
+            },
+            {
+              "type": "paragraphs",
+              "items": [
+                "Además de los atributos básicos, puedes obtener aleatoriamente efectos de skills apropiados para tu clase.",
+                "En el nivel máximo de evolución, una Runa otorga 3 efectos adicionales."
+              ]
+            },
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Tipo",
+                "Efecto de los niveles 1~5",
+                "Clase aplicable"
+              ],
+              "rows": [
+                [
+                  "Todos",
+                  "Fuerza +2 / 4 / 6 / 8 / 10",
+                  "Todas las clases"
+                ],
+                [
+                  "Todos",
+                  "Factor Crítico +4 / 8 / 12 / 16 / 20",
+                  "Todas las clases"
+                ],
+                [
+                  "Todos",
+                  "Amplificación de Daño +0,5 / 1 / 1,5 / 2 / 2,5 %",
+                  "Todas las clases"
+                ],
+                [
+                  "Todos",
+                  "Resistencia +4 / 8 / 12 / 16 / 20",
+                  "Todas las clases"
+                ],
+                [
+                  "Todos",
+                  "Resistencia Crítica +4 / 8 / 12 / 16 / 20",
+                  "Todas las clases"
+                ],
+                [
+                  "Todos",
+                  "Velocidad de Movimiento en Combate +2 / 4 / 6 / 8 / 10",
+                  "Todas las clases"
+                ],
+                [
+                  "Todos",
+                  "Daño al Bloquear reducido en 200 / 400 / 600 / 800 / 1000",
+                  "Todas las clases"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "sectionTitle",
+          "title": "Opciones de Runa específicas por clase",
+          "icon": "user-cog"
+        },
+        {
+          "type": "card",
+          "title": "Warrior",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Skill",
+                "Valor",
+                "Efecto"
+              ],
+              "rows": [
+                [
+                  "Blade Frenzy Enhance",
+                  "0.25 / 0.5 / 0.75 / 1 / 1.25%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Blade Waltz Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "[Uplift] Traverse Cut Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Blade Draw Enhancement",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Scythe Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Poison Blade Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Lancer",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Skill",
+                "Valor",
+                "Efecto"
+              ],
+              "rows": [
+                [
+                  "Super Leap Enhance",
+                  "0.25 / 0.5 / 0.75 / 1 / 1.25%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Adrenaline Rush Extension",
+                  "1 / 2 / 3 / 4.5 / 6%",
+                  "Aumento de duración"
+                ],
+                [
+                  "Retribution Shield Extension",
+                  "1 / 2 / 3 / 4.5 / 6%",
+                  "Aumento de duración"
+                ],
+                [
+                  "Debilitate Extension",
+                  "0.5 / 1 / 1.5 / 2 / 2.5%",
+                  "Aumento de duración"
+                ],
+                [
+                  "Shield Counter Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Spring Attack Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Slayer",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Skill",
+                "Valor",
+                "Efecto"
+              ],
+              "rows": [
+                [
+                  "Swift Attack Enhancement",
+                  "0.25 / 0.5 / 0.75 / 1 / 1.25%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Overhand Strike Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Heart Thrust Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Savage Strike Enhancement",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Flash Strike Enhancement",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Whirlwind Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Berserker",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Skill",
+                "Valor",
+                "Efecto"
+              ],
+              "rows": [
+                [
+                  "Unleashed: Beast Fury Enhancement",
+                  "0.25 / 0.5 / 0.75 / 1 / 1.25%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Cyclone Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Thunder Strike Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Flatten Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Frenzy Leap Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Raze Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Sorcerer",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Skill",
+                "Valor",
+                "Efecto"
+              ],
+              "rows": [
+                [
+                  "Mana Siphon Enhancement",
+                  "0.25 / 0.5 / 0.75 / 1 / 1.25%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Meteor Strike Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Void Pulse Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Frost Sphere Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Lightning Strike Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Hail Storm Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Archer",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Skill",
+                "Valor",
+                "Efecto"
+              ],
+              "rows": [
+                [
+                  "Gust Arrow Enhance",
+                  "0.25 / 0.5 / 0.75 / 1 / 1.25%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Sequential Fire Enhancement",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Rapid Fire Enhancement",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Radiant Arrow Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Thunderbolt Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Rain of Arrows Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Priest",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Skill",
+                "Valor",
+                "Efecto"
+              ],
+              "rows": [
+                [
+                  "Divine Charge Extension",
+                  "0.5 / 1 / 1.5 / 2 / 2.5%",
+                  "Aumento de duración"
+                ],
+                [
+                  "Resurrect Cast Time Reduction",
+                  "2 / 4 / 6 / 9 / 12%",
+                  "Reducción del tiempo de lanzamiento"
+                ],
+                [
+                  "Energy Stars Extension",
+                  "1 / 2 / 3 / 4.5 / 6%",
+                  "Aumento de duración"
+                ],
+                [
+                  "Focus Heal Enhance",
+                  "1 / 2 / 3 / 4.5 / 6%",
+                  "Aumento de curación"
+                ],
+                [
+                  "Restorative Burst Enhance",
+                  "1 / 2 / 3 / 4.5 / 6%",
+                  "Aumento de curación"
+                ],
+                [
+                  "Guardian Armor Extension",
+                  "1 / 2 / 3 / 4.5 / 6%",
+                  "Aumento de duración"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Mystic",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Skill",
+                "Valor",
+                "Efecto"
+              ],
+              "rows": [
+                [
+                  "Thrall Lord's Favor Extension",
+                  "0.5 / 1 / 1.5 / 2 / 2.5%",
+                  "Aumento de duración"
+                ],
+                [
+                  "Resurrect Cast Time Reduction",
+                  "2 / 4 / 6 / 9 / 12%",
+                  "Reducción del tiempo de lanzamiento"
+                ],
+                [
+                  "Titanic Favor Enhance",
+                  "1 / 2 / 3 / 4.5 / 6%",
+                  "Aumento de curación"
+                ],
+                [
+                  "Warding Totem Enhancement",
+                  "1 / 2 / 3 / 4.5 / 6%",
+                  "Aumento de curación"
+                ],
+                [
+                  "Elemental: Thrall of Wrath Extension",
+                  "1 / 2 / 3 / 4.5 / 6%",
+                  "Aumento de duración"
+                ],
+                [
+                  "Vow of Rebirth Extension",
+                  "1 / 2 / 3 / 4.5 / 6%",
+                  "Aumento de duración"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Reaper",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Skill",
+                "Valor",
+                "Efecto"
+              ],
+              "rows": [
+                [
+                  "Binding Scythes Enhance",
+                  "0.25 / 0.5 / 0.75 / 1 / 1.25%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Grim Strike Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Sundering Strike Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Shadow Burst Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Double Shear Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Whipsaw Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Gunner",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Skill",
+                "Valor",
+                "Efecto"
+              ],
+              "rows": [
+                [
+                  "Balder's Vengeance Enhance",
+                  "0.25 / 0.5 / 0.75 / 1 / 1.25%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Mana Missiles Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Remote Trigger Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Burst Fire Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Blast Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Scattershot Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Brawler",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Skill",
+                "Valor",
+                "Efecto"
+              ],
+              "rows": [
+                [
+                  "One-Inch Punch Enhance",
+                  "0.25 / 0.5 / 0.75 / 1 / 1.25%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Haymaker Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Jackhammer Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Dashing Strike Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Counterpunch Enhancement",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Rampage Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Ninja",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Skill",
+                "Valor",
+                "Efecto"
+              ],
+              "rows": [
+                [
+                  "Boomerang Shuriken Enhance",
+                  "0.25 / 0.5 / 0.75 / 1 / 1.25%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Burning Heart Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Double Cut Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "One Thousand Cuts Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Leaves on the Wind Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Chakra Thrust Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Valkyrie",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "table",
+              "headerTone": "amber",
+              "columns": [
+                "Skill",
+                "Valor",
+                "Efecto"
+              ],
+              "rows": [
+                [
+                  "Twilight Waltz Enhance",
+                  "0.25 / 0.5 / 0.75 / 1 / 1.25%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Shining Crescent Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Spinning Death Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Dream Slash Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Bloodflower Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ],
+                [
+                  "Glaive Strike Enhance",
+                  "0.5 / 1 / 1.5 / 2.25 / 3%",
+                  "Aumento de daño"
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "classes": {
+      "label": "Clases",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Latencia y cambios de clase",
+          "icon": "user-cog"
+        },
+        {
+          "type": "card",
+          "title": "Mejora de latencia",
+          "titleTone": "sky",
+          "border": "sky-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "El búfer de latencia de red al usar skills pasará a funcionar hasta 250~300 ms.",
+                "Se reducirá la tasa de fallo de skills al usar Superior Divine Will de Healer."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Gunner: Bombardment",
+          "titleTone": "slate",
+          "border": "none",
+          "blocks": [
+            {
+              "type": "paragraphs",
+              "items": [
+                "La skill no podrá cancelarse con una skill de evasión hasta que termine la animación."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "card",
+          "title": "Valkyrie: Godsfall / Ragnarok",
+          "titleTone": "amber",
+          "border": "amber-top",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "Se eliminará el aura de aumento de daño de los miembros del grupo.",
+                "La skill no podrá cancelarse con una skill de evasión hasta que termine la animación."
+              ]
+            },
+            {
+              "type": "subsection",
+              "title": "Godsfall",
+              "blocks": [
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Todo el daño aumenta un 12 % adicional durante el efecto.",
+                    "Se pueden acumular Ragnarok Points durante el efecto.",
+                    "Al alcanzar 1000 Ragnarok Points, pulsa el botón de Ragnarok para usar 'Godsfall: Wrath of the Red Moon'.",
+                    "Incluso con 1000 Ragnarok Points, la skill puede parecer no disponible; aun así, al pulsar el botón se usará normalmente.",
+                    "Ragnarok quedará sellado durante 60 segundos tras finalizar Godsfall.",
+                    "El segundo golpe de Godsfall (Calamity Thrust) podrá hacer explotar Runemarks.",
+                    "Hacer explotar el máximo de Runemarks también aumenta el daño de Calamity Thrust aproximadamente un 50 %."
+                  ]
+                },
+                {
+                  "type": "figure",
+                  "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B134_9.png",
+                  "alt": "Demostración de la explosión de Runemarks",
+                  "caption": "Explosión de Runemarks durante Godsfall."
+                }
+              ]
+            },
+            {
+              "type": "subsection",
+              "title": "Godsfall: The Wrath of the Red Moon",
+              "blocks": [
+                {
+                  "type": "figure",
+                  "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B134_10.png",
+                  "alt": "Demostración de la skill Godsfall",
+                  "caption": "Godsfall: The Wrath of the Red Moon."
+                },
+                {
+                  "type": "bulletList",
+                  "items": [
+                    "Solo puede usarse al alcanzar 1000 Ragnarok Points después de activar Godsfall.",
+                    "Al usarla, el segundo golpe de Godsfall (Calamity Thrust) deja de estar disponible.",
+                    "Duración: 25 s",
+                    "Fuerza +16 % / Velocidad de Ataque +40 / Alcance de Ataque +20 % / Cooldown de skills inferior a 60 s reducido un 60 %",
+                    "No puede usarse al mismo tiempo que el efecto de Ragnarok.",
+                    "Ragnarok quedará sellado durante 60 segundos tras finalizar Wrath of the Red Moon.",
+                    "Usar Wrath of the Red Moon transforma Shining Crescent en 'New Moon: Wrath of Moonlight', con aproximadamente un 10 % más de Poder de Ataque.",
+                    "Hay un problema visual que muestra 1 segundo de cooldown en la interfaz, pero el valor real se aplica correctamente, igual que en Shining Crescent."
+                  ]
+                },
+                {
+                  "type": "figure",
+                  "src": "https://cs-live-static-psap.krapaas.com/console/tera/brand-site/admin/B134_11.png",
+                  "alt": "Demostración de la skill Shining Crescent",
+                  "caption": "Cambio de Shining Crescent durante Wrath of the Red Moon."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "system": {
+      "label": "Sistema y Correcciones",
+      "blocks": [
+        {
+          "type": "sectionTitle",
+          "title": "Cambios de sistema y correcciones de bugs",
+          "icon": "settings"
+        },
+        {
+          "type": "card",
+          "title": "Límite de Gold",
+          "titleTone": "amber",
+          "border": "amber-left",
+          "blocks": [
+            {
+              "type": "bulletList",
+              "items": [
+                "El límite máximo aumentará de 100.000.000 a 10.000.000.000 de Gold.",
+                "La cantidad que se puede recoger de una vez en el Trade Broker se ajustará en consecuencia."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "issueList",
+          "title": "Correcciones de bugs",
+          "icon": "alert-triangle",
+          "items": [
+            {
+              "main": "Se corrigió el problema que aplicaba 88 segundos de cooldown a los efectos de pets."
+            },
+            {
+              "main": "Se corrigió la visualización incorrecta de los textos de misiones de gremio."
+            },
+            {
+              "main": "Se corrigió el problema que impedía funcionar los efectos de aumento de recuperación de HP de Runas y equipamiento."
+            },
+            {
+              "main": "Se corrigió el problema por el que la lista de recompensas de Trial Dungeon no coincidía con las recompensas recibidas."
+            },
+            {
+              "main": "Se corrigió el botón para restablecer el ángulo de la cámara."
+            },
+            {
+              "main": "Se corrigió la indicación incorrecta de que el equipamiento Raging Dragon y Heroic Oath recibido en misiones permitía cambiar opciones."
+            },
+            {
+              "main": "Se corrigió el problema que permitía a las clases Healer mantener buffs de grupo al cambiar de equipamiento."
+            },
+            {
+              "main": "Con este cambio, los buffs se eliminarán cuando el Healer o cualquier miembro del grupo cambie de equipamiento."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

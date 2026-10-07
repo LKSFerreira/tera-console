@@ -57,7 +57,7 @@
         },
         {
           "type": "card",
-          "title": "Rampaging RK-9 Kennel — Last Stand",
+          "title": "Rampaging RK-9 Kennel: Last Stand",
           "titleTone": "amber",
           "border": "amber-top",
           "blocks": [
@@ -155,8 +155,8 @@
                 {
                   "type": "bulletList",
                   "items": [
-                    "25× Dungeon Core (Annihilation) — até 4/semana",
-                    "250× Dungeon Core (Kaia) — até 2/semana",
+                    "25× Dungeon Core (Annihilation): up to 4/week",
+                    "250× Dungeon Core (Kaia): up to 2/week",
                     "Chest em dungeons 850+ (tradeable, 1 core)",
                     "Legacy of Annihilation em bosses HARD I",
                     "10× Condensed Magic Crystal → 1 core"
@@ -229,7 +229,7 @@
         },
         {
           "type": "card",
-          "title": "Coastal Battleground — 6 weeks",
+          "title": "Coastal Battleground: 6 weeks",
           "titleTone": "amber",
           "border": "amber-top",
           "blocks": [
@@ -660,7 +660,7 @@
         },
         {
           "type": "card",
-          "title": "Boss Gauge — shield",
+          "title": "Boss Gauge: shield",
           "titleTone": "amber",
           "border": "amber-top",
           "blocks": [
