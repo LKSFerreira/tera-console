@@ -2,6 +2,10 @@
 
 Este arquivo concentra o rastreio cronológico de funcionalidades entregues, walkthroughs e documentações arquiteturais pós-entrega na base.
 
+## 2026-10-06
+- **Conteúdo B134–B135:** publicação data-driven de B134, B134.03 e B135 em `pt-BR`, `en-US` e `es-ES`, com curadoria orientada à leitura do jogador, tabelas completas, destaques e segmentação por impacto.
+- **Esteira editorial:** API oficial removida do fluxo confiável; automações preservadas somente como referência/laboratório. Roadmap, README e políticas alinhados ao estado real do portal.
+
 ## 2026-07-23
 - **Pipeline de tradução:** `scripts/lib/localize-content.ts` + `npm run content:localize`; glossário expandido; provedores DeepL / OpenAI-compat / MyMemory; integrado ao `ingest:update` (sempre com review antes de `published`).
 - **Automação + freio de qualidade:** renderer data-driven, índice dinâmico, CLI de lab, migração B130.x. Ingest automático de B133 foi **rejeitado como conteúdo de produção** (qualidade abaixo do B131). B133 em `sources/archive/`. Política: portal só `published` + padrão B131.

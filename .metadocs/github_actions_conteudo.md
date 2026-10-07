@@ -7,6 +7,8 @@ Padrão de qualidade = **B131** (curadoria). Gate humano = **PR de merge para `m
 
 Ver [politica_qualidade_conteudo.md](./politica_qualidade_conteudo.md).
 
+> **Estado em 2026-10-06:** a API oficial não está funcionando corretamente para esta esteira. Os workflows abaixo estão preservados como referência/laboratório; o fluxo operacional atual começa em uma fonte conferida manualmente.
+
 ## Workflows
 
 | Arquivo | Estado | O que faz | Publica em produção? |

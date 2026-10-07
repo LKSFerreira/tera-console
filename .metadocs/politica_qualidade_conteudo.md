@@ -31,13 +31,15 @@
 ## Fluxo correto de um update novo (Opção A)
 
 ```text
-1. Detect / ingest de UM newsId (ex. 1018)
-2. Branch content/<patchId>-<newsId> (ex. content/b133.02-1018)
+1. Receber e conferir a fonte integral de UM update
+2. Curar e localizar o conteúdo no schema data-driven
 3. PR unico para main: checklist + link oficial + Preview Vercel
 4. QA no Preview (traducao, visual, identidade, formatacao)
 5. Ajustes no mesmo PR se preciso
 6. Merge → producao (so aquele update)
 ```
+
+A API oficial de conteúdo não integra mais o fluxo confiável. Os scripts de ingestão permanecem como laboratório histórico e não devem ser usados como fonte única para publicação.
 
 Se chegarem 4 updates de uma vez: **4 PRs**, nao um monstro. Pode mergear o hotfix pequeno e segurar o major.
 

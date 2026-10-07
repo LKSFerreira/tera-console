@@ -1,7 +1,7 @@
 # 🗺️ Roadmap - TERA Console Patch Notes
 
 > Documento vivo de planejamento e progresso do projeto.
-> Última atualização: 2026-07-23
+> Última atualização: 2026-10-06
 
 ---
 
@@ -13,7 +13,7 @@
 
 ---
 
-## 🏗️ Fase Atual: Automação de Conteúdo + Qualidade
+## 🏗️ Fase Atual: Curadoria de Conteúdo + Qualidade
 
 ### ✅ Concluído
 
@@ -35,15 +35,17 @@
 - [x] CLI de lab (raw-drafts) + section-map + validate
 - [x] GitHub Actions radar por Issue (implementado; **desativado** 2026-07-23 — modelo preservado)
 - [x] Decisão homologação: **Opção A — PR por update** (1 newsId = 1 PR + Preview; sem branch homolog fixa)
-- [ ] Esteira Opção A: detect/ingest → `content/<id>` → PR + Preview Vercel → QA no PR → merge main
+- [x] Protótipo da Esteira Opção A implementado como laboratório e posteriormente retirado do fluxo confiável por indisponibilidade da API
 - [x] B130.x data-driven publicados; B131 referência de ouro em TSX
 - [x] Política de qualidade: rascunho ≠ portal; B133 auto arquivado
+- [x] B132.01, B132.03, B133, B133.02, B134, B134.03 e B135 curados e publicados no renderer data-driven
+- [x] B134/B135 organizados para leitura por impacto: destaques, progressão, Dungeons, classes, escalonamento e sistema
+- [x] API oficial retirada do fluxo confiável após deixar de funcionar corretamente
 
 ### 🔲 Próximos Passos (Backlog)
 
-- [ ] Curadoria manual de B133 no **padrão B131** (quando houver tempo) → só então `published`
 - [ ] Migrar B131.01 do TSX legado para o schema JSON **sem perda visual**
-- [ ] Melhorar parser de lab (opcional; nunca bypass do gate de qualidade)
+- [ ] Redefinir a entrada de novos updates sem dependência da API oficial
 - [ ] Eventos ativos (`/event`) se couber no padrão editorial
 - [ ] Responsividade mobile refinada
 - [ ] Sistema de busca/filtro dentro das patch notes

@@ -20,12 +20,14 @@ npm run lint
 
 ## Conteúdo no portal
 
-- Publicado: `src/content/patches/` + `index.json` (`order` / `dataDrivenIds`) e `meta.status: published`
+- Publicado: `src/content/patches/` + `index.json` (`order` / `dataDrivenIds`) e `meta.status: published` — conteúdo atualizado até **B135**
 - Legado ouro: **B131.01** ainda em TSX (`B131Tabs`) - referência de qualidade
-- B130.x: data-driven já migrados e publicados
-- Rascunhos brutos de API: `src/content/sources/raw-drafts/` ou `sources/archive/` - **fora do ar**
+- B130.x, B132.x, B133.x, B134.x e B135: data-driven publicados
+- Rascunhos históricos da API: `src/content/sources/raw-drafts/` ou `sources/archive/` - **fora do ar**
 
-## Radar / lab / tradução
+## Curadoria e tradução
+
+> A API oficial de conteúdo não está operacional para a esteira atual. Os comandos de ingestão abaixo permanecem apenas como referência histórica/laboratório e não fazem parte do fluxo confiável de publicação.
 
 ```bash
 # Lista UPDATES oficiais novos

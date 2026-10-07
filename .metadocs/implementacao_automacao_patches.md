@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |-------|--------|
-| **Status** | Aguardando aprovação para execução |
+| **Status** | Arquivado como referência histórica |
 | **Versão** | 1.3 |
 | **Data** | 2026-07-23 |
 | **Escopo** | Manter o portal atualizado sem manutenção manual pesada |
@@ -11,6 +11,8 @@
 
 > **Fonte única de verdade.** Não existem outros planos de automação no repositório.
 > Debate + rascunhos anteriores foram fundidos aqui; `discusao_contexto.md` e `plano_automacao_patches.md` foram apagados.
+
+> **Atualização de 2026-10-06:** a API oficial deixou de funcionar corretamente para esta esteira. O plano abaixo documenta a arquitetura e os experimentos anteriores, mas não representa o fluxo operacional atual. Novos updates são curados a partir de fontes fornecidas e revisadas manualmente, preservando o mesmo schema data-driven e o gate de qualidade editorial.
 
 ---
 
@@ -46,10 +48,10 @@ https://tera-console.com/news/{id}
 
 | Prioridade portal | `newsId` | Título oficial | Data (API) | URL |
 |-------------------|----------|----------------|------------|-----|
-| **P0 - ausente** | **1018** | B133.02 Update - July 23 | 2026-07-23 | https://tera-console.com/news/1018 |
-| **P0 - ausente** | **1008** | B133 Update - July 15 | 2026-07-12 | https://tera-console.com/news/1008 |
-| **P1 - ausente** | **1001** | B132.03 Update - June 18 | 2026-06-15 | https://tera-console.com/news/1001 |
-| **P1 - ausente** | **991** | (Updated) B132.01 Update - May 21 | 2026-05-17 | https://tera-console.com/news/991 |
+| Publicado posteriormente | **1018** | B133.02 Update - July 23 | 2026-07-23 | https://tera-console.com/news/1018 |
+| Publicado posteriormente | **1008** | B133 Update - July 15 | 2026-07-12 | https://tera-console.com/news/1008 |
+| Publicado posteriormente | **1001** | B132.03 Update - June 18 | 2026-06-15 | https://tera-console.com/news/1001 |
+| Publicado posteriormente | **991** | (Updated) B132.01 Update - May 21 | 2026-05-17 | https://tera-console.com/news/991 |
 | Já no portal* | 974 / 973 | B131.01 Update - April 9 (#2 / #1) | 2026-04-06 | `/news/974`, `/news/973` |
 | Já no portal* | 971 | B130.03 Update - March 26 | 2026-03-25 | https://tera-console.com/news/971 |
 | Já no portal* | 962 | B130.02 Build Update - March 12 | 2026-03-08 | https://tera-console.com/news/962 |
@@ -87,7 +89,7 @@ npm run ingest:update -- --news-id 1018
 npm run ingest:update -- --url https://tera-console.com/news/1008
 ```
 
-Catch-up mínimo recomendado (ordem): **1008 → 1018** (major B133, depois hotfix). Opcional em seguida: **991 → 1001** (B132).
+Catch-up recomendado na época: **1008 → 1018** e depois **991 → 1001**. Esse trabalho foi concluído posteriormente por curadoria manual.
 
 ---
 
@@ -111,8 +113,8 @@ Hoje, publicar um update grande implica:
 
 | Fonte | Estado em 2026-07-23 |
 |-------|----------------------|
-| Portal da comunidade | Até **B131.01** (Abril/2026) |
-| Site oficial (UPDATES) | **B132.x**, **B133** (`1008`), **B133.02** (`1018`) |
+| Portal da comunidade | Atualizado até **B135** em 2026-10-06 |
+| Snapshot histórico da fonte oficial | **B132.x**, **B133** (`1008`), **B133.02** (`1018`) em 2026-07-23 |
 
 O atraso não é falta de vontade: o custo unitário de cada patch é alto demais para quem joga pouco e tem pouco tempo.
 
@@ -915,7 +917,7 @@ A automação está **pronta para o maintainer “sumir” da engenharia de patc
 5. [ ] Cron ou dispatch abre PR draft sem intervenção local obrigatória.
 6. [ ] `npm run build` e `npm run lint` passam no PR.
 7. [ ] Documentação em `.metadocs/` e README refletem o fluxo.
-8. [ ] B133 (ou mais recente) publicado no portal via este fluxo.
+8. [x] B133 e updates posteriores publicados por curadoria; a publicação não depende mais deste fluxo de API.
 
 ---
 
@@ -947,7 +949,7 @@ A automação está **pronta para o maintainer “sumir” da engenharia de patc
 Para iniciar código, confirmar:
 
 1. **Aprova este plano (estratégia híbrida + renderer data-driven + PR gate)?**
-2. **Catch-up inicial:** focar em B133 / B133.02 após o renderer?
+2. **Catch-up inicial:** resolvido; B133, B133.02 e updates posteriores foram publicados por curadoria.
 3. **Eventos ativos:** na v1 junto com updates, ou estritamente v1.1?
 
 ---
